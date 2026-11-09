@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-30",
+  "tag": "release/2026-10-30-original-total",
+  "status": "DEPLOYED_AND_VERIFIED",
+  "sourceCommit": "3da55fe7aa60caba2ff6c6f0c4d43ef88ba78934",
+  "tagTarget": "最终发布留档提交，以Git查询",
+  "verifiedAt": "2026-10-30T15:41:16.200Z",
+  "features": [
+    "各张原单总价自动相加，相同金额分别计入",
+    "原单总价差异降为普通提醒，不阻止普通审核",
+    "总价输入框增加边框、白底、修改提示"
+  ],
+  "image": "sha256:a0f40e83cc76cb87314f484d47173b2c3c0047e0ddd3516e3ad0b9e78a860e8f",
+  "imageTag": "delivery-audit:original-total-20261030",
+  "previousImage": "sha256:f1bc986a9b5d9c7e1db255b85d88d7f4f98ff1966f51173baca26198ab4842aa",
+  "previousImageTag": "delivery-audit:before-original-total-20261030",
+  "sourceArchive": "/opt/delivery-audit/releases/original-total-20261030.tar.gz",
+  "sourceArchiveSha256": "07a95b5dab4a7d17e82190e3efc7934813bf26e4fc668c16b670857621bf063f",
+  "sourceBefore": "/opt/delivery-audit/releases/original-total-20261030/source-before.tar.gz",
+  "backupPath": "/opt/delivery-audit/backups/20261030-233844",
+  "backupChecksums": "d9362f2068cf1b4def40ff55cb806b64179f491d854a0f7fcb4d03d104221f04  database.sql.gz\nd5145bfca2b41e02794921e857b7b02c028c2b0d9440e62c2cb791fbe56a6b9f  uploads.tar.gz",
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "localFullBackupCopied": false,
+  "migration": "NONE",
+  "migrationsApplied": [
+    "0001_init",
+    "0002_ingredient_maintenance"
+  ],
+  "checks": {
+    "unitTests": 132,
+    "typecheck": "PASS",
+    "localBuild": "PASS",
+    "serverBuild": "PASS",
+    "isolatedBrowser": "PASS",
+    "live": {
+      "status": "PASS",
+      "checkedAt": "2026-10-30T15:41:16.200Z",
+      "checks": [
+        "公网HTTPS与健康检查正常（未忽略证书错误）",
+        "新建单据手工入口可见且可用，未创建测试业务单据",
+        "送货日期、供应商常显，系统单号只读",
+        "原单总价输入框有边框白底及修改提示，小数编辑正常；未保存业务修改",
+        "手机收起显示四个值，展开直接显示新建品名和删除",
+        "三项操作同排，无重复品名规格输入框，新建品名弹窗正常",
+        "三种手机宽度无横向溢出",
+        "桌面明细展开正常"
+      ],
+      "pageErrors": [],
+      "businessMutationRequests": 0,
+      "paidOcrCalls": 0,
+      "httpsCertificateErrorsIgnored": false
+    }
+  },
+  "dataPreservationRecord": "docs/original-total-2026-10-30/data-preservation.json",
+  "rollback": "将delivery-audit:before-original-total-20261030标记为delivery-audit:trial，使用现有compose.trial.yml及私有env更新app和worker，保留数据卷。应用回退恢复旧的原单总价汇总及严重异常规则；既有检查数据需重新检查以匹配回退规则；无数据库迁移，无需数据库恢复。数据库恢复需单独评估，不能覆盖上线后新数据。",
+  "gitRemote": "NONE; local Git only"
+}

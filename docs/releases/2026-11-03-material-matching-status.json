@@ -1,0 +1,195 @@
+{
+  "release": "2026-11-03-material-matching-status",
+  "tag": "release/2026-11-03-material-matching-status",
+  "status": "DEPLOYED_TO_TRIAL_VERIFIED",
+  "sourceCommit": "d299c51fc6bbe5374e335a5d60ba02ea58e2af76",
+  "gitScope": "LOCAL_ONLY; query tag target separately",
+  "deploymentCompletedAt": "2026-11-03T02:55:34.000566+08:00",
+  "verifiedAt": "2026-11-03T02:57:14.465309+08:00",
+  "image": "sha256:5f5f0e3b39b8137e1325b3d4bc3698703a270655531a1405425cc970b5ff3be0",
+  "appAndWorkerImageIdentical": true,
+  "sourceArchive": "/opt/delivery-audit/releases/material-checks-20261103.tar.gz",
+  "sourceArchiveSha256": "dab226ab42c41128d000a6fe6020753c3ba12a26e6d3dcbe19d40f831db301c0",
+  "problem": "Creating a material successfully updated the row but pending badges and counts still used checks from before the association. Finish row only closes the editor.",
+  "change": "Derive visible checks from current row: dismiss only resolved ingredient_unmatched, ingredient_ambiguous and unit_missing. Preserve original snapshot, unrelated errors, OCR confidence and server-side review checks.",
+  "database": {
+    "newMigrations": 0,
+    "appliedMigrations": 7,
+    "businessTablesUnchanged": 20,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 462,
+      "Contract": 150,
+      "Document": 69,
+      "Supplier": 19,
+      "CustomRole": 0,
+      "Ingredient": 79,
+      "CheckResult": 565,
+      "ImportBatch": 0,
+      "DocumentItem": 546,
+      "DocumentPage": 6,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 8,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "sha256": "c91aaff90de46e4c149e2abaafb6e58ce9f3152d0a7024d96532355deb0c9eee"
+  },
+  "backupBefore": {
+    "path": "/opt/delivery-audit/backups/20261103-025509",
+    "checksums": {
+      "database.sql.gz": "2c077bfb078cad2b019c23d3083ac37e4208267d778f99d5a6b6f72073553b23",
+      "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+      "oss-manifest.private.json": "cf21f48a19253ac1de3463ca6c806a51ef2358474c76fb5be77f8330d7855ca1"
+    },
+    "ossSnapshot": {
+      "objects": 11,
+      "bytes": 7446687,
+      "manifestSha256": "cf21f48a19253ac1de3463ca6c806a51ef2358474c76fb5be77f8330d7855ca1"
+    },
+    "localImageFiles": 12,
+    "archivesReadableAndAllObjectsHashVerified": true,
+    "offsite": false,
+    "recurring": false,
+    "coversFutureUploads": false,
+    "restoreDrill": "NOT_PERFORMED"
+  },
+  "verification": {
+    "testFiles": 25,
+    "testsPassed": 197,
+    "typecheck": "PASS",
+    "localProductionBuild": "PASS",
+    "serverProductionBuild": "PASS",
+    "baselineRegression": "Old page e275ee1 reproduces stale pending badge assertion failure",
+    "browser": {
+      "mode": "ACTUAL_COMPONENTS_SYNTHETIC_API",
+      "results": [
+        {
+          "width": 390,
+          "mode": "create",
+          "result": "PASS"
+        },
+        {
+          "width": 390,
+          "mode": "choose",
+          "result": "PASS"
+        },
+        {
+          "width": 390,
+          "mode": "other-error",
+          "result": "PASS"
+        },
+        {
+          "width": 390,
+          "mode": "failed-create",
+          "result": "PASS"
+        },
+        {
+          "width": 1440,
+          "mode": "create",
+          "result": "PASS"
+        },
+        {
+          "width": 1440,
+          "mode": "choose",
+          "result": "PASS"
+        },
+        {
+          "width": 1440,
+          "mode": "other-error",
+          "result": "PASS"
+        },
+        {
+          "width": 1440,
+          "mode": "failed-create",
+          "result": "PASS"
+        }
+      ],
+      "errors": []
+    },
+    "publicDeployedJs": {
+      "mode": "PUBLIC_DEPLOYED_JS_SYNTHETIC_DOCUMENT_API_NO_BUSINESS_WRITES",
+      "results": [
+        {
+          "width": 390,
+          "mode": "create",
+          "result": "PASS"
+        },
+        {
+          "width": 390,
+          "mode": "choose",
+          "result": "PASS"
+        },
+        {
+          "width": 390,
+          "mode": "other-error",
+          "result": "PASS"
+        },
+        {
+          "width": 390,
+          "mode": "failed-create",
+          "result": "PASS"
+        },
+        {
+          "width": 1440,
+          "mode": "create",
+          "result": "PASS"
+        },
+        {
+          "width": 1440,
+          "mode": "choose",
+          "result": "PASS"
+        },
+        {
+          "width": 1440,
+          "mode": "other-error",
+          "result": "PASS"
+        },
+        {
+          "width": 1440,
+          "mode": "failed-create",
+          "result": "PASS"
+        }
+      ],
+      "errors": []
+    },
+    "compactEditor": {
+      "widths": [
+        375,
+        390,
+        430,
+        1440
+      ],
+      "visibleFullRows": 7,
+      "decimalRoundingNavigationPermissionsReadonly": "PASS"
+    },
+    "health": {
+      "app": "running healthy",
+      "worker": "running",
+      "database": "up"
+    },
+    "afterBrowserBusinessFingerprintAndOssHashesUnchanged": true,
+    "realBusinessWrites": 0,
+    "paidOcrCalls": 0,
+    "temporarySessionFilesRemoved": true
+  },
+  "boundaries": [
+    "New/create/change/save browser responses are synthetic; deployed JS is fetched from public trial site. No real material or document changed.",
+    "Finish row does not save the whole document. Save draft or submit audit persists other edits and server re-evaluates checks.",
+    "Other genuine errors and OCR reminders remain; this does not confirm OCR correctness.",
+    "Physical phone and WeChat not tested; existing offsite backup/DNS/lifecycle/billing todos remain."
+  ],
+  "rollback": {
+    "priorImage": "sha256:40a18e6614d4fb1641d2197d9b2608967b2f9d0fe9a286a6739125a6ccab768c",
+    "priorImageTag": "delivery-audit:before-material-checks-20261103",
+    "sourceBackup": "/opt/delivery-audit/releases/material-checks-20261103/source-before.tar.gz",
+    "rule": "Prior image already supports deletedAt and migration0007. Preserve current database and OSS; switch only app/worker image if needed. Do not restore business database for UI regression."
+  },
+  "privateEvidenceDirectory": "/opt/delivery-audit/releases/material-checks-20261103/",
+  "localPrivateEvidenceDirectory": ".data/material-checks-20261103/"
+}

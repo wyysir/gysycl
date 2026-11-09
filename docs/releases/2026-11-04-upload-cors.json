@@ -1,0 +1,173 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-04T15:19:35.590987+00:00",
+  "baseSourceCommit": "1c3998070b0fd7f01d2f1db82927352ef3c9bf9b",
+  "patchFiles": [
+    "src/server/storage.ts"
+  ],
+  "storageSha256": "467e2eb55d673d5e48d9f6f9f684aae2b2b36f0630b7a40068c3ab448c232b82",
+  "image": "sha256:79ee48e865bc3c71b8c9529a0be2dd054066c33104517932e96afac2c37e1786",
+  "archiveSha256": "6e3cc13b9e97420895f65aa25031934264532f89b191a0296faa1e2d68b09119",
+  "backup": "/opt/delivery-audit/backups/20261104-231915",
+  "backupChecksums": {
+    "database.sql.gz": "04b44d614c1e94f1f12053d6ceb80887062057160e371ee4cc2ac7917ee80255",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "oss-manifest.private.json": "f2aec3d11f0e80b95dabc8bb3ed9e25c2d7250a9fedcaf5d45512df73a4cceb8"
+  },
+  "ossSnapshot": {
+    "objects": 10,
+    "bytes": 6668259,
+    "manifestSha256": "f2aec3d11f0e80b95dabc8bb3ed9e25c2d7250a9fedcaf5d45512df73a4cceb8"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 22,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 463,
+      "Contract": 150,
+      "Document": 68,
+      "Supplier": 19,
+      "BatchPhoto": 29,
+      "CustomRole": 0,
+      "Ingredient": 79,
+      "CheckResult": 549,
+      "ImportBatch": 0,
+      "UploadBatch": 5,
+      "DocumentItem": 541,
+      "DocumentPage": 5,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 8,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "b8e2aa698c4e39f6d97d57405ce083b469e4178f903f1b52b51f76efe4171a00",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "migrations": 8,
+  "storage": "oss",
+  "restoreTested": false,
+  "changedSourceFilesComparedWithDeployedBase": [
+    "src/server/storage.ts"
+  ],
+  "patchCommit": "e9ef907fb8d7165c94fce3682c934e6fd9d84a29",
+  "releaseTag": "release/2026-11-04-upload-cors",
+  "validation": {
+    "testFiles": 28,
+    "tests": 248,
+    "typecheck": "PASS",
+    "serverProductionBuild": "PASS",
+    "browser": {
+      "status": "PASS",
+      "checks": [
+        {
+          "width": 1440,
+          "mime": "image/jpeg",
+          "status": 200,
+          "progress100": true,
+          "readbackSha256Match": true,
+          "responses": [
+            {
+              "method": "PUT",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "width": 1440,
+          "mime": "image/png",
+          "status": 200,
+          "progress100": true,
+          "readbackSha256Match": true,
+          "responses": [
+            {
+              "method": "PUT",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "width": 1440,
+          "mime": "image/webp",
+          "status": 200,
+          "progress100": true,
+          "readbackSha256Match": true,
+          "responses": [
+            {
+              "method": "PUT",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "mime": "image/jpeg",
+          "status": 200,
+          "progress100": true,
+          "readbackSha256Match": true,
+          "responses": [
+            {
+              "method": "PUT",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "mime": "image/png",
+          "status": 200,
+          "progress100": true,
+          "readbackSha256Match": true,
+          "responses": [
+            {
+              "method": "PUT",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "mime": "image/webp",
+          "status": 200,
+          "progress100": true,
+          "readbackSha256Match": true,
+          "responses": [
+            {
+              "method": "PUT",
+              "status": 200
+            }
+          ]
+        }
+      ],
+      "paidOcrCalls": 0,
+      "realPhoneTested": false
+    },
+    "businessAndLocalImagesUnchangedAfterBrowserCleanup": true,
+    "documentPageOssObjectsUnchangedAfterBrowserCleanup": 10
+  },
+  "rollback": {
+    "image": "sha256:314621b7b0c72367c56760a6c1606fb011e77e14175e90b904deda445e2941bd",
+    "sourceArchive": "/opt/delivery-audit/releases/upload-cors-20261104/source-before.tar.gz",
+    "instructions": "Retag the old image as delivery-audit:trial and recreate app and worker with existing compose. Restore source from source-before.tar.gz separately before any future build. No database migration or database restore required for this code rollback. Database recovery is a separate decision; do not overwrite new business data.",
+    "tested": false
+  },
+  "notes": [
+    "Only storage.ts changed compared with deployed source snapshot; local OCR trials were excluded.",
+    "Browser used production storage function to issue bound batch temporary-key signatures and the actual client uploadToTarget function; no business batch completion or paid OCR invoked.",
+    "Six synthetic test keys deleted from current visible objects; versioned history may remain.",
+    "OSS snapshot covers 10 DocumentPage-referenced objects; database fingerprint covers all 22 business tables.",
+    "Private backups remain on server; same-host backup is not off-host disaster recovery.",
+    "Real Android WeChat remains pending user retest.",
+    "Local Git only."
+  ],
+  "officialReferences": [
+    "https://help.aliyun.com/zh/oss/developer-reference/putobject",
+    "https://help.aliyun.com/zh/oss/developer-reference/putbucketcors"
+  ]
+}

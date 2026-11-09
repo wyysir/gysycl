@@ -1,0 +1,324 @@
+{
+  "range": {
+    "from": "2026-09-01",
+    "to": "2026-11-01"
+  },
+  "projects": [
+    {
+      "id": "cmvj4duw200813o85s66p80f4",
+      "name": "验收测试项目"
+    },
+    {
+      "id": "prj_hz",
+      "name": "杭州园区食堂"
+    },
+    {
+      "id": "prj_nj",
+      "name": "南京项目点"
+    },
+    {
+      "id": "prj_sh",
+      "name": "上海总部食堂"
+    },
+    {
+      "id": "prj_sz",
+      "name": "苏州工厂食堂"
+    }
+  ],
+  "priceMatrix": [
+    {
+      "ingredient": "大米",
+      "spec": "25kg/袋",
+      "unit": "袋",
+      "projects": {
+        "上海总部食堂": 118
+      },
+      "suppliers": {
+        "华东粮油供应链有限公司": {
+          "avgPrice": 118,
+          "minPrice": 118,
+          "maxPrice": 118,
+          "samples": 1
+        }
+      }
+    },
+    {
+      "ingredient": "鸡胸肉",
+      "spec": "冷鲜",
+      "unit": "kg",
+      "projects": {
+        "南京项目点": 17.1
+      },
+      "suppliers": {
+        "南京每日鲜肉业有限公司": {
+          "avgPrice": 17.1,
+          "minPrice": 17.1,
+          "maxPrice": 17.1,
+          "samples": 1
+        }
+      }
+    },
+    {
+      "ingredient": "鲈鱼",
+      "spec": "鲜活",
+      "unit": "kg",
+      "projects": {
+        "南京项目点": 32
+      },
+      "suppliers": {
+        "南京每日鲜肉业有限公司": {
+          "avgPrice": 32,
+          "minPrice": 32,
+          "maxPrice": 32,
+          "samples": 1
+        }
+      }
+    },
+    {
+      "ingredient": "青菜",
+      "spec": "散装",
+      "unit": "kg",
+      "projects": {
+        "上海总部食堂": 4.18,
+        "杭州园区食堂": 4.3
+      },
+      "suppliers": {
+        "上海鲜禾农副产品有限公司": {
+          "avgPrice": 4.17,
+          "minPrice": 4,
+          "maxPrice": 4.25,
+          "samples": 5
+        },
+        "验收绕过已审批供应商": {
+          "avgPrice": 4.2,
+          "minPrice": 4.2,
+          "maxPrice": 4.2,
+          "samples": 1
+        },
+        "杭州绿源蔬菜配送有限公司": {
+          "avgPrice": 4.3,
+          "minPrice": 4.3,
+          "maxPrice": 4.3,
+          "samples": 1
+        }
+      }
+    },
+    {
+      "ingredient": "食用油",
+      "spec": "5L/桶",
+      "unit": "桶",
+      "projects": {
+        "上海总部食堂": 68
+      },
+      "suppliers": {
+        "华东粮油供应链有限公司": {
+          "avgPrice": 68,
+          "minPrice": 68,
+          "maxPrice": 68,
+          "samples": 1
+        }
+      }
+    },
+    {
+      "ingredient": "土豆",
+      "spec": "散装",
+      "unit": "kg",
+      "projects": {
+        "上海总部食堂": 3.08,
+        "杭州园区食堂": 3.2
+      },
+      "suppliers": {
+        "上海鲜禾农副产品有限公司": {
+          "avgPrice": 3.08,
+          "minPrice": 3,
+          "maxPrice": 3.15,
+          "samples": 3
+        },
+        "杭州绿源蔬菜配送有限公司": {
+          "avgPrice": 3.2,
+          "minPrice": 3.2,
+          "maxPrice": 3.2,
+          "samples": 1
+        }
+      }
+    },
+    {
+      "ingredient": "猪五花肉",
+      "spec": "冷鲜",
+      "unit": "kg",
+      "projects": {
+        "南京项目点": 25.2
+      },
+      "suppliers": {
+        "南京每日鲜肉业有限公司": {
+          "avgPrice": 25.2,
+          "minPrice": 25.2,
+          "maxPrice": 25.2,
+          "samples": 1
+        }
+      }
+    }
+  ],
+  "products": [
+    {
+      "name": "青菜",
+      "spec": "散装",
+      "unit": "kg",
+      "lines": 7,
+      "avgPrice": 4.19,
+      "minPrice": 4,
+      "maxPrice": 4.3,
+      "spread": 0.3,
+      "projectCount": 2,
+      "supplierCount": 3
+    },
+    {
+      "name": "土豆",
+      "spec": "散装",
+      "unit": "kg",
+      "lines": 4,
+      "avgPrice": 3.11,
+      "minPrice": 3,
+      "maxPrice": 3.2,
+      "spread": 0.2,
+      "projectCount": 2,
+      "supplierCount": 2
+    },
+    {
+      "name": "大米",
+      "spec": "25kg/袋",
+      "unit": "袋",
+      "lines": 1,
+      "avgPrice": 118,
+      "minPrice": 118,
+      "maxPrice": 118,
+      "spread": 0,
+      "projectCount": 1,
+      "supplierCount": 1
+    },
+    {
+      "name": "食用油",
+      "spec": "5L/桶",
+      "unit": "桶",
+      "lines": 1,
+      "avgPrice": 68,
+      "minPrice": 68,
+      "maxPrice": 68,
+      "spread": 0,
+      "projectCount": 1,
+      "supplierCount": 1
+    },
+    {
+      "name": "猪五花肉",
+      "spec": "冷鲜",
+      "unit": "kg",
+      "lines": 1,
+      "avgPrice": 25.2,
+      "minPrice": 25.2,
+      "maxPrice": 25.2,
+      "spread": 0,
+      "projectCount": 1,
+      "supplierCount": 1
+    },
+    {
+      "name": "鸡胸肉",
+      "spec": "冷鲜",
+      "unit": "kg",
+      "lines": 1,
+      "avgPrice": 17.1,
+      "minPrice": 17.1,
+      "maxPrice": 17.1,
+      "spread": 0,
+      "projectCount": 1,
+      "supplierCount": 1
+    },
+    {
+      "name": "鲈鱼",
+      "spec": "鲜活",
+      "unit": "kg",
+      "lines": 1,
+      "avgPrice": 32,
+      "minPrice": 32,
+      "maxPrice": 32,
+      "spread": 0,
+      "projectCount": 1,
+      "supplierCount": 1
+    }
+  ],
+  "dimensions": [
+    {
+      "name": "合同价",
+      "value": 21,
+      "severity": "ERROR"
+    },
+    {
+      "name": "识别质量",
+      "value": 20,
+      "severity": "WARNING"
+    },
+    {
+      "name": "跨供应商比价",
+      "value": 17,
+      "severity": "INFO"
+    },
+    {
+      "name": "主数据匹配",
+      "value": 3,
+      "severity": "ERROR"
+    },
+    {
+      "name": "单据完整性",
+      "value": 1,
+      "severity": "ERROR"
+    },
+    {
+      "name": "重复校验",
+      "value": 1,
+      "severity": "ERROR"
+    }
+  ],
+  "supplierSpend": [
+    {
+      "name": "南京每日鲜肉业有限公司",
+      "amount": 3259,
+      "docs": 1
+    },
+    {
+      "name": "华东粮油供应链有限公司",
+      "amount": 2904,
+      "docs": 1
+    },
+    {
+      "name": "上海鲜禾农副产品有限公司",
+      "amount": 1240.7,
+      "docs": 5
+    },
+    {
+      "name": "杭州绿源蔬菜配送有限公司",
+      "amount": 391.8,
+      "docs": 1
+    },
+    {
+      "name": "验收绕过已审批供应商",
+      "amount": 42,
+      "docs": 1
+    }
+  ],
+  "projectSpend": [
+    {
+      "name": "上海总部食堂",
+      "amount": 4186.7,
+      "docs": 7
+    },
+    {
+      "name": "南京项目点",
+      "amount": 3259,
+      "docs": 1
+    },
+    {
+      "name": "杭州园区食堂",
+      "amount": 391.8,
+      "docs": 1
+    }
+  ]
+}

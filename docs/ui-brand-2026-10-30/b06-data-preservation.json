@@ -1,0 +1,85 @@
+{
+  "verifiedAt": "2026-10-29T18:19:42.798Z",
+  "before": {
+    "counts": {
+      "ApprovalRecord": 8,
+      "AuditLog": 102,
+      "CheckResult": 173,
+      "Contract": 0,
+      "Document": 11,
+      "DocumentItem": 78,
+      "DocumentPage": 24,
+      "ImportBatch": 0,
+      "Ingredient": 24,
+      "IngredientAlias": 1,
+      "Notification": 8,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 3,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "a8fe975482018a3ff887b24c20cfb6d94907245967e6b2c224414ac8e331dc0c",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "after": {
+    "counts": {
+      "ApprovalRecord": 8,
+      "AuditLog": 102,
+      "CheckResult": 173,
+      "Contract": 0,
+      "Document": 11,
+      "DocumentItem": 78,
+      "DocumentPage": 24,
+      "ImportBatch": 0,
+      "Ingredient": 24,
+      "IngredientAlias": 1,
+      "Notification": 8,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 3,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "a8fe975482018a3ff887b24c20cfb6d94907245967e6b2c224414ac8e331dc0c",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "includingBrandAuditBefore": {
+    "counts": {
+      "items": 78,
+      "pages": 24,
+      "audits": 103,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "390fc370236e216047d062bf2cae26cca291db2b8024b96a21488c093cd136bc",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "includingBrandAuditAfter": {
+    "counts": {
+      "items": 78,
+      "pages": 24,
+      "audits": 103,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "390fc370236e216047d062bf2cae26cca291db2b8024b96a21488c093cd136bc",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "unchanged": true,
+  "businessMutationRequests": 0
+}

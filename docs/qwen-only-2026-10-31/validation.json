@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-31T05:51:07.075Z",
+  "unitTests": 160,
+  "typecheck": "PASS",
+  "isolatedProductionBuild": "PASS",
+  "traditionalOcrRuntimeReferences": "NONE",
+  "deployment": "DEPLOYED",
+  "realRecognitionAcceptance": "PENDING_ACCOUNT_RECOVERY",
+  "notes": [
+    "原图、真实业务响应与测试密钥未进入Git",
+    "无远程仓库，仅本地Git"
+  ],
+  "serverBuild": "PASS",
+  "live": {
+    "status": "PASS",
+    "checkedAt": "2026-10-31T05:55:58.114Z",
+    "checks": [
+      "桌面登录页使用智能单据识别标识",
+      "公网HTTPS、登录与健康检查正常，未忽略证书错误",
+      "右上角五字姓名、反馈入口、反馈读取与提交表单正常",
+      "线上42.2×1.2=50.64、实收50.60可明确确认0.04元抹零并撤销；未保存业务数据",
+      "线上材料库可多选两项并加入页面，四种宽度无横向溢出；未保存业务修改",
+      "真实退回单据删除按钮和确认弹窗正常，仅取消确认，未删除业务单据"
+    ],
+    "returnedVerification": "BUTTON_AND_CONFIRMATION_PASS_NOT_DELETED",
+    "pageErrors": [],
+    "businessMutationRequests": 0,
+    "paidOcrCalls": 0,
+    "httpsCertificateErrorsIgnored": false
+  },
+  "sourceCommit": "513c9e92acb65a835c867106a6ac2944eea39dfc"
+}

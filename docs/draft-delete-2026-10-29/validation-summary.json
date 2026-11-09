@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-29T13:25:47.209723+00:00",
+  "unitTests": 114,
+  "isolatedBrowserChecks": 9,
+  "liveReadOnlyChecks": 6,
+  "typecheck": "PASS",
+  "build": "PASS",
+  "liveDeleteRequests": 0,
+  "paidOcrCalls": 0,
+  "newDatabaseMigrations": 0,
+  "dataAndImagesPreserved": true,
+  "noRecycleBin": true,
+  "limits": [
+    "真实环境只打开确认后取消，未替用户删除业务草稿或图片；删除路径在隔离演示库和浏览器中实际执行",
+    "旧明细缺少来源页时保留并提示人工核对；移除图片后需重新填写整单总价",
+    "文件清理或关联提醒刷新失败会明确提示，需按维护说明处理"
+  ]
+}

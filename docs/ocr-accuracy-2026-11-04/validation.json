@@ -1,0 +1,1529 @@
+{
+  "date": "2026-11-04",
+  "status": "investigation and partial local fix; three full two-stage candidates rejected; NOT deployed; handwritten 95% target NOT met",
+  "startingCommit": "eda3f59ac5d44cdaddd3384044c95c5b9760f8b5",
+  "observedDeployedSource": "1c3998070b0fd7f01d2f1db82927352ef3c9bf9b",
+  "observedDeployedImage": "sha256:314621b7b0c72367c56760a6c1606fb011e77e14175e90b904deda445e2941bd",
+  "observedDeployedModel": "qwen3.6-flash",
+  "sample": {
+    "documents": 26,
+    "handwrittenDocuments": 15,
+    "printedDocuments": 11,
+    "rows": 155,
+    "handwrittenRows": 43,
+    "scoredHandwrittenNames": 33,
+    "excludedHandwrittenNames": 10,
+    "scoredPrintedNames": 111,
+    "excludedPrintedNames": 1,
+    "independentHoldout": false,
+    "businessConfirmedGroundTruth": false
+  },
+  "comparisonCaveat": "Historical single-annotator regression set, frozen before experiments. Single full runs plus three repeated S05 pairs; no population-accuracy or exact compression-effect estimate. Excluded S22 ambiguous year as predeclared.",
+  "uploadSizes": {
+    "originalBytes": 117984980,
+    "clientBytes": 22529993,
+    "reductionPercent": 80.9
+  },
+  "paidRequests": 315,
+  "usage": {
+    "qwen3.6-flash": {
+      "requests": 149,
+      "httpFailures": 0,
+      "inputTokens": 590207,
+      "outputTokens": 110872
+    },
+    "qwen3.8-flash": {
+      "requests": 108,
+      "httpFailures": 0,
+      "inputTokens": 998166,
+      "outputTokens": 46333
+    },
+    "qwen3.7-plus": {
+      "requests": 26,
+      "httpFailures": 0,
+      "inputTokens": 191668,
+      "outputTokens": 19444
+    },
+    "qwen3.8-max": {
+      "requests": 7,
+      "httpFailures": 0,
+      "inputTokens": 55892,
+      "outputTokens": 5161
+    },
+    "qwen3-vl-plus": {
+      "requests": 6,
+      "httpFailures": 0,
+      "inputTokens": 32026,
+      "outputTokens": 4510
+    },
+    "qwen3.5-ocr": {
+      "requests": 19,
+      "httpFailures": 0,
+      "inputTokens": 130124,
+      "outputTokens": 4011
+    }
+  },
+  "experiments": [
+    {
+      "variant": "baseline",
+      "documents": 26,
+      "excludedNames": 11,
+      "invalidStructuredResponses": 0,
+      "mode": "real cloud inference",
+      "scores": {
+        "all": {
+          "rowCount": {
+            "correct": 26,
+            "total": 26,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 20,
+            "total": 21,
+            "percent": 95.24
+          },
+          "sourceDate": {
+            "correct": 17,
+            "total": 17,
+            "percent": 100
+          },
+          "name": {
+            "correct": 137,
+            "total": 144,
+            "percent": 95.14
+          },
+          "quantity": {
+            "correct": 153,
+            "total": 155,
+            "percent": 98.71
+          },
+          "unitPrice": {
+            "correct": 153,
+            "total": 155,
+            "percent": 98.71
+          },
+          "amount": {
+            "correct": 154,
+            "total": 154,
+            "percent": 100
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 137,
+            "total": 146,
+            "percent": 93.84
+          }
+        },
+        "手写": {
+          "rowCount": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 9,
+            "total": 10,
+            "percent": 90
+          },
+          "sourceDate": {
+            "correct": 6,
+            "total": 6,
+            "percent": 100
+          },
+          "name": {
+            "correct": 26,
+            "total": 33,
+            "percent": 78.79
+          },
+          "quantity": {
+            "correct": 41,
+            "total": 43,
+            "percent": 95.35
+          },
+          "unitPrice": {
+            "correct": 41,
+            "total": 43,
+            "percent": 95.35
+          },
+          "amount": {
+            "correct": 42,
+            "total": 42,
+            "percent": 100
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 30,
+            "total": 34,
+            "percent": 88.24
+          }
+        },
+        "打印": {
+          "rowCount": {
+            "correct": 11,
+            "total": 11,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 11,
+            "total": 11,
+            "percent": 100
+          },
+          "sourceDate": {
+            "correct": 11,
+            "total": 11,
+            "percent": 100
+          },
+          "name": {
+            "correct": 111,
+            "total": 111,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 107,
+            "total": 112,
+            "percent": 95.54
+          },
+          "quantity": {
+            "correct": 112,
+            "total": 112,
+            "percent": 100
+          },
+          "unitPrice": {
+            "correct": 112,
+            "total": 112,
+            "percent": 100
+          },
+          "amount": {
+            "correct": 112,
+            "total": 112,
+            "percent": 100
+          }
+        }
+      }
+    },
+    {
+      "variant": "original15",
+      "documents": 15,
+      "excludedNames": 10,
+      "invalidStructuredResponses": 0,
+      "mode": "real cloud inference",
+      "scores": {
+        "all": {
+          "rowCount": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 8,
+            "total": 10,
+            "percent": 80
+          },
+          "sourceDate": {
+            "correct": 6,
+            "total": 6,
+            "percent": 100
+          },
+          "name": {
+            "correct": 28,
+            "total": 33,
+            "percent": 84.85
+          },
+          "quantity": {
+            "correct": 37,
+            "total": 43,
+            "percent": 86.05
+          },
+          "unitPrice": {
+            "correct": 41,
+            "total": 43,
+            "percent": 95.35
+          },
+          "amount": {
+            "correct": 38,
+            "total": 42,
+            "percent": 90.48
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 30,
+            "total": 34,
+            "percent": 88.24
+          }
+        },
+        "手写": {
+          "rowCount": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 8,
+            "total": 10,
+            "percent": 80
+          },
+          "sourceDate": {
+            "correct": 6,
+            "total": 6,
+            "percent": 100
+          },
+          "name": {
+            "correct": 28,
+            "total": 33,
+            "percent": 84.85
+          },
+          "quantity": {
+            "correct": 37,
+            "total": 43,
+            "percent": 86.05
+          },
+          "unitPrice": {
+            "correct": 41,
+            "total": 43,
+            "percent": 95.35
+          },
+          "amount": {
+            "correct": 38,
+            "total": 42,
+            "percent": 90.48
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 30,
+            "total": 34,
+            "percent": 88.24
+          }
+        }
+      }
+    },
+    {
+      "variant": "candidate",
+      "documents": 26,
+      "excludedNames": 11,
+      "invalidStructuredResponses": 2,
+      "mode": "real cloud inference",
+      "scores": {
+        "all": {
+          "rowCount": {
+            "correct": 24,
+            "total": 26,
+            "percent": 92.31
+          },
+          "documentTotal": {
+            "correct": 16,
+            "total": 21,
+            "percent": 76.19
+          },
+          "sourceDate": {
+            "correct": 12,
+            "total": 17,
+            "percent": 70.59
+          },
+          "name": {
+            "correct": 111,
+            "total": 144,
+            "percent": 77.08
+          },
+          "quantity": {
+            "correct": 126,
+            "total": 155,
+            "percent": 81.29
+          },
+          "unitPrice": {
+            "correct": 126,
+            "total": 155,
+            "percent": 81.29
+          },
+          "amount": {
+            "correct": 125,
+            "total": 154,
+            "percent": 81.17
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 114,
+            "total": 146,
+            "percent": 78.08
+          }
+        },
+        "手写": {
+          "rowCount": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 7,
+            "total": 10,
+            "percent": 70
+          },
+          "sourceDate": {
+            "correct": 3,
+            "total": 6,
+            "percent": 50
+          },
+          "name": {
+            "correct": 29,
+            "total": 33,
+            "percent": 87.88
+          },
+          "quantity": {
+            "correct": 43,
+            "total": 43,
+            "percent": 100
+          },
+          "unitPrice": {
+            "correct": 43,
+            "total": 43,
+            "percent": 100
+          },
+          "amount": {
+            "correct": 42,
+            "total": 42,
+            "percent": 100
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 33,
+            "total": 34,
+            "percent": 97.06
+          }
+        },
+        "打印": {
+          "rowCount": {
+            "correct": 9,
+            "total": 11,
+            "percent": 81.82
+          },
+          "documentTotal": {
+            "correct": 9,
+            "total": 11,
+            "percent": 81.82
+          },
+          "sourceDate": {
+            "correct": 9,
+            "total": 11,
+            "percent": 81.82
+          },
+          "name": {
+            "correct": 82,
+            "total": 111,
+            "percent": 73.87
+          },
+          "unit": {
+            "correct": 81,
+            "total": 112,
+            "percent": 72.32
+          },
+          "quantity": {
+            "correct": 83,
+            "total": 112,
+            "percent": 74.11
+          },
+          "unitPrice": {
+            "correct": 83,
+            "total": 112,
+            "percent": 74.11
+          },
+          "amount": {
+            "correct": 83,
+            "total": 112,
+            "percent": 74.11
+          }
+        }
+      }
+    },
+    {
+      "variant": "plus",
+      "documents": 26,
+      "excludedNames": 11,
+      "invalidStructuredResponses": 0,
+      "mode": "real cloud inference",
+      "scores": {
+        "all": {
+          "rowCount": {
+            "correct": 26,
+            "total": 26,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 21,
+            "total": 21,
+            "percent": 100
+          },
+          "sourceDate": {
+            "correct": 14,
+            "total": 17,
+            "percent": 82.35
+          },
+          "name": {
+            "correct": 138,
+            "total": 144,
+            "percent": 95.83
+          },
+          "quantity": {
+            "correct": 155,
+            "total": 155,
+            "percent": 100
+          },
+          "unitPrice": {
+            "correct": 155,
+            "total": 155,
+            "percent": 100
+          },
+          "amount": {
+            "correct": 154,
+            "total": 154,
+            "percent": 100
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 143,
+            "total": 146,
+            "percent": 97.95
+          }
+        },
+        "手写": {
+          "rowCount": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 10,
+            "total": 10,
+            "percent": 100
+          },
+          "sourceDate": {
+            "correct": 3,
+            "total": 6,
+            "percent": 50
+          },
+          "name": {
+            "correct": 27,
+            "total": 33,
+            "percent": 81.82
+          },
+          "quantity": {
+            "correct": 43,
+            "total": 43,
+            "percent": 100
+          },
+          "unitPrice": {
+            "correct": 43,
+            "total": 43,
+            "percent": 100
+          },
+          "amount": {
+            "correct": 42,
+            "total": 42,
+            "percent": 100
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 34,
+            "total": 34,
+            "percent": 100
+          }
+        },
+        "打印": {
+          "rowCount": {
+            "correct": 11,
+            "total": 11,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 11,
+            "total": 11,
+            "percent": 100
+          },
+          "sourceDate": {
+            "correct": 11,
+            "total": 11,
+            "percent": 100
+          },
+          "name": {
+            "correct": 111,
+            "total": 111,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 109,
+            "total": 112,
+            "percent": 97.32
+          },
+          "quantity": {
+            "correct": 112,
+            "total": 112,
+            "percent": 100
+          },
+          "unitPrice": {
+            "correct": 112,
+            "total": 112,
+            "percent": 100
+          },
+          "amount": {
+            "correct": 112,
+            "total": 112,
+            "percent": 100
+          }
+        }
+      }
+    },
+    {
+      "variant": "maxdev",
+      "documents": 6,
+      "excludedNames": 3,
+      "invalidStructuredResponses": 0,
+      "mode": "real cloud inference",
+      "scores": {
+        "all": {
+          "rowCount": {
+            "correct": 6,
+            "total": 6,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 3,
+            "total": 5,
+            "percent": 60
+          },
+          "dateBlank": {
+            "correct": 5,
+            "total": 5,
+            "percent": 100
+          },
+          "name": {
+            "correct": 32,
+            "total": 35,
+            "percent": 91.43
+          },
+          "unit": {
+            "correct": 36,
+            "total": 36,
+            "percent": 100
+          },
+          "quantity": {
+            "correct": 38,
+            "total": 38,
+            "percent": 100
+          },
+          "unitPrice": {
+            "correct": 38,
+            "total": 38,
+            "percent": 100
+          },
+          "amount": {
+            "correct": 38,
+            "total": 38,
+            "percent": 100
+          },
+          "sourceDate": {
+            "correct": 1,
+            "total": 1,
+            "percent": 100
+          }
+        },
+        "手写": {
+          "rowCount": {
+            "correct": 5,
+            "total": 5,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 2,
+            "total": 4,
+            "percent": 50
+          },
+          "dateBlank": {
+            "correct": 5,
+            "total": 5,
+            "percent": 100
+          },
+          "name": {
+            "correct": 17,
+            "total": 20,
+            "percent": 85
+          },
+          "unit": {
+            "correct": 21,
+            "total": 21,
+            "percent": 100
+          },
+          "quantity": {
+            "correct": 23,
+            "total": 23,
+            "percent": 100
+          },
+          "unitPrice": {
+            "correct": 23,
+            "total": 23,
+            "percent": 100
+          },
+          "amount": {
+            "correct": 23,
+            "total": 23,
+            "percent": 100
+          }
+        },
+        "打印": {
+          "rowCount": {
+            "correct": 1,
+            "total": 1,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 1,
+            "total": 1,
+            "percent": 100
+          },
+          "sourceDate": {
+            "correct": 1,
+            "total": 1,
+            "percent": 100
+          },
+          "name": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "quantity": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "unitPrice": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "amount": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          }
+        }
+      }
+    },
+    {
+      "variant": "name15",
+      "documents": 15,
+      "excludedNames": 10,
+      "invalidStructuredResponses": 0,
+      "mode": "names only; other fields not scored",
+      "scores": {
+        "handwrittenNames": {
+          "correct": 28,
+          "total": 33,
+          "percent": 84.85
+        }
+      }
+    },
+    {
+      "variant": "package-replay",
+      "documents": 26,
+      "excludedNames": 11,
+      "invalidStructuredResponses": 0,
+      "mode": "offline response replay",
+      "scores": {
+        "all": {
+          "rowCount": {
+            "correct": 26,
+            "total": 26,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 20,
+            "total": 21,
+            "percent": 95.24
+          },
+          "sourceDate": {
+            "correct": 17,
+            "total": 17,
+            "percent": 100
+          },
+          "name": {
+            "correct": 138,
+            "total": 144,
+            "percent": 95.83
+          },
+          "quantity": {
+            "correct": 153,
+            "total": 155,
+            "percent": 98.71
+          },
+          "unitPrice": {
+            "correct": 153,
+            "total": 155,
+            "percent": 98.71
+          },
+          "amount": {
+            "correct": 154,
+            "total": 154,
+            "percent": 100
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 137,
+            "total": 146,
+            "percent": 93.84
+          }
+        },
+        "手写": {
+          "rowCount": {
+            "correct": 15,
+            "total": 15,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 9,
+            "total": 10,
+            "percent": 90
+          },
+          "sourceDate": {
+            "correct": 6,
+            "total": 6,
+            "percent": 100
+          },
+          "name": {
+            "correct": 27,
+            "total": 33,
+            "percent": 81.82
+          },
+          "quantity": {
+            "correct": 41,
+            "total": 43,
+            "percent": 95.35
+          },
+          "unitPrice": {
+            "correct": 41,
+            "total": 43,
+            "percent": 95.35
+          },
+          "amount": {
+            "correct": 42,
+            "total": 42,
+            "percent": 100
+          },
+          "dateBlank": {
+            "correct": 8,
+            "total": 8,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 30,
+            "total": 34,
+            "percent": 88.24
+          }
+        },
+        "打印": {
+          "rowCount": {
+            "correct": 11,
+            "total": 11,
+            "percent": 100
+          },
+          "documentTotal": {
+            "correct": 11,
+            "total": 11,
+            "percent": 100
+          },
+          "sourceDate": {
+            "correct": 11,
+            "total": 11,
+            "percent": 100
+          },
+          "name": {
+            "correct": 111,
+            "total": 111,
+            "percent": 100
+          },
+          "unit": {
+            "correct": 107,
+            "total": 112,
+            "percent": 95.54
+          },
+          "quantity": {
+            "correct": 112,
+            "total": 112,
+            "percent": 100
+          },
+          "unitPrice": {
+            "correct": 112,
+            "total": 112,
+            "percent": 100
+          },
+          "amount": {
+            "correct": 112,
+            "total": 112,
+            "percent": 100
+          }
+        }
+      }
+    }
+  ],
+  "repeatedPackageCase": [
+    {
+      "variant": "original-base",
+      "input": "original",
+      "model": "qwen3.6-flash",
+      "thirdName": "海鲜酱",
+      "unit": "大桶"
+    },
+    {
+      "variant": "original-repeat",
+      "input": "original",
+      "model": "qwen3.6-flash",
+      "thirdName": "海鲜酱",
+      "unit": "大桶"
+    },
+    {
+      "variant": "original15",
+      "input": "original",
+      "model": "qwen3.6-flash",
+      "thirdName": "海鲜酱",
+      "unit": "大桶"
+    },
+    {
+      "variant": "client-base",
+      "input": "client",
+      "model": "qwen3.6-flash",
+      "thirdName": "海鲜酱大桶",
+      "unit": "大桶"
+    },
+    {
+      "variant": "baseline",
+      "input": "client",
+      "model": "qwen3.6-flash",
+      "thirdName": "海鲜酱大桶",
+      "unit": "大桶"
+    },
+    {
+      "variant": "client-repeat3",
+      "input": "client",
+      "model": "qwen3.6-flash",
+      "thirdName": "海鲜酱大桶",
+      "unit": "大桶"
+    }
+  ],
+  "offlineReplay": {
+    "documents": 26,
+    "newPaidCalls": 0,
+    "changes": [
+      {
+        "id": "S05",
+        "lineNo": 3,
+        "before": "海鲜酱大桶",
+        "after": "海鲜酱"
+      }
+    ],
+    "amountsUnitsDatesUnchanged": true
+  },
+  "checks": {
+    "testFiles": 26,
+    "testsPassed": 221,
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "databaseMigration": false,
+    "deployed": false,
+    "newRuntimeModelCalls": 0
+  },
+  "evidenceHashes": {
+    "inputs": "289d47e45d6f43c11bd9bb68a613daac0e94294832032ea79ce442444a5028b8",
+    "frozenTruth": "c0f7e85b4bdff939550e57aab95ed791d4646194ce5a18ad8cf78aa5fd39e733",
+    "calls": "19f862d432a0613b7853683a5cf5b0193a380d32e0534b5d92d49daee20e4a5a",
+    "source": "dcc7e2bf915919858616ad6a01942079596837d4e6541884cbaa63e76de7dcb6",
+    "tests": "fc783dd1d2982df8af5900f9ad1f934233591a52305d2e4536ee9bc5b96253f8",
+    "secondaryCalls": "1c1c4d492b7fb88033f9ea01d0b2aa67768f3623b472a62cde5fc16125aebe1e",
+    "freshCalls": "3f061ec741763234e6b6bf010978fdcb44d8d4b2b9ee098e6e72ad0e45c34411"
+  },
+  "privateEvidenceDirectory": ".data/ocr-opt-20261104",
+  "secondaryReview": {
+    "userAuthorized": true,
+    "standaloneDevelopmentCalls": 27,
+    "developmentReplay": {
+      "documents": 15,
+      "namesCorrect": 33,
+      "namesTotal": 33,
+      "independentValidation": false
+    },
+    "freshRuns": [
+      {
+        "variant": "fresh1",
+        "documents": 26,
+        "paidRequests": 42,
+        "secondaryRequests": 16,
+        "printedSecondaryRequests": 1,
+        "secondaryFailures": 0,
+        "primaryHandwrittenNames": {
+          "correct": 26,
+          "total": 33
+        },
+        "finalHandwrittenNames": {
+          "correct": 31,
+          "total": 33
+        },
+        "correctedNames": 6,
+        "regressedNames": 1,
+        "otherChangedNames": 0,
+        "nonNameFieldsPreserved": true,
+        "secondaryApiLatencyMs": {
+          "mean": 6429,
+          "min": 1907,
+          "max": 25028
+        },
+        "scores": {
+          "all": {
+            "rowCount": {
+              "correct": 26,
+              "total": 26,
+              "percent": 100
+            },
+            "documentTotal": {
+              "correct": 20,
+              "total": 21,
+              "percent": 95.24
+            },
+            "sourceDate": {
+              "correct": 16,
+              "total": 17,
+              "percent": 94.12
+            },
+            "name": {
+              "correct": 142,
+              "total": 144,
+              "percent": 98.61
+            },
+            "quantity": {
+              "correct": 153,
+              "total": 155,
+              "percent": 98.71
+            },
+            "unitPrice": {
+              "correct": 153,
+              "total": 155,
+              "percent": 98.71
+            },
+            "amount": {
+              "correct": 154,
+              "total": 154,
+              "percent": 100
+            },
+            "dateBlank": {
+              "correct": 8,
+              "total": 8,
+              "percent": 100
+            },
+            "unit": {
+              "correct": 137,
+              "total": 146,
+              "percent": 93.84
+            }
+          },
+          "手写": {
+            "rowCount": {
+              "correct": 15,
+              "total": 15,
+              "percent": 100
+            },
+            "documentTotal": {
+              "correct": 9,
+              "total": 10,
+              "percent": 90
+            },
+            "sourceDate": {
+              "correct": 5,
+              "total": 6,
+              "percent": 83.33
+            },
+            "name": {
+              "correct": 31,
+              "total": 33,
+              "percent": 93.94
+            },
+            "quantity": {
+              "correct": 41,
+              "total": 43,
+              "percent": 95.35
+            },
+            "unitPrice": {
+              "correct": 41,
+              "total": 43,
+              "percent": 95.35
+            },
+            "amount": {
+              "correct": 42,
+              "total": 42,
+              "percent": 100
+            },
+            "dateBlank": {
+              "correct": 8,
+              "total": 8,
+              "percent": 100
+            },
+            "unit": {
+              "correct": 30,
+              "total": 34,
+              "percent": 88.24
+            }
+          },
+          "打印": {
+            "rowCount": {
+              "correct": 11,
+              "total": 11,
+              "percent": 100
+            },
+            "documentTotal": {
+              "correct": 11,
+              "total": 11,
+              "percent": 100
+            },
+            "sourceDate": {
+              "correct": 11,
+              "total": 11,
+              "percent": 100
+            },
+            "name": {
+              "correct": 111,
+              "total": 111,
+              "percent": 100
+            },
+            "unit": {
+              "correct": 107,
+              "total": 112,
+              "percent": 95.54
+            },
+            "quantity": {
+              "correct": 112,
+              "total": 112,
+              "percent": 100
+            },
+            "unitPrice": {
+              "correct": 112,
+              "total": 112,
+              "percent": 100
+            },
+            "amount": {
+              "correct": 112,
+              "total": 112,
+              "percent": 100
+            }
+          }
+        },
+        "configHash": "0112636491ae41d6d43cc26665b8d7cf462ce2d49b0b59c59cee443b648a9744"
+      },
+      {
+        "variant": "fresh2",
+        "documents": 26,
+        "paidRequests": 45,
+        "secondaryRequests": 19,
+        "printedSecondaryRequests": 4,
+        "secondaryFailures": 0,
+        "primaryHandwrittenNames": {
+          "correct": 26,
+          "total": 33
+        },
+        "finalHandwrittenNames": {
+          "correct": 31,
+          "total": 33
+        },
+        "correctedNames": 7,
+        "regressedNames": 3,
+        "otherChangedNames": 0,
+        "nonNameFieldsPreserved": true,
+        "secondaryApiLatencyMs": {
+          "mean": 5338,
+          "min": 1782,
+          "max": 12249
+        },
+        "scores": {
+          "all": {
+            "rowCount": {
+              "correct": 26,
+              "total": 26,
+              "percent": 100
+            },
+            "documentTotal": {
+              "correct": 20,
+              "total": 21,
+              "percent": 95.24
+            },
+            "sourceDate": {
+              "correct": 16,
+              "total": 17,
+              "percent": 94.12
+            },
+            "name": {
+              "correct": 141,
+              "total": 144,
+              "percent": 97.92
+            },
+            "quantity": {
+              "correct": 153,
+              "total": 155,
+              "percent": 98.71
+            },
+            "unitPrice": {
+              "correct": 154,
+              "total": 155,
+              "percent": 99.35
+            },
+            "amount": {
+              "correct": 154,
+              "total": 154,
+              "percent": 100
+            },
+            "dateBlank": {
+              "correct": 8,
+              "total": 8,
+              "percent": 100
+            },
+            "unit": {
+              "correct": 134,
+              "total": 146,
+              "percent": 91.78
+            }
+          },
+          "手写": {
+            "rowCount": {
+              "correct": 15,
+              "total": 15,
+              "percent": 100
+            },
+            "documentTotal": {
+              "correct": 9,
+              "total": 10,
+              "percent": 90
+            },
+            "sourceDate": {
+              "correct": 5,
+              "total": 6,
+              "percent": 83.33
+            },
+            "name": {
+              "correct": 31,
+              "total": 33,
+              "percent": 93.94
+            },
+            "quantity": {
+              "correct": 41,
+              "total": 43,
+              "percent": 95.35
+            },
+            "unitPrice": {
+              "correct": 42,
+              "total": 43,
+              "percent": 97.67
+            },
+            "amount": {
+              "correct": 42,
+              "total": 42,
+              "percent": 100
+            },
+            "dateBlank": {
+              "correct": 8,
+              "total": 8,
+              "percent": 100
+            },
+            "unit": {
+              "correct": 29,
+              "total": 34,
+              "percent": 85.29
+            }
+          },
+          "打印": {
+            "rowCount": {
+              "correct": 11,
+              "total": 11,
+              "percent": 100
+            },
+            "documentTotal": {
+              "correct": 11,
+              "total": 11,
+              "percent": 100
+            },
+            "sourceDate": {
+              "correct": 11,
+              "total": 11,
+              "percent": 100
+            },
+            "name": {
+              "correct": 110,
+              "total": 111,
+              "percent": 99.1
+            },
+            "unit": {
+              "correct": 105,
+              "total": 112,
+              "percent": 93.75
+            },
+            "quantity": {
+              "correct": 112,
+              "total": 112,
+              "percent": 100
+            },
+            "unitPrice": {
+              "correct": 112,
+              "total": 112,
+              "percent": 100
+            },
+            "amount": {
+              "correct": 112,
+              "total": 112,
+              "percent": 100
+            }
+          }
+        },
+        "configHash": "1bab35e7648629830d30fda6ee318a2d09f134ee0249399368dad31e3f62e3dd"
+      },
+      {
+        "variant": "fresh3",
+        "documents": 26,
+        "paidRequests": 41,
+        "secondaryRequests": 15,
+        "printedSecondaryRequests": 0,
+        "secondaryFailures": 0,
+        "primaryHandwrittenNames": {
+          "correct": 25,
+          "total": 33
+        },
+        "finalHandwrittenNames": {
+          "correct": 30,
+          "total": 33
+        },
+        "correctedNames": 5,
+        "regressedNames": 0,
+        "otherChangedNames": 0,
+        "nonNameFieldsPreserved": true,
+        "secondaryApiLatencyMs": {
+          "mean": 3533,
+          "min": 1959,
+          "max": 6616
+        },
+        "scores": {
+          "all": {
+            "rowCount": {
+              "correct": 26,
+              "total": 26,
+              "percent": 100
+            },
+            "documentTotal": {
+              "correct": 21,
+              "total": 21,
+              "percent": 100
+            },
+            "sourceDate": {
+              "correct": 17,
+              "total": 17,
+              "percent": 100
+            },
+            "name": {
+              "correct": 141,
+              "total": 144,
+              "percent": 97.92
+            },
+            "quantity": {
+              "correct": 153,
+              "total": 155,
+              "percent": 98.71
+            },
+            "unitPrice": {
+              "correct": 154,
+              "total": 155,
+              "percent": 99.35
+            },
+            "amount": {
+              "correct": 153,
+              "total": 154,
+              "percent": 99.35
+            },
+            "dateBlank": {
+              "correct": 8,
+              "total": 8,
+              "percent": 100
+            },
+            "unit": {
+              "correct": 133,
+              "total": 146,
+              "percent": 91.1
+            }
+          },
+          "手写": {
+            "rowCount": {
+              "correct": 15,
+              "total": 15,
+              "percent": 100
+            },
+            "documentTotal": {
+              "correct": 10,
+              "total": 10,
+              "percent": 100
+            },
+            "sourceDate": {
+              "correct": 6,
+              "total": 6,
+              "percent": 100
+            },
+            "name": {
+              "correct": 30,
+              "total": 33,
+              "percent": 90.91
+            },
+            "quantity": {
+              "correct": 41,
+              "total": 43,
+              "percent": 95.35
+            },
+            "unitPrice": {
+              "correct": 42,
+              "total": 43,
+              "percent": 97.67
+            },
+            "amount": {
+              "correct": 41,
+              "total": 42,
+              "percent": 97.62
+            },
+            "dateBlank": {
+              "correct": 8,
+              "total": 8,
+              "percent": 100
+            },
+            "unit": {
+              "correct": 28,
+              "total": 34,
+              "percent": 82.35
+            }
+          },
+          "打印": {
+            "rowCount": {
+              "correct": 11,
+              "total": 11,
+              "percent": 100
+            },
+            "documentTotal": {
+              "correct": 11,
+              "total": 11,
+              "percent": 100
+            },
+            "sourceDate": {
+              "correct": 11,
+              "total": 11,
+              "percent": 100
+            },
+            "name": {
+              "correct": 111,
+              "total": 111,
+              "percent": 100
+            },
+            "unit": {
+              "correct": 105,
+              "total": 112,
+              "percent": 93.75
+            },
+            "quantity": {
+              "correct": 112,
+              "total": 112,
+              "percent": 100
+            },
+            "unitPrice": {
+              "correct": 112,
+              "total": 112,
+              "percent": 100
+            },
+            "amount": {
+              "correct": 112,
+              "total": 112,
+              "percent": 100
+            }
+          }
+        },
+        "configHash": "57490920860dcfbeb1afd74b5fb0195f40965fffdb5bbd2f0127135ecf6c1e0d"
+      }
+    ],
+    "decision": "Do not deploy: complete new inference reached 31/33, 31/33, 30/33; regressions and model-dependent routing remain."
+  },
+  "finalReadOnlyServerCheck": {
+    "at": "2026-11-04T13:38:12.182Z",
+    "services": [
+      {
+        "service": "app",
+        "name": "delivery-app-1",
+        "state": "running",
+        "health": "healthy",
+        "image": "delivery-audit:trial"
+      },
+      {
+        "service": "postgres",
+        "name": "delivery-postgres-1",
+        "state": "running",
+        "health": "healthy",
+        "image": "public.ecr.aws/docker/library/postgres:17-alpine"
+      },
+      {
+        "service": "redis",
+        "name": "delivery-redis-1",
+        "state": "running",
+        "health": "healthy",
+        "image": "public.ecr.aws/docker/library/redis:7-alpine"
+      },
+      {
+        "service": "worker",
+        "name": "delivery-worker-1",
+        "state": "running",
+        "health": "",
+        "image": "delivery-audit:trial"
+      }
+    ],
+    "images": [
+      {
+        "name": "/delivery-app-1",
+        "image": "sha256:314621b7b0c72367c56760a6c1606fb011e77e14175e90b904deda445e2941bd"
+      },
+      {
+        "name": "/delivery-worker-1",
+        "image": "sha256:314621b7b0c72367c56760a6c1606fb011e77e14175e90b904deda445e2941bd"
+      }
+    ]
+  }
+}

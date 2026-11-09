@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-29T17:09:29.860Z",
+  "checks": [
+    "正式Logo上传，下载原图与用户附件逐字节一致",
+    "公网工作台、分析、审核队列、设置页面及Logo显示正常",
+    "管理员企业品牌页显示已上传Logo",
+    "390px实际单据显示正常，未变更单据版本、明细或图片",
+    "正式录入页只读检查，没有选择或上传业务图片",
+    "未登录访客可见正式Logo，手机与电脑登录页正常"
+  ],
+  "pageErrors": [],
+  "uploaded": true,
+  "previousVersion": 0,
+  "logoVersion": 1,
+  "logoSha256": "adc79814f1bc0fd06c725fc3f4224810da0adc92bf6cd466f772bce96bde2817",
+  "logoBytes": 43299,
+  "logoViewBox": "254 155 501 480",
+  "businessMutationRequests": 0,
+  "paidOcrCalls": 0,
+  "httpsCertificateErrorsIgnored": false
+}

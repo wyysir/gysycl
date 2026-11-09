@@ -1,0 +1,32 @@
+{
+  "restartRead": "PASS",
+  "flow": {
+    "id": "cmvj4dt4500353o85n3tww3pi",
+    "status": "APPROVED",
+    "version": 10
+  },
+  "audit": {
+    "updates": 4,
+    "hasBeforeAndAfter": true
+  },
+  "notifications": {
+    "total": 6,
+    "statuses": [
+      "MOCKED"
+    ],
+    "templates": [
+      "review_pending",
+      "review_result"
+    ]
+  },
+  "zeroTotalDefectPersisted": {
+    "id": "cmvj4du9g00693o85t6gn7ydu",
+    "status": "APPROVED",
+    "subtotal": 42,
+    "totalAmount": 0
+  },
+  "counts": {
+    "documents": 22,
+    "items": 40
+  }
+}

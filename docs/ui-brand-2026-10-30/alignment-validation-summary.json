@@ -1,0 +1,181 @@
+{
+  "status": "DEPLOYED_AND_VERIFIED",
+  "date": "2026-10-30",
+  "approvedBaseline": "品牌台账-原方案基线.md",
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "unitTests": {
+    "status": "PASS",
+    "passed": 125,
+    "files": 11
+  },
+  "fidelity": {
+    "status": "PASS",
+    "checkedAt": "2026-10-30T03:22:31.458Z",
+    "tokens": {
+      "primary": "#775740",
+      "gold": "#d0a350",
+      "paper": "#f7f5f0",
+      "font": "\"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif",
+      "sidebar": "224px"
+    },
+    "checks": [
+      "品牌色值、字体栈、224px侧栏与方案一致",
+      "主管审核三栏、四条明细、严重异常禁用普通通过",
+      "中屏两栏、抽屉打开锁滚动、Esc关闭恢复",
+      "中屏抽屉切至手机宽度后释放滚动锁",
+      "分析矩阵选择、采购历史跳转与返回保留所选材料",
+      "金额1.1离焦稳定显示1.10，避免浮点乘100误判",
+      "手机折叠明细保留输入，金额格式化不截断四位单价",
+      "原图弹层开关不丢失输入",
+      "手机新增明细自动展开，入口可操作",
+      "录入页步骤条、拍照/相册、两页预览、固定上传按钮与返回来源",
+      "320/390/430手机宽度无整页横向溢出",
+      "手机工作台与价格分析在320/390/430宽度无整页横向溢出"
+    ],
+    "pageErrors": [],
+    "fixture": "Isolated demo only; supplied company logo; two pages/four items"
+  },
+  "recovery": {
+    "chromium": {
+      "status": "PASS",
+      "engine": "chromium",
+      "browserVersion": "153.0.4234.32",
+      "checkedAt": "2026-10-30T03:04:07.691Z",
+      "viewport": "390x844, touch/mobile emulation",
+      "checks": [
+        "连续后退并取消：URL、输入、历史长度保持一致",
+        "快速重复后退不叠加弹窗或损坏历史栈",
+        "跨两条站内历史返回可取消并保留原位置",
+        "历史前进重入详情仍恢复未保存内容",
+        "暂存后返回列表，再进入恢复完整备注",
+        "刷新恢复，不依赖 React 内存",
+        "跨文档离开后返回也能从恢复副本找回输入",
+        "保存失败停留原页，数据和恢复副本保留",
+        "存储配额失败拒绝暂存离开，错误可见且原输入仍在",
+        "保存成功后按原目标后退一次并清理副本",
+        "前进导航也保留未保存内容",
+        "明确放弃才清理，保存值不被覆盖",
+        "服务器版本变化显示冲突原文，不覆盖新数据",
+        "手机录入后退与刷新恢复两页原始File、顺序、项目和日期",
+        "恢复原图 SHA-256 字节一致，缩略图正常显示",
+        "独立标签页不混入本页的未上传文件",
+        "上传失败保留两张图片及恢复副本",
+        "切换账号不恢复其他账号的图片",
+        "退出前明确提醒，确认放弃后清理当前账号副本",
+        "上传成功替换录入页，后退回工作台，再次录入无旧图片或恢复副本",
+        "过期副本不恢复且在下次页面访问清理"
+      ],
+      "pageErrors": [],
+      "paidOcrCalls": 0
+    },
+    "webkit": {
+      "status": "PASS",
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "checkedAt": "2026-10-30T03:05:02.000Z",
+      "viewport": "390x844, touch/mobile emulation",
+      "checks": [
+        "连续后退并取消：URL、输入、历史长度保持一致",
+        "快速重复后退不叠加弹窗或损坏历史栈",
+        "跨两条站内历史返回可取消并保留原位置",
+        "历史前进重入详情仍恢复未保存内容",
+        "暂存后返回列表，再进入恢复完整备注",
+        "刷新恢复，不依赖 React 内存",
+        "跨文档离开后返回也能从恢复副本找回输入",
+        "保存失败停留原页，数据和恢复副本保留",
+        "存储配额失败拒绝暂存离开，错误可见且原输入仍在",
+        "保存成功后按原目标后退一次并清理副本",
+        "前进导航也保留未保存内容",
+        "明确放弃才清理，保存值不被覆盖",
+        "服务器版本变化显示冲突原文，不覆盖新数据",
+        "手机录入后退与刷新恢复两页原始File、顺序、项目和日期",
+        "恢复原图 SHA-256 字节一致，缩略图正常显示",
+        "独立标签页不混入本页的未上传文件",
+        "上传失败保留两张图片及恢复副本",
+        "切换账号不恢复其他账号的图片",
+        "退出前明确提醒，确认放弃后清理当前账号副本",
+        "上传成功替换录入页，后退回工作台，再次录入无旧图片或恢复副本",
+        "过期副本不恢复且在下次页面访问清理"
+      ],
+      "pageErrors": [],
+      "paidOcrCalls": 0
+    }
+  },
+  "screenshots": [
+    {
+      "path": "docs/ui-brand-2026-10-30/screenshots-aligned/01-dashboard-desktop.png",
+      "sha256": "9a6f61ab3bba1539c1f959b6121f17f5ad7967454d4be3a77346aaa63135c8ae"
+    },
+    {
+      "path": "docs/ui-brand-2026-10-30/screenshots-aligned/02-upload-mobile-viewport.png",
+      "sha256": "67593f92c579a5fe4aa3a8dc1ef33f1ac2a2a933f74f1de899f35f2338447d83"
+    },
+    {
+      "path": "docs/ui-brand-2026-10-30/screenshots-aligned/03-detail-mobile-viewport.png",
+      "sha256": "e1bfbcd4b9a625ea275da426d852514b96010a3ded7a441e5c57ec01ae40dfc6"
+    },
+    {
+      "path": "docs/ui-brand-2026-10-30/screenshots-aligned/04-review-desktop.png",
+      "sha256": "d9029745caad2ddc324db94244960ed47a49791c3da720436e48fa3725a89b0c"
+    },
+    {
+      "path": "docs/ui-brand-2026-10-30/screenshots-aligned/05-analytics-desktop.png",
+      "sha256": "548a083f1e2828127a522c0767ede9a3f485b0c2192827630c3d4dfef3e9631f"
+    }
+  ],
+  "references": [
+    {
+      "path": "C:/Users/Administrator/.codex/generated_images/01a187e1-3ccc-7ef1-a10a-e97fa4280007/exec-18cb4ac4-c2fe-4aea-818e-00658ec426b7.png",
+      "sha256": "6bc591e23a36648fa51709847f0205b7e54dc17b4abaf5a0657ad8f372496bfc"
+    },
+    {
+      "path": "C:/Users/Administrator/.codex/generated_images/01a187e1-3ccc-7ef1-a10a-e97fa4280007/exec-60602101-a349-4347-b458-01425943e6f1.png",
+      "sha256": "1efa4c12217d9597a38f8d9794b42c113b5c7d62584fc2d144178533ff55413b"
+    },
+    {
+      "path": "C:/Users/Administrator/.codex/generated_images/01a187e1-3ccc-7ef1-a10a-e97fa4280007/exec-c0e5477e-27bd-4cab-8af2-ab3f869c44d9.png",
+      "sha256": "05762736101f135d7721011f231c609db89c5abc63620fb7712294c0e9da8668"
+    },
+    {
+      "path": "C:/Users/Administrator/.codex/generated_images/01a187e1-3ccc-7ef1-a10a-e97fa4280007/exec-f1f67c2a-c601-4472-824a-0e0f5376ce02.png",
+      "sha256": "206cde0ab56cb12f4a692c94d24b45695cb8638bceaa80da2779a5301721867f"
+    },
+    {
+      "path": "C:/Users/Administrator/.codex/generated_images/01a187e1-3ccc-7ef1-a10a-e97fa4280007/exec-4cc130a6-2feb-45db-8e4f-a66041d567a0.png",
+      "sha256": "c279640a23c2ac84c50ddb9348dc9c2bc540bc7f41ce54563ba3f782b6df0e3f"
+    }
+  ],
+  "paidOcrCalls": 0,
+  "limitations": [
+    "No branch coverage percentage or ESLint run claimed",
+    "Desktop touch emulation is not Android/iPhone/WeChat real-device acceptance",
+    "Demo source image and fixture line values are layout examples, not OCR accuracy evidence"
+  ],
+  "live": {
+    "status": "PASS",
+    "checkedAt": "2026-10-30T03:32:08.797Z",
+    "browserVersion": "153.0.4234.32",
+    "checks": [
+      "公网 HTTPS、登录与健康检查通过，未忽略证书错误",
+      "原企业 Logo 版本与原图摘要保持不变",
+      "线上工作台四项统计、224px侧栏和确认的咖棕主色正确",
+      "线上电脑详情原图/明细表/处理依据三栏正常",
+      "线上分析矩阵与金色价差表正常",
+      "线上手机原图摘要、首行展开、两列四字段与其余折叠正常",
+      "真实详情浏览器后退可取消，URL 与未保存备注保留",
+      "暂存返回列表再进入可恢复，未向业务 API 保存",
+      "明确放弃清理本地副本，服务器单据与审计逐字段不变",
+      "线上录入三步、拍照与相册平等入口和固定上传区正常",
+      "录入表单后退保护正常，验证未上传任何图片"
+    ],
+    "pageErrors": [],
+    "businessMutationRequests": 0,
+    "blockedUnexpectedMutationAttempts": [],
+    "paidOcrCalls": 0,
+    "logoVersion": 1,
+    "httpsCertificateErrorsIgnored": false
+  },
+  "sourceCommit": "53fe66417ce5fe34970c70e081f2bbe7ba0e97c6",
+  "serverBuild": "PASS"
+}

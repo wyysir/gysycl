@@ -1,0 +1,44 @@
+[Unit]
+Description=食安链 送货单识别系统 - Next.js Web (3000)
+Documentation=file:///opt/delivery-audit/app/docs/deployment.md
+After=network.target postgresql.service redis-server.service
+Wants=postgresql.service redis-server.service
+
+[Service]
+Type=simple
+User=deliv
+Group=deliv
+WorkingDirectory=/opt/delivery-audit/app
+
+# 环境变量文件（权限 600），不要在本 unit 里写明文密钥
+EnvironmentFile=/opt/delivery-audit/.env
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=NEXT_TELEMETRY_DISABLED=1
+# 只监听本机，外网访问一律经 Nginx
+Environment=HOSTNAME=127.0.0.1
+
+ExecStart=/usr/bin/npm start
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+KillSignal=SIGINT
+TimeoutStopSec=30
+
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+StandardOutput=append:/var/log/delivery-audit/web.log
+StandardError=append:/var/log/delivery-audit/web.log
+SyslogIdentifier=delivery-web
+LogsDirectory=delivery-audit
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/delivery-audit /var/log/delivery-audit
+
+[Install]
+WantedBy=multi-user.target

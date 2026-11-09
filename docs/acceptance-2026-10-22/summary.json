@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-22",
+  "conclusion": "不通过",
+  "defects": 13,
+  "severityCount": {
+    "阻断": 3,
+    "严重": 5,
+    "一般": 5
+  },
+  "api": {
+    "total": 44,
+    "passed": 32,
+    "failed": 12,
+    "requests": 385
+  },
+  "offline": {
+    "total": 27,
+    "passed": 26,
+    "failed": 1,
+    "includesOriginal": 13
+  },
+  "integration": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "sourceFilesUnchanged": 114
+}

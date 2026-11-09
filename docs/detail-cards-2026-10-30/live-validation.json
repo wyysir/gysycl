@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-30T14:59:04.037Z",
+  "checks": [
+    "公网HTTPS与健康检查正常（未忽略证书错误）",
+    "新建单据手工入口可见且可用，未创建测试业务单据",
+    "送货日期、供应商常显，系统单号只读",
+    "手机收起显示四个值，展开直接显示新建品名和删除",
+    "三种手机宽度无横向溢出",
+    "桌面明细展开正常"
+  ],
+  "pageErrors": [],
+  "businessMutationRequests": 0,
+  "paidOcrCalls": 0,
+  "httpsCertificateErrorsIgnored": false
+}

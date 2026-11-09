@@ -1,0 +1,4604 @@
+{
+  "details": [
+    {
+      "document": {
+        "id": "cmvqybfbp002gawuppdb4bypz",
+        "docNo": "DEMO-21623227",
+        "docDate": "2026-10-28",
+        "projectId": "prj_hz",
+        "projectName": "杭州园区食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 3,
+        "ocrError": "",
+        "createdById": "usr_admin",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:23.125Z",
+        "items": [
+          {
+            "id": "cmvqybff7002nawupge2398b4",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybff7002oawupgvswbtww",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybfbq002hawupbe4p1x8n",
+            "pageNo": 1,
+            "fileName": "acceptance-4.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2Fe97cb5c3-d805-4bc5-837d-821dbb402c20-processed.jpg",
+            "status": "COMPLETED",
+            "width": 204,
+            "height": 120
+          },
+          {
+            "id": "cmvqybfbq002iawuphzc7sx3e",
+            "pageNo": 2,
+            "fileName": "acceptance-5.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F38e8c500-aa7c-407c-8f8b-e093498f54e1-processed.jpg",
+            "status": "COMPLETED",
+            "width": 205,
+            "height": 120
+          },
+          {
+            "id": "cmvqybfbq002jawupmge2aub7",
+            "pageNo": 3,
+            "fileName": "acceptance-6.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F83302bd2-9109-4ca0-bd0f-b58adc986387-processed.jpg",
+            "status": "COMPLETED",
+            "width": 206,
+            "height": 120
+          },
+          {
+            "id": "cmvqybfbq002kawupnqow16o6",
+            "pageNo": 4,
+            "fileName": "acceptance-7.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F9d614232-478a-400e-9645-78378bb25c55-processed.jpg",
+            "status": "COMPLETED",
+            "width": 207,
+            "height": 120
+          },
+          {
+            "id": "cmvqybfbr002lawupkj6bnovd",
+            "pageNo": 5,
+            "fileName": "acceptance-8.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F95a7fa17-d4a5-406a-b4b7-8c11b433caa1-processed.jpg",
+            "status": "COMPLETED",
+            "width": 208,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybffx002qawupntu828hz",
+            "itemId": "cmvqybff7002nawupge2398b4",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqybffx002rawup6tjzqkvk",
+            "itemId": "cmvqybff7002nawupge2398b4",
+            "dimension": "合同价",
+            "type": "contract_missing",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 未找到本项目合同价",
+            "detail": "系统不会套用其他项目点合同价，请确认主数据或采购是否合规。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqybffx002tawupt8go18ca",
+            "itemId": "cmvqybff7002oawupgvswbtww",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          },
+          {
+            "id": "cmvqybffx002uawupjknaf7ec",
+            "itemId": "cmvqybff7002oawupgvswbtww",
+            "dimension": "合同价",
+            "type": "contract_missing",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 未找到本项目合同价",
+            "detail": "系统不会套用其他项目点合同价，请确认主数据或采购是否合规。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqybffx002sawupn34653yo",
+            "itemId": "cmvqybff7002nawupge2398b4",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "OPEN",
+            "title": "青菜 可比样本不足",
+            "detail": "近 30 天仅有 2 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 2
+          },
+          {
+            "id": "cmvqybffx002vawupwf2dqffo",
+            "itemId": "cmvqybff7002oawupgvswbtww",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "OPEN",
+            "title": "土豆 可比样本不足",
+            "detail": "近 30 天仅有 2 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 2
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybffb002pawupjuju6voq",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:23.255Z"
+        },
+        {
+          "id": "cmvqybfbu002mawupiwzug37c",
+          "action": "document.created",
+          "userName": "系统管理员",
+          "detail": {
+            "pageCount": 5,
+            "projectId": "prj_hz"
+          },
+          "createdAt": "2026-10-27T17:20:23.130Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybfic002wawupoglp5c32",
+        "docNo": "ACCEPT-FLOW",
+        "docDate": "2026-10-20",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "PENDING_REVIEW",
+        "subtotal": 42,
+        "taxAmount": 0,
+        "totalAmount": 42,
+        "notes": "已补充",
+        "reviewNote": "验收撤回1",
+        "overrideReason": "",
+        "version": 11,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-10-27T17:20:23.866Z",
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:23.364Z",
+        "items": [
+          {
+            "id": "cmvqybfuy003hawupaiefafyd",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 10,
+            "unitPrice": 4.2,
+            "amount": 42,
+            "confidence": 1,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": null
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybfid002xawup538sp6cf",
+            "pageNo": 1,
+            "fileName": "acceptance-10.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2Fb7ea6047-d9e0-4526-bd54-3d7d6aa31c97-processed.jpg",
+            "status": "COMPLETED",
+            "width": 210,
+            "height": 120
+          }
+        ],
+        "checks": []
+      },
+      "audit": [
+        {
+          "id": "cmvqybu8600bmawup804y2kwk",
+          "action": "review.withdrawn",
+          "userName": "华东项目主管",
+          "detail": {
+            "note": "验收撤回1",
+            "status": "PENDING_REVIEW"
+          },
+          "createdAt": "2026-10-27T17:20:42.438Z"
+        },
+        {
+          "id": "cmvqybfx7003mawupk9hqsjh9",
+          "action": "review.approved",
+          "userName": "华东项目主管",
+          "detail": {
+            "note": "",
+            "status": "APPROVED",
+            "override": false
+          },
+          "createdAt": "2026-10-27T17:20:23.899Z"
+        },
+        {
+          "id": "cmvqybfwb003jawuplnfso3eo",
+          "action": "document.submitted",
+          "userName": "上海采购员",
+          "detail": {
+            "supplier": "上海鲜禾农副产品有限公司",
+            "totalAmount": 42
+          },
+          "createdAt": "2026-10-27T17:20:23.867Z"
+        },
+        {
+          "id": "cmvqybfv0003iawuppywr6l5g",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "ACCEPT-FLOW",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 42,
+                "quantity": 10,
+                "unitPrice": 4.2,
+                "ingredientId": "ing_qc"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 42
+          },
+          "createdAt": "2026-10-27T17:20:23.820Z"
+        },
+        {
+          "id": "cmvqybftp003fawuplsdsnd7w",
+          "action": "review.returned",
+          "userName": "华东项目主管",
+          "detail": {
+            "note": "请补充采购说明",
+            "status": "NEEDS_REVISION",
+            "override": false
+          },
+          "createdAt": "2026-10-27T17:20:23.773Z"
+        },
+        {
+          "id": "cmvqybfs1003dawupq17pu1aw",
+          "action": "document.updated",
+          "userName": "华东项目主管",
+          "detail": {
+            "docNo": "ACCEPT-FLOW",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 42,
+                "quantity": 10,
+                "unitPrice": 4.2,
+                "ingredientId": "ing_qc"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 42
+          },
+          "createdAt": "2026-10-27T17:20:23.713Z"
+        },
+        {
+          "id": "cmvqybfqd003aawupde8owr2r",
+          "action": "document.submitted",
+          "userName": "上海采购员",
+          "detail": {
+            "supplier": "上海鲜禾农副产品有限公司",
+            "totalAmount": 42
+          },
+          "createdAt": "2026-10-27T17:20:23.653Z"
+        },
+        {
+          "id": "cmvqybfn70039awupniujkd5k",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "ACCEPT-FLOW",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 42,
+                "quantity": 10,
+                "unitPrice": 4.2,
+                "ingredientId": "ing_qc"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 42
+          },
+          "createdAt": "2026-10-27T17:20:23.539Z"
+        },
+        {
+          "id": "cmvqybfjy0031awupqb3qxz0d",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:23.422Z"
+        },
+        {
+          "id": "cmvqybfif002yawupjpx3799d",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:23.367Z"
+        }
+      ],
+      "approvals": [
+        {
+          "id": "cmvqybfx6003lawupc3at2i8q",
+          "action": "APPROVE",
+          "reviewerName": "华东项目主管",
+          "note": "",
+          "createdAt": "2026-10-27T17:20:23.898Z"
+        },
+        {
+          "id": "cmvqybftm003eawupjeh5p5i8",
+          "action": "RETURN",
+          "reviewerName": "华东项目主管",
+          "note": "请补充采购说明",
+          "createdAt": "2026-10-27T17:20:23.770Z"
+        }
+      ]
+    },
+    {
+      "document": {
+        "id": "cmvqybfyy003oawup1fi68tpy",
+        "docNo": "DEMO-21623995",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "APPROVED",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "验收测试经确认",
+        "overrideReason": "验收测试经确认",
+        "version": 5,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-10-27T17:20:24.139Z",
+        "reviewedAt": "2026-10-27T17:20:24.208Z",
+        "createdAt": "2026-10-27T17:20:23.962Z",
+        "items": [
+          {
+            "id": "cmvqybg0h003rawupw7pppwje",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybg0h003sawupmf7lu91o",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybfyz003pawupfnrw3rwd",
+            "pageNo": 1,
+            "fileName": "acceptance-11.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2Fc2402a73-6c65-4bf8-acbe-e6046e54b319-processed.jpg",
+            "status": "COMPLETED",
+            "width": 211,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybg5q004cawupzki90l83",
+            "itemId": "cmvqybg0h003rawupw7pppwje",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "RESOLVED",
+            "title": "青菜 高于合同价",
+            "detail": "本项目合同价 4.20 元/kg，本次 4.25 元/kg，上浮 1.2%。",
+            "expectedValue": 4.2,
+            "actualValue": 4.25
+          },
+          {
+            "id": "cmvqybg5q004eawup5n8olrp2",
+            "itemId": "cmvqybg0h003sawupmf7lu91o",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "RESOLVED",
+            "title": "土豆 高于合同价",
+            "detail": "本项目合同价 3.10 元/kg，本次 3.15 元/kg，上浮 1.6%。",
+            "expectedValue": 3.1,
+            "actualValue": 3.15
+          },
+          {
+            "id": "cmvqybg5q004bawupaqrq4f2p",
+            "itemId": "cmvqybg0h003rawupw7pppwje",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "RESOLVED",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqybg5q004dawup6fzoy3lc",
+            "itemId": "cmvqybg0h003sawupmf7lu91o",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "RESOLVED",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          },
+          {
+            "id": "cmvqybg5q004fawupjgq112fx",
+            "itemId": "cmvqybg0h003sawupmf7lu91o",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "RESOLVED",
+            "title": "土豆 可比样本不足",
+            "detail": "近 30 天仅有 2 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 2
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybg5w004hawup5y4fdseo",
+          "action": "review.approved",
+          "userName": "华东项目主管",
+          "detail": {
+            "note": "验收测试经确认",
+            "status": "APPROVED",
+            "override": true
+          },
+          "createdAt": "2026-10-27T17:20:24.212Z"
+        },
+        {
+          "id": "cmvqybg3x0044awupgm11z78s",
+          "action": "document.submitted",
+          "userName": "上海采购员",
+          "detail": {
+            "supplier": "上海鲜禾农副产品有限公司",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:24.141Z"
+        },
+        {
+          "id": "cmvqybg0k003tawupi7j5jwab",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:24.020Z"
+        },
+        {
+          "id": "cmvqybfz1003qawupezjcd5wz",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:23.965Z"
+        }
+      ],
+      "approvals": [
+        {
+          "id": "cmvqybg5u004gawupw6eeyc0y",
+          "action": "OVERRIDE_APPROVE",
+          "reviewerName": "华东项目主管",
+          "note": "验收测试经确认",
+          "createdAt": "2026-10-27T17:20:24.210Z"
+        }
+      ]
+    },
+    {
+      "document": {
+        "id": "cmvqybg6z004jawuphkc2qs5h",
+        "docNo": "DEMO-21624283",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 3,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:24.251Z",
+        "items": [
+          {
+            "id": "cmvqybg8h004mawup7mz0yrai",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybg8h004nawupp4c1ykph",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybg6z004kawupu17wlbt5",
+            "pageNo": 1,
+            "fileName": "acceptance-12.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F9002e8f2-efd8-4a0a-9a2b-b362cc444a86-processed.jpg",
+            "status": "COMPLETED",
+            "width": 212,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybg94004qawupju410g5b",
+            "itemId": "cmvqybg8h004mawup7mz0yrai",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "青菜 高于合同价",
+            "detail": "本项目合同价 4.20 元/kg，本次 4.25 元/kg，上浮 1.2%。",
+            "expectedValue": 4.2,
+            "actualValue": 4.25
+          },
+          {
+            "id": "cmvqybg94004sawup64n9s9wz",
+            "itemId": "cmvqybg8h004nawupp4c1ykph",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "土豆 高于合同价",
+            "detail": "本项目合同价 3.10 元/kg，本次 3.15 元/kg，上浮 1.6%。",
+            "expectedValue": 3.1,
+            "actualValue": 3.15
+          },
+          {
+            "id": "cmvqybg94004pawupmdanuqyy",
+            "itemId": "cmvqybg8h004mawup7mz0yrai",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqybg94004rawup9pcectwe",
+            "itemId": "cmvqybg8h004nawupp4c1ykph",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybg8k004oawupb7wf7gge",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:24.308Z"
+        },
+        {
+          "id": "cmvqybg72004lawup9wg3eid8",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:24.254Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybgd2004tawup3bqkkiv1",
+        "docNo": "DEMO-21624504",
+        "docDate": "2026-10-20",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": null,
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "UNMATCHED",
+        "supplierMatchScore": null,
+        "status": "DRAFT",
+        "subtotal": 0,
+        "taxAmount": 0,
+        "totalAmount": 0,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 4,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:24.470Z",
+        "items": [],
+        "pages": [
+          {
+            "id": "cmvqybgd3004uawup18vel9ky",
+            "pageNo": 1,
+            "fileName": "acceptance-13.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2Fcbeb5392-c2ef-4576-a91f-910bc8357bc9-processed.jpg",
+            "status": "COMPLETED",
+            "width": 213,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybgiy0054awupw8z1ydrz",
+            "itemId": null,
+            "dimension": "主数据匹配",
+            "type": "supplier_unmatched",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "供应商尚未确认",
+            "detail": "识别到“上海鲜禾农副产品有限公司”，请选择已有供应商或确认新建。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqybgiy0055awupwo1hxd0a",
+            "itemId": null,
+            "dimension": "单据完整性",
+            "type": "empty_items",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "单据没有明细",
+            "detail": "至少需要一行原材料明细才能提交审核。",
+            "expectedValue": null,
+            "actualValue": null
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybgii0053awupz6ws5dgk",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624504",
+            "items": [],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": null,
+            "totalAmount": 0
+          },
+          "createdAt": "2026-10-27T17:20:24.666Z"
+        },
+        {
+          "id": "cmvqybgeo004yawup2y6qacq6",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:24.528Z"
+        },
+        {
+          "id": "cmvqybgd5004vawupykq5dj4g",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:24.473Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybgkq0056awup7kpm377f",
+        "docNo": "DEMO-21659355",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "batch-9-0",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 20,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:24.746Z",
+        "items": [
+          {
+            "id": "cmvqyc7jc00d0awuptei2d261",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "验收合并材料目标1793121659477",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "cmvqyc7f900coawupfxreq1q0",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqyc7jc00d1awuptu0vipa3",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybgkr0057awup0a3so9jr",
+            "pageNo": 1,
+            "fileName": "acceptance-14.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F30e94263-4594-4382-a4d1-1ca69f3d584f-processed.jpg",
+            "status": "COMPLETED",
+            "width": 214,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqyc7lm00deawup7aq9vmfs",
+            "itemId": "cmvqyc7jc00d1awuptu0vipa3",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "土豆 高于合同价",
+            "detail": "本项目合同价 3.10 元/kg，本次 3.15 元/kg，上浮 1.6%。",
+            "expectedValue": 3.1,
+            "actualValue": 3.15
+          },
+          {
+            "id": "cmvqyc7lm00daawup3220n9s5",
+            "itemId": "cmvqyc7jc00d0awuptei2d261",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "验收合并材料目标1793121659477 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqyc7lm00dbawup05dpvhfo",
+            "itemId": "cmvqyc7jc00d0awuptei2d261",
+            "dimension": "合同价",
+            "type": "contract_missing",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "验收合并材料目标1793121659477 未找到本项目合同价",
+            "detail": "系统不会套用其他项目点合同价，请确认主数据或采购是否合规。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqyc7lm00ddawupe7z4p0ko",
+            "itemId": "cmvqyc7jc00d1awuptu0vipa3",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          },
+          {
+            "id": "cmvqyc7lm00dcawup1ij2b5qa",
+            "itemId": "cmvqyc7jc00d0awuptei2d261",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "OPEN",
+            "title": "验收合并材料目标1793121659477 可比样本不足",
+            "detail": "近 30 天仅有 0 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 0
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqyc7je00d2awupmyxhr4ku",
+          "action": "document.updated",
+          "userName": "系统管理员",
+          "detail": {
+            "docNo": "DEMO-21659355",
+            "items": [
+              {
+                "name": "验收合并材料目标1793121659477",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "cmvqyc7f900coawupfxreq1q0"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-27T16:00:00.000Z",
+            "supplierId": "cmvqyc7ie00cyawup110pmo71",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:59.690Z"
+        },
+        {
+          "id": "cmvqyc7ec00cnawuplmj1uhag",
+          "action": "ingredient.created_from_document",
+          "userName": "系统管理员",
+          "detail": {
+            "name": "验收合并材料来源1793121659477",
+            "spec": "散装",
+            "unit": "kg",
+            "rawName": "验收原始品名"
+          },
+          "createdAt": "2026-10-27T17:20:59.508Z"
+        },
+        {
+          "id": "cmvqyc7ax00cbawupu804qc2z",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:59.385Z"
+        },
+        {
+          "id": "cmvqybigr00a2awup7t4j7ofa",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:27.195Z"
+        },
+        {
+          "id": "cmvqybif4009vawup77ut5f75",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:27.136Z"
+        },
+        {
+          "id": "cmvqybide009oawupb7lnbg50",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:27.074Z"
+        },
+        {
+          "id": "cmvqybibk009hawupv1bmunbz",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:27.008Z"
+        },
+        {
+          "id": "cmvqybi9v009aawupaqiovous",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:26.947Z"
+        },
+        {
+          "id": "cmvqybi870093awup9fi37ghi",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:26.887Z"
+        },
+        {
+          "id": "cmvqybi6g008wawuph5odghn6",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:26.824Z"
+        },
+        {
+          "id": "cmvqybi4r008pawupuglx6e1q",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:26.763Z"
+        },
+        {
+          "id": "cmvqybi32008iawupk42tq9fb",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:26.702Z"
+        },
+        {
+          "id": "cmvqybi19008bawupolg4mrrf",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:26.637Z"
+        },
+        {
+          "id": "cmvqybgp6005iawupw0ynnrtz",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "DEMO-21624779",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:24.906Z"
+        },
+        {
+          "id": "cmvqybgmc005bawupu87mz7mm",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:24.804Z"
+        },
+        {
+          "id": "cmvqybgkt0058awupplz5997c",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:24.749Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybgqk005nawup0cy74s7q",
+        "docNo": "DEMO-21624991",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "PENDING_REVIEW",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 4,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-10-27T17:20:25.132Z",
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:24.956Z",
+        "items": [
+          {
+            "id": "cmvqybgs3005qawupjbj81enn",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybgs3005rawupezshr67o",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybgql005oawuph7n6iftx",
+            "pageNo": 1,
+            "fileName": "acceptance-15.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F8fe0d7b8-0cd5-4b19-806b-a1ca376d81f9-processed.jpg",
+            "status": "COMPLETED",
+            "width": 215,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybgve005yawup930g7hsd",
+            "itemId": "cmvqybgs3005qawupjbj81enn",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "青菜 高于合同价",
+            "detail": "本项目合同价 4.20 元/kg，本次 4.25 元/kg，上浮 1.2%。",
+            "expectedValue": 4.2,
+            "actualValue": 4.25
+          },
+          {
+            "id": "cmvqybgve0060awupnnfpheqv",
+            "itemId": "cmvqybgs3005rawupezshr67o",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "土豆 高于合同价",
+            "detail": "本项目合同价 3.10 元/kg，本次 3.15 元/kg，上浮 1.6%。",
+            "expectedValue": 3.1,
+            "actualValue": 3.15
+          },
+          {
+            "id": "cmvqybgve005xawupt4tpnriv",
+            "itemId": "cmvqybgs3005qawupjbj81enn",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqybgve005zawupvv5qzhkc",
+            "itemId": "cmvqybgs3005rawupezshr67o",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybgvi0061awup63gk9ehl",
+          "action": "document.submitted",
+          "userName": "上海采购员",
+          "detail": {
+            "supplier": "上海鲜禾农副产品有限公司",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:25.134Z"
+        },
+        {
+          "id": "cmvqybgs5005sawupebfk566n",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:25.013Z"
+        },
+        {
+          "id": "cmvqybgqn005pawupb8pzfm3l",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:24.959Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybgw60063awupgbr5kjrd",
+        "docNo": "ACCEPT-ZERO",
+        "docDate": "2026-10-20",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "PENDING_REVIEW",
+        "subtotal": 42,
+        "taxAmount": 0,
+        "totalAmount": 0,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 5,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-10-27T17:20:25.394Z",
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:25.158Z",
+        "items": [
+          {
+            "id": "cmvqybh1c006dawupucekqp6s",
+            "lineNo": 1,
+            "rawName": "青菜",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 10,
+            "unitPrice": 4.2,
+            "amount": 42,
+            "confidence": 1,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": null
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybgw70064awup25qbt1af",
+            "pageNo": 1,
+            "fileName": "acceptance-16.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F060f87dc-c8a3-4ce0-967c-cdb73cf7c478-processed.jpg",
+            "status": "COMPLETED",
+            "width": 216,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybh2o006gawupagorc557",
+            "itemId": null,
+            "dimension": "金额勾稽",
+            "type": "total_mismatch",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "明细合计与单据总价不一致",
+            "detail": "明细合计 42.00，单据总价 0.00。",
+            "expectedValue": 42,
+            "actualValue": 0
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybh2s006hawupxbr9bs0m",
+          "action": "document.submitted",
+          "userName": "上海采购员",
+          "detail": {
+            "supplier": "上海鲜禾农副产品有限公司",
+            "totalAmount": 0
+          },
+          "createdAt": "2026-10-27T17:20:25.396Z"
+        },
+        {
+          "id": "cmvqybh1e006eawupmkmhx8d1",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "ACCEPT-ZERO",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 42,
+                "quantity": 10,
+                "unitPrice": 4.2,
+                "ingredientId": "ing_qc"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 0
+          },
+          "createdAt": "2026-10-27T17:20:25.346Z"
+        },
+        {
+          "id": "cmvqybgxt0068awupv3qyfvnj",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:25.217Z"
+        },
+        {
+          "id": "cmvqybgw90065awupysybp6sz",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:25.161Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybh47006kawupuasdr8kt",
+        "docNo": "ACCEPT-DUP",
+        "docDate": "2026-10-19",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 4,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:25.447Z",
+        "items": [
+          {
+            "id": "cmvqybhdt0074awuppcik8aoy",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": null
+          },
+          {
+            "id": "cmvqybhdt0075awup6clkx2od",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": null
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybh48006lawupp1ipswgs",
+            "pageNo": 1,
+            "fileName": "acceptance-17.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F1e4ba8ce-e338-467e-8472-3bf3f0a5c20c-processed.jpg",
+            "status": "COMPLETED",
+            "width": 217,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybhe70078awupfgzvafsk",
+            "itemId": "cmvqybhdt0074awuppcik8aoy",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "青菜 高于合同价",
+            "detail": "本项目合同价 4.20 元/kg，本次 4.25 元/kg，上浮 1.2%。",
+            "expectedValue": 4.2,
+            "actualValue": 4.25
+          },
+          {
+            "id": "cmvqybhe7007aawupn5gf5xcm",
+            "itemId": "cmvqybhdt0075awup6clkx2od",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "土豆 高于合同价",
+            "detail": "本项目合同价 3.10 元/kg，本次 3.15 元/kg，上浮 1.6%。",
+            "expectedValue": 3.1,
+            "actualValue": 3.15
+          },
+          {
+            "id": "cmvqybhe70077awupi4iecz82",
+            "itemId": "cmvqybhdt0074awuppcik8aoy",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqybhe70079awupqedssii6",
+            "itemId": "cmvqybhdt0075awup6clkx2od",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybhdv0076awupyfv1cp1n",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "ACCEPT-DUP",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-18T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:25.795Z"
+        },
+        {
+          "id": "cmvqybh5p006pawupabur69n3",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:25.501Z"
+        },
+        {
+          "id": "cmvqybh49006mawupuapocgf2",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:25.450Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybh8r006uawupnsqqya0j",
+        "docNo": "ACCEPT-DUP",
+        "docDate": "2026-10-20",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 4,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:25.611Z",
+        "items": [
+          {
+            "id": "cmvqybhf8007bawup3ji92k74",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": null
+          },
+          {
+            "id": "cmvqybhf8007cawupdkvfminq",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": null
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybh8s006vawupjc8j1job",
+            "pageNo": 1,
+            "fileName": "acceptance-18.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F017a353d-fc14-42b8-be0e-bd2bf47c3ce8-processed.jpg",
+            "status": "COMPLETED",
+            "width": 218,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybhfn007fawupammn5bdg",
+            "itemId": "cmvqybhf8007bawup3ji92k74",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "青菜 高于合同价",
+            "detail": "本项目合同价 4.20 元/kg，本次 4.25 元/kg，上浮 1.2%。",
+            "expectedValue": 4.2,
+            "actualValue": 4.25
+          },
+          {
+            "id": "cmvqybhfn007hawup9zl0dprf",
+            "itemId": "cmvqybhf8007cawupdkvfminq",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "土豆 高于合同价",
+            "detail": "本项目合同价 3.10 元/kg，本次 3.15 元/kg，上浮 1.6%。",
+            "expectedValue": 3.1,
+            "actualValue": 3.15
+          },
+          {
+            "id": "cmvqybhfn007eawup3u570efl",
+            "itemId": "cmvqybhf8007bawup3ji92k74",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqybhfn007gawupbcu55ote",
+            "itemId": "cmvqybhf8007cawupdkvfminq",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybhf9007dawupcomyh10r",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "ACCEPT-DUP",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:25.845Z"
+        },
+        {
+          "id": "cmvqybhae006zawup3nfkqxs4",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:25.670Z"
+        },
+        {
+          "id": "cmvqybh8u006wawuphzkmlvkp",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:25.614Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybii700a7awupu3zpt9p3",
+        "docNo": "DEMO-21627279",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 3,
+        "ocrError": "",
+        "createdById": "usr_admin",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:27.247Z",
+        "items": [
+          {
+            "id": "cmvqybijm00aaawupo4tt45fk",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybijm00abawup5ubksdgl",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybii700a8awupsto6ykcb",
+            "pageNo": 1,
+            "fileName": "acceptance-19.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F0665d250-4181-44f9-92e6-10a9ac02ee75-processed.jpg",
+            "status": "COMPLETED",
+            "width": 219,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybik100aeawupbglm3k20",
+            "itemId": "cmvqybijm00aaawupo4tt45fk",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "青菜 高于合同价",
+            "detail": "本项目合同价 4.20 元/kg，本次 4.25 元/kg，上浮 1.2%。",
+            "expectedValue": 4.2,
+            "actualValue": 4.25
+          },
+          {
+            "id": "cmvqybik100agawupyfkjlcuc",
+            "itemId": "cmvqybijm00abawup5ubksdgl",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "土豆 高于合同价",
+            "detail": "本项目合同价 3.10 元/kg，本次 3.15 元/kg，上浮 1.6%。",
+            "expectedValue": 3.1,
+            "actualValue": 3.15
+          },
+          {
+            "id": "cmvqybik100adawuphkgxco07",
+            "itemId": "cmvqybijm00aaawupo4tt45fk",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqybik100afawupbuh1dk91",
+            "itemId": "cmvqybijm00abawup5ubksdgl",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybijo00acawup7owwu3fi",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:27.300Z"
+        },
+        {
+          "id": "cmvqybii900a9awupap92xj5m",
+          "action": "document.created",
+          "userName": "系统管理员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:27.249Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybimu00ahawup5unqd2nl",
+        "docNo": "DEMO-21627447",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 3,
+        "ocrError": "",
+        "createdById": "usr_admin",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:27.414Z",
+        "items": [
+          {
+            "id": "cmvqybio900akawupqjrkhljr",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybio900alawupjevibhut",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybimv00aiawupklk9t19s",
+            "pageNo": 1,
+            "fileName": "acceptance-19.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F0665d250-4181-44f9-92e6-10a9ac02ee75-processed.jpg",
+            "status": "COMPLETED",
+            "width": 219,
+            "height": 120
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybior00anawupkbpy03ei",
+            "itemId": null,
+            "dimension": "重复校验",
+            "type": "duplicate_image",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "原图已在其他单据中使用",
+            "detail": "相同图片已出现在 上海总部食堂 DEMO-21627279。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqybior00apawup27e9w9dj",
+            "itemId": "cmvqybio900akawupqjrkhljr",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "青菜 高于合同价",
+            "detail": "本项目合同价 4.20 元/kg，本次 4.25 元/kg，上浮 1.2%。",
+            "expectedValue": 4.2,
+            "actualValue": 4.25
+          },
+          {
+            "id": "cmvqybior00arawupjxsj0mcp",
+            "itemId": "cmvqybio900alawupjevibhut",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "土豆 高于合同价",
+            "detail": "本项目合同价 3.10 元/kg，本次 3.15 元/kg，上浮 1.6%。",
+            "expectedValue": 3.1,
+            "actualValue": 3.15
+          },
+          {
+            "id": "cmvqybior00aoawupi4smpc6d",
+            "itemId": "cmvqybio900akawupqjrkhljr",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqybior00aqawuped47i7ro",
+            "itemId": "cmvqybio900alawupjevibhut",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybiob00amawupxur64vb4",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:27.467Z"
+        },
+        {
+          "id": "cmvqybimx00ajawup116j9zzd",
+          "action": "document.created",
+          "userName": "系统管理员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:27.417Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqybisa00asawup3kldbjfc",
+        "docNo": "ACCEPT-REVIEW-RACE",
+        "docDate": "2026-10-20",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "APPROVED",
+        "subtotal": 42,
+        "taxAmount": 0,
+        "totalAmount": 42,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 6,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-10-27T17:20:27.843Z",
+        "reviewedAt": "2026-10-27T17:20:27.875Z",
+        "createdAt": "2026-10-27T17:20:27.610Z",
+        "items": [
+          {
+            "id": "cmvqybixi00b2awuplte6enil",
+            "lineNo": 1,
+            "rawName": "青菜",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 10,
+            "unitPrice": 4.2,
+            "amount": 42,
+            "confidence": 1,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": null
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybisa00atawupqjg3fsqc",
+            "pageNo": 1,
+            "fileName": "acceptance-20.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2Ffecf12c0-338e-4b2a-b86b-6f64f3a0209b-processed.jpg",
+            "status": "COMPLETED",
+            "width": 220,
+            "height": 120
+          }
+        ],
+        "checks": []
+      },
+      "audit": [
+        {
+          "id": "cmvqybizq00b7awuppmlel4rb",
+          "action": "review.approved",
+          "userName": "华东项目主管",
+          "detail": {
+            "note": "",
+            "status": "APPROVED",
+            "override": false
+          },
+          "createdAt": "2026-10-27T17:20:27.878Z"
+        },
+        {
+          "id": "cmvqybiyt00b4awupmdgnhte3",
+          "action": "document.submitted",
+          "userName": "上海采购员",
+          "detail": {
+            "supplier": "上海鲜禾农副产品有限公司",
+            "totalAmount": 42
+          },
+          "createdAt": "2026-10-27T17:20:27.845Z"
+        },
+        {
+          "id": "cmvqybixk00b3awupc3loy15r",
+          "action": "document.updated",
+          "userName": "上海采购员",
+          "detail": {
+            "docNo": "ACCEPT-REVIEW-RACE",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 42,
+                "quantity": 10,
+                "unitPrice": 4.2,
+                "ingredientId": "ing_qc"
+              }
+            ],
+            "docDate": "2026-10-19T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 42
+          },
+          "createdAt": "2026-10-27T17:20:27.800Z"
+        },
+        {
+          "id": "cmvqybitq00axawupbdwjfh3v",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:27.662Z"
+        },
+        {
+          "id": "cmvqybisd00auawupq0zhcltf",
+          "action": "document.created",
+          "userName": "上海采购员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_sh"
+          },
+          "createdAt": "2026-10-27T17:20:27.613Z"
+        }
+      ],
+      "approvals": [
+        {
+          "id": "cmvqybizp00b6awupf0fqhxo2",
+          "action": "APPROVE",
+          "reviewerName": "华东项目主管",
+          "note": "",
+          "createdAt": "2026-10-27T17:20:27.877Z"
+        }
+      ]
+    },
+    {
+      "document": {
+        "id": "cmvqybu2s00bcawupgvv1acsx",
+        "docNo": "DEMO-21642331",
+        "docDate": "2026-10-28",
+        "projectId": "prj_hz",
+        "projectName": "杭州园区食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 3,
+        "ocrError": "",
+        "createdById": "usr_admin",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:42.244Z",
+        "items": [
+          {
+            "id": "cmvqybu5w00bfawuphly0gtic",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybu5w00bgawup9cewmr7g",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybu2t00bdawupm6s1pok2",
+            "pageNo": 1,
+            "fileName": "private.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2Faf7cb24f-00a3-4cbf-8c64-1d92a0272edc-processed.jpg",
+            "status": "COMPLETED",
+            "width": 410,
+            "height": 121
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybu6t00biawupx4m491lb",
+            "itemId": "cmvqybu5w00bfawuphly0gtic",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqybu6t00bjawupppo3qp31",
+            "itemId": "cmvqybu5w00bfawuphly0gtic",
+            "dimension": "合同价",
+            "type": "contract_missing",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 未找到本项目合同价",
+            "detail": "系统不会套用其他项目点合同价，请确认主数据或采购是否合规。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqybu6t00bkawupkfck1wrt",
+            "itemId": "cmvqybu5w00bgawup9cewmr7g",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          },
+          {
+            "id": "cmvqybu6t00blawupgwwdnrl7",
+            "itemId": "cmvqybu5w00bgawup9cewmr7g",
+            "dimension": "合同价",
+            "type": "contract_missing",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 未找到本项目合同价",
+            "detail": "系统不会套用其他项目点合同价，请确认主数据或采购是否合规。",
+            "expectedValue": null,
+            "actualValue": null
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqybu5z00bhawup5xkp3qbz",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:42.359Z"
+        },
+        {
+          "id": "cmvqybu2w00beawupp8l8vxnc",
+          "action": "document.created",
+          "userName": "系统管理员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "prj_hz"
+          },
+          "createdAt": "2026-10-27T17:20:42.248Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "cmvqyc5az00boawupqpekd7lq",
+        "docNo": "DEMO-21656915",
+        "docDate": "2026-10-28",
+        "projectId": "cmvqybhqn007uawup2fa9b4q3",
+        "projectName": "验收测试项目",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "上海鲜禾农副产品有限公司",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 335.7,
+        "taxAmount": 0,
+        "totalAmount": 335.7,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 4,
+        "ocrError": "",
+        "createdById": "usr_admin",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:56.795Z",
+        "items": [
+          {
+            "id": "cmvqyc76p00c2awup61pmzbvw",
+            "lineNo": 1,
+            "rawName": "青莱",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 36,
+            "unitPrice": 4.25,
+            "amount": 153,
+            "confidence": 0.78,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqyc76p00c3awup0vktbnwz",
+            "lineNo": 2,
+            "rawName": "士豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 58,
+            "unitPrice": 3.15,
+            "amount": 182.7,
+            "confidence": 0.74,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqyc5b000bpawupswx4vlnv",
+            "pageNo": 1,
+            "fileName": "browser-delivery.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F3431afdd-f9a0-49bd-ab9d-e72edd1381a3-processed.jpg",
+            "status": "COMPLETED",
+            "width": 432,
+            "height": 600
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqyc77600c5awupfzil4agy",
+            "itemId": "cmvqyc76p00c2awup61pmzbvw",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 78.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.78
+          },
+          {
+            "id": "cmvqyc77600c6awuph4l24k1b",
+            "itemId": "cmvqyc76p00c2awup61pmzbvw",
+            "dimension": "合同价",
+            "type": "contract_missing",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 未找到本项目合同价",
+            "detail": "系统不会套用其他项目点合同价，请确认主数据或采购是否合规。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqyc77600c7awup9agpdklo",
+            "itemId": "cmvqyc76p00c3awup0vktbnwz",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 识别置信度偏低",
+            "detail": "置信度 74.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.74
+          },
+          {
+            "id": "cmvqyc77600c8awupkbr9lndg",
+            "itemId": "cmvqyc76p00c3awup0vktbnwz",
+            "dimension": "合同价",
+            "type": "contract_missing",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 未找到本项目合同价",
+            "detail": "系统不会套用其他项目点合同价，请确认主数据或采购是否合规。",
+            "expectedValue": null,
+            "actualValue": null
+          }
+        ]
+      },
+      "audit": [
+        {
+          "id": "cmvqyc76s00c4awup7c562jvo",
+          "action": "document.updated",
+          "userName": "系统管理员",
+          "detail": {
+            "docNo": "DEMO-21656915",
+            "items": [
+              {
+                "name": "青菜",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 153,
+                "quantity": 36,
+                "unitPrice": 4.25,
+                "ingredientId": "ing_qc"
+              },
+              {
+                "name": "土豆",
+                "spec": "散装",
+                "unit": "kg",
+                "amount": 182.7,
+                "quantity": 58,
+                "unitPrice": 3.15,
+                "ingredientId": "ing_td"
+              }
+            ],
+            "docDate": "2026-10-27T16:00:00.000Z",
+            "supplierId": "sup_sh",
+            "totalAmount": 335.7
+          },
+          "createdAt": "2026-10-27T17:20:59.236Z"
+        },
+        {
+          "id": "cmvqyc5f300btawupw63gidkg",
+          "action": "ocr.completed",
+          "userName": "系统",
+          "detail": {
+            "provider": "mock",
+            "warnings": [
+              "当前为演示识别模式，结果不读取图片内容；配置阿里云 OCR 与 DashScope 后可切换真实识别。",
+              "演示结果故意保留了手写错字，用于测试相近品名高亮与确认流程。"
+            ],
+            "itemCount": 2
+          },
+          "createdAt": "2026-10-27T17:20:56.943Z"
+        },
+        {
+          "id": "cmvqyc5b500bqawupfze266di",
+          "action": "document.created",
+          "userName": "系统管理员",
+          "detail": {
+            "pageCount": 1,
+            "projectId": "cmvqybhqn007uawup2fa9b4q3"
+          },
+          "createdAt": "2026-10-27T17:20:56.801Z"
+        }
+      ],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "doc_demo_001",
+        "docNo": "XH20261012001",
+        "docDate": "2026-10-12",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "APPROVED",
+        "subtotal": 458,
+        "taxAmount": 0,
+        "totalAmount": 458,
+        "notes": "验收正常",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 1,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-10-12T02:00:00.000Z",
+        "reviewedAt": "2026-10-12T07:00:00.000Z",
+        "createdAt": "2026-10-27T17:20:21.140Z",
+        "items": [
+          {
+            "id": "cmvqybdsz001fawupjpxtlpur",
+            "lineNo": 1,
+            "rawName": "青菜",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 50,
+            "unitPrice": 4.2,
+            "amount": 210,
+            "confidence": 0.98,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybdsz001gawupbzqlmh2t",
+            "lineNo": 2,
+            "rawName": "土豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 80,
+            "unitPrice": 3.1,
+            "amount": 248,
+            "confidence": 0.97,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybdsu001eawup4o9gi7ml",
+            "pageNo": 1,
+            "fileName": "示例手写送货单.svg",
+            "url": "/sample-delivery.svg",
+            "status": "COMPLETED",
+            "width": null,
+            "height": null
+          }
+        ],
+        "checks": []
+      },
+      "audit": [],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "doc_demo_002",
+        "docNo": "LY20261015008",
+        "docDate": "2026-10-15",
+        "projectId": "prj_hz",
+        "projectName": "杭州园区食堂",
+        "supplierId": "sup_hz",
+        "supplierName": "杭州绿源蔬菜配送有限公司",
+        "ocrSupplierName": "",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "PENDING_REVIEW",
+        "subtotal": 384,
+        "taxAmount": 0,
+        "totalAmount": 384,
+        "notes": "手写单，单价需重点复核",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 1,
+        "ocrError": "",
+        "createdById": "usr_site_hz",
+        "submittedAt": "2026-10-15T02:00:00.000Z",
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:21.140Z",
+        "items": [
+          {
+            "id": "cmvqybdtu001iawupn4wf6c22",
+            "lineNo": 1,
+            "rawName": "青菜",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 40,
+            "unitPrice": 4.8,
+            "amount": 192,
+            "confidence": 0.79,
+            "ingredientId": "ing_qc",
+            "matchStatus": "SIMILAR",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybdtu001jawup8j2ywy7u",
+            "lineNo": 2,
+            "rawName": "土豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 60,
+            "unitPrice": 3.2,
+            "amount": 192,
+            "confidence": 0.91,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybdtt001hawupnz1ky3e5",
+            "pageNo": 1,
+            "fileName": "示例手写送货单.svg",
+            "url": "/sample-delivery.svg",
+            "status": "COMPLETED",
+            "width": null,
+            "height": null
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybdut001mawupbhzfrhic",
+            "itemId": "cmvqybdtu001iawupn4wf6c22",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "青菜 高于合同价",
+            "detail": "本项目合同价 4.35 元/kg，本次 4.80 元/kg，上浮 10.3%。",
+            "expectedValue": 4.35,
+            "actualValue": 4.8
+          },
+          {
+            "id": "cmvqybdus001kawupw3cbpdnz",
+            "itemId": "cmvqybdtu001iawupn4wf6c22",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 79.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.79
+          },
+          {
+            "id": "cmvqybdus001lawupnf4bnmuf",
+            "itemId": "cmvqybdtu001iawupn4wf6c22",
+            "dimension": "主数据匹配",
+            "type": "ingredient_ambiguous",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 存在相近品名",
+            "detail": "当前已关联一个相近品名，请确认没有误合并。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqybdut001nawupuwr8wrkg",
+            "itemId": "cmvqybdtu001iawupn4wf6c22",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "OPEN",
+            "title": "青菜 可比样本不足",
+            "detail": "近 30 天仅有 1 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 1
+          },
+          {
+            "id": "cmvqybdut001oawupcsr26qq6",
+            "itemId": "cmvqybdtu001jawup8j2ywy7u",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "OPEN",
+            "title": "土豆 可比样本不足",
+            "detail": "近 30 天仅有 1 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 1
+          }
+        ]
+      },
+      "audit": [],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "doc_demo_003",
+        "docNo": "FW20261016003",
+        "docDate": "2026-10-16",
+        "projectId": "prj_sz",
+        "projectName": "苏州工厂食堂",
+        "supplierId": "sup_js",
+        "supplierName": "江苏丰味食品有限公司",
+        "ocrSupplierName": "",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "PENDING_REVIEW",
+        "subtotal": 4560,
+        "taxAmount": 0,
+        "totalAmount": 4560,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 1,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-10-16T02:00:00.000Z",
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:21.140Z",
+        "items": [
+          {
+            "id": "cmvqybdv3001qawupkv4jmdpi",
+            "lineNo": 1,
+            "rawName": "猪五花肉",
+            "name": "猪五花肉",
+            "spec": "冷鲜",
+            "unit": "kg",
+            "quantity": 120,
+            "unitPrice": 26.8,
+            "amount": 3216,
+            "confidence": 0.94,
+            "ingredientId": "ing_zwr",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybdv3001rawuppbuwubk7",
+            "lineNo": 2,
+            "rawName": "鸡胸肉",
+            "name": "鸡胸肉",
+            "spec": "冷鲜",
+            "unit": "kg",
+            "quantity": 80,
+            "unitPrice": 16.8,
+            "amount": 1344,
+            "confidence": 0.96,
+            "ingredientId": "ing_jxr",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybdv2001pawuplox7izkp",
+            "pageNo": 1,
+            "fileName": "示例手写送货单.svg",
+            "url": "/sample-delivery.svg",
+            "status": "COMPLETED",
+            "width": null,
+            "height": null
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybdvm001sawuph4j90lw4",
+            "itemId": "cmvqybdv3001qawupkv4jmdpi",
+            "dimension": "合同价",
+            "type": "contract_price",
+            "severity": "ERROR",
+            "status": "OPEN",
+            "title": "猪五花肉 高于合同价",
+            "detail": "本项目合同价 24.50 元/kg，本次 26.80 元/kg，上浮 9.4%。",
+            "expectedValue": 24.5,
+            "actualValue": 26.8
+          },
+          {
+            "id": "cmvqybdvm001tawup9xfzi358",
+            "itemId": "cmvqybdv3001qawupkv4jmdpi",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "OPEN",
+            "title": "猪五花肉 可比样本不足",
+            "detail": "近 30 天仅有 0 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 0
+          },
+          {
+            "id": "cmvqybdvm001uawupnkn8dq1c",
+            "itemId": "cmvqybdv3001rawuppbuwubk7",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "OPEN",
+            "title": "鸡胸肉 可比样本不足",
+            "detail": "近 30 天仅有 0 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 0
+          }
+        ]
+      },
+      "audit": [],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "doc_demo_004",
+        "docNo": "HD20261011016",
+        "docDate": "2026-10-11",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_ly",
+        "supplierName": "华东粮油供应链有限公司",
+        "ocrSupplierName": "",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "APPROVED",
+        "subtotal": 2904,
+        "taxAmount": 0,
+        "totalAmount": 2904,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 1,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-10-11T02:00:00.000Z",
+        "reviewedAt": "2026-10-11T07:00:00.000Z",
+        "createdAt": "2026-10-27T17:20:21.140Z",
+        "items": [
+          {
+            "id": "cmvqybdvt001wawupsvjkgbpk",
+            "lineNo": 1,
+            "rawName": "大米",
+            "name": "大米",
+            "spec": "25kg/袋",
+            "unit": "袋",
+            "quantity": 20,
+            "unitPrice": 118,
+            "amount": 2360,
+            "confidence": 0.99,
+            "ingredientId": "ing_dm",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybdvt001xawup685e1kdh",
+            "lineNo": 2,
+            "rawName": "食用油",
+            "name": "食用油",
+            "spec": "5L/桶",
+            "unit": "桶",
+            "quantity": 8,
+            "unitPrice": 68,
+            "amount": 544,
+            "confidence": 0.99,
+            "ingredientId": "ing_sy",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybdvt001vawupg8cwlaeu",
+            "pageNo": 1,
+            "fileName": "示例手写送货单.svg",
+            "url": "/sample-delivery.svg",
+            "status": "COMPLETED",
+            "width": null,
+            "height": null
+          }
+        ],
+        "checks": []
+      },
+      "audit": [],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "doc_demo_005",
+        "docNo": "XH20261018009",
+        "docDate": "2026-10-18",
+        "projectId": "prj_nj",
+        "projectName": "南京项目点",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "DRAFT",
+        "subtotal": 281,
+        "taxAmount": 0,
+        "totalAmount": 281,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 1,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": null,
+        "reviewedAt": null,
+        "createdAt": "2026-10-27T17:20:21.140Z",
+        "items": [
+          {
+            "id": "cmvqybdw5001zawupgv8dr520",
+            "lineNo": 1,
+            "rawName": "青菜",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 30,
+            "unitPrice": 4.2,
+            "amount": 126,
+            "confidence": 0.88,
+            "ingredientId": "ing_qc",
+            "matchStatus": "SIMILAR",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybdw50020awupy1vs4top",
+            "lineNo": 2,
+            "rawName": "土豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 50,
+            "unitPrice": 3.1,
+            "amount": 155,
+            "confidence": 0.93,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybdw4001yawupihxhf15p",
+            "pageNo": 1,
+            "fileName": "示例手写送货单.svg",
+            "url": "/sample-delivery.svg",
+            "status": "COMPLETED",
+            "width": null,
+            "height": null
+          }
+        ],
+        "checks": [
+          {
+            "id": "cmvqybdwm0021awupu03hcx2e",
+            "itemId": "cmvqybdw5001zawupgv8dr520",
+            "dimension": "识别质量",
+            "type": "low_confidence",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 识别置信度偏低",
+            "detail": "置信度 88.0%，低于 90%，请对照原图确认。",
+            "expectedValue": 0.9,
+            "actualValue": 0.88
+          },
+          {
+            "id": "cmvqybdwm0022awup04idgg17",
+            "itemId": "cmvqybdw5001zawupgv8dr520",
+            "dimension": "主数据匹配",
+            "type": "ingredient_ambiguous",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "青菜 存在相近品名",
+            "detail": "当前已关联一个相近品名，请确认没有误合并。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqybdwm0024awup1tljz91d",
+            "itemId": "cmvqybdw50020awupy1vs4top",
+            "dimension": "合同价",
+            "type": "contract_missing",
+            "severity": "WARNING",
+            "status": "OPEN",
+            "title": "土豆 未找到本项目合同价",
+            "detail": "系统不会套用其他项目点合同价，请确认主数据或采购是否合规。",
+            "expectedValue": null,
+            "actualValue": null
+          },
+          {
+            "id": "cmvqybdwm0023awupe2kymkn3",
+            "itemId": "cmvqybdw5001zawupgv8dr520",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "OPEN",
+            "title": "青菜 可比样本不足",
+            "detail": "近 30 天仅有 1 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 1
+          },
+          {
+            "id": "cmvqybdwm0025awupnk1ut0hm",
+            "itemId": "cmvqybdw50020awupy1vs4top",
+            "dimension": "跨供应商比价",
+            "type": "benchmark_insufficient",
+            "severity": "INFO",
+            "status": "OPEN",
+            "title": "土豆 可比样本不足",
+            "detail": "近 30 天仅有 1 条可比价格，暂不判定异常。",
+            "expectedValue": null,
+            "actualValue": 1
+          }
+        ]
+      },
+      "audit": [],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "doc_demo_006",
+        "docNo": "XH20260928003",
+        "docDate": "2026-09-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ocrSupplierName": "",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "APPROVED",
+        "subtotal": 405,
+        "taxAmount": 0,
+        "totalAmount": 405,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 1,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-09-28T02:00:00.000Z",
+        "reviewedAt": "2026-09-28T07:00:00.000Z",
+        "createdAt": "2026-10-27T17:20:21.140Z",
+        "items": [
+          {
+            "id": "cmvqybdww0027awupy9a2cefb",
+            "lineNo": 1,
+            "rawName": "青菜",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 45,
+            "unitPrice": 4,
+            "amount": 180,
+            "confidence": 0.97,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybdwx0028awupj0rynp3e",
+            "lineNo": 2,
+            "rawName": "土豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 75,
+            "unitPrice": 3,
+            "amount": 225,
+            "confidence": 0.97,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybdwv0026awupq159zdre",
+            "pageNo": 1,
+            "fileName": "示例手写送货单.svg",
+            "url": "/sample-delivery.svg",
+            "status": "COMPLETED",
+            "width": null,
+            "height": null
+          }
+        ],
+        "checks": []
+      },
+      "audit": [],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "doc_demo_007",
+        "docNo": "NJ20261008021",
+        "docDate": "2026-10-08",
+        "projectId": "prj_nj",
+        "projectName": "南京项目点",
+        "supplierId": "sup_nj",
+        "supplierName": "南京每日鲜肉业有限公司",
+        "ocrSupplierName": "",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "APPROVED",
+        "subtotal": 3259,
+        "taxAmount": 0,
+        "totalAmount": 3259,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 1,
+        "ocrError": "",
+        "createdById": "usr_site_sh",
+        "submittedAt": "2026-10-08T02:00:00.000Z",
+        "reviewedAt": "2026-10-08T07:00:00.000Z",
+        "createdAt": "2026-10-27T17:20:21.140Z",
+        "items": [
+          {
+            "id": "cmvqybdx8002aawup6hmnhmd8",
+            "lineNo": 1,
+            "rawName": "猪五花肉",
+            "name": "猪五花肉",
+            "spec": "冷鲜",
+            "unit": "kg",
+            "quantity": 70,
+            "unitPrice": 25.2,
+            "amount": 1764,
+            "confidence": 0.97,
+            "ingredientId": "ing_zwr",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybdx8002bawup54nr18rc",
+            "lineNo": 2,
+            "rawName": "鸡胸肉",
+            "name": "鸡胸肉",
+            "spec": "冷鲜",
+            "unit": "kg",
+            "quantity": 50,
+            "unitPrice": 17.1,
+            "amount": 855,
+            "confidence": 0.96,
+            "ingredientId": "ing_jxr",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybdx8002cawup2owqeiai",
+            "lineNo": 3,
+            "rawName": "鲈鱼",
+            "name": "鲈鱼",
+            "spec": "鲜活",
+            "unit": "kg",
+            "quantity": 20,
+            "unitPrice": 32,
+            "amount": 640,
+            "confidence": 0.95,
+            "ingredientId": "ing_ly",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybdx70029awupzuyg34ok",
+            "pageNo": 1,
+            "fileName": "示例手写送货单.svg",
+            "url": "/sample-delivery.svg",
+            "status": "COMPLETED",
+            "width": null,
+            "height": null
+          }
+        ],
+        "checks": []
+      },
+      "audit": [],
+      "approvals": []
+    },
+    {
+      "document": {
+        "id": "doc_demo_008",
+        "docNo": "LY20261009011",
+        "docDate": "2026-10-09",
+        "projectId": "prj_hz",
+        "projectName": "杭州园区食堂",
+        "supplierId": "sup_hz",
+        "supplierName": "杭州绿源蔬菜配送有限公司",
+        "ocrSupplierName": "",
+        "supplierMatchStatus": "MATCHED",
+        "supplierMatchScore": 1,
+        "status": "APPROVED",
+        "subtotal": 391.8,
+        "taxAmount": 0,
+        "totalAmount": 391.8,
+        "notes": "",
+        "reviewNote": "",
+        "overrideReason": "",
+        "version": 1,
+        "ocrError": "",
+        "createdById": "usr_site_hz",
+        "submittedAt": "2026-10-09T02:00:00.000Z",
+        "reviewedAt": "2026-10-09T07:00:00.000Z",
+        "createdAt": "2026-10-27T17:20:21.140Z",
+        "items": [
+          {
+            "id": "cmvqybdxl002eawup64b2ei1a",
+            "lineNo": 1,
+            "rawName": "青菜",
+            "name": "青菜",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 42,
+            "unitPrice": 4.3,
+            "amount": 180.6,
+            "confidence": 0.96,
+            "ingredientId": "ing_qc",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          },
+          {
+            "id": "cmvqybdxl002fawup7xpti6sx",
+            "lineNo": 2,
+            "rawName": "土豆",
+            "name": "土豆",
+            "spec": "散装",
+            "unit": "kg",
+            "quantity": 66,
+            "unitPrice": 3.2,
+            "amount": 211.2,
+            "confidence": 0.96,
+            "ingredientId": "ing_td",
+            "matchStatus": "MATCHED",
+            "matchScore": 1
+          }
+        ],
+        "pages": [
+          {
+            "id": "cmvqybdxk002dawuptlv3v5j2",
+            "pageNo": 1,
+            "fileName": "示例手写送货单.svg",
+            "url": "/sample-delivery.svg",
+            "status": "COMPLETED",
+            "width": null,
+            "height": null
+          }
+        ],
+        "checks": []
+      },
+      "audit": [],
+      "approvals": []
+    }
+  ],
+  "imageHashes": [
+    {
+      "key": "documents\\2026\\10\\017a353d-fc14-42b8-be0e-bd2bf47c3ce8-processed.jpg",
+      "sha256": "6495f4fbd51bc67259421ccef924abe56395295302c10b0857d7e13caf583397"
+    },
+    {
+      "key": "documents\\2026\\10\\017a353d-fc14-42b8-be0e-bd2bf47c3ce8.png",
+      "sha256": "5ca98d8c7a3becca6575776b7628e2fb68691c1e0c143f60ed9ec03d3eac6d11"
+    },
+    {
+      "key": "documents\\2026\\10\\060f87dc-c8a3-4ce0-967c-cdb73cf7c478-processed.jpg",
+      "sha256": "325354e0f4f26b9f4822154722c46ecd2b23390553f3aa226c399f4b74448402"
+    },
+    {
+      "key": "documents\\2026\\10\\060f87dc-c8a3-4ce0-967c-cdb73cf7c478.png",
+      "sha256": "865588ce079b314bb58af701b5cc2c098e2c6c931f324b1a967d85f4895a0fda"
+    },
+    {
+      "key": "documents\\2026\\10\\0665d250-4181-44f9-92e6-10a9ac02ee75-processed.jpg",
+      "sha256": "4d58d7fd246dc4bf4d1bbb273a773c5ca6d04ea82ed9b6dd1511149a9db90c55"
+    },
+    {
+      "key": "documents\\2026\\10\\0665d250-4181-44f9-92e6-10a9ac02ee75.png",
+      "sha256": "7abc7d7d39b956e0a19bb97f88088b1de7dc08430e6ec68a197cef228d355442"
+    },
+    {
+      "key": "documents\\2026\\10\\1e4ba8ce-e338-467e-8472-3bf3f0a5c20c-processed.jpg",
+      "sha256": "605c451cde35fec6aaa473541387acd10fcc484d71ee04b805c85823ff35e2b7"
+    },
+    {
+      "key": "documents\\2026\\10\\1e4ba8ce-e338-467e-8472-3bf3f0a5c20c.png",
+      "sha256": "2e301f360861f25087b1be4e2e29fd87d39ce0900cc3626f9e6ac15ed009e940"
+    },
+    {
+      "key": "documents\\2026\\10\\30e94263-4594-4382-a4d1-1ca69f3d584f-processed.jpg",
+      "sha256": "0e47e3e5a7f3233a974abbdc1cb82985edbffd262609e10a457cca7cc10a6aaa"
+    },
+    {
+      "key": "documents\\2026\\10\\30e94263-4594-4382-a4d1-1ca69f3d584f.png",
+      "sha256": "34f5c7dc247c6d254f0355188a6f5f67fcd832ecf9eb14ba0b8a6cfc707e6285"
+    },
+    {
+      "key": "documents\\2026\\10\\3431afdd-f9a0-49bd-ab9d-e72edd1381a3-processed.jpg",
+      "sha256": "923b37f58d3101b0401eb2a10ad3f2895746096e99f6a010282d22e6771c032b"
+    },
+    {
+      "key": "documents\\2026\\10\\3431afdd-f9a0-49bd-ab9d-e72edd1381a3.png",
+      "sha256": "e550ec4448672c95120ee50e083277372c05ceec21cc70014657b0f72f4e3242"
+    },
+    {
+      "key": "documents\\2026\\10\\3801dc78-26f6-45a1-bdcb-52e404ccee0e.jpg",
+      "sha256": "e4f7ba1b9e19b473e4d512dffd6a587c5f0dae7be69a597770f844d743d8bff1"
+    },
+    {
+      "key": "documents\\2026\\10\\38e8c500-aa7c-407c-8f8b-e093498f54e1-processed.jpg",
+      "sha256": "1e06c9fcab29c1bdb63e256ca103946df0184fd14b910ac4546e029a2965c3a9"
+    },
+    {
+      "key": "documents\\2026\\10\\38e8c500-aa7c-407c-8f8b-e093498f54e1.png",
+      "sha256": "6985d15a4929f9ed27ba618b6039349988212cc60fe6a7d14984d7cb596bb1d8"
+    },
+    {
+      "key": "documents\\2026\\10\\41d0e1ca-87f9-424d-b412-5523e768024b.png",
+      "sha256": "c6bfa623c146a13c10f3442b3cd56751cf16ee3ae0cf557d93c83dfa1d0a7aef"
+    },
+    {
+      "key": "documents\\2026\\10\\83302bd2-9109-4ca0-bd0f-b58adc986387-processed.jpg",
+      "sha256": "ce5b675bf1e2bdeee30f484e3c013e831668ecde1d193df4afee76ed0bf9284b"
+    },
+    {
+      "key": "documents\\2026\\10\\83302bd2-9109-4ca0-bd0f-b58adc986387.png",
+      "sha256": "c7170b1592e68bfd4baf961bbe341a9d74a91708abe6ebac4077246a5fecc1f3"
+    },
+    {
+      "key": "documents\\2026\\10\\8fe0d7b8-0cd5-4b19-806b-a1ca376d81f9-processed.jpg",
+      "sha256": "869f475dd499199ba99aa6f22bc25dd4124a6efdbba57ad66de909f5a2a53b6d"
+    },
+    {
+      "key": "documents\\2026\\10\\8fe0d7b8-0cd5-4b19-806b-a1ca376d81f9.png",
+      "sha256": "0434dfc35385f29a6693e7a8c422dde4cbc0ce2e657efd8940c923d47cd2dcf3"
+    },
+    {
+      "key": "documents\\2026\\10\\9002e8f2-efd8-4a0a-9a2b-b362cc444a86-processed.jpg",
+      "sha256": "1fa0a7a3a6da13d651539014fbb92a98cf37a63967d8e292c207e72fc2e993be"
+    },
+    {
+      "key": "documents\\2026\\10\\9002e8f2-efd8-4a0a-9a2b-b362cc444a86.png",
+      "sha256": "7d1eed2044ebc0509f6452df63cf2ba3889863a43dac5eba61f41cffb6abf684"
+    },
+    {
+      "key": "documents\\2026\\10\\95a7fa17-d4a5-406a-b4b7-8c11b433caa1-processed.jpg",
+      "sha256": "b60222c01882451738a7adcf4832ce28a2b8ee5809921e8bc78703278bd5ac51"
+    },
+    {
+      "key": "documents\\2026\\10\\95a7fa17-d4a5-406a-b4b7-8c11b433caa1.png",
+      "sha256": "e8a0864a0291c6196a39c99c5c3090133cdf9e3d557efda07eba8a1a03c0764a"
+    },
+    {
+      "key": "documents\\2026\\10\\9d614232-478a-400e-9645-78378bb25c55-processed.jpg",
+      "sha256": "c0a0aedf3f9f63e714b829299ddceeeb7e3ef45ad48aa174843332e3c0ac46a5"
+    },
+    {
+      "key": "documents\\2026\\10\\9d614232-478a-400e-9645-78378bb25c55.png",
+      "sha256": "35a86bf5ae5e9fde9c5f713af3f2e2b61894f50f51d81fa23cecf0f69acdec17"
+    },
+    {
+      "key": "documents\\2026\\10\\ad3b340c-90c8-4e86-a916-fed9c77cce6e.png",
+      "sha256": "008149bdd968a40aac6e77b66f564e44bbcb7154c92a19cb8c914d6d5401e2f9"
+    },
+    {
+      "key": "documents\\2026\\10\\af7cb24f-00a3-4cbf-8c64-1d92a0272edc-processed.jpg",
+      "sha256": "d0c5dbb51ba6c6c39282ad5b51e9c9591ea2ce99e86ae2b2c51efc083028f03c"
+    },
+    {
+      "key": "documents\\2026\\10\\af7cb24f-00a3-4cbf-8c64-1d92a0272edc.png",
+      "sha256": "e321449721223a7af8de1f2b368466f7368559f6b325091a3bf7083cf9720456"
+    },
+    {
+      "key": "documents\\2026\\10\\b7ea6047-d9e0-4526-bd54-3d7d6aa31c97-processed.jpg",
+      "sha256": "d558adb7a66b69f498cd8a495defa377e24367f55107814a17bcbcfe71568a1b"
+    },
+    {
+      "key": "documents\\2026\\10\\b7ea6047-d9e0-4526-bd54-3d7d6aa31c97.png",
+      "sha256": "e6157c590a6145284afc1718c8d633c03caa046b5f16eb23c2237702a1f93213"
+    },
+    {
+      "key": "documents\\2026\\10\\c2402a73-6c65-4bf8-acbe-e6046e54b319-processed.jpg",
+      "sha256": "e01e7d538bba0bc5dad8879f12e717c19552a00133e11473c2a140e78168151d"
+    },
+    {
+      "key": "documents\\2026\\10\\c2402a73-6c65-4bf8-acbe-e6046e54b319.png",
+      "sha256": "b24494ca78f3d864568e54d0f25c7fb31ff6c69077ac2c890892c0742b1f2679"
+    },
+    {
+      "key": "documents\\2026\\10\\cbeb5392-c2ef-4576-a91f-910bc8357bc9-processed.jpg",
+      "sha256": "46e503a86c4f3642ddc6787b67a32b494d4654f5f601871ccd26ffb3efb96459"
+    },
+    {
+      "key": "documents\\2026\\10\\cbeb5392-c2ef-4576-a91f-910bc8357bc9.png",
+      "sha256": "ac3536086e108a908ada95698043b7d5a6e7ea457bc2a245a07f5aff978fa496"
+    },
+    {
+      "key": "documents\\2026\\10\\ccff6170-afe8-40ec-93f9-0a82a74a6dbb.webp",
+      "sha256": "8e6cac2227ef6f6c5d154d9e6fd788c5beea88bf077973c90866e0f3a4ff4d1b"
+    },
+    {
+      "key": "documents\\2026\\10\\e97cb5c3-d805-4bc5-837d-821dbb402c20-processed.jpg",
+      "sha256": "ed7693a0d2e29572b5cb5dac29d179917a7a1c3476626c7e05df97cfbb3bea0c"
+    },
+    {
+      "key": "documents\\2026\\10\\e97cb5c3-d805-4bc5-837d-821dbb402c20.png",
+      "sha256": "49228f0529831b3a7c680d702bb70d9596542fdc11f4e9b94d9180aea03ad85b"
+    },
+    {
+      "key": "documents\\2026\\10\\fecf12c0-338e-4b2a-b86b-6f64f3a0209b-processed.jpg",
+      "sha256": "d942a534d6f4e36a2b87ba37b1fe021a4426b559cca2f226836c2e2d97ec463f"
+    },
+    {
+      "key": "documents\\2026\\10\\fecf12c0-338e-4b2a-b86b-6f64f3a0209b.png",
+      "sha256": "19bdba0959e9c8f61e0e16a0ce6cbc420cb8ca1197747f47c81617fb35786bd4"
+    }
+  ],
+  "dashboard": {
+    "user": {
+      "id": "usr_admin",
+      "employeeNo": "admin",
+      "name": "系统管理员",
+      "globalRole": "ADMIN",
+      "memberships": []
+    },
+    "counters": {
+      "total": 23,
+      "pendingReview": 5,
+      "needsRevision": 0,
+      "draft": 11,
+      "approved": 7,
+      "openErrors": 19,
+      "openWarnings": 32,
+      "monthSpend": 7390.5,
+      "avgConfidence": 0.8523809523809525
+    },
+    "recent": [
+      {
+        "id": "cmvqybu2s00bcawupgvv1acsx",
+        "docNo": "DEMO-21642331",
+        "docDate": "2026-10-28",
+        "projectId": "prj_hz",
+        "projectName": "杭州园区食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "status": "DRAFT",
+        "totalAmount": 335.7,
+        "itemCount": 2,
+        "errorCount": 0,
+        "warningCount": 4,
+        "createdAt": "2026-10-27T17:20:42.244Z"
+      },
+      {
+        "id": "cmvqybimu00ahawup5unqd2nl",
+        "docNo": "DEMO-21627447",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "status": "DRAFT",
+        "totalAmount": 335.7,
+        "itemCount": 2,
+        "errorCount": 3,
+        "warningCount": 2,
+        "createdAt": "2026-10-27T17:20:27.414Z"
+      },
+      {
+        "id": "cmvqybii700a7awupu3zpt9p3",
+        "docNo": "DEMO-21627279",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "status": "DRAFT",
+        "totalAmount": 335.7,
+        "itemCount": 2,
+        "errorCount": 2,
+        "warningCount": 2,
+        "createdAt": "2026-10-27T17:20:27.247Z"
+      },
+      {
+        "id": "cmvqybgqk005nawup0cy74s7q",
+        "docNo": "DEMO-21624991",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "status": "PENDING_REVIEW",
+        "totalAmount": 335.7,
+        "itemCount": 2,
+        "errorCount": 2,
+        "warningCount": 2,
+        "createdAt": "2026-10-27T17:20:24.956Z"
+      },
+      {
+        "id": "cmvqybg6z004jawuphkc2qs5h",
+        "docNo": "DEMO-21624283",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "status": "DRAFT",
+        "totalAmount": 335.7,
+        "itemCount": 2,
+        "errorCount": 2,
+        "warningCount": 2,
+        "createdAt": "2026-10-27T17:20:24.251Z"
+      },
+      {
+        "id": "cmvqybfyy003oawup1fi68tpy",
+        "docNo": "DEMO-21623995",
+        "docDate": "2026-10-28",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "status": "APPROVED",
+        "totalAmount": 335.7,
+        "itemCount": 2,
+        "errorCount": 0,
+        "warningCount": 0,
+        "createdAt": "2026-10-27T17:20:23.962Z"
+      }
+    ],
+    "risks": [
+      {
+        "name": "合同价",
+        "value": 23
+      },
+      {
+        "name": "识别质量",
+        "value": 22
+      },
+      {
+        "name": "主数据匹配",
+        "value": 3
+      },
+      {
+        "name": "单据完整性",
+        "value": 1
+      },
+      {
+        "name": "金额勾稽",
+        "value": 1
+      },
+      {
+        "name": "重复校验",
+        "value": 1
+      }
+    ],
+    "trend": [
+      {
+        "month": "2026-05",
+        "amount": 0
+      },
+      {
+        "month": "2026-06",
+        "amount": 0
+      },
+      {
+        "month": "2026-07",
+        "amount": 0
+      },
+      {
+        "month": "2026-08",
+        "amount": 0
+      },
+      {
+        "month": "2026-09",
+        "amount": 405
+      },
+      {
+        "month": "2026-10",
+        "amount": 7390.5
+      }
+    ],
+    "projectSpend": [
+      {
+        "name": "验收测试项目",
+        "amount": 0
+      },
+      {
+        "name": "杭州园区食堂",
+        "amount": 391.8
+      },
+      {
+        "name": "南京项目点",
+        "amount": 3259
+      },
+      {
+        "name": "上海总部食堂",
+        "amount": 4144.7
+      },
+      {
+        "name": "苏州工厂食堂",
+        "amount": 0
+      }
+    ]
+  },
+  "bootstrap": {
+    "user": {
+      "id": "usr_admin",
+      "employeeNo": "admin",
+      "name": "系统管理员",
+      "globalRole": "ADMIN",
+      "memberships": []
+    },
+    "projects": [
+      {
+        "id": "cmvqybhqn007uawup2fa9b4q3",
+        "code": "ACCEPT",
+        "name": "验收测试项目",
+        "region": "测试",
+        "active": true,
+        "createdAt": "2026-10-27T17:20:26.255Z",
+        "updatedAt": "2026-10-27T17:20:26.255Z"
+      },
+      {
+        "id": "prj_hz",
+        "code": "HZ-PARK",
+        "name": "杭州园区食堂",
+        "region": "华东",
+        "active": true,
+        "createdAt": "2026-10-27T17:20:20.788Z",
+        "updatedAt": "2026-10-27T17:20:20.788Z"
+      },
+      {
+        "id": "prj_nj",
+        "code": "NJ-PROJECT",
+        "name": "南京项目点",
+        "region": "华东",
+        "active": true,
+        "createdAt": "2026-10-27T17:20:20.790Z",
+        "updatedAt": "2026-10-27T17:20:20.790Z"
+      },
+      {
+        "id": "prj_sh",
+        "code": "SH-HQ",
+        "name": "上海总部食堂",
+        "region": "华东",
+        "active": true,
+        "createdAt": "2026-10-27T17:20:20.458Z",
+        "updatedAt": "2026-10-27T17:20:20.458Z"
+      },
+      {
+        "id": "prj_sz",
+        "code": "SZ-FACTORY",
+        "name": "苏州工厂食堂",
+        "region": "华东",
+        "active": true,
+        "createdAt": "2026-10-27T17:20:20.789Z",
+        "updatedAt": "2026-10-27T17:20:20.789Z"
+      }
+    ],
+    "suppliers": [
+      {
+        "id": "sup_sh",
+        "name": "上海鲜禾农副产品有限公司",
+        "normalizedName": "上海鲜禾农副产品有限公司",
+        "contactName": "王经理",
+        "contactPhone": "13800001111",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.807Z",
+        "updatedAt": "2026-10-27T17:20:20.807Z"
+      },
+      {
+        "id": "sup_ly",
+        "name": "华东粮油供应链有限公司",
+        "normalizedName": "华东粮油供应链有限公司",
+        "contactName": "赵经理",
+        "contactPhone": "13800004444",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.824Z",
+        "updatedAt": "2026-10-27T17:20:20.824Z"
+      },
+      {
+        "id": "sup_nj",
+        "name": "南京每日鲜肉业有限公司",
+        "normalizedName": "南京每日鲜肉业有限公司",
+        "contactName": "周经理",
+        "contactPhone": "13800005555",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.827Z",
+        "updatedAt": "2026-10-27T17:20:20.827Z"
+      },
+      {
+        "id": "sup_hz",
+        "name": "杭州绿源蔬菜配送有限公司",
+        "normalizedName": "杭州绿源蔬菜配送有限公司",
+        "contactName": "李经理",
+        "contactPhone": "13800002222",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.818Z",
+        "updatedAt": "2026-10-27T17:20:20.818Z"
+      },
+      {
+        "id": "sup_js",
+        "name": "江苏丰味食品有限公司",
+        "normalizedName": "江苏丰味食品有限公司",
+        "contactName": "陈经理",
+        "contactPhone": "13800003333",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.821Z",
+        "updatedAt": "2026-10-27T17:20:20.821Z"
+      },
+      {
+        "id": "cmvqybhnx007qawuphunqpf03",
+        "name": "验收Excel供应商",
+        "normalizedName": "验收excel供应商",
+        "contactName": "",
+        "contactPhone": "",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": "usr_admin",
+        "createdAt": "2026-10-27T17:20:26.157Z",
+        "updatedAt": "2026-10-27T17:20:26.157Z"
+      },
+      {
+        "id": "cmvqybhzg0084awupfo88n427",
+        "name": "验收规格供应商",
+        "normalizedName": "验收规格供应商",
+        "contactName": "",
+        "contactPhone": "",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": "usr_admin",
+        "createdAt": "2026-10-27T17:20:26.572Z",
+        "updatedAt": "2026-10-27T17:20:26.572Z"
+      }
+    ],
+    "ingredients": [
+      {
+        "id": "cmvqybhnz007rawupdapaeeab",
+        "name": "验收Excel材料",
+        "normalizedName": "验收excel材料",
+        "spec": "散装",
+        "normalizedSpec": "散装",
+        "unit": "kg",
+        "category": "",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": "usr_admin",
+        "createdAt": "2026-10-27T17:20:26.159Z",
+        "updatedAt": "2026-10-27T17:20:26.159Z"
+      },
+      {
+        "id": "cmvqyc7f900coawupfxreq1q0",
+        "name": "验收合并材料目标1793121659477",
+        "normalizedName": "验收合并材料目标1793121659477",
+        "spec": "散装",
+        "normalizedSpec": "散装",
+        "unit": "kg",
+        "category": "",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": "usr_admin",
+        "createdAt": "2026-10-27T17:20:59.541Z",
+        "updatedAt": "2026-10-27T17:20:59.541Z"
+      },
+      {
+        "id": "cmvqybhzi0085awupvqa5kh7z",
+        "name": "验收同名材料",
+        "normalizedName": "验收同名材料",
+        "spec": "规格A",
+        "normalizedSpec": "规格a",
+        "unit": "kg",
+        "category": "",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": "usr_admin",
+        "createdAt": "2026-10-27T17:20:26.574Z",
+        "updatedAt": "2026-10-27T17:20:26.574Z"
+      },
+      {
+        "id": "cmvqybhzk0086awupl5ehc78h",
+        "name": "验收同名材料",
+        "normalizedName": "验收同名材料",
+        "spec": "规格B",
+        "normalizedSpec": "规格b",
+        "unit": "kg",
+        "category": "",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": "usr_admin",
+        "createdAt": "2026-10-27T17:20:26.576Z",
+        "updatedAt": "2026-10-27T17:20:26.576Z"
+      },
+      {
+        "id": "cmvqybhhw007lawup1vdcg4v1",
+        "name": "验收材料",
+        "normalizedName": "验收材料",
+        "spec": "散装",
+        "normalizedSpec": "散装",
+        "unit": "kg",
+        "category": "",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": "usr_admin",
+        "createdAt": "2026-10-27T17:20:25.940Z",
+        "updatedAt": "2026-10-27T17:20:25.940Z"
+      },
+      {
+        "id": "ing_ly",
+        "name": "鲈鱼",
+        "normalizedName": "鲈鱼",
+        "spec": "鲜活",
+        "normalizedSpec": "鲜活",
+        "unit": "kg",
+        "category": "水产",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.875Z",
+        "updatedAt": "2026-10-27T17:20:20.875Z"
+      },
+      {
+        "id": "ing_dm",
+        "name": "大米",
+        "normalizedName": "大米",
+        "spec": "25kg/袋",
+        "normalizedSpec": "25kg袋",
+        "unit": "袋",
+        "category": "粮油",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.860Z",
+        "updatedAt": "2026-10-27T17:20:20.860Z"
+      },
+      {
+        "id": "ing_mf",
+        "name": "面粉",
+        "normalizedName": "面粉",
+        "spec": "25kg/袋",
+        "normalizedSpec": "25kg袋",
+        "unit": "袋",
+        "category": "粮油",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.868Z",
+        "updatedAt": "2026-10-27T17:20:20.868Z"
+      },
+      {
+        "id": "ing_sy",
+        "name": "食用油",
+        "normalizedName": "食用油",
+        "spec": "5L/桶",
+        "normalizedSpec": "5l桶",
+        "unit": "桶",
+        "category": "粮油",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.864Z",
+        "updatedAt": "2026-10-27T17:20:20.864Z"
+      },
+      {
+        "id": "ing_zwr",
+        "name": "猪五花肉",
+        "normalizedName": "猪五花肉",
+        "spec": "冷鲜",
+        "normalizedSpec": "冷鲜",
+        "unit": "kg",
+        "category": "肉禽",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.850Z",
+        "updatedAt": "2026-10-27T17:20:20.850Z"
+      },
+      {
+        "id": "ing_jxr",
+        "name": "鸡胸肉",
+        "normalizedName": "鸡胸肉",
+        "spec": "冷鲜",
+        "normalizedSpec": "冷鲜",
+        "unit": "kg",
+        "category": "肉禽",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.853Z",
+        "updatedAt": "2026-10-27T17:20:20.853Z"
+      },
+      {
+        "id": "ing_td",
+        "name": "土豆",
+        "normalizedName": "土豆",
+        "spec": "散装",
+        "normalizedSpec": "散装",
+        "unit": "kg",
+        "category": "蔬菜",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.842Z",
+        "updatedAt": "2026-10-27T17:20:20.842Z"
+      },
+      {
+        "id": "ing_xhs",
+        "name": "西红柿",
+        "normalizedName": "西红柿",
+        "spec": "散装",
+        "normalizedSpec": "散装",
+        "unit": "kg",
+        "category": "蔬菜",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.847Z",
+        "updatedAt": "2026-10-27T17:20:20.847Z"
+      },
+      {
+        "id": "ing_qc",
+        "name": "青菜",
+        "normalizedName": "青菜",
+        "spec": "散装",
+        "normalizedSpec": "散装",
+        "unit": "kg",
+        "category": "蔬菜",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.833Z",
+        "updatedAt": "2026-10-27T17:20:20.833Z"
+      },
+      {
+        "id": "ing_jd",
+        "name": "鸡蛋",
+        "normalizedName": "鸡蛋",
+        "spec": "散装",
+        "normalizedSpec": "散装",
+        "unit": "kg",
+        "category": "蛋类",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.857Z",
+        "updatedAt": "2026-10-27T17:20:20.857Z"
+      },
+      {
+        "id": "ing_sj",
+        "name": "生姜",
+        "normalizedName": "生姜",
+        "spec": "散装",
+        "normalizedSpec": "散装",
+        "unit": "kg",
+        "category": "调味",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.877Z",
+        "updatedAt": "2026-10-27T17:20:20.877Z"
+      },
+      {
+        "id": "ing_df",
+        "name": "豆腐",
+        "normalizedName": "豆腐",
+        "spec": "散装",
+        "normalizedSpec": "散装",
+        "unit": "kg",
+        "category": "豆制品",
+        "active": true,
+        "sourceDocumentId": null,
+        "createdById": null,
+        "createdAt": "2026-10-27T17:20:20.872Z",
+        "updatedAt": "2026-10-27T17:20:20.872Z"
+      }
+    ],
+    "contracts": [
+      {
+        "id": "cmvqybdrf000yawup5eh8pgz4",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ingredientId": "ing_qc",
+        "ingredientName": "青菜",
+        "spec": "散装",
+        "unit": "kg",
+        "unitPrice": 4.2,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdrl000zawupm5801im9",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ingredientId": "ing_td",
+        "ingredientName": "土豆",
+        "spec": "散装",
+        "unit": "kg",
+        "unitPrice": 3.1,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdrn0010awupmor3z5pu",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ingredientId": "ing_xhs",
+        "ingredientName": "西红柿",
+        "spec": "散装",
+        "unit": "kg",
+        "unitPrice": 5.8,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdrq0011awupswau7zs4",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_ly",
+        "supplierName": "华东粮油供应链有限公司",
+        "ingredientId": "ing_dm",
+        "ingredientName": "大米",
+        "spec": "25kg/袋",
+        "unit": "袋",
+        "unitPrice": 118,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdrs0012awupvqe102fn",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "sup_ly",
+        "supplierName": "华东粮油供应链有限公司",
+        "ingredientId": "ing_sy",
+        "ingredientName": "食用油",
+        "spec": "5L/桶",
+        "unit": "桶",
+        "unitPrice": 68,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdrx0013awupkl1xz7pj",
+        "projectId": "prj_hz",
+        "projectName": "杭州园区食堂",
+        "supplierId": "sup_hz",
+        "supplierName": "杭州绿源蔬菜配送有限公司",
+        "ingredientId": "ing_qc",
+        "ingredientName": "青菜",
+        "spec": "散装",
+        "unit": "kg",
+        "unitPrice": 4.35,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybds00014awup2gbbhttz",
+        "projectId": "prj_hz",
+        "projectName": "杭州园区食堂",
+        "supplierId": "sup_hz",
+        "supplierName": "杭州绿源蔬菜配送有限公司",
+        "ingredientId": "ing_td",
+        "ingredientName": "土豆",
+        "spec": "散装",
+        "unit": "kg",
+        "unitPrice": 3.2,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybds40015awupf7d540i4",
+        "projectId": "prj_hz",
+        "projectName": "杭州园区食堂",
+        "supplierId": "sup_ly",
+        "supplierName": "华东粮油供应链有限公司",
+        "ingredientId": "ing_dm",
+        "ingredientName": "大米",
+        "spec": "25kg/袋",
+        "unit": "袋",
+        "unitPrice": 119,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybds60016awupfpln6z8k",
+        "projectId": "prj_hz",
+        "projectName": "杭州园区食堂",
+        "supplierId": "sup_js",
+        "supplierName": "江苏丰味食品有限公司",
+        "ingredientId": "ing_zwr",
+        "ingredientName": "猪五花肉",
+        "spec": "冷鲜",
+        "unit": "kg",
+        "unitPrice": 24.8,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybds80017awupfuxbnrbe",
+        "projectId": "prj_sz",
+        "projectName": "苏州工厂食堂",
+        "supplierId": "sup_js",
+        "supplierName": "江苏丰味食品有限公司",
+        "ingredientId": "ing_zwr",
+        "ingredientName": "猪五花肉",
+        "spec": "冷鲜",
+        "unit": "kg",
+        "unitPrice": 24.5,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdsa0018awupq3mquz9n",
+        "projectId": "prj_sz",
+        "projectName": "苏州工厂食堂",
+        "supplierId": "sup_js",
+        "supplierName": "江苏丰味食品有限公司",
+        "ingredientId": "ing_jxr",
+        "ingredientName": "鸡胸肉",
+        "spec": "冷鲜",
+        "unit": "kg",
+        "unitPrice": 16.8,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdsc0019awuptwt7ill8",
+        "projectId": "prj_sz",
+        "projectName": "苏州工厂食堂",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ingredientId": "ing_qc",
+        "ingredientName": "青菜",
+        "spec": "散装",
+        "unit": "kg",
+        "unitPrice": 4.25,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdsd001aawupzl1zf20f",
+        "projectId": "prj_nj",
+        "projectName": "南京项目点",
+        "supplierId": "sup_nj",
+        "supplierName": "南京每日鲜肉业有限公司",
+        "ingredientId": "ing_zwr",
+        "ingredientName": "猪五花肉",
+        "spec": "冷鲜",
+        "unit": "kg",
+        "unitPrice": 25.2,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdsf001bawuppcw5kka2",
+        "projectId": "prj_nj",
+        "projectName": "南京项目点",
+        "supplierId": "sup_nj",
+        "supplierName": "南京每日鲜肉业有限公司",
+        "ingredientId": "ing_jxr",
+        "ingredientName": "鸡胸肉",
+        "spec": "冷鲜",
+        "unit": "kg",
+        "unitPrice": 17.1,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdsh001cawup6lr8uqw5",
+        "projectId": "prj_nj",
+        "projectName": "南京项目点",
+        "supplierId": "sup_nj",
+        "supplierName": "南京每日鲜肉业有限公司",
+        "ingredientId": "ing_ly",
+        "ingredientName": "鲈鱼",
+        "spec": "鲜活",
+        "unit": "kg",
+        "unitPrice": 32,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybdsi001dawup320ui8aa",
+        "projectId": "prj_nj",
+        "projectName": "南京项目点",
+        "supplierId": "sup_sh",
+        "supplierName": "上海鲜禾农副产品有限公司",
+        "ingredientId": "ing_qc",
+        "ingredientName": "青菜",
+        "spec": "散装",
+        "unit": "kg",
+        "unitPrice": 4.3,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-31T15:59:59.000Z"
+      },
+      {
+        "id": "cmvqybho4007sawupdls54w1o",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "cmvqybhnx007qawuphunqpf03",
+        "supplierName": "验收Excel供应商",
+        "ingredientId": "cmvqybhnz007rawupdapaeeab",
+        "ingredientName": "验收Excel材料",
+        "spec": "散装",
+        "unit": "kg",
+        "unitPrice": 8.5,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": "2026-12-30T16:00:00.000Z"
+      },
+      {
+        "id": "cmvqybhzo0087awup5m0tipr7",
+        "projectId": "prj_sh",
+        "projectName": "上海总部食堂",
+        "supplierId": "cmvqybhzg0084awupfo88n427",
+        "supplierName": "验收规格供应商",
+        "ingredientId": "cmvqybhzk0086awupl5ehc78h",
+        "ingredientName": "验收同名材料",
+        "spec": "规格B",
+        "unit": "kg",
+        "unitPrice": 8.5,
+        "startsOn": "2025-12-31T16:00:00.000Z",
+        "endsOn": null
+      }
+    ],
+    "system": {
+      "ocrMode": "mock",
+      "confidenceThreshold": 0.9,
+      "wechatConfigured": false,
+      "storageDriver": "local",
+      "thresholds": {
+        "crossPriceTolerance": 0.1,
+        "historyPriceTolerance": 0.1,
+        "quantityOutlierMultiplier": 2,
+        "minBenchmarkSamples": 3
+      }
+    }
+  }
+}

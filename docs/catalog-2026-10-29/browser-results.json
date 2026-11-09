@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "checks": [
+    "390px: six fields visible in two columns without horizontal scrolling",
+    "cancel keeps current matched material",
+    "entire catalog paginates beyond recommended candidates; switching retains numbers and OCR confidence",
+    "delayed old search cannot overwrite latest query or results",
+    "quantity recalculation, name/unit unlinking, clear/rematch and save/refresh work",
+    "desktop: three columns and original-image panel retained",
+    "approved document stays read-only until withdrawal",
+    "contract page split; settings contains existing project and employee functions",
+    "mobile More navigation; referenced-unit restriction, scoped contracts/history and metadata editing",
+    "alias search and separate unit creation default spec to unit",
+    "finance cannot edit and cannot enter admin settings"
+  ],
+  "pageErrors": []
+}

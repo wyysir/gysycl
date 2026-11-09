@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-30T17:24:24.750Z",
+  "scope": "local evaluation report only; no application code or deployment",
+  "samples": 26,
+  "visibleRows": 155,
+  "realResponseEvidenceCounts": {
+    "current": 26,
+    "candidate": 26,
+    "native-auto": 26,
+    "native-kie": 26,
+    "native-kie-simple": 26,
+    "server-ocr": 26,
+    "production-replay": 26
+  },
+  "originalFileHashesUnchanged": 26,
+  "derivedImagesLoaded": 26,
+  "reportBrowser": {
+    "engine": "Microsoft Edge / Playwright",
+    "desktop": "1440x1000",
+    "mobile": "390x844",
+    "filterCounts": {
+      "all": 26,
+      "printed": 11,
+      "handwritten": 15
+    },
+    "defaultCandidate": "native-kie-simple",
+    "sample25DifferenceCells": 4,
+    "invalidJsonView": true,
+    "mobileBodyOverflow": false,
+    "consoleErrors": []
+  },
+  "reportSha256": "73c46c86e959e93ce0ff381a9baf48e580512bd90e7362eaeead6ae34524b52c",
+  "productionWrites": 0,
+  "deployed": false
+}

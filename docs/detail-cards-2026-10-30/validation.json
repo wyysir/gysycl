@@ -1,0 +1,18 @@
+{
+  "values": "kg\n40\n4.8\n192.00",
+  "mobileWidths": [
+    320,
+    390,
+    430
+  ],
+  "desktopWidth": 1440,
+  "deliveryDateAndSupplierVisible": true,
+  "collapsedFourValues": true,
+  "directActions": true,
+  "newNameDialog": true,
+  "deleteRow": true,
+  "noHorizontalOverflow": true,
+  "pageErrors": [],
+  "isolatedDemo": true,
+  "deployed": false
+}

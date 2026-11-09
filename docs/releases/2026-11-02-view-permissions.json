@@ -1,0 +1,135 @@
+{
+  "date": "2026-11-02",
+  "tag": "release/2026-11-02-view-permissions",
+  "status": "DEPLOYED_TO_TRIAL_VERIFIED",
+  "environment": "TEST_DEMO_NOT_FORMAL_PRODUCTION",
+  "features": [
+    "四项独立查看权限，服务端、附件、统计、历史和Excel一致限制",
+    "隐藏金额编辑保留原值",
+    "供应商单字候选在等待与后台刷新后保留"
+  ],
+  "migration": {
+    "status": "NO_SCHEMA_CHANGE_NO_PENDING_MIGRATIONS",
+    "appliedMigrationCount": 4,
+    "newMigrationCount": 0,
+    "newPermissionKeys": "使用现有CustomRole.permissions JSON；旧自定义角色缺少新键时默认不授权；内置角色保留原查看范围",
+    "log": "/opt/delivery-audit/releases/view-permissions-20261102/migration.log"
+  },
+  "localChecks": {
+    "testFiles": 20,
+    "tests": 176,
+    "testsStatus": "PASS",
+    "browserWidths": [
+      390,
+      1440
+    ],
+    "browserErrors": 0,
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "permissionScenarios": 6
+  },
+  "deployment": "服务器构建、健康检查、Web/Worker镜像核对及公网只读验证通过",
+  "paidOcrCalls": 0,
+  "gitRemote": "LOCAL_GIT_ONLY",
+  "sourceCommit": "260e26ee39794dceeab483107b53a06333421155",
+  "sourceArchiveSha256": "d757e36282284fd9b67175483e5975ba4db87d71f59d83e3f9be023253dfe497",
+  "tagTarget": "归档提交由Git标签查询；sourceCommit为实际部署源码，后续文档提交不代表镜像重建",
+  "deploymentStartedAt": "2026-11-02T01:20:07+08:00",
+  "deploymentCompletedAt": "2026-11-02T01:22:15+08:00",
+  "verifiedAt": "2026-11-02T01:23:30+08:00",
+  "image": "sha256:c9f228aeafc02b1786a4bf3ad525a1cf5169fb8b4f4e2535a7fbb3eadae7ff8c",
+  "imageTag": "delivery-audit:view-permissions-20261102",
+  "appAndWorkerImageIdentical": true,
+  "previousImage": "sha256:53eea125d7780bad4444b9c607ece6b054dad913b30215cecd679c3fedd2412e",
+  "previousImageTag": "delivery-audit:before-view-permissions-20261102",
+  "dependencyImage": "sha256:1aa4e3a38d3ebd8a978b94e90a056cf36dc942f7455b94129dc2b8f255fb1546",
+  "sourceArchive": "/opt/delivery-audit/releases/view-permissions-20261102.tar.gz",
+  "sourceBefore": "/opt/delivery-audit/releases/view-permissions-20261102/source-before.tar.gz",
+  "deploymentLog": "/opt/delivery-audit/releases/view-permissions-20261102-deploy.log",
+  "backupPath": "/opt/delivery-audit/backups/20261102-012007",
+  "backupChecksums": {
+    "database.sql.gz": "4a40a5635a30d4b3c76de5bd92b682edcf2cf46bf022140fe57a4da352c0e424",
+    "uploads.tar.gz": "0ccc64b716fcfc148a33b1542653f7f2c27538d559c991f9f6d98a71c850c0e9"
+  },
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "configuration": "保留私有环境配置、模型、存储及Nginx配置，未运行初始化或数据导入",
+  "dataPreservation": {
+    "status": "IDENTICAL_BEFORE_AFTER_AND_AFTER_BROWSER_CHECK",
+    "comparison": "19张业务表全部行全部字段，包括CustomRole与完整ProjectMembership；独立核对图片文件摘要",
+    "counts": {
+      "ApprovalRecord": 31,
+      "AuditLog": 296,
+      "CheckResult": 191,
+      "Contract": 150,
+      "CustomRole": 0,
+      "Document": 34,
+      "DocumentItem": 191,
+      "DocumentPage": 5,
+      "ImportBatch": 0,
+      "Ingredient": 72,
+      "IngredientAlias": 7,
+      "Notification": 1,
+      "Project": 7,
+      "ProjectMembership": 1,
+      "Supplier": 19,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "d759eaf4cf921e883b04da4987075efb7bf1abf13e0f73dfd67c06d16b93e10f",
+    "uploadFiles": 10,
+    "uploadSha256": "6315266b35bb8d28dde70a1b79a9b82c8c98b190d493df2c7f8c9c7587678173",
+    "fingerprintScript": "/opt/delivery-audit/releases/view-permissions-fingerprint.py"
+  },
+  "liveChecks": {
+    "serverProductionBuild": "PASS",
+    "ocrQueueBeforeAndAfter": {
+      "active": 0,
+      "waiting": 0
+    },
+    "browser": {
+      "health": "PASS",
+      "roleCheckboxes": 24,
+      "viewOptions": 4,
+      "supplierSingleCharacter": "stable for 4.5s",
+      "emptyManualDraft": true,
+      "viewport": [
+        390,
+        844
+      ],
+      "horizontalOverflow": false,
+      "errors": [],
+      "changesSaved": false
+    },
+    "restrictedProductionServices": {
+      "status": "PASS",
+      "method": "在部署容器对现有数据使用合成的项目受限授权进行只读服务校验；未创建或修改账号/角色，真实会话权限矩阵在本地API测试覆盖",
+      "surfaces": [
+        "list",
+        "detail",
+        "images hidden in detail",
+        "audit",
+        "dashboard",
+        "analytics",
+        "contracts",
+        "history",
+        "Excel generation",
+        "other-document denial"
+      ]
+    },
+    "privateProbeSessionsRemoved": true
+  },
+  "rollback": {
+    "runtime": "上一镜像不识别四项查看限制，受限自定义角色可能获得旧版本完整查看能力；有自定义角色授权时部署脚本阻止自动回退，必须先隔离账号，优先前向修复",
+    "database": "本次无结构变更，不回滚数据；整库恢复需独立依据和授权，不能自动恢复备份覆盖业务修改"
+  },
+  "limitations": [
+    "浏览器手机宽度模拟，不等同用户真机验收",
+    "以前已经查看或下载的数据无法远程收回",
+    "未调用收费模型，不声称重新验证模型识别速度或准确率"
+  ],
+  "evidenceLocation": "截图、临时检查脚本及原始诊断在本地忽略目录和服务器私有发布目录，备份不进入Git"
+}

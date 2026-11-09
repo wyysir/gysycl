@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 880">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#405048" flood-opacity=".13"/>
+    </filter>
+    <pattern id="paper" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M0 24h24M0 0v24" fill="none" stroke="#d9d3c4" stroke-width=".4" opacity=".28"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="880" fill="#ebe7dc"/>
+  <g filter="url(#shadow)">
+    <rect x="60" y="38" width="560" height="800" rx="3" fill="#fffdf7"/>
+    <rect x="60" y="38" width="560" height="800" fill="url(#paper)"/>
+  </g>
+  <text x="340" y="88" text-anchor="middle" font-family="KaiTi, STKaiti, serif" font-size="30" font-weight="700" fill="#283b52" letter-spacing="5">鲜禾农副产品送货单</text>
+  <text x="340" y="115" text-anchor="middle" font-family="KaiTi, STKaiti, serif" font-size="13" fill="#6f716d" letter-spacing="3">FRESH FOOD DELIVERY NOTE</text>
+  <g font-family="KaiTi, STKaiti, serif" font-size="17" fill="#283b52" transform="rotate(-1.2 340 145)">
+    <text x="88" y="151">客户：上海总部食堂</text>
+    <text x="397" y="151">日期：2026年10月12日</text>
+    <text x="88" y="181">地址：上海市浦东新区</text>
+    <text x="397" y="181">单号：XH20261012001</text>
+  </g>
+  <g stroke="#35516e" stroke-width="1.5" fill="none">
+    <path d="M84 202h512v388H84z"/>
+    <path d="M84 240h512M84 448h512M84 510h512M84 570h512"/>
+    <path d="M130 202v388M352 202v388M422 202v388M500 202v388"/>
+  </g>
+  <g font-family="KaiTi, STKaiti, serif" fill="#324b66" font-size="17" text-anchor="middle">
+    <text x="107" y="227">序号</text>
+    <text x="241" y="227">品名 / 规格</text>
+    <text x="387" y="227">数量</text>
+    <text x="461" y="227">单价</text>
+    <text x="538" y="227">金额</text>
+  </g>
+  <g font-family="KaiTi, STKaiti, serif" font-size="20" fill="#203f70" transform="rotate(-1 300 300)">
+    <text x="99" y="290">1</text>
+    <text x="165" y="292">青菜 散装</text>
+    <text x="384" y="292">50</text>
+    <text x="462" y="292">4.2</text>
+    <text x="511" y="292">210.00</text>
+    <text x="99" y="357">2</text>
+    <text x="165" y="359">土豆 散装</text>
+    <text x="384" y="359">80</text>
+    <text x="462" y="359">3.1</text>
+    <text x="511" y="359">248.00</text>
+    <text x="99" y="423">3</text>
+    <text x="165" y="425">—</text>
+    <text x="384" y="425">—</text>
+    <text x="462" y="425">—</text>
+    <text x="511" y="425">—</text>
+  </g>
+  <g font-family="KaiTi, STKaiti, serif" font-size="18" fill="#283b52" transform="rotate(-.8 340 480)">
+    <text x="90" y="480">合计金额（大写）：肆佰伍拾捌元整</text>
+    <text x="458" y="480">¥ 458.00</text>
+    <text x="90" y="538">备注：当日验收正常，无破损。</text>
+    <text x="90" y="598">送货人：王师傅</text>
+    <text x="350" y="598">收货人：李小明</text>
+  </g>
+  <g stroke="#5c6a7c" stroke-width="1">
+    <path d="M88 642h260M380 642h200"/>
+    <path d="M88 684h150M270 684h170M470 684h110"/>
+  </g>
+  <text x="88" y="669" font-family="KaiTi, STKaiti, serif" font-size="13" fill="#87867e">供应商盖章</text>
+  <text x="270" y="711" font-family="KaiTi, STKaiti, serif" font-size="13" fill="#87867e">收货签字</text>
+  <text x="470" y="711" font-family="KaiTi, STKaiti, serif" font-size="13" fill="#87867e">财务复核</text>
+  <circle cx="535" cy="655" r="44" fill="none" stroke="#c14f44" stroke-width="4" opacity=".55" transform="rotate(-14 535 655)"/>
+  <text x="535" y="650" text-anchor="middle" font-family="KaiTi, serif" font-size="12" fill="#c14f44" opacity=".65">上海鲜禾</text>
+  <text x="535" y="668" text-anchor="middle" font-family="KaiTi, serif" font-size="10" fill="#c14f44" opacity=".65">配送专用章</text>
+</svg>

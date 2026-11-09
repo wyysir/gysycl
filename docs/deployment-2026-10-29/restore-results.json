@@ -1,0 +1,27 @@
+{
+  "backup": "/opt/delivery-audit/backups/20261029-010637",
+  "isolatedDatabase": "delivery_restore_check_20261029",
+  "counts": {
+    "Document": {
+      "source": 2,
+      "restored": 2
+    },
+    "DocumentPage": {
+      "source": 2,
+      "restored": 2
+    },
+    "DocumentItem": {
+      "source": 4,
+      "restored": 4
+    },
+    "ApprovalRecord": {
+      "source": 4,
+      "restored": 4
+    },
+    "AuditLog": {
+      "source": 22,
+      "restored": 22
+    }
+  },
+  "matched": true
+}

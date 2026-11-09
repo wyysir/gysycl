@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-29",
+  "tag": "release/2026-10-29-ocr-pages",
+  "sourceCommit": "32a28b366ad7007094b72a63179cff62b7d23e30",
+  "sourceCommitNote": "标签对应发布留档提交；业务代码与 sourceCommit 一致，后续只补充上线和恢复证据，Git 查询标签可得最终提交号。",
+  "deploymentVerifiedAt": "2026-10-29T12:47:26.247Z",
+  "recoveryVerifiedAt": "2026-10-29T12:52:40.771Z",
+  "image": "sha256:b0473ed0759cda34d273a07f4a4565cee285d2701442bcc97996ae95fdcdb2be",
+  "previousImage": "sha256:eb57b3ca4b93849f2be17115e7a694677e6519709fe61f286e26313ab3ff63e4",
+  "previousImageTag": "delivery-audit:before-ocr-pages-20261029",
+  "sourceArchive": "/opt/delivery-audit/releases/ocr-pages-20261029.tar.gz",
+  "sourceArchiveSha256": "64cf7de4563820a62e9cb4ba36ee984c4141667c254cb0494e6499b43c6a9ba5",
+  "sourceBefore": "/opt/delivery-audit/releases/ocr-pages-20261029/source-before.tar.gz",
+  "backup": "/opt/delivery-audit/backups/20261029-204536",
+  "localBackup": ".data/server-backups/20261029-204536",
+  "backupBeforeHashes": {
+    "SHA256SUMS": "aa9bc5875071cf7c577e1fc6200fcdcd9d3f64c022a6140cce77f897043e34cf",
+    "database.sql.gz": "7f887f306258822626ce9dbaa62a9c362b3871383060ce0ea4ce89097e084f03",
+    "uploads.tar.gz": "ef158e6cd6755735ddbfc7806d8812988d35027b975932e041cd0bdc60f5f399"
+  },
+  "postRecoveryBackup": "/opt/delivery-audit/backups/20261029-205241",
+  "localPostRecoveryBackup": ".data/server-backups/20261029-205241",
+  "postRecoveryBackupHashes": {
+    "SHA256SUMS": "fd5aa4b3acd5c1e865c06808b7ac3072050db8b9f290ddd082436a266376658d",
+    "database.sql.gz": "565c08b3d60b55659f25140f5f968c3feeffaa683b6d998ef7e59742d02468c1",
+    "uploads.tar.gz": "86a27e77ac2b427997e6be84b9c3303e8e82f24728c608df73532a1082d461ea"
+  },
+  "backupCopyHashesMatch": true,
+  "postRecoveryBackupReadable": true,
+  "appliedMigrations": ["0001_init", "0002_ingredient_maintenance"],
+  "finalQueueCounts": {"active":0,"completed":13,"delayed":0,"failed":1,"waiting":0},
+  "finalQueueNote": "保留初次部署历史失败任务1条；本轮两笔重试已完成，当前无活动、排队或延迟任务。",
+  "migration": "NONE; existing 0001_init and 0002_ingredient_maintenance retained",
+  "databaseChange": "不新增表/列；页来源写现有 rawOcr/审计。部署本身未改账目；之后经授权识别更新两笔空草稿。",
+  "features": [
+    "同供应商逐页识别并合并明细，跨日期按所选日期归档，各页原信息保留",
+    "空结果/缺页不再误报成功，保留原图及已有明细",
+    "识别警告可见，历史空草稿停止无结果轮询",
+    "语义失败不自动重复三次付费，传输故障沿用队列重试",
+    "人工保存保留服务端来源页"
+  ],
+  "checks": {
+    "unitTests": 97,
+    "isolatedBrowserChecks": 6,
+    "preRecoveryLiveReadOnlyChecks": 5,
+    "postRecoveryLiveReadOnlyChecks": 4,
+    "typecheck": "PASS",
+    "build": "PASS"
+  },
+  "paidRecovery": {
+    "userAuthorized": true,
+    "documents": 2,
+    "pages": 10,
+    "itemsPerDraft": 20,
+    "sourcePageCounts": [
+      2,
+      1,
+      10,
+      4,
+      3
+    ],
+    "sameImagesDuplicated": true,
+    "originalImagesPreserved": true,
+    "remainsDraft": true,
+    "automaticApproval": false,
+    "fullAccuracyAccepted": false
+  },
+  "records": [
+    "docs/ocr-pages-2026-10-29/validation-summary.json",
+    "docs/ocr-pages-2026-10-29/data-preservation.json",
+    "docs/ocr-pages-2026-10-29/recovery-results.json",
+    "docs/ocr-pages-2026-10-29/recovered-browser-results.json"
+  ],
+  "limitations": [
+    "两笔是重复上传，先选择一笔核对；重复记录处理未确认前普通审核仍受重复图片异常约束",
+    "合并总价暂为0且部分单位/品名待人工核对",
+    "已通过五页单据未重跑，需按原撤回流程检查漏页；上传后删除尚未提供，回收站仅为建议",
+    "公众号接入仍待域名/备案；持续自动异机备份未配置"
+  ],
+  "rollback": "同步切回保留旧Web/Worker镜像，不恢复旧业务库覆盖授权恢复及后续录入；现有JSON字段对旧版无需回滚迁移。若需恢复业务数据，先独立备份当前数据再单独评估。"
+}

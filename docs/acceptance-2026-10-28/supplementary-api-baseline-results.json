@@ -1,0 +1,45 @@
+{
+  "summary": {
+    "total": 6,
+    "passed": 1,
+    "failed": 5
+  },
+  "results": [
+    {
+      "name": "统计越权403及非法日期400",
+      "status": "FAIL",
+      "error": "{\"status\":500,\"headers\":{},\"data\":{\"error\":\"服务器内部错误\"}}\n\n500 !== 403\n"
+    },
+    {
+      "name": "合同非法截止日期和超大单价返回400",
+      "status": "FAIL",
+      "error": "{\"status\":201,\"headers\":{},\"data\":{\"id\":\"cmvqy5t1p00bt80uprccgk6fr\"}}\n\n201 !== 400\n"
+    },
+    {
+      "name": "多字节上传签名返回403",
+      "status": "FAIL",
+      "error": "Unexpected end of JSON input"
+    },
+    {
+      "name": "禁止引用其他项目原图来绕过图片权限",
+      "status": "FAIL",
+      "error": "{\"status\":201,\"headers\":{},\"data\":{\"id\":\"cmvqy5t3200by80upu7dwtolz\",\"status\":\"PROCESSING\",\"queue\":\"inline\"}}\n\n201 !== 403\n"
+    },
+    {
+      "name": "单据超大数值返回400且保留原数据",
+      "status": "FAIL",
+      "error": "{\"status\":500,\"headers\":{},\"data\":{\"error\":\"服务器内部错误\"}}\n\n500 !== 400\n"
+    },
+    {
+      "name": "撤回权限、必填原因、并发一次生效及审计",
+      "status": "PASS",
+      "evidence": {
+        "id": "cmvqxz59j003780uplg4o97a0",
+        "statuses": [
+          200,
+          409
+        ]
+      }
+    }
+  ]
+}

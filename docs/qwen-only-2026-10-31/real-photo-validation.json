@@ -1,0 +1,141 @@
+{
+  "checkedAt": "2026-10-31T05:50:36.475Z",
+  "model": "qwen3.6-flash",
+  "traditionalOcrRequestsInNewPipeline": 0,
+  "replay": {
+    "description": "首次提取回放此前真实响应，仅校读为本轮真实请求；不能计作完整识别正确率",
+    "samples": 26,
+    "rows": 155,
+    "numericFields": 464,
+    "numericCorrect": 464,
+    "printedUnits": 112,
+    "printedUnitsCorrectBefore": 107,
+    "printedUnitsCorrectAfter": 110,
+    "handwrittenUnits": 34,
+    "handwrittenUnitsCorrectBefore": 31,
+    "handwrittenUnitsCorrectAfter": 34,
+    "remainingUnitErrors": [
+      {
+        "sample": "S21",
+        "line": 12,
+        "expected": "斤",
+        "actual": "箱"
+      },
+      {
+        "sample": "S21",
+        "line": 14,
+        "expected": "箱",
+        "actual": "斤"
+      }
+    ]
+  },
+  "endToEnd": {
+    "description": "最终管线重新真实调用，部分遭遇欠费403；保留全部尝试，不选择性剔除",
+    "attempted": 26,
+    "extractionReturned": 13,
+    "primaryFailed": 13,
+    "reviewCompleted": 9,
+    "reviewFailed": 4,
+    "rows": 54,
+    "numericFields": 162,
+    "numericCorrect": 155,
+    "failedSamples": [
+      {
+        "sample": "S10",
+        "status": 403
+      },
+      {
+        "sample": "S11",
+        "status": 403
+      },
+      {
+        "sample": "S12",
+        "status": 403
+      },
+      {
+        "sample": "S13",
+        "status": 403
+      },
+      {
+        "sample": "S15",
+        "status": 403
+      },
+      {
+        "sample": "S18",
+        "status": 403
+      },
+      {
+        "sample": "S19",
+        "status": 403
+      },
+      {
+        "sample": "S20",
+        "status": 403
+      },
+      {
+        "sample": "S22",
+        "status": 403
+      },
+      {
+        "sample": "S23",
+        "status": 403
+      },
+      {
+        "sample": "S24",
+        "status": 403
+      },
+      {
+        "sample": "S25",
+        "status": 403
+      },
+      {
+        "sample": "S26",
+        "status": 403
+      }
+    ],
+    "numericDisagreements": [
+      {
+        "sample": "S03",
+        "line": 1,
+        "field": "quantity"
+      },
+      {
+        "sample": "S03",
+        "line": 1,
+        "field": "unitPrice"
+      },
+      {
+        "sample": "S16",
+        "line": 1,
+        "field": "quantity"
+      },
+      {
+        "sample": "S16",
+        "line": 2,
+        "field": "quantity"
+      },
+      {
+        "sample": "S16",
+        "line": 4,
+        "field": "quantity"
+      },
+      {
+        "sample": "S16",
+        "line": 4,
+        "field": "unitPrice"
+      },
+      {
+        "sample": "S16",
+        "line": 4,
+        "field": "amount"
+      }
+    ]
+  },
+  "cloudAccess": {
+    "serverProbes": 3,
+    "status": 403,
+    "errorCode": "AccessDenied.Unpurchased",
+    "userConfirmedCause": "欠费",
+    "postDeploymentRecognitionAcceptance": "PENDING_ACCOUNT_RECOVERY"
+  }
+}

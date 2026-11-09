@@ -1,0 +1,137 @@
+{
+  "checkedAt": "2026-10-29T07:48:52.570878+00:00",
+  "readOnly": true,
+  "deploymentPerformed": false,
+  "paidOcrCalled": false,
+  "containers": [
+    {
+      "name": "delivery-app-1",
+      "image": "sha256:eb57b3ca4b93849f2be17115e7a694677e6519709fe61f286e26313ab3ff63e4",
+      "state": "running",
+      "health": "healthy",
+      "restartCount": 0
+    },
+    {
+      "name": "delivery-worker-1",
+      "image": "sha256:eb57b3ca4b93849f2be17115e7a694677e6519709fe61f286e26313ab3ff63e4",
+      "state": "running",
+      "health": null,
+      "restartCount": 0
+    },
+    {
+      "name": "delivery-postgres-1",
+      "image": "sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b",
+      "state": "running",
+      "health": "healthy",
+      "restartCount": 0
+    },
+    {
+      "name": "delivery-redis-1",
+      "image": "sha256:6ba19c50b56777f5c11c58eff8ddb69d0d5f27ba131cffb63f180ccfd43c66af",
+      "state": "running",
+      "health": "healthy",
+      "restartCount": 0
+    }
+  ],
+  "health": {
+    "ok": true,
+    "database": "up",
+    "time": "2026-10-29T07:48:52.626Z"
+  },
+  "migrations": [
+    "0001_init",
+    "0002_ingredient_maintenance"
+  ],
+  "shian-backup": {
+    "Result": "success",
+    "ExecMainExitTimestamp": "Thu 2026-10-29 02:31:14 CST",
+    "ExecMainStatus": "0"
+  },
+  "shian-certbot-renew": {
+    "Result": "success",
+    "ExecMainExitTimestamp": "Thu 2026-10-29 12:25:08 CST",
+    "ExecMainStatus": "0"
+  },
+  "timers": "NEXT                        LEFT LAST                              PASSED UNIT                      ACTIVATES\nFri 2026-10-30 00:26:34 CST   8h Thu 2026-10-29 12:25:06 CST 3h 23min ago shian-certbot-renew.timer shian-certbot-renew.service\nFri 2026-10-30 02:39:00 CST  10h Thu 2026-10-29 02:31:14 CST      13h ago shian-backup.timer        shian-backup.service\n\n2 timers listed.\nPass --all to see loaded but inactive timers, too.",
+  "certificate": "notBefore=Oct 28 14:54:48 2026 GMT\nnotAfter=Nov  4 06:54:47 2026 GMT",
+  "backups": [
+    {
+      "name": "20261029-023114",
+      "files": [
+        {
+          "name": "SHA256SUMS",
+          "bytes": 163,
+          "sha256": "233632db5f34de2f61b8f128c0869861ac50e2fd334e2a8267c55861e4ce2415"
+        },
+        {
+          "name": "database.sql.gz",
+          "bytes": 7733,
+          "sha256": "c9fa35ea93547f1e2f165297351d5371a5c555d4abbd5a98b1aebdb70823b1df"
+        },
+        {
+          "name": "uploads.tar.gz",
+          "bytes": 536343,
+          "sha256": "3830f1ad7140a7944b17581d44f77599fde8cf88b898cb79e0590b95d4318e6c"
+        }
+      ],
+      "integrity": "database.sql.gz: OK\nuploads.tar.gz: OK"
+    },
+    {
+      "name": "20261029-141559",
+      "files": [
+        {
+          "name": "SHA256SUMS",
+          "bytes": 163,
+          "sha256": "5972e922157c4ccfc7f1b4986492b0b99be4395084cb5928d53a1066b00529a4"
+        },
+        {
+          "name": "database.sql.gz",
+          "bytes": 16570,
+          "sha256": "d1b2f52065fb7d46c3e50b29c54ba86177f6e11524ad587704b4a51884865d65"
+        },
+        {
+          "name": "uploads.tar.gz",
+          "bytes": 14401956,
+          "sha256": "3d92df1ecacfa8bf6a46a317ec993077ac6bff1ef4dc40d32f78d205520beec4"
+        }
+      ],
+      "integrity": "database.sql.gz: OK\nuploads.tar.gz: OK"
+    }
+  ],
+  "sourceArchiveSha256": "60fb02f87168c75567e5546151940e3fc2a3530e7686cdd47e9280b50cb81b35",
+  "disk": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/vda3        99G   12G   83G  13% /",
+  "localBackupHashesMatch": true,
+  "knowledge": {
+    "projectId": "kb-8ff06090660a4125a7ee8a59eb5261dd",
+    "formalRevision": "ef0bf0fd4ecf9d94ff5404dee207f90b835f70aef916c2d116a34cbb37d15153",
+    "proposalId": "pr-30c1c2fd6e63485ca0282f0dc579e556",
+    "proposalRevision": "8a1a7873a0d5ed64370d8aa7be09e63f0f013fb564a6ff206709717c8e270b1f",
+    "proposalStatus": "pending"
+  },
+  "limits": [
+    "未重新调用收费OCR或创建/修改业务单据",
+    "未重复全量自动化/API回归、未执行恢复测试",
+    "Worker仅检查运行状态与镜像，不据此确认新OCR任务处理结果",
+    "基础资料真实性及5–10张真单核对仍需用户继续完成"
+  ],
+  "browser": {
+    "status": "PASS",
+    "base": "https://42.121.106.105",
+    "readOnly": true,
+    "checks": [
+      "真实HTTPS与现有管理员登录通过",
+      "线上新材料接口与新增字段正常",
+      "手机材料页、资料/合同/采购历史页签正常，无横向溢出",
+      "更多菜单和系统设置两个页签正常",
+      "旧合同地址保留，项目员工已迁出",
+      "现有真实单据卡片手机/电脑检查，打开搜索后取消，未保存修改"
+    ],
+    "materialCount": 12,
+    "documentCount": 8,
+    "mobileGeometry": {
+      "width": 390,
+      "scroll": 390
+    },
+    "pageErrors": []
+  }
+}

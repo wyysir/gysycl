@@ -1,0 +1,50 @@
+{
+  "status": "DEPLOYED_AND_VERIFIED",
+  "date": "2026-10-30",
+  "unitTests": 128,
+  "ingredientTests": 16,
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "browser": {
+    "status": "PASS",
+    "checkedAt": "2026-10-30T08:12:33.989Z",
+    "checks": [
+      "电脑编辑已引用材料的规格和单位，保存并刷新后保留自定义规格",
+      "390px手机布局可编辑、保存并刷新规格和单位，无整页横向溢出",
+      "修改材料后，关联合同、已通过采购历史及单据快照保持一致",
+      "接口接收规格字段，并拒绝超过100字的规格且不修改版本",
+      "新增材料默认规格随单位填写，手动填写的规格保存后不被单位覆盖"
+    ],
+    "pageErrors": [],
+    "paidOcrCalls": 0,
+    "environment": "Isolated local mock only"
+  },
+  "databaseMigration": "NONE",
+  "productionBusinessWrites": 0,
+  "isolatedSource": ".tmp/ingredient-edit-20261030",
+  "limitations": [
+    "Mobile viewport simulation does not replace actual Android/iPhone/WeChat tests",
+    "Production save operations were verified only in isolated mock tests; live checks made no business writes"
+  ],
+  "serverBuild": "PASS",
+  "live": {
+    "status": "PASS",
+    "checkedAt": "2026-10-30T12:30:37.815Z",
+    "checks": [
+      "公网HTTPS、管理员登录和数据库健康正常，未忽略证书错误",
+      "企业Logo版本1及原图摘要保持不变",
+      "电脑端已引用材料的规格和单位可编辑，保存入口可用",
+      "390px手机布局可编辑两项，自定义规格不被单位覆盖，无整页横向溢出",
+      "检查未保存任何业务修改，材料版本、关联合同和采购历史均保持原值"
+    ],
+    "pageErrors": [],
+    "businessMutationRequests": 0,
+    "blockedUnexpectedMutationAttempts": [],
+    "paidOcrCalls": 0,
+    "logoVersion": 1,
+    "logoSha256": "adc79814f1bc0fd06c725fc3f4224810da0adc92bf6cd466f772bce96bde2817",
+    "httpsCertificateErrorsIgnored": false,
+    "limitation": "Production verification is read-only; save/refresh and validation writes were verified in the isolated mock environment."
+  },
+  "sourceCommit": "34f0b7d955d98af835eff0930b8b4cbbc2263b0d"
+}

@@ -1,0 +1,40 @@
+{
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "统计越权403及非法日期400",
+      "status": "PASS"
+    },
+    {
+      "name": "合同非法截止日期和超大单价返回400",
+      "status": "PASS"
+    },
+    {
+      "name": "多字节上传签名返回403",
+      "status": "PASS"
+    },
+    {
+      "name": "禁止引用其他项目原图来绕过图片权限",
+      "status": "PASS"
+    },
+    {
+      "name": "单据超大数值返回400且保留原数据",
+      "status": "PASS"
+    },
+    {
+      "name": "撤回权限、必填原因、并发一次生效及审计",
+      "status": "PASS",
+      "evidence": {
+        "id": "cmvt58vqm0010j0upf3k84ewk",
+        "statuses": [
+          200,
+          409
+        ]
+      }
+    }
+  ]
+}

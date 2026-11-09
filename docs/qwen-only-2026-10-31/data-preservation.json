@@ -1,0 +1,92 @@
+{
+  "before": {
+    "counts": {
+      "ApprovalRecord": 17,
+      "AuditLog": 191,
+      "CheckResult": 196,
+      "Contract": 0,
+      "Document": 14,
+      "DocumentItem": 79,
+      "DocumentPage": 20,
+      "ImportBatch": 0,
+      "Ingredient": 40,
+      "IngredientAlias": 4,
+      "Notification": 23,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 4,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "8cdbb82bc194bd19b197959b783c3d901df35e1524936b86eb4bb6b74c8171df",
+    "uploadFiles": 40,
+    "uploadSha256": "5111e5e997d15fa73d1ba4398da55aa7e1de7b66d0fb2ec41b36feeb67ccccce"
+  },
+  "afterExistingFields": {
+    "counts": {
+      "ApprovalRecord": 17,
+      "AuditLog": 191,
+      "CheckResult": 196,
+      "Contract": 0,
+      "Document": 14,
+      "DocumentItem": 79,
+      "DocumentPage": 20,
+      "ImportBatch": 0,
+      "Ingredient": 40,
+      "IngredientAlias": 4,
+      "Notification": 23,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 4,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "8cdbb82bc194bd19b197959b783c3d901df35e1524936b86eb4bb6b74c8171df",
+    "uploadFiles": 40,
+    "uploadSha256": "5111e5e997d15fa73d1ba4398da55aa7e1de7b66d0fb2ec41b36feeb67ccccce"
+  },
+  "fullBefore": {
+    "counts": {
+      "items": 79,
+      "pages": 20,
+      "audits": 192,
+      "aliases": 4,
+      "approvals": 17,
+      "contracts": 0,
+      "documents": 14,
+      "ingredients": 40
+    },
+    "sha256": "92739f00c260eb62680b590dae74b0c7b887743aefd3e800070096166a0333ff",
+    "uploadFiles": 40,
+    "uploadSha256": "5111e5e997d15fa73d1ba4398da55aa7e1de7b66d0fb2ec41b36feeb67ccccce"
+  },
+  "fullAfterExistingFields": {
+    "counts": {
+      "items": 79,
+      "pages": 20,
+      "audits": 192,
+      "aliases": 4,
+      "approvals": 17,
+      "contracts": 0,
+      "documents": 14,
+      "ingredients": 40
+    },
+    "sha256": "92739f00c260eb62680b590dae74b0c7b887743aefd3e800070096166a0333ff",
+    "uploadFiles": 40,
+    "uploadSha256": "5111e5e997d15fa73d1ba4398da55aa7e1de7b66d0fb2ec41b36feeb67ccccce"
+  },
+  "schema": {
+    "columnExists": true,
+    "existingRows": 79,
+    "confirmedRows": 0
+  },
+  "existingFieldsIdentical": true,
+  "imagesIdentical": true,
+  "newColumnAllNull": true,
+  "noBusinessMutationInBrowser": true,
+  "rawFingerprintDifferenceExplanation": "New nullable roundingAdjustment column changes row JSON; compared every pre-existing field separately and asserted all new values NULL"
+}

@@ -1,0 +1,618 @@
+Browser tab: 1, Title: "食安链 · 送货单识别与比价", URL: "http://localhost:3107/master".
+1 AXWebArea 食安链 · 送货单识别与比价, URL: localhost:3107/master
+	2 container
+		3 text 食
+		4 text 食安链
+		5 text 10/22
+		6 link Description: 新建单据, Value: localhost:3107/upload
+		7 heading 合同主数据, Value: 1
+			8 text 合同主数据
+		9 text 合同价按项目点、供应商、原材料、规格、单位独立维护；跨项目比价走另一套基准。 18  条合同价
+		10 link Description: 下载导入模板, Value: localhost:3107/api/master-data/template
+		11 heading 新增项目合同价, Value: 2
+			12 text 新增项目合同价
+		13 text 同一组合可按不同生效日期保留多条价格
+		14 container
+			15 text 项目点
+			16 pop up button (collapsed, settable) Value: 验收测试项目, Secondary Actions: Expand
+				17 menu
+					18 (selected) 验收测试项目
+					19 杭州园区食堂
+					20 南京项目点
+					21 上海总部食堂
+					22 苏州工厂食堂
+			23 text 供应商
+			24 pop up button (collapsed, settable) Value: 上海鲜禾农副产品有限公司, Secondary Actions: Expand
+				25 menu
+					26 (selected) 上海鲜禾农副产品有限公司
+					27 华东粮油供应链有限公司
+					28 南京每日鲜肉业有限公司
+					29 杭州绿源蔬菜配送有限公司
+					30 江苏丰味食品有限公司
+					31 验收Excel供应商
+					32 验收绕过已审批供应商
+					33 验收规格供应商
+			34 text 原材料
+			35 pop up button (collapsed, settable) Value: 验收Excel材料 · 散装, Secondary Actions: Expand
+				36 menu
+					37 (selected) 验收Excel材料 · 散装
+					38 验收同名材料 · 规格B
+					39 验收同名材料 · 规格A
+					40 验收材料 · 散装
+					41 鲈鱼 · 鲜活
+					42 大米 · 25kg/袋
+					43 面粉 · 25kg/袋
+					44 食用油 · 5L/桶
+					45 猪五花肉 · 冷鲜
+					46 鸡胸肉 · 冷鲜
+					47 土豆 · 散装
+					48 西红柿 · 散装
+					49 青菜 · 散装
+					50 鸡蛋 · 散装
+					51 生姜 · 散装
+					52 豆腐 · 散装
+			53 text 单价（元 /  kg ）
+			54 stepper (settable)
+			55 text 生效日期
+			56 date field (settable) 2026-01-01
+				57 container
+					58 stepper
+					59 stepper
+					60 stepper
+				61 pop up button 显示日期选择器
+			62 text 截止日期
+			63 date field (settable) 2026-12-31
+				64 container
+					65 stepper
+					66 stepper
+					67 stepper
+				68 pop up button 显示日期选择器
+			69 button 保存
+		70 container
+			71 heading Excel 批量导入, Value: 2
+				72 text Excel 批量导入
+			73 text 供应商、原材料、项目合同价三张工作表；先校验后写入
+			74 button 选择文件
+			75 button (disabled) 校验文件
+			76 button (disabled) 确认导入
+		77 container
+			78 heading 合并重复主数据, Value: 2
+				79 text 合并重复主数据
+			80 text 源记录会转为目标记录的别名，历史单据引用同步更新 类型
+			81 pop up button (collapsed, settable) Value: 原材料, Secondary Actions: Expand
+				82 menu
+					83 (selected) 原材料
+					84 供应商
+			85 text 源记录（将被删除）
+			86 pop up button (collapsed, settable) Value: 请选择, Secondary Actions: Expand
+				87 menu
+					88 (selected) 请选择
+					89 验收Excel材料
+					90 验收同名材料
+					91 验收同名材料
+					92 验收材料
+					93 鲈鱼
+					94 大米
+					95 面粉
+					96 食用油
+					97 猪五花肉
+					98 鸡胸肉
+					99 土豆
+					100 西红柿
+					101 青菜
+					102 鸡蛋
+					103 生姜
+					104 豆腐
+			105 text 目标记录（保留）
+			106 pop up button (collapsed, settable) Value: 请选择, Secondary Actions: Expand
+				107 menu
+					108 (selected) 请选择
+					109 验收Excel材料
+					110 验收同名材料
+					111 验收同名材料
+					112 验收材料
+					113 鲈鱼
+					114 大米
+					115 面粉
+					116 食用油
+					117 猪五花肉
+					118 鸡胸肉
+					119 土豆
+					120 西红柿
+					121 青菜
+					122 鸡蛋
+					123 生姜
+					124 豆腐
+			125 button 执行合并
+		126 container
+			127 heading 项目点, Value: 2
+				128 text 项目点
+			129 text 先建项目点，再维护成员和合同价
+			130 text field (settable)
+			131 text field (settable)
+			132 text field (settable)
+			133 button 新增
+			134 text 验收测试项目 ACCEPT 杭州园区食堂 HZ-PARK 南京项目点 NJ-PROJECT 上海总部食堂 SH-HQ 苏州工厂食堂 SZ-FACTORY
+		135 container
+			136 heading 员工与权限, Value: 2
+				137 text 员工与权限
+			138 text 项目采购和主管必须先建账号，首次微信进入时绑定
+			139 text 员工号
+			140 text field (settable)
+			141 text 姓名
+			142 text field (settable)
+			143 text 初始密码
+			144 text field (settable)
+			145 text 系统角色
+			146 pop up button (collapsed, settable) Value: 项目员工, Secondary Actions: Expand
+				147 menu
+					148 (selected) 项目员工
+					149 财务只读
+					150 管理员
+			151 text 项目角色
+			152 pop up button (collapsed, settable) Value: 项目采购（上传单据）, Secondary Actions: Expand
+				153 menu
+					154 (selected) 项目采购（上传单据）
+					155 项目主管（审核单据）
+			156 text 负责项目点
+			157 checkbox (settable, integer) Description: 验收测试项目, Value: 0
+			158 checkbox (settable, integer) Description: 杭州园区食堂, Value: 0
+			159 checkbox (settable, integer) Description: 南京项目点, Value: 0
+			160 checkbox (settable, integer) Description: 上海总部食堂, Value: 0
+			161 checkbox (settable, integer) Description: 苏州工厂食堂, Value: 0
+			162 button 创建员工
+		163 heading 员工账号列表, Value: 2
+			164 text 员工账号列表
+		165 text 停用后立即失去登录和接口权限
+		166 table
+			167 row
+				168 cell
+					169 text 员工号 / 姓名
+				170 cell
+					171 text 系统角色
+				172 cell
+					173 text 项目权限
+				174 cell
+					175 text 微信
+				176 cell
+					177 text 状态
+				178 cell
+					179 text 操作
+			180 row
+				181 cell
+					182 text 验收上海主管
+					183 text accept_super
+				184 cell
+					185 text 项目员工
+				186 cell
+					187 text 上海总部食堂(主管)
+				188 cell
+					189 text 未绑定
+				190 cell
+					191 text 启用
+				192 cell
+					193 button 重置密码
+					194 button 停用
+			195 row
+				196 cell
+					197 text 系统管理员
+					198 text admin
+				199 cell
+					200 text 管理员
+				201 cell
+					202 text 全公司
+				203 cell
+					204 text 未绑定
+				205 cell
+					206 text 启用
+				207 cell
+					208 button 重置密码
+					209 button 停用
+			210 row
+				211 cell
+					212 text 财务主管
+					213 text finance
+				214 cell
+					215 text 财务只读
+				216 cell
+					217 text 全公司
+				218 cell
+					219 text 未绑定
+				220 cell
+					221 text 启用
+				222 cell
+					223 button 重置密码
+					224 button 停用
+			225 row
+				226 cell
+					227 text 杭州采购员
+					228 text site_hz
+				229 cell
+					230 text 项目员工
+				231 cell
+					232 text 杭州园区食堂(采购)
+				233 cell
+					234 text 未绑定
+				235 cell
+					236 text 启用
+				237 cell
+					238 button 重置密码
+					239 button 停用
+			240 row
+				241 cell
+					242 text 上海采购员
+					243 text site_sh
+				244 cell
+					245 text 项目员工
+				246 cell
+					247 text 上海总部食堂(采购)
+				248 cell
+					249 text 未绑定
+				250 cell
+					251 text 启用
+				252 cell
+					253 button 重置密码
+					254 button 停用
+			255 row
+				256 cell
+					257 text 华东项目主管
+					258 text supervisor
+				259 cell
+					260 text 项目员工
+				261 cell
+					262 text 上海总部食堂(主管)、杭州园区食堂(主管)、苏州工厂食堂(主管)、南京项目点(主管)
+				263 cell
+					264 text 未绑定
+				265 cell
+					266 text 启用
+				267 cell
+					268 button 重置密码
+					269 button 停用
+			270 row
+				271 cell
+					272 text 验收员工
+					273 text accept_user
+				274 cell
+					275 text 项目员工
+				276 cell
+					277 text 验收测试项目(采购)
+				278 cell
+					279 text 未绑定
+				280 cell
+					281 text 停用
+				282 cell
+					283 button 重置密码
+					284 button 启用
+		285 heading 价格清单, Value: 2
+			286 text 价格清单
+		287 text 合同价独立于跨供应商市场比价，项目点之间不会自动套用
+		288 table
+			289 row
+				290 cell
+					291 text 项目点
+				292 cell
+					293 text 供应商
+				294 cell
+					295 text 原材料
+				296 cell
+					297 text 规格 / 单位
+				298 cell
+					299 text 合同单价
+				300 cell
+					301 text 生效日期
+				302 cell
+					303 text 截止日期
+			304 row
+				305 cell
+					306 text 上海总部食堂
+				307 cell
+					308 text 上海鲜禾农副产品有限公司
+				309 cell
+					310 text 青菜
+				311 cell
+					312 text 散装  /  kg
+				313 cell
+					314 text ¥ 4.20
+				315 cell
+					316 text 2026/01/01
+				317 cell
+					318 text 2026/12/31
+				319 cell
+					320 button 删除合同价
+			321 row
+				322 cell
+					323 text 上海总部食堂
+				324 cell
+					325 text 上海鲜禾农副产品有限公司
+				326 cell
+					327 text 土豆
+				328 cell
+					329 text 散装  /  kg
+				330 cell
+					331 text ¥ 3.10
+				332 cell
+					333 text 2026/01/01
+				334 cell
+					335 text 2026/12/31
+				336 cell
+					337 button 删除合同价
+			338 row
+				339 cell
+					340 text 上海总部食堂
+				341 cell
+					342 text 上海鲜禾农副产品有限公司
+				343 cell
+					344 text 西红柿
+				345 cell
+					346 text 散装  /  kg
+				347 cell
+					348 text ¥ 5.80
+				349 cell
+					350 text 2026/01/01
+				351 cell
+					352 text 2026/12/31
+				353 cell
+					354 button 删除合同价
+			355 row
+				356 cell
+					357 text 上海总部食堂
+				358 cell
+					359 text 华东粮油供应链有限公司
+				360 cell
+					361 text 大米
+				362 cell
+					363 text 25kg/袋  /  袋
+				364 cell
+					365 text ¥ 118.00
+				366 cell
+					367 text 2026/01/01
+				368 cell
+					369 text 2026/12/31
+				370 cell
+					371 button 删除合同价
+			372 row
+				373 cell
+					374 text 上海总部食堂
+				375 cell
+					376 text 华东粮油供应链有限公司
+				377 cell
+					378 text 食用油
+				379 cell
+					380 text 5L/桶  /  桶
+				381 cell
+					382 text ¥ 68.00
+				383 cell
+					384 text 2026/01/01
+				385 cell
+					386 text 2026/12/31
+				387 cell
+					388 button 删除合同价
+			389 row
+				390 cell
+					391 text 杭州园区食堂
+				392 cell
+					393 text 杭州绿源蔬菜配送有限公司
+				394 cell
+					395 text 青菜
+				396 cell
+					397 text 散装  /  kg
+				398 cell
+					399 text ¥ 4.35
+				400 cell
+					401 text 2026/01/01
+				402 cell
+					403 text 2026/12/31
+				404 cell
+					405 button 删除合同价
+			406 row
+				407 cell
+					408 text 杭州园区食堂
+				409 cell
+					410 text 杭州绿源蔬菜配送有限公司
+				411 cell
+					412 text 土豆
+				413 cell
+					414 text 散装  /  kg
+				415 cell
+					416 text ¥ 3.20
+				417 cell
+					418 text 2026/01/01
+				419 cell
+					420 text 2026/12/31
+				421 cell
+					422 button 删除合同价
+			423 row
+				424 cell
+					425 text 杭州园区食堂
+				426 cell
+					427 text 华东粮油供应链有限公司
+				428 cell
+					429 text 大米
+				430 cell
+					431 text 25kg/袋  /  袋
+				432 cell
+					433 text ¥ 119.00
+				434 cell
+					435 text 2026/01/01
+				436 cell
+					437 text 2026/12/31
+				438 cell
+					439 button 删除合同价
+			440 row
+				441 cell
+					442 text 杭州园区食堂
+				443 cell
+					444 text 江苏丰味食品有限公司
+				445 cell
+					446 text 猪五花肉
+				447 cell
+					448 text 冷鲜  /  kg
+				449 cell
+					450 text ¥ 24.80
+				451 cell
+					452 text 2026/01/01
+				453 cell
+					454 text 2026/12/31
+				455 cell
+					456 button 删除合同价
+			457 row
+				458 cell
+					459 text 苏州工厂食堂
+				460 cell
+					461 text 江苏丰味食品有限公司
+				462 cell
+					463 text 猪五花肉
+				464 cell
+					465 text 冷鲜  /  kg
+				466 cell
+					467 text ¥ 24.50
+				468 cell
+					469 text 2026/01/01
+				470 cell
+					471 text 2026/12/31
+				472 cell
+					473 button 删除合同价
+			474 row
+				475 cell
+					476 text 苏州工厂食堂
+				477 cell
+					478 text 江苏丰味食品有限公司
+				479 cell
+					480 text 鸡胸肉
+				481 cell
+					482 text 冷鲜  /  kg
+				483 cell
+					484 text ¥ 16.80
+				485 cell
+					486 text 2026/01/01
+				487 cell
+					488 text 2026/12/31
+				489 cell
+					490 button 删除合同价
+			491 row
+				492 cell
+					493 text 苏州工厂食堂
+				494 cell
+					495 text 上海鲜禾农副产品有限公司
+				496 cell
+					497 text 青菜
+				498 cell
+					499 text 散装  /  kg
+				500 cell
+					501 text ¥ 4.25
+				502 cell
+					503 text 2026/01/01
+				504 cell
+					505 text 2026/12/31
+				506 cell
+					507 button 删除合同价
+			508 row
+				509 cell
+					510 text 南京项目点
+				511 cell
+					512 text 南京每日鲜肉业有限公司
+				513 cell
+					514 text 猪五花肉
+				515 cell
+					516 text 冷鲜  /  kg
+				517 cell
+					518 text ¥ 25.20
+				519 cell
+					520 text 2026/01/01
+				521 cell
+					522 text 2026/12/31
+				523 cell
+					524 button 删除合同价
+			525 row
+				526 cell
+					527 text 南京项目点
+				528 cell
+					529 text 南京每日鲜肉业有限公司
+				530 cell
+					531 text 鸡胸肉
+				532 cell
+					533 text 冷鲜  /  kg
+				534 cell
+					535 text ¥ 17.10
+				536 cell
+					537 text 2026/01/01
+				538 cell
+					539 text 2026/12/31
+				540 cell
+					541 button 删除合同价
+			542 row
+				543 cell
+					544 text 南京项目点
+				545 cell
+					546 text 南京每日鲜肉业有限公司
+				547 cell
+					548 text 鲈鱼
+				549 cell
+					550 text 鲜活  /  kg
+				551 cell
+					552 text ¥ 32.00
+				553 cell
+					554 text 2026/01/01
+				555 cell
+					556 text 2026/12/31
+				557 cell
+					558 button 删除合同价
+			559 row
+				560 cell
+					561 text 南京项目点
+				562 cell
+					563 text 上海鲜禾农副产品有限公司
+				564 cell
+					565 text 青菜
+				566 cell
+					567 text 散装  /  kg
+				568 cell
+					569 text ¥ 4.30
+				570 cell
+					571 text 2026/01/01
+				572 cell
+					573 text 2026/12/31
+				574 cell
+					575 button 删除合同价
+			576 row
+				577 cell
+					578 text 上海总部食堂
+				579 cell
+					580 text 验收Excel供应商
+				581 cell
+					582 text 验收Excel材料
+				583 cell
+					584 text 散装  /  kg
+				585 cell
+					586 text ¥ 8.50
+				587 cell
+					588 text 2026/01/01
+				589 cell
+					590 text 2026/12/31
+				591 cell
+					592 button 删除合同价
+			593 row
+				594 cell
+					595 text 上海总部食堂
+				596 cell
+					597 text 验收规格供应商
+				598 cell
+					599 text 验收同名材料
+				600 cell
+					601 text 规格B  /  kg
+				602 cell
+					603 text ¥ 8.50
+				604 cell
+					605 text 2026/01/01
+				606 cell
+					607 text —
+				608 cell
+					609 button 删除合同价
+	610 container
+		611 link Description: 经营总览, Value: localhost:3107/dashboard
+		612 link Description: 新建单据, Value: localhost:3107/upload
+		613 link Description: 单据中心, Value: localhost:3107/documents
+		614 link Description: 复核中心, Value: localhost:3107/reviews
+		615 link Description: 价格分析, Value: localhost:3107/analytics
+
+The focused UI element is 1 AXWebArea 食安链 · 送货单识别与比价, URL: localhost:3107/master

@@ -1,0 +1,292 @@
+{
+  "date": "2026-11-02",
+  "tag": "release/2026-11-02-revenue-review-project-cards",
+  "status": "DEPLOYED_TO_TRIAL_VERIFIED",
+  "environment": "TEST_DEMO_NOT_FORMAL_PRODUCTION",
+  "sourceCommit": "0f80080b9c8d139a39039b857d6db1486c143cd6",
+  "tagTarget": "归档提交，实际指向由git rev-parse标签查询；镜像源码以sourceCommit为准",
+  "gitRemote": "LOCAL_GIT_ONLY",
+  "features": [
+    "按项目点卡片进入独立经营详情",
+    "营业额提交、通过、退回、修改后重新审核及审计",
+    "仅已审核营业额进入曲线及期间统计",
+    "日期筛选对齐、跨筛选读取当天记录、统一分母",
+    "价格矩阵查询重置页码、清除过时项目和响应"
+  ],
+  "localChecks": {
+    "testFiles": 23,
+    "tests": 189,
+    "status": "PASS",
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "businessAndHeatmapWidths": [
+      375,
+      390,
+      430,
+      1440
+    ],
+    "compactReviewWidths": [
+      375,
+      390,
+      430,
+      1440
+    ],
+    "browserErrors": 0
+  },
+  "liveChecks": {
+    "time": "2026-11-02T08:49:19.003Z",
+    "results": [
+      {
+        "check": "anonymous-protection",
+        "status": "PASS"
+      },
+      {
+        "check": "real-login-logout",
+        "status": "PASS"
+      },
+      {
+        "check": "admin-main-reads-and-xlsx",
+        "status": "PASS",
+        "endpoints": 13
+      },
+      {
+        "check": "real-revenue-permissions-statuses-and-stale-version",
+        "status": "PASS"
+      },
+      {
+        "check": "manual-document-submit-return-ordinary-approve-withdraw-delete",
+        "status": "PASS"
+      },
+      {
+        "check": "real-margin-category-heatmap-and-export",
+        "status": "PASS"
+      },
+      {
+        "check": "public-ui",
+        "width": 375,
+        "status": "PASS",
+        "projectIsolation": true,
+        "datesAligned": true,
+        "persistence": "PASS"
+      },
+      {
+        "check": "public-ui",
+        "width": 390,
+        "status": "PASS",
+        "projectIsolation": true,
+        "datesAligned": true,
+        "persistence": "READ_ONLY"
+      },
+      {
+        "check": "public-ui",
+        "width": 430,
+        "status": "PASS",
+        "projectIsolation": true,
+        "datesAligned": true,
+        "persistence": "READ_ONLY"
+      },
+      {
+        "check": "public-ui",
+        "width": 1440,
+        "status": "PASS",
+        "projectIsolation": true,
+        "datesAligned": true,
+        "persistence": "READ_ONLY"
+      }
+    ],
+    "errors": [],
+    "serverErrors": [],
+    "paidOcrCalls": 0
+  },
+  "finalScreenshots": {
+    "actualProjectCardsAndDetailWidths": [
+      390,
+      1440
+    ],
+    "reviewDialog": "PASS_OPEN_CLOSE_WITHOUT_APPROVING_EXISTING_RECORDS",
+    "localImageSelectRemove": "PASS_NO_UPLOAD_OR_OCR",
+    "existingDemoDocumentEditor": "NO_PENDING_DEMO_SAMPLE_AT_FINAL_CAPTURE; local mock and prior release evidence remain"
+  },
+  "deploymentStartedAt": "2026-11-02T16:41:45+08:00",
+  "deploymentCompletedAt": "2026-11-02T16:43:55+08:00",
+  "verifiedAt": "2026-11-02T16:50:09+08:00",
+  "image": "sha256:aa6a225f8319e87c321291576e10f297db1cf5375bdea6a9b749e95bd0913d9c",
+  "imageTag": "delivery-audit:audit-fixes-20261102",
+  "appAndWorkerImageIdentical": true,
+  "previousImage": "sha256:b02e00dd9f291059c853b78c0647b4b081b54a04db107e841c3d4fb453bb48ae",
+  "previousImageTag": "delivery-audit:before-audit-fixes-20261102",
+  "sourceArchive": "/opt/delivery-audit/releases/audit-fixes-20261102.tar.gz",
+  "sourceArchiveSha256": "a96a9880780d0a87b464e84e41fa0a572719e8a89573461c916f07a9a72b6e41",
+  "sourceBefore": "/opt/delivery-audit/releases/audit-fixes-20261102/source-before.tar.gz",
+  "deploymentLog": "/opt/delivery-audit/releases/audit-fixes-20261102-deploy.log",
+  "migration": {
+    "new": "0006_revenue_review",
+    "appliedCount": 6,
+    "status": "APPLIED",
+    "behavior": "只增审核字段，原营业额默认待审；19表和营业额旧字段及图片指纹迁移前后相同"
+  },
+  "backupBefore": {
+    "path": "/opt/delivery-audit/backups/20261102-164146",
+    "databaseSha256": "b9d50d6be7fceca05686bd6ed73e5b7fc9c4b67c3b09a3e0870751444972216a",
+    "uploadsSha256": "bf985129a9e0f457d41126be27ce3fc5ba4369ef13cdad877a87d5119087e7f4",
+    "checksumsAndCompression": "PASS",
+    "restoreDrill": "NOT_PERFORMED"
+  },
+  "backupAfter": {
+    "path": "/opt/delivery-audit/backups/20261102-165008",
+    "databaseSha256": "ac595392f136edb96d1941d879ad1e2125f6368afd40f98c5aec76c0a7abcda5",
+    "uploadsSha256": "bf985129a9e0f457d41126be27ce3fc5ba4369ef13cdad877a87d5119087e7f4",
+    "checksumsAndCompression": "PASS",
+    "restoreDrill": "NOT_PERFORMED"
+  },
+  "migrationBeforeFingerprint": {
+    "counts": {
+      "ApprovalRecord": 68,
+      "AuditLog": 412,
+      "CheckResult": 553,
+      "Contract": 150,
+      "CustomRole": 0,
+      "Document": 69,
+      "DocumentItem": 542,
+      "DocumentPage": 6,
+      "ImportBatch": 0,
+      "Ingredient": 73,
+      "IngredientAlias": 7,
+      "Notification": 1,
+      "Project": 7,
+      "ProjectDailyRevenue": 36,
+      "ProjectMembership": 1,
+      "Supplier": 19,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "19fcdb2df812020b53f400cf03ffffe4b18004bbd64a10cc85642d0f50f7428f",
+    "uploadFiles": 12,
+    "uploadSha256": "d71ed24715f91255fc4c3bbb3ee6be0cfcc8b151e26fb5c62be7e7349ef8c9aa"
+  },
+  "migrationAfterFingerprint": {
+    "counts": {
+      "ApprovalRecord": 68,
+      "AuditLog": 412,
+      "CheckResult": 553,
+      "Contract": 150,
+      "CustomRole": 0,
+      "Document": 69,
+      "DocumentItem": 542,
+      "DocumentPage": 6,
+      "ImportBatch": 0,
+      "Ingredient": 73,
+      "IngredientAlias": 7,
+      "Notification": 1,
+      "Project": 7,
+      "ProjectDailyRevenue": 36,
+      "ProjectMembership": 1,
+      "Supplier": 19,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "19fcdb2df812020b53f400cf03ffffe4b18004bbd64a10cc85642d0f50f7428f",
+    "uploadFiles": 12,
+    "uploadSha256": "d71ed24715f91255fc4c3bbb3ee6be0cfcc8b151e26fb5c62be7e7349ef8c9aa"
+  },
+  "protectedAfterProbeCleanup": {
+    "status": "IDENTICAL_TO_POST_MIGRATION_BEFORE_PROBES",
+    "scope": "全部19表既有记录及1笔非虚构营业额全部字段、12个图片；仅排除35笔既定虚构样例及新增30条demo.revenue.reviewed审计",
+    "fingerprint": {
+      "counts": {
+        "ApprovalRecord": 68,
+        "AuditLog": 412,
+        "CheckResult": 553,
+        "Contract": 150,
+        "CustomRole": 0,
+        "Document": 69,
+        "DocumentItem": 542,
+        "DocumentPage": 6,
+        "ImportBatch": 0,
+        "Ingredient": 73,
+        "IngredientAlias": 7,
+        "Notification": 1,
+        "Project": 7,
+        "ProjectDailyRevenue": 1,
+        "ProjectMembership": 1,
+        "Supplier": 19,
+        "SupplierAlias": 0,
+        "SystemSetting": 1,
+        "User": 2,
+        "WechatBinding": 0
+      },
+      "sha256": "dc3feb5af92317f2b7166712ad039f97b86929cbb7276e2217aaaee0313efa84",
+      "uploadFiles": 12,
+      "uploadSha256": "d71ed24715f91255fc4c3bbb3ee6be0cfcc8b151e26fb5c62be7e7349ef8c9aa"
+    }
+  },
+  "finalCoreFingerprint": {
+    "counts": {
+      "ApprovalRecord": 68,
+      "AuditLog": 442,
+      "CheckResult": 553,
+      "Contract": 150,
+      "CustomRole": 0,
+      "Document": 69,
+      "DocumentItem": 542,
+      "DocumentPage": 6,
+      "ImportBatch": 0,
+      "Ingredient": 73,
+      "IngredientAlias": 7,
+      "Notification": 1,
+      "Project": 7,
+      "ProjectDailyRevenue": 36,
+      "ProjectMembership": 1,
+      "Supplier": 19,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "e0079adfe865946934c428cac868912468ad02497dea28ed6099b82ef51ed2ab",
+    "uploadFiles": 12,
+    "uploadSha256": "d71ed24715f91255fc4c3bbb3ee6be0cfcc8b151e26fb5c62be7e7349ef8c9aa"
+  },
+  "syntheticDataUpgrade": {
+    "approvedPastExamples": 30,
+    "skippedAlteredPastExamples": 0,
+    "rerunEligible": 0,
+    "pendingDemoExamples": 5,
+    "pendingNonDemoRecords": 1,
+    "statusTotals": {
+      "APPROVED": 30,
+      "PENDING_REVIEW": 6
+    },
+    "deletionsPreserved": true,
+    "probeFixtures": "REMOVED; protected fingerprint matches"
+  },
+  "runtime": {
+    "app": "HEALTHY",
+    "worker": "RUNNING",
+    "postgres": "HEALTHY",
+    "redis": "HEALTHY",
+    "ocrActive": 0,
+    "ocrWaiting": 0
+  },
+  "warnings": [
+    "pg active-query deprecation warning from existing dependency, no functional failure observed; no dependency upgrade in this release",
+    "Local image storage is intentional for current trial; formal OSS deployment remains outside scope"
+  ],
+  "rollback": {
+    "automaticOldImageRollback": "DISABLED",
+    "reason": "旧代码不识别营业额审核，会将待审金额计入统计；须前向修复或先禁用经营入口，不可裸回退旧镜像",
+    "databaseRestore": "独立维护操作，不能覆盖部署后新增业务，未做恢复演练"
+  },
+  "limitations": [
+    "收费OCR未重跑，沿用每图一次qwen3.6-flash配置",
+    "真机输入法/iOS微信、公众号和OSS未实测",
+    "覆盖内未发现新的阻断性问题，不承诺不存在未知缺陷"
+  ],
+  "privateEvidenceDirectory": ".data/audit-fixes-20261102/",
+  "serverEvidenceDirectory": "/opt/delivery-audit/releases/audit-fixes-20261102/",
+  "credentials": "临时验收账号、服务器与本地私有会话文件均已删除；不进Git"
+}

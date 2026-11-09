@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "base": "https://42.121.106.105",
+  "readOnly": true,
+  "checks": [
+    "真实HTTPS与现有管理员登录通过",
+    "线上新材料接口与新增字段正常",
+    "手机材料页、资料/合同/采购历史页签正常，无横向溢出",
+    "更多菜单和系统设置两个页签正常",
+    "旧合同地址保留，项目员工已迁出",
+    "现有真实单据卡片手机/电脑检查，打开搜索后取消，未保存修改"
+  ],
+  "materialCount": 12,
+  "documentCount": 8,
+  "mobileGeometry": {
+    "width": 390,
+    "scroll": 390
+  },
+  "pageErrors": []
+}

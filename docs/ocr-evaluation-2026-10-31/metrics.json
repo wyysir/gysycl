@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-31",
+  "sourceCommit": "d8153f0",
+  "photoCount": 26,
+  "visibleLines": 155,
+  "printedPhotos": 11,
+  "handwrittenPhotos": 15,
+  "duplicatePhotoPair": [
+    "S12",
+    "S23"
+  ],
+  "singleRater": true,
+  "stats": {
+    "current": {
+      "label": "现用 Qwen3.6-Flash",
+      "pages": 26,
+      "valid": 26,
+      "rowCountExact": 26,
+      "printed": {
+        "pages": 11,
+        "lines": 112,
+        "numericCorrect": 336,
+        "numericFields": 336,
+        "unitCorrect": 107,
+        "units": 112,
+        "totalCorrect": 11,
+        "totalSemanticCorrect": 11,
+        "dateCorrect": 11
+      },
+      "hand": {
+        "numericCorrect": 128,
+        "numericFields": 128
+      },
+      "medianMs": 3138,
+      "p95Ms": 7500
+    },
+    "candidate": {
+      "label": "Qwen3.5-OCR · 直接沿用原提示词",
+      "pages": 26,
+      "valid": 16,
+      "rowCountExact": 11,
+      "printed": {
+        "pages": 11,
+        "lines": 112,
+        "numericCorrect": 0,
+        "numericFields": 336,
+        "unitCorrect": 0,
+        "units": 112,
+        "totalCorrect": 2,
+        "totalSemanticCorrect": 2,
+        "dateCorrect": 3
+      },
+      "hand": {
+        "numericCorrect": 11,
+        "numericFields": 128
+      },
+      "medianMs": 3943,
+      "p95Ms": 8546
+    },
+    "native-auto": {
+      "label": "Qwen3.5-OCR · 原生旋转＋简短提示词",
+      "pages": 26,
+      "valid": 26,
+      "rowCountExact": 25,
+      "printed": {
+        "pages": 11,
+        "lines": 112,
+        "numericCorrect": 167,
+        "numericFields": 336,
+        "unitCorrect": 112,
+        "units": 112,
+        "totalCorrect": 11,
+        "totalSemanticCorrect": 11,
+        "dateCorrect": 9
+      },
+      "hand": {
+        "numericCorrect": 45,
+        "numericFields": 128
+      },
+      "medianMs": 5380,
+      "p95Ms": 8323
+    },
+    "native-kie": {
+      "label": "Qwen3.5-OCR · 抽取字段带说明",
+      "pages": 26,
+      "valid": 26,
+      "rowCountExact": 26,
+      "printed": {
+        "pages": 11,
+        "lines": 112,
+        "numericCorrect": 333,
+        "numericFields": 336,
+        "unitCorrect": 111,
+        "units": 112,
+        "totalCorrect": 0,
+        "totalSemanticCorrect": 0,
+        "dateCorrect": 9
+      },
+      "hand": {
+        "numericCorrect": 42,
+        "numericFields": 128
+      },
+      "medianMs": 5817,
+      "p95Ms": 8326
+    },
+    "native-kie-simple": {
+      "label": "Qwen3.5-OCR · 抽取字段简化",
+      "pages": 26,
+      "valid": 26,
+      "rowCountExact": 26,
+      "printed": {
+        "pages": 11,
+        "lines": 112,
+        "numericCorrect": 335,
+        "numericFields": 336,
+        "unitCorrect": 112,
+        "units": 112,
+        "totalCorrect": 6,
+        "totalSemanticCorrect": 10,
+        "dateCorrect": 11
+      },
+      "hand": {
+        "numericCorrect": 28,
+        "numericFields": 128
+      },
+      "medianMs": 5473,
+      "p95Ms": 7695
+    }
+  },
+  "ablation": {
+    "pages": 26,
+    "items": 155,
+    "coreDifferences": 0,
+    "confidenceChanged": 33,
+    "confidenceDeltaSum": 1.220000000000001
+  },
+  "serverOcrSuccess": 26
+}

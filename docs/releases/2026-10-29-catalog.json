@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "tag": "release/2026-10-29-catalog",
+  "status": "deployed-and-verified",
+  "description": "明细卡片、重新匹配、原材料独立维护与系统设置；补齐此前未提交的上线代码与文档",
+  "gitCheckpoint": "上线后补记当前源码快照；未伪造此前部署的独立提交",
+  "verificationRecord": "docs/catalog-2026-10-29/validation-summary.json",
+  "verificationCheckedAt": "2026-10-29T06:23:22.095Z",
+  "checks": { "unit": 85, "api": 54, "browser": 14, "liveReadOnly": 6, "typecheck": "PASS", "build": "PASS" },
+  "image": "sha256:eb57b3ca4b93849f2be17115e7a694677e6519709fe61f286e26313ab3ff63e4",
+  "previousImage": "sha256:f7e62f8abdba66864ea56a5dac9b1406774eb23c3cd368f826f8b183d6891b12",
+  "previousImageTag": "delivery-audit:before-catalog-20261029",
+  "sourceArchive": "/opt/delivery-audit/releases/catalog-20261029.tar.gz",
+  "sourceArchiveSha256": "60fb02f87168c75567e5546151940e3fc2a3530e7686cdd47e9280b50cb81b35",
+  "sourceArchiveNote": "部署时的业务源码包；Git节点另外补齐后续验收、版本管理与交接说明，不宣称整个归档字节与该源包相同",
+  "migration": "0002_ingredient_maintenance",
+  "databaseChange": "仅新增Ingredient.notes和Ingredient.version及默认值",
+  "backup": "/opt/delivery-audit/backups/20261029-141559",
+  "localBackup": ".data/server-backups/20261029-141559",
+  "dataPreservationRecord": "docs/catalog-2026-10-29/data-preservation.json",
+  "rollback": "切回保留的旧应用和Worker镜像；保留新增数据库列。恢复业务数据库需单独评估，避免覆盖后续数据。"
+}

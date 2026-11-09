@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-10-29T13:25:47.209723+00:00",
+  "before": {
+    "counts": {
+      "items": 78,
+      "pages": 24,
+      "audits": 102,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "f21af172384357fdf8c8726e709527c2239ffe02208f997b591ce3b0e44a8252",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "after": {
+    "counts": {
+      "items": 78,
+      "pages": 24,
+      "audits": 102,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "f21af172384357fdf8c8726e709527c2239ffe02208f997b591ce3b0e44a8252",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "afterLiveReadOnly": {
+    "counts": {
+      "items": 78,
+      "pages": 24,
+      "audits": 102,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "f21af172384357fdf8c8726e709527c2239ffe02208f997b591ce3b0e44a8252",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "businessDataUnchanged": true,
+  "originalImageContentsUnchanged": true,
+  "liveDeleteRequests": 0,
+  "paidOcrCalls": 0,
+  "backupCopyHashesMatch": true
+}

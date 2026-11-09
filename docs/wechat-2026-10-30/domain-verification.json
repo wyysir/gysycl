@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-10-30T13:20:12.965Z",
+  "status": "FILE_PLACED_EXTERNAL_ICP_BLOCKED",
+  "domain": "www.dhcy.top",
+  "dns": {
+    "type": "A",
+    "value": "42.121.106.105",
+    "publiclyResolved": true
+  },
+  "publicAccount": {
+    "name": "德亨餐饮",
+    "screenshotShowsEnterpriseWechatCertification": true,
+    "menuProviderConfirmedByUser": "客如云",
+    "userCanAddMenu": true,
+    "oauthDomainDialogAvailable": true,
+    "oauthDomainSaved": false,
+    "templateMessagePermission": "NOT_YET_VERIFIED"
+  },
+  "verificationFile": {
+    "name": "MP_verify_vXQUGqwSrP4cYhM5.txt",
+    "bytes": 16,
+    "sha256": "4a4c21d8f91b0a1777e5b571ab4dee335a866c6e8da534d5e8b4679bc49b0a72",
+    "serverPath": "/var/www/html/MP_verify_vXQUGqwSrP4cYhM5.txt",
+    "existedBefore": false,
+    "mode": "0644",
+    "originalContentCommitted": false
+  },
+  "serverInternalHttp": {
+    "status": 200,
+    "bytes": 16,
+    "sha256MatchesOriginal": true
+  },
+  "externalHttp": {
+    "url": "http://www.dhcy.top/MP_verify_vXQUGqwSrP4cYhM5.txt",
+    "status": 403,
+    "server": "Beaver",
+    "pageTitle": "Non-compliance ICP Filing",
+    "matchesOriginal": false,
+    "note": "阿里云公网备案拦截；服务器本地域名请求200不代表外部访问正常。"
+  },
+  "existingIpHttpsHealth": {
+    "status": 200,
+    "ok": true,
+    "database": "up"
+  },
+  "appAndWorkerImage": "sha256:dc4673a7c984de952c8679fd9100b217eec51b395f3141e0339af7d9f947af99",
+  "domainHttpsConfigured": false,
+  "appUrlChanged": false,
+  "nginxConfigurationChanged": false,
+  "nginxConfigurationCheck": "PASS",
+  "applicationRestarted": false,
+  "databaseMigration": "NONE",
+  "businessDataMutations": 0,
+  "paidOcrCalls": 0,
+  "backupAndRollback": "新增文件前确认目标不存在；未覆盖旧配置或文件，未操作数据库及图片，无需数据库恢复。若撤销本次放置，仅删除verificationFile.serverPath这一新增文件；不得删除其他站点文件或现有第三方授权。",
+  "releaseTag": null,
+  "releaseNote": "仅上传静态校验文件；外部校验未通过，尚未完成域名或公众号上线，不建立成功发布标签。",
+  "nextStep": "等待用户确认ICP备案审核通过；之后复核公网校验文件200及原文，再配置域名HTTPS、网页授权和菜单/绑定登录；模板通知已取消。",
+  "reference": "https://help.aliyun.com/zh/icp-filing/basic-icp-service/support/web-site-suddenly-appeared-for-the-record-to-block-or-hang-and-so-on-and-so-forth",
+  "scopeDecision": {
+    "date": "2026-10-30",
+    "source": "用户最新指示及后台截图；不代表重新执行网络核验",
+    "scope": [
+      "公众号菜单入口",
+      "员工微信绑定/登录"
+    ],
+    "templateNotifications": "CANCELLED_BY_USER",
+    "icpFiling": "PENDING_AUTHORITY_REVIEW_CONFIRMED_BY_USER",
+    "domainConfiguration": "DEFER_UNTIL_ICP_APPROVED",
+    "implementation": "LOCAL_CODE_CHANGED_NOT_DEPLOYED",
+    "templateConsole": "历史模板10个；旧库停止新增；类目库需资质；已停止本系统资质与模板流程，未验证发送API",
+    "existingThirdPartyTemplatesAndAuthorization": "PRESERVED"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-30",
+  "tag": "release/2026-10-30-line-actions",
+  "status": "DEPLOYED_AND_VERIFIED",
+  "sourceCommit": "02a93fd48c3d825e04635d4f9401420a8d21abdd",
+  "tagTarget": "最终发布留档提交，以Git查询",
+  "verifiedAt": "2026-10-30T15:15:49.497Z",
+  "features": [
+    "更换材料、新建品名、删除此行同排",
+    "增加一行移至全部/提醒筛选栏",
+    "移除重复品名规格输入框，新建品名弹窗保留"
+  ],
+  "image": "sha256:f1bc986a9b5d9c7e1db255b85d88d7f4f98ff1966f51173baca26198ab4842aa",
+  "imageTag": "delivery-audit:line-actions-20261030",
+  "previousImage": "sha256:b65fd28eb0741ba940172d9ecf67ef013a056784dbc87ee7263b695825cda440",
+  "previousImageTag": "delivery-audit:before-line-actions-20261030",
+  "sourceArchive": "/opt/delivery-audit/releases/line-actions-20261030.tar.gz",
+  "sourceArchiveSha256": "023bd4a826854c11306f2de9ee6582827e278e2626ac87eecb9a9f3f4f68cb05",
+  "sourceBefore": "/opt/delivery-audit/releases/line-actions-20261030/source-before.tar.gz",
+  "backupPath": "/opt/delivery-audit/backups/20261030-231258",
+  "backupChecksums": "cae8eb3ad0d03f6ebc3a547904f157ee5a9f8801987c24cfcb610785f9ecff38  database.sql.gz\nff202dbee5272256abee79e2f2c66cfde22f17ac89f445f56ef6af4198d2a608  uploads.tar.gz",
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "localFullBackupCopied": false,
+  "migration": "NONE",
+  "migrationsApplied": [
+    "0001_init",
+    "0002_ingredient_maintenance"
+  ],
+  "checks": {
+    "typecheck": "PASS",
+    "localBuild": "PASS",
+    "serverBuild": "PASS",
+    "isolatedBrowser": "PASS",
+    "live": {
+      "status": "PASS",
+      "checkedAt": "2026-10-30T15:15:49.497Z",
+      "checks": [
+        "公网HTTPS与健康检查正常（未忽略证书错误）",
+        "新建单据手工入口可见且可用，未创建测试业务单据",
+        "送货日期、供应商常显，系统单号只读",
+        "手机收起显示四个值，展开直接显示新建品名和删除",
+        "三项操作同排，无重复品名规格输入框，新建品名弹窗正常",
+        "三种手机宽度无横向溢出",
+        "桌面明细展开正常"
+      ],
+      "pageErrors": [],
+      "businessMutationRequests": 0,
+      "paidOcrCalls": 0,
+      "httpsCertificateErrorsIgnored": false
+    }
+  },
+  "dataPreservationRecord": "docs/line-actions-2026-10-30/data-preservation.json",
+  "rollback": "将delivery-audit:before-line-actions-20261030标记为delivery-audit:trial，使用现有compose.trial.yml及私有env更新app和worker，保留数据卷。应用回退恢复原按钮布局；无数据库迁移，无需数据库恢复。数据库恢复需单独评估，不能覆盖上线后新数据。",
+  "gitRemote": "NONE; local Git only"
+}

@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-31",
+  "tag": "release/2026-10-31-qwen-only",
+  "status": "DEPLOYED_FUNCTIONAL_CHECKS_PASS_RECOGNITION_PENDING_ACCOUNT_RECOVERY",
+  "sourceCommit": "513c9e92acb65a835c867106a6ac2944eea39dfc",
+  "tagTarget": "最终发布留档提交，以Git查询；sourceCommit为实际部署源码",
+  "verifiedAt": "2026-10-31T05:55:58.114Z",
+  "features": [
+    "保留Qwen3.6-Flash，移除传统表格OCR调用、依赖声明及生产配置",
+    "同一模型二次校读，表格倾斜校正及局部放大、单位定位校验、单位列空缺提醒",
+    "手写品名分歧候选提醒、明确数量单位后缀拆分",
+    "完整纸上日期原文与标准日期一致才覆盖选择日期",
+    "包含d8153f0单行最多减少0.99元的明确抹零确认"
+  ],
+  "image": "sha256:428759ddbd1c80be41fcc4808f308215b9b842f05a3cad4cd1c328d3a658311b",
+  "imageTag": "delivery-audit:qwen-only-20261031",
+  "previousImage": "sha256:aaaccdbe573fd2633e3541cf534c484626063dada11e8600cb630f9178b954fd",
+  "previousImageTag": "delivery-audit:before-qwen-only-20261031",
+  "sourceArchive": "/opt/delivery-audit/releases/qwen-only-20261031.tar.gz",
+  "sourceArchiveSha256": "69c5558d8477dc56420ed808e199845f3c256d1ec93b13ad5016d1889da71879",
+  "sourceBefore": "/opt/delivery-audit/releases/qwen-only-20261031/source-before.tar.gz",
+  "backupPath": "/opt/delivery-audit/backups/20261031-135222",
+  "backupChecksums": "45fee3063fa5ac7c901147dbcd45f602c6aae902d820153c6087c776d4c1b6a4  database.sql.gz\n0b95b546a2f21e8fe0de0b6a1b1e9d834ad0e414133d00885a157c2e47c3948b  uploads.tar.gz",
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "localFullBackupCopied": false,
+  "migration": "0003_line_rounding: DocumentItem.roundingAdjustment nullable JSONB; 79 existing rows NULL, existing amount and fields unchanged",
+  "migrationsApplied": [
+    "0001_init",
+    "0002_ingredient_maintenance",
+    "0003_line_rounding"
+  ],
+  "checks": {
+    "unitTests": 160,
+    "typecheck": "PASS",
+    "localBuild": "PASS",
+    "isolatedBuild": "PASS",
+    "serverBuild": "PASS",
+    "live": {
+      "status": "PASS",
+      "checkedAt": "2026-10-31T05:55:58.114Z",
+      "checks": [
+        "桌面登录页使用智能单据识别标识",
+        "公网HTTPS、登录与健康检查正常，未忽略证书错误",
+        "右上角五字姓名、反馈入口、反馈读取与提交表单正常",
+        "线上42.2×1.2=50.64、实收50.60可明确确认0.04元抹零并撤销；未保存业务数据",
+        "线上材料库可多选两项并加入页面，四种宽度无横向溢出；未保存业务修改",
+        "真实退回单据删除按钮和确认弹窗正常，仅取消确认，未删除业务单据"
+      ],
+      "returnedVerification": "BUTTON_AND_CONFIRMATION_PASS_NOT_DELETED",
+      "pageErrors": [],
+      "businessMutationRequests": 0,
+      "paidOcrCalls": 0,
+      "httpsCertificateErrorsIgnored": false
+    },
+    "realPhoto": "docs/qwen-only-2026-10-31/real-photo-validation.json",
+    "cloudRecognitionAcceptance": "PENDING; user confirmed account arrears; server 3 consecutive HTTP403 AccessDenied.Unpurchased before deployment"
+  },
+  "dataPreservationRecord": "docs/qwen-only-2026-10-31/data-preservation.json",
+  "dataFingerprintNote": "New nullable roundingAdjustment column changes row JSON; compared every pre-existing field separately and asserted all new values NULL",
+  "configuration": {
+    "retainedModelAndStorageConfig": "UNCHANGED",
+    "obsoleteOcrConfig": "REMOVED",
+    "privateBefore": "/opt/delivery-audit/releases/qwen-only-20261031/config-before.private.env"
+  },
+  "dependencyBuild": "复用已验证的delivery-deps:trial依赖缓存，当前运行时代码不引用传统OCR SDK；依赖声明及锁文件已移除SDK，未清理旧镜像层。",
+  "remainingIssues": [
+    "S21折痕处两行单位仍可能串位，显示单位列核对提醒并降低置信度",
+    "潦草手写品名仍会分歧或重复误读；完整重新提取也有数字波动，必须人工核对",
+    "欠费中不能完成线上真实识别验收；充值后补跑26张和关键异常样本"
+  ],
+  "rollback": "将delivery-audit:before-qwen-only-20261031标记为delivery-audit:trial；从私有config-before.private.env恢复旧环境配置，使用现有compose.trial.yml同步更新app和worker，保留数据库与图片卷。新增可空列和审计保留，不删除已确认抹零记录，不用旧数据库备份覆盖上线后业务。旧版本不认识抹零确认，重新比对可能再次提示金额异常；该应用回退不能解决百炼欠费。",
+  "gitRemote": "NONE; local Git only"
+}

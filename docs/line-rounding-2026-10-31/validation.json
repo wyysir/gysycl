@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "build": "PASS",
+  "tests": 145,
+  "migration": "nullable JSONB; existing amount unchanged (isolated PGlite SQL test)",
+  "browser": {
+    "explicitConfirmSaveReload": true,
+    "revokePersists": true,
+    "numberChangeInvalidates": true,
+    "maxReduction": 0.99,
+    "oneCentRequiresConfirmation": true,
+    "increaseHasNoConfirmation": true,
+    "overLimitHasNoConfirmation": true,
+    "clientCannotSupplyProof": true,
+    "collapsedDesktopNoExtraControl": true,
+    "viewports": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "pageErrors": []
+  },
+  "isolatedDemo": true,
+  "paidCalls": 0,
+  "deployed": false
+}

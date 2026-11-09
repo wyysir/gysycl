@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-29T13:24:23.189Z",
+  "readOnly": true,
+  "deleteRequests": 0,
+  "paidOcrCalled": false,
+  "checks": [
+    "真实HTTPS及现有管理员登录",
+    "手机草稿有整单删除入口，永久删除确认可取消",
+    "误传图片确认显示页码、来源明细及重新核对总价说明，取消不保存或删除",
+    "线上整单与单页DELETE路由已部署，仅OPTIONS验证能力",
+    "1440px电脑确认正常，草稿版本/图片/行数不变，未发DELETE请求",
+    "已通过单据无整单或图片删除入口"
+  ],
+  "pageErrors": []
+}

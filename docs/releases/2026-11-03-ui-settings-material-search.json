@@ -1,0 +1,318 @@
+{
+  "release": "2026-11-03-ui-settings-material-search",
+  "tag": "release/2026-11-03-ui-settings-material-search",
+  "status": "DEPLOYED_TO_TRIAL_VERIFIED",
+  "sourceCommit": "8c3acdef9726e1a0039925ed58d214b2404e9922",
+  "gitScope": "LOCAL_ONLY; tag target must be queried independently",
+  "deploymentCompletedAt": "2026-11-03T01:14:26.093088+08:00",
+  "verifiedAt": "2026-11-03T01:18:28.377854+08:00",
+  "image": "sha256:40a18e6614d4fb1641d2197d9b2608967b2f9d0fe9a286a6739125a6ccab768c",
+  "appAndWorkerImageIdentical": true,
+  "sourceArchive": "/opt/delivery-audit/releases/ui-maintenance-20261103.tar.gz",
+  "sourceArchiveSha256": "22b3b15e3ddfd81a73d7a3afeba36d13d400bceb928072185aa293a111c1c8d6",
+  "features": [
+    "Settings categories open configuration dialogs; nested password dialog",
+    "Admin logical employee deletion preserves audit and history; no self-delete or deleted-number reuse; account update/delete serialized",
+    "Material/raw/matched canonical names and aliases in scoped document search",
+    "Authorized thumbnails, mobile document cards and review image entry/retry",
+    "A palette and B review editor retained; future UI rule in AGENTS.md",
+    "Retired 7 prototype code files after verifying 35-file private archive"
+  ],
+  "database": {
+    "migration": "0007_user_soft_delete",
+    "appliedMigrations": 7,
+    "schemaChange": "Only nullable User.deletedAt added",
+    "fingerprintedBusinessTables": 20,
+    "allExistingFieldsUnchangedExceptAddedNullColumn": true,
+    "localImageFiles": 12,
+    "fingerprintsUnchangedAfterDeployAndTestCleanup": true,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 445,
+      "Contract": 150,
+      "Document": 69,
+      "Supplier": 19,
+      "CustomRole": 0,
+      "Ingredient": 73,
+      "CheckResult": 557,
+      "ImportBatch": 0,
+      "DocumentItem": 545,
+      "DocumentPage": 6,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 7,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    }
+  },
+  "storage": {
+    "driver": "oss",
+    "bucket": "saldhcy-docs-20261102",
+    "region": "oss-cn-hangzhou",
+    "currentReferencedObjects": 11,
+    "bytes": 7582814,
+    "ossAndLocalImagesUnchanged": true
+  },
+  "backupBefore": {
+    "path": "/opt/delivery-audit/backups/20261103-011401",
+    "checksums": {
+      "database.sql.gz": "0a955a716430bedabf9022b3ede391c92eadd087ab043dc1774d253190c5dcea",
+      "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+      "oss-manifest.private.json": "93f87af6652912095c97d38ceae8e8c015bd4b4f054181db70823aa6c7fe8cb2"
+    },
+    "ossSnapshot": {
+      "objects": 11,
+      "bytes": 7582814,
+      "manifestSha256": "93f87af6652912095c97d38ceae8e8c015bd4b4f054181db70823aa6c7fe8cb2"
+    },
+    "databaseAndLocalArchiveReadable": true,
+    "allOssSnapshotFilesHashVerified": true,
+    "offsite": false,
+    "recurring": false,
+    "coversFutureUploads": false,
+    "restoreDrill": "NOT_PERFORMED"
+  },
+  "verification": {
+    "testFiles": 24,
+    "testsPassed": 192,
+    "typecheck": "PASS",
+    "localProductionBuild": "PASS",
+    "serverImageBuild": "PASS",
+    "syntheticSettingsWidths": [
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "syntheticImageFailureRetry": "PASS",
+    "syntheticCompactReviewWidths": [
+      375,
+      390,
+      430,
+      1440
+    ],
+    "publicTrial": {
+      "mode": "PUBLIC_TRIAL_ACTUAL_UI_AND_POSTGRES_API",
+      "results": [
+        {
+          "width": 375,
+          "settingsDialogs": "PASS",
+          "materialSearch": "PASS",
+          "thumbnail": "PASS",
+          "original": "PASS",
+          "zoom": "PASS",
+          "reviewSheet": "PASS",
+          "rootOverflow": false
+        },
+        {
+          "width": 390,
+          "settingsDialogs": "PASS",
+          "materialSearch": "PASS",
+          "thumbnail": "PASS",
+          "original": "PASS",
+          "zoom": "PASS",
+          "reviewSheet": "PASS",
+          "rootOverflow": false
+        },
+        {
+          "width": 430,
+          "settingsDialogs": "PASS",
+          "materialSearch": "PASS",
+          "thumbnail": "PASS",
+          "original": "PASS",
+          "zoom": "PASS",
+          "reviewSheet": "PASS",
+          "rootOverflow": false
+        },
+        {
+          "width": 1440,
+          "settingsDialogs": "PASS",
+          "materialSearch": "PASS",
+          "thumbnail": "PASS",
+          "original": "PASS",
+          "zoom": "PASS",
+          "reviewSheet": "PASS",
+          "rootOverflow": false
+        }
+      ],
+      "temporaryAccountDelete": "PASS",
+      "oldSessionRevoked": "PASS",
+      "reactivationAndEmployeeNoReuseBlocked": "PASS",
+      "selfAndStaffAndForeignOriginProtected": "PASS",
+      "anonymousImage": 401,
+      "staffOtherProjectImage": 403,
+      "realAccountsDeleted": 0,
+      "paidOcrCalls": 0,
+      "errors": [],
+      "serverErrors": []
+    },
+    "publicReadOnlyPageAudit": {
+      "mode": "PUBLIC_READ_ONLY",
+      "results": [
+        {
+          "width": 390,
+          "route": "dashboard",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 390,
+          "route": "upload",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 390,
+          "route": "reviews",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 390,
+          "route": "analytics",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 390,
+          "route": "business",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 390,
+          "route": "ingredients",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 390,
+          "route": "master",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 390,
+          "route": "feedback",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 1440,
+          "route": "dashboard",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 1440,
+          "route": "upload",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 1440,
+          "route": "reviews",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 1440,
+          "route": "analytics",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 1440,
+          "route": "business",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 1440,
+          "route": "ingredients",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 1440,
+          "route": "master",
+          "status": 200,
+          "rootOverflow": false
+        },
+        {
+          "width": 1440,
+          "route": "feedback",
+          "status": 200,
+          "rootOverflow": false
+        }
+      ],
+      "errors": [],
+      "serverErrors": []
+    },
+    "currentReferencedImageApiReadsAndHashes": "PASS_ALL_11",
+    "runtime": {
+      "status": "PASS",
+      "verifiedAt": "2026-11-02T17:18:28.377854+00:00",
+      "containers": [
+        {
+          "name": "delivery-app-1",
+          "image": "sha256:40a18e6614d4fb1641d2197d9b2608967b2f9d0fe9a286a6739125a6ccab768c",
+          "running": true,
+          "health": "healthy",
+          "storage": "oss"
+        },
+        {
+          "name": "delivery-worker-1",
+          "image": "sha256:40a18e6614d4fb1641d2197d9b2608967b2f9d0fe9a286a6739125a6ccab768c",
+          "running": true,
+          "health": "not-configured",
+          "storage": "oss"
+        }
+      ],
+      "health": 200,
+      "redis": "PONG",
+      "ocrQueue": {
+        "active": 0,
+        "wait": 0,
+        "delayed": 0,
+        "prioritized": 0,
+        "waiting-children": 0
+      }
+    },
+    "temporaryAccountCleaned": true,
+    "temporarySessionFilesRemoved": true,
+    "realAccountsDeleted": 0,
+    "paidOcrCalls": 0
+  },
+  "retiredPrototypeArchive": {
+    "localPath": ".data/maintenance/ui-options-20261103.zip",
+    "files": 35,
+    "sha256": "724b4d6164c0ce680bec3e711804c3c51c661db6301974468f1cc2475a6a35b3",
+    "allFilesVerifiedBeforeRemoval": true,
+    "offsite": false
+  },
+  "privateEvidenceDirectory": "/opt/delivery-audit/releases/ui-maintenance-20261103/",
+  "localPrivateEvidenceDirectory": ".data/ui-maintenance-20261103/",
+  "rollback": {
+    "priorImage": "sha256:aa6a225f8319e87c321291576e10f297db1cf5375bdea6a9b749e95bd0913d9c",
+    "priorImageTag": "delivery-audit:before-ui-maintenance-20261103",
+    "sourceBackup": "/opt/delivery-audit/releases/ui-maintenance-20261103/source-before.tar.gz",
+    "rule": "Prefer forward fixes. Preserve OSS and nullable deletion column. Old code does not filter deletedAt and can reactivate deleted accounts; after deletion use do not expose old account management without an account safety plan. Never restore entire old database for a UI rollback or use a pre-revenue-review image."
+  },
+  "recoveredMaintenanceIssue": "First OSS snapshot helper failed before migration/image switch; supplying application dependency resolution path and rerunning produced a complete verified backup. Earlier partial backup 20261103-011314 is not this release backup. Initial live fixture incorrectly assumed built-in employees hide colleagues; actual built-in permissions allow project colleague view. Corrected only temporary membership to another project and verified scope; real roles unchanged.",
+  "imageInvestigationBoundary": "Current draft and 11 current object references readable; persistent OSS outage not reproduced. Stale migration manifest included references later changed by user; no deleted business records restored.",
+  "notVerifiedOrDeferred": [
+    "Physical phone and iOS WeChat keyboard",
+    "Paid OCR accuracy/model changes",
+    "Offsite/recurring backup and restore drill",
+    "Foreign IP/DNS restriction",
+    "Annual automatic deletion or OSS lifecycle",
+    "500G billing offset and full bucket policy audit"
+  ]
+}

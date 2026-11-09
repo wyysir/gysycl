@@ -1,0 +1,10 @@
+{
+  "requests": 100,
+  "concurrency": 10,
+  "p50ms": 58.23,
+  "p95ms": 114.39,
+  "maxms": 131.01,
+  "errors": 0,
+  "documentsBefore": 21,
+  "documentsAfter": 21
+}

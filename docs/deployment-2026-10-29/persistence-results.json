@@ -1,0 +1,18 @@
+{
+  "containerRecreationChecked": true,
+  "approvedDocuments": [
+    {
+      "id": "cmvsbhdmx000224qjjgab67cb",
+      "status": "APPROVED",
+      "rows": 2,
+      "total": 458
+    },
+    {
+      "id": "cmvsd85ce000023o8bmf6wvr2",
+      "status": "APPROVED",
+      "rows": 2,
+      "total": 458
+    }
+  ],
+  "passed": true
+}

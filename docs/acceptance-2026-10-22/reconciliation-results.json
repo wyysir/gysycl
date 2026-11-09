@@ -1,0 +1,37 @@
+{
+  "results": [
+    {
+      "id": "I01",
+      "name": "Excel单据、明细和异常逐行与详情数据勾稽",
+      "status": "PASS",
+      "evidence": {
+        "documents": 22,
+        "items": 40,
+        "checks": 67
+      }
+    },
+    {
+      "id": "I02",
+      "name": "价格分析项目和供应商汇总与已通过单据一致",
+      "status": "PASS",
+      "evidence": {
+        "approved": 9,
+        "total": 7837.5
+      }
+    },
+    {
+      "id": "I03",
+      "name": "规范品名规格单位分组与跨供应商价格矩阵勾稽",
+      "status": "PASS",
+      "evidence": {
+        "groups": 7,
+        "multiSupplierGroups": 2
+      }
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  }
+}

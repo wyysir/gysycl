@@ -1,0 +1,717 @@
+{
+  "status": "DEPLOYED_DEMO_VERIFIED",
+  "releaseTag": "release/2026-11-04-batch-upload",
+  "completedAt": "2026-11-04T12:33:44.640538+00:00",
+  "sourceCommit": "1c3998070b0fd7f01d2f1db82927352ef3c9bf9b",
+  "image": "sha256:314621b7b0c72367c56760a6c1606fb011e77e14175e90b904deda445e2941bd",
+  "archiveSha256": "2ea72285968321facc93108ef2a3981768cc45e1ef09f576e6779d93fc6b36a6",
+  "backup": "/opt/delivery-audit/backups/20261104-203320",
+  "backupChecksums": {
+    "database.sql.gz": "354a67bcef7a7530d9e66ae46ca0319c5e71b60ce3515947b1a8eaa5e1c386da",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "oss-manifest.private.json": "cf21f48a19253ac1de3463ca6c806a51ef2358474c76fb5be77f8330d7855ca1"
+  },
+  "ossSnapshot": {
+    "objects": 11,
+    "bytes": 7446687,
+    "manifestSha256": "cf21f48a19253ac1de3463ca6c806a51ef2358474c76fb5be77f8330d7855ca1"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 20,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 462,
+      "Contract": 150,
+      "Document": 69,
+      "Supplier": 19,
+      "CustomRole": 0,
+      "Ingredient": 79,
+      "CheckResult": 565,
+      "ImportBatch": 0,
+      "DocumentItem": 546,
+      "DocumentPage": 6,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 8,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "8f8473d6783acfae9dc6da3bc925b273c2e9e2732539dedafc1425e7c114d24b",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "migrations": 8,
+  "storage": "oss",
+  "restoreTested": false,
+  "publicUrl": "https://42.121.106.105/upload",
+  "sourceArchive": "/opt/delivery-audit/releases/batch-20261104-v2.tar.gz",
+  "databaseMigration": "0008_upload_batches",
+  "tests": {
+    "files": 26,
+    "passed": 213
+  },
+  "typecheck": "PASS",
+  "builds": {
+    "local": "PASS",
+    "server": "PASS"
+  },
+  "ui": {
+    "mode": "ACTUAL_UI_SYNTHETIC_API",
+    "results": [
+      {
+        "width": 375,
+        "result": "PASS",
+        "assertions": [
+          "ten-documents",
+          "no-overflow",
+          "preserve-amount",
+          "failed-save-retained",
+          "save-next-new-ids",
+          "create-bind-version",
+          "partial-submit",
+          "eleven-rejected",
+          "ten-selected",
+          "remove-photo",
+          "camera-entry"
+        ]
+      },
+      {
+        "width": 390,
+        "result": "PASS",
+        "assertions": [
+          "ten-documents",
+          "no-overflow",
+          "preserve-amount",
+          "failed-save-retained",
+          "save-next-new-ids",
+          "create-bind-version",
+          "partial-submit",
+          "eleven-rejected",
+          "ten-selected",
+          "remove-photo",
+          "camera-entry"
+        ]
+      },
+      {
+        "width": 430,
+        "result": "PASS",
+        "assertions": [
+          "ten-documents",
+          "no-overflow",
+          "preserve-amount",
+          "failed-save-retained",
+          "save-next-new-ids",
+          "create-bind-version",
+          "partial-submit",
+          "eleven-rejected",
+          "ten-selected",
+          "remove-photo",
+          "camera-entry"
+        ]
+      },
+      {
+        "width": 1440,
+        "result": "PASS",
+        "assertions": [
+          "ten-documents",
+          "no-overflow",
+          "preserve-amount",
+          "failed-save-retained",
+          "save-next-new-ids",
+          "create-bind-version",
+          "partial-submit",
+          "eleven-rejected",
+          "ten-selected",
+          "remove-photo",
+          "camera-entry"
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "compression": {
+    "status": "PASS",
+    "maxEdge": 3000,
+    "jpegQuality": 0.91,
+    "triggerBytes": 1258291.2,
+    "neverUpscale": true,
+    "useOnlyWhenSmaller": true,
+    "smallFilePassThrough": true,
+    "results": [
+      {
+        "id": "S01",
+        "inputFormat": "lossless PNG of existing photo",
+        "inputBytes": 4240948,
+        "outputBytes": 522583,
+        "width": 2000,
+        "height": 1506,
+        "savedPercent": 87.68
+      },
+      {
+        "id": "S10",
+        "inputFormat": "lossless PNG of existing photo",
+        "inputBytes": 4018359,
+        "outputBytes": 648536,
+        "width": 2000,
+        "height": 1500,
+        "savedPercent": 83.86
+      }
+    ],
+    "largeImage": {
+      "width": 3000,
+      "height": 2250,
+      "smaller": true
+    },
+    "limit": "Rewrapped existing pictures exercise compression; they are not new phone-camera originals. OCR comparison is a separate server test."
+  },
+  "realServerTest": {
+    "status": "PASS",
+    "mode": "REAL_SERVER_ISOLATED_DATABASE_REAL_OSS_AND_MODEL",
+    "samples": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14"
+    ],
+    "firstSeconds": 5.391,
+    "allSeconds": 25.027,
+    "puts": [
+      {
+        "status": 200,
+        "forbid": "true"
+      },
+      {
+        "status": 200,
+        "forbid": "true",
+        "bytes": 522583
+      },
+      {
+        "status": 200,
+        "forbid": "true"
+      },
+      {
+        "status": 200,
+        "forbid": "true"
+      },
+      {
+        "status": 200,
+        "forbid": "true"
+      },
+      {
+        "status": 200,
+        "forbid": "true",
+        "bytes": 648536
+      },
+      {
+        "status": 200,
+        "forbid": "true"
+      },
+      {
+        "status": 200,
+        "forbid": "true"
+      },
+      {
+        "status": 200,
+        "forbid": "true"
+      },
+      {
+        "status": 200,
+        "forbid": "true"
+      },
+      {
+        "status": 200,
+        "forbid": "true",
+        "bytes": 820984
+      }
+    ],
+    "images": [
+      {
+        "position": 1,
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "position": 2,
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "position": 3,
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "position": 4,
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "position": 5,
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "position": 6,
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "position": 7,
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "position": 8,
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "position": 9,
+        "status": 200,
+        "type": "image/jpeg"
+      },
+      {
+        "position": 10,
+        "status": 200,
+        "type": "image/jpeg"
+      }
+    ],
+    "compressedInputs": [
+      "S01",
+      "S10"
+    ],
+    "stagingReplayStatus": 200,
+    "frozenOriginalUnchanged": true,
+    "duplicateCompletionDidNotReprocess": true,
+    "partialSubmission": [
+      true,
+      false
+    ],
+    "repeatSubmission": [
+      true,
+      true
+    ],
+    "submittedToReview": 2,
+    "automaticallyApproved": 0,
+    "browserErrors": []
+  },
+  "accuracy": {
+    "sampleDocuments": 10,
+    "printed": 5,
+    "handwritten": 5,
+    "rows": 62,
+    "firstSeconds": 5.391,
+    "allSeconds": 25.027,
+    "scores": {
+      "all": {
+        "rowCount": {
+          "correct": 10,
+          "total": 10,
+          "percent": 100
+        },
+        "documentTotal": {
+          "correct": 10,
+          "total": 10,
+          "percent": 100
+        },
+        "sourceDate": {
+          "correct": 7,
+          "total": 7,
+          "percent": 100
+        },
+        "name": {
+          "correct": 56,
+          "total": 59,
+          "percent": 94.92
+        },
+        "quantity": {
+          "correct": 62,
+          "total": 62,
+          "percent": 100
+        },
+        "unitPrice": {
+          "correct": 62,
+          "total": 62,
+          "percent": 100
+        },
+        "amount": {
+          "correct": 62,
+          "total": 62,
+          "percent": 100
+        },
+        "dateFallback": {
+          "correct": 3,
+          "total": 3,
+          "percent": 100
+        },
+        "unit": {
+          "correct": 59,
+          "total": 59,
+          "percent": 100
+        }
+      },
+      "手写": {
+        "rowCount": {
+          "correct": 5,
+          "total": 5,
+          "percent": 100
+        },
+        "documentTotal": {
+          "correct": 5,
+          "total": 5,
+          "percent": 100
+        },
+        "sourceDate": {
+          "correct": 2,
+          "total": 2,
+          "percent": 100
+        },
+        "name": {
+          "correct": 14,
+          "total": 17,
+          "percent": 82.35
+        },
+        "quantity": {
+          "correct": 20,
+          "total": 20,
+          "percent": 100
+        },
+        "unitPrice": {
+          "correct": 20,
+          "total": 20,
+          "percent": 100
+        },
+        "amount": {
+          "correct": 20,
+          "total": 20,
+          "percent": 100
+        },
+        "dateFallback": {
+          "correct": 3,
+          "total": 3,
+          "percent": 100
+        },
+        "unit": {
+          "correct": 17,
+          "total": 17,
+          "percent": 100
+        }
+      },
+      "打印": {
+        "rowCount": {
+          "correct": 5,
+          "total": 5,
+          "percent": 100
+        },
+        "documentTotal": {
+          "correct": 5,
+          "total": 5,
+          "percent": 100
+        },
+        "sourceDate": {
+          "correct": 5,
+          "total": 5,
+          "percent": 100
+        },
+        "name": {
+          "correct": 42,
+          "total": 42,
+          "percent": 100
+        },
+        "unit": {
+          "correct": 42,
+          "total": 42,
+          "percent": 100
+        },
+        "quantity": {
+          "correct": 42,
+          "total": 42,
+          "percent": 100
+        },
+        "unitPrice": {
+          "correct": 42,
+          "total": 42,
+          "percent": 100
+        },
+        "amount": {
+          "correct": 42,
+          "total": 42,
+          "percent": 100
+        }
+      }
+    },
+    "limits": [
+      "Existing ten samples, not independent 100-document acceptance",
+      "Supplier lacks independently annotated truth and was not scored",
+      "Source blank units and ambiguous names excluded; missing unit remains to be confirmed",
+      "Timing includes browser upload and polling through a test tunnel; one batch only"
+    ],
+    "mismatches": [
+      {
+        "id": "S03 row 5",
+        "type": "手写",
+        "field": "name"
+      },
+      {
+        "id": "S03 row 10",
+        "type": "手写",
+        "field": "name"
+      },
+      {
+        "id": "S05 row 3",
+        "type": "手写",
+        "field": "name"
+      }
+    ]
+  },
+  "postDeploymentReadOnly": {
+    "status": "PASS",
+    "mode": "PUBLIC_DEPLOYED_READ_ONLY",
+    "pages": [
+      {
+        "width": 390,
+        "route": "/dashboard",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/upload",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/documents",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/reviews",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/analytics",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/business",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/ingredients",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/master",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/settings",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/feedback",
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "route": "/documents/[existing-document]",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/dashboard",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/upload",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/documents",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/reviews",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/analytics",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/business",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/ingredients",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/master",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/settings",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/feedback",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "route": "/documents/[existing-document]",
+        "status": "PASS"
+      }
+    ],
+    "errors": [],
+    "serverErrors": [],
+    "originalImageReadable": true,
+    "productionBatchCount": 0,
+    "elevenRejected": true,
+    "productionMutations": 0
+  },
+  "postDeploymentServer": {
+    "status": "PASS",
+    "businessAndLocalImagesUnchangedAfterTestCleanup": true,
+    "oss": {
+      "objects": 11,
+      "bytes": 7446687,
+      "manifestSha256": "cf21f48a19253ac1de3463ca6c806a51ef2358474c76fb5be77f8330d7855ca1"
+    },
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 462,
+      "Contract": 150,
+      "Document": 69,
+      "Supplier": 19,
+      "CustomRole": 0,
+      "Ingredient": 79,
+      "CheckResult": 565,
+      "ImportBatch": 0,
+      "DocumentItem": 546,
+      "DocumentPage": 6,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 8,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "containers": [
+      {
+        "name": "/delivery-app-1",
+        "image": "sha256:314621b7b0c72367c56760a6c1606fb011e77e14175e90b904deda445e2941bd",
+        "running": true,
+        "health": "healthy"
+      },
+      {
+        "name": "/delivery-worker-1",
+        "image": "sha256:314621b7b0c72367c56760a6c1606fb011e77e14175e90b904deda445e2941bd",
+        "running": true,
+        "health": null
+      }
+    ],
+    "queue": {
+      "active": 0,
+      "wait": 0,
+      "delayed": 0
+    }
+  },
+  "testCleanup": {
+    "status": "PASS_CURRENT_OBJECTS_HIDDEN",
+    "database": "isolated batch_acceptance",
+    "batches": 1,
+    "documents": [
+      {
+        "status": "DRAFT",
+        "count": 8
+      },
+      {
+        "status": "PENDING_REVIEW",
+        "count": 2
+      }
+    ],
+    "actions": [
+      {
+        "action": "document.checked",
+        "count": 2
+      },
+      {
+        "action": "document.created",
+        "count": 10
+      },
+      {
+        "action": "document.submitted",
+        "count": 2
+      },
+      {
+        "action": "document.updated",
+        "count": 2
+      },
+      {
+        "action": "ocr.completed",
+        "count": 10
+      }
+    ],
+    "testKeys": 20,
+    "existed": 11,
+    "deleted": 11,
+    "missing": 9,
+    "versioned": 11,
+    "versionHistoryRemoved": false,
+    "cleanupScope": "Only keys referenced by the isolated final test batch; version history remains under existing bucket policy"
+  },
+  "runtimeMode": "Existing demo environment; not commercial production acceptance",
+  "gitRemote": "none; local Git only",
+  "rollback": {
+    "previousImage": "sha256:5f5f0e3b39b8137e1325b3d4bc3698703a270655531a1405425cc970b5ff3be0",
+    "previousTag": "delivery-audit:before-batch-20261104-v2",
+    "previousSourceArchive": "/opt/delivery-audit/releases/batch-20261104/source-before.tar.gz",
+    "database": "Keep additive 0008 tables/columns and all new business data. Never restore database merely to roll back UI.",
+    "restriction": "Previous image lacks batch confirmation rules. After batch use, disable writes before any rollback and prefer forward repair."
+  },
+  "notEstablished": [
+    "10-second full-batch target (final image 25.027 sec in one test)",
+    "95% handwritten name accuracy (14/17 in existing samples)",
+    "Supplier accuracy without independent labels",
+    "Android/iPhone WeChat physical-device behavior",
+    "Multi-project peak-load performance",
+    "Backup restore drill or off-server automated backup"
+  ],
+  "references": [
+    "https://help.aliyun.com/zh/oss/developer-reference/putobject",
+    "https://www.alibabacloud.com/help/en/oss/user-guide/upload-files-using-presigned-urls",
+    "https://docs.bullmq.io/guide/workers/concurrency",
+    "https://help.aliyun.com/zh/model-studio/qwen3-6-flash"
+  ]
+}

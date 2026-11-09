@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-30",
+  "bug": "B06",
+  "status": "LOCAL_AND_LIVE_VERIFIED",
+  "environment": "Isolated PGlite demo / localhost:3236 / mock OCR",
+  "tests": {
+    "files": 11,
+    "passed": 125
+  },
+  "typecheck": "PASS",
+  "build": "PASS",
+  "browsers": [
+    {
+      "status": "PASS",
+      "engine": "chromium",
+      "browserVersion": "153.0.4234.32",
+      "checkedAt": "2026-10-29T18:15:01.631Z",
+      "viewport": "390x844, touch/mobile emulation",
+      "checks": [
+        "连续后退并取消：URL、输入、历史长度保持一致",
+        "快速重复后退不叠加弹窗或损坏历史栈",
+        "跨两条站内历史返回可取消并保留原位置",
+        "历史前进重入详情仍恢复未保存内容",
+        "暂存后返回列表，再进入恢复完整备注",
+        "刷新恢复，不依赖 React 内存",
+        "跨文档离开后返回也能从恢复副本找回输入",
+        "保存失败停留原页，数据和恢复副本保留",
+        "存储配额失败拒绝暂存离开，错误可见且原输入仍在",
+        "保存成功后按原目标后退一次并清理副本",
+        "前进导航也保留未保存内容",
+        "明确放弃才清理，保存值不被覆盖",
+        "服务器版本变化显示冲突原文，不覆盖新数据",
+        "手机录入后退与刷新恢复两页原始File、顺序、项目和日期",
+        "恢复原图 SHA-256 字节一致，缩略图正常显示",
+        "独立标签页不混入本页的未上传文件",
+        "上传失败保留两张图片及恢复副本",
+        "切换账号不恢复其他账号的图片",
+        "退出前明确提醒，确认放弃后清理当前账号副本",
+        "上传中暂缓后退，成功后关闭旧弹窗并清理副本，返回不重复提交",
+        "过期副本不恢复且在下次页面访问清理"
+      ],
+      "pageErrors": [],
+      "paidOcrCalls": 0
+    },
+    {
+      "status": "PASS",
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "checkedAt": "2026-10-29T18:14:48.743Z",
+      "viewport": "390x844, touch/mobile emulation",
+      "checks": [
+        "连续后退并取消：URL、输入、历史长度保持一致",
+        "快速重复后退不叠加弹窗或损坏历史栈",
+        "跨两条站内历史返回可取消并保留原位置",
+        "历史前进重入详情仍恢复未保存内容",
+        "暂存后返回列表，再进入恢复完整备注",
+        "刷新恢复，不依赖 React 内存",
+        "跨文档离开后返回也能从恢复副本找回输入",
+        "保存失败停留原页，数据和恢复副本保留",
+        "存储配额失败拒绝暂存离开，错误可见且原输入仍在",
+        "保存成功后按原目标后退一次并清理副本",
+        "前进导航也保留未保存内容",
+        "明确放弃才清理，保存值不被覆盖",
+        "服务器版本变化显示冲突原文，不覆盖新数据",
+        "手机录入后退与刷新恢复两页原始File、顺序、项目和日期",
+        "恢复原图 SHA-256 字节一致，缩略图正常显示",
+        "独立标签页不混入本页的未上传文件",
+        "上传失败保留两张图片及恢复副本",
+        "切换账号不恢复其他账号的图片",
+        "退出前明确提醒，确认放弃后清理当前账号副本",
+        "上传中暂缓后退，成功后关闭旧弹窗并清理副本，返回不重复提交",
+        "过期副本不恢复且在下次页面访问清理"
+      ],
+      "pageErrors": [],
+      "paidOcrCalls": 0
+    }
+  ],
+  "paidOcrCalls": 0,
+  "productionBusinessMutationRequests": 0,
+  "notVerified": [
+    "Android/iPhone physical back gesture",
+    "WeChat embedded browser",
+    "Browser tab duplication and restart",
+    "OS kill before IndexedDB commit"
+  ],
+  "notes": [
+    "Secure cookie relaxation is local HTTP test context only",
+    "No branch coverage percentage was measured",
+    "Original brand validation-summary.json remains a historical record"
+  ],
+  "live": {
+    "status": "PASS",
+    "checkedAt": "2026-10-29T18:19:42.798Z",
+    "browserVersion": "153.0.4234.32",
+    "checks": [
+      "公网 HTTPS、登录与健康检查通过，未忽略证书错误",
+      "原企业 Logo 版本与原图摘要保持不变",
+      "真实详情浏览器后退可取消，URL 与未保存备注保留",
+      "暂存返回列表再进入可恢复，未向业务 API 保存",
+      "明确放弃清理本地副本，服务器单据与审计逐字段不变",
+      "录入表单后退保护正常，验证未上传任何图片"
+    ],
+    "pageErrors": [],
+    "businessMutationRequests": 0,
+    "blockedUnexpectedMutationAttempts": [],
+    "paidOcrCalls": 0,
+    "logoVersion": 1,
+    "httpsCertificateErrorsIgnored": false
+  },
+  "release": "docs/releases/2026-10-30-navigation-recovery.json"
+}

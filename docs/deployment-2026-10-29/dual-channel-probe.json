@@ -1,0 +1,9 @@
+{
+  "time": "2026-10-28T17:02:29.979Z",
+  "provider": "aliyun-ocr+qwen3.6-flash",
+  "rows": 2,
+  "total": 458,
+  "ocrTextLength": 568,
+  "warnings": [],
+  "passed": true
+}

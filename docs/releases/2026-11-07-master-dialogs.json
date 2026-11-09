@@ -1,0 +1,193 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-07T08:48:53.487632+00:00",
+  "baseSourceCommit": "1c3998070b0fd7f01d2f1db82927352ef3c9bf9b",
+  "patchFiles": [
+    "src/app/(workspace)/ingredients/page.tsx",
+    "src/app/(workspace)/master/page.tsx",
+    "src/app/(workspace)/settings/SettingsClient.tsx",
+    "src/app/api/bootstrap/route.ts",
+    "src/app/api/contracts/[id]/route.ts",
+    "src/app/api/contracts/route.ts",
+    "src/app/api/documents/route.ts",
+    "src/app/api/master-data/suppliers/[id]/route.ts",
+    "src/app/api/master-data/suppliers/route.ts",
+    "src/app/api/projects/[id]/route.ts",
+    "src/app/api/projects/route.ts",
+    "src/app/api/users/[id]/route.ts",
+    "src/app/ledger.css",
+    "src/components/BrandSettings.tsx",
+    "src/components/ProjectManager.tsx",
+    "src/components/RoleSettings.tsx",
+    "src/components/SupplierManager.tsx",
+    "src/components/ui.tsx",
+    "src/lib/client/types.ts",
+    "src/lib/permissions.ts",
+    "src/server/master-maintenance.ts",
+    "src/server/memberships.ts"
+  ],
+  "storageSha256": "467e2eb55d673d5e48d9f6f9f684aae2b2b36f0630b7a40068c3ab448c232b82",
+  "image": "sha256:85665624f009f82205f6cdc320fcb2ab4085b4aabc12db0f849954132d3047c0",
+  "archiveSha256": "070a4f0cc99981761ea7de0839493f6944a6811c78b24e63e59af1b5a830cdd0",
+  "backup": "/opt/delivery-audit/backups/20261107-164833",
+  "backupChecksums": {
+    "database.sql.gz": "bb6183713e2f6fb33a5aaa578fb99cd556ac628bc951d2b9166cdafd9b6aae94",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "oss-manifest.private.json": "f2aec3d11f0e80b95dabc8bb3ed9e25c2d7250a9fedcaf5d45512df73a4cceb8"
+  },
+  "ossSnapshot": {
+    "objects": 10,
+    "bytes": 6668259,
+    "manifestSha256": "f2aec3d11f0e80b95dabc8bb3ed9e25c2d7250a9fedcaf5d45512df73a4cceb8"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 22,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 487,
+      "Contract": 150,
+      "Document": 68,
+      "Supplier": 19,
+      "BatchPhoto": 35,
+      "CustomRole": 0,
+      "Ingredient": 81,
+      "CheckResult": 549,
+      "ImportBatch": 0,
+      "UploadBatch": 6,
+      "DocumentItem": 541,
+      "DocumentPage": 5,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 10,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "8eb8105f0ef5a55888b096468d5bbac9f5c4a182f58f2adae68d1ce418aa0d1c",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "migrations": 8,
+  "storage": "oss",
+  "restoreTested": false,
+  "deployedPatchFileHashes": {
+    "src/app/(workspace)/ingredients/page.tsx": "28728c4f207b5e0667ef43911708951c026c367992159d35e4949de6efeaeba4",
+    "src/app/(workspace)/master/page.tsx": "d2b6d8cc4088f206ad758f4414ec6d9b26fb5bfe81ef2f292261825014bc478e",
+    "src/app/(workspace)/settings/SettingsClient.tsx": "6b29c87986151f4b5a65680c2e7429b5ca387ed31ab18ad979095ca7d655f548",
+    "src/app/api/bootstrap/route.ts": "c87aa4b336a844525be009c86e530e6df92adbafe5d401b71e7c564d99652f83",
+    "src/app/api/contracts/[id]/route.ts": "c487e41313da06c9970e88ce7e23fc0adced343b62460717f8b0995e733be879",
+    "src/app/api/contracts/route.ts": "b6b6864286820f6521ee798828141c239b2fc556edec6014fcc38e4c87c437a9",
+    "src/app/api/documents/route.ts": "09ef15e58900a6aa2d1ed5535d2ee4b8abe321012a066a583f37cffce118b662",
+    "src/app/api/master-data/suppliers/[id]/route.ts": "b592dbc7a8d8debf082de704205bd91ebe11b9683a878bdae578f5738bd41b88",
+    "src/app/api/master-data/suppliers/route.ts": "e1db79850b29af6b00e761884389a335918a62a16de923ad5eed46dd0015bcb8",
+    "src/app/api/projects/[id]/route.ts": "668084ebba7f418e7c71059dd4ba5e70c0da2fec5ab9bcfd3aee6763323f2508",
+    "src/app/api/projects/route.ts": "e26b29652b273096ab82ff0dc447e5a8c5f910d6908bd5b63c36c0dc3001ff47",
+    "src/app/api/users/[id]/route.ts": "04e2ad606bd1d1dbd8f8bb143eb56f77f012808dd314796b07473a98d7a012a2",
+    "src/app/ledger.css": "820ec2d3e2e315446b6d00386ff60e5a5827dfbab6219cc7385e6018be798a79",
+    "src/components/BrandSettings.tsx": "60809dfe76321f14bad377eebeec0dc7e32088fe6b46080fb04af4b3f430051a",
+    "src/components/ProjectManager.tsx": "afd22c984683f086d1437cf476f93339a168cbd7e567285aaf76fdc4abceb6ba",
+    "src/components/RoleSettings.tsx": "597ef7b81407290bb33ab8ca7aa66a3b65123cf8c123637053df1229b19c98d0",
+    "src/components/SupplierManager.tsx": "93aaeb7013ba84e44ddfdcb1bb1969895db877aefb1fd2f6b8b1e92e666b71f3",
+    "src/components/ui.tsx": "9458750cbf2327b3897093670896b78ac926702f17eea21d48d677eeabb433fb",
+    "src/lib/client/types.ts": "7a4b2e87d8f2053085f53ac3d5a8bdac2668c34dbeae1ecec7b693b0981aac35",
+    "src/lib/permissions.ts": "6faa8ecdf55b5323f16e441c4c0271125d06c6df3ee35911eb3e5481c67f3360",
+    "src/server/master-maintenance.ts": "9a22d4162d9909b90d00c3e19d7c55fb7f04a7b7e2320aca643601122af7a5d3",
+    "src/server/memberships.ts": "e4caf0e0a25f80b97a8fc5d57d4f071b6e0347d3920587a4acdd7a94719f5ac6"
+  },
+  "previousPatchCommits": [
+    "e9ef907fb8d7165c94fce3682c934e6fd9d84a29",
+    "c3380d6411118e8efdb414f46340c962f60553b2"
+  ],
+  "patchCommit": "4621da1e406f08879580526ea36f782da99b7f2a",
+  "releaseTag": "release/2026-11-07-master-dialogs",
+  "validation": {
+    "testFiles": 31,
+    "tests": 260,
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "isolatedPostgresBrowser": {
+      "checks": [
+        {
+          "width": 1440,
+          "supplierCreateEditDisableEnable": true,
+          "projectCreateRenameDisableEnable": true,
+          "contractCreateEditReload": true,
+          "roleCreateEditModal": true,
+          "employeeCreateDisableDeleteModal": true,
+          "brandUploadModal": true,
+          "ingredientRows": true,
+          "noInlineMaintenanceForms": true,
+          "noPageOverflow": true
+        },
+        {
+          "width": 390,
+          "supplierCreateEditDisableEnable": true,
+          "projectCreateRenameDisableEnable": true,
+          "contractCreateEditReload": true,
+          "roleCreateEditModal": true,
+          "employeeCreateDisableDeleteModal": true,
+          "brandUploadModal": true,
+          "ingredientRows": true,
+          "noInlineMaintenanceForms": true,
+          "noPageOverflow": true
+        }
+      ],
+      "errors": [],
+      "serverErrors": [],
+      "mode": "real candidate app, isolated PostgreSQL, actual browser saves, no API interception",
+      "paidOcrCalls": 0,
+      "status": "PASS"
+    },
+    "publicReadOnlyBrowser": {
+      "checks": [
+        {
+          "width": 390,
+          "ingredientRowsAndEdit": true,
+          "supplierCreateEditModals": true,
+          "contractCreateEditModals": true,
+          "settingsAllFourNestedModals": true,
+          "noInlineMaintenanceForms": true,
+          "noPageOverflow": true
+        },
+        {
+          "width": 1440,
+          "ingredientRowsAndEdit": true,
+          "supplierCreateEditModals": true,
+          "contractCreateEditModals": true,
+          "settingsAllFourNestedModals": true,
+          "noInlineMaintenanceForms": true,
+          "noPageOverflow": true
+        }
+      ],
+      "errors": [],
+      "serverErrors": [],
+      "unexpectedWrites": [],
+      "mode": "Public production UI read-only; writes verified separately against identical image with isolated PostgreSQL",
+      "status": "PASS"
+    },
+    "afterBrowserBusinessFingerprintUnchanged": true,
+    "isolatedTestContainersAndCredentialsRemoved": true,
+    "realPhoneWechatTested": false,
+    "datePersistenceRegression": "UTC date converted to Asia/Shanghai for edit fields; same day after repeated saves; browser values 2026-11-07 and 2026-12-31 verified after price edit and refresh"
+  },
+  "rollback": {
+    "image": "sha256:252fd90d69d1247c038624f85cc72c12d8a319052e1e37b069ad5cf7089fd66d",
+    "sourceArchive": "/opt/delivery-audit/releases/master-dialogs-20261107-v2/source-before.tar.gz",
+    "instructions": "Retag prior image as delivery-audit:trial and recreate app and worker. Restore pre-release source and remove only the five newly added source files before a future build. No schema migration. Supplier/project names, enable states and edited contracts saved after deployment remain in the database during application rollback. Database restore is a separate decision; preserve new business data.",
+    "tested": false
+  },
+  "notes": [
+    "All known supplier edit/state, contract edit and project rename/state gaps from the prior release were addressed.",
+    "Built from previously deployed source plus 22 selected files; local OCR trials were excluded.",
+    "A failed earlier candidate date-field check was corrected before deployment, then the replacement image was verified.",
+    "A pre-existing frequent-material test was scoped to its own project and cleaned up to avoid accumulated fixture data hitting the top-40 limit.",
+    "Real writes were verified in an isolated PostgreSQL database against the exact deployed image; public verification only opened/cancelled forms.",
+    "OSS snapshot covers 10 DocumentPage-referenced objects; database fingerprint covers 22 business tables.",
+    "Backups are on the same server, not an off-host recovery copy.",
+    "Local Git only."
+  ]
+}

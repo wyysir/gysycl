@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "scope": "local regression, mock OCR and isolated data",
+  "unit": {
+    "passed": 50,
+    "failed": 0
+  },
+  "api": {
+    "total": 44,
+    "passed": 43,
+    "failed": 0,
+    "pendingDecision": 1,
+    "requests": 385
+  },
+  "supplementary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "remaining": {
+    "passed": 4,
+    "failed": 0
+  },
+  "reconciliation": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "ui": {
+    "total": 19,
+    "passed": 19,
+    "failed": 0
+  },
+  "persistence": {
+    "status": "PASS",
+    "documents": 23,
+    "images": 40,
+    "scope": "restart retains all document fields, items, checks, approvals, audit, masters, dashboard and original image hashes"
+  },
+  "performance": {
+    "requests": 100,
+    "concurrency": 10,
+    "p50ms": 59.99,
+    "p95ms": 113.05,
+    "maxms": 128.9,
+    "errors": 0,
+    "documentsBefore": 21,
+    "documentsAfter": 21
+  },
+  "build": "PASS",
+  "typecheck": "PASS",
+  "prismaValidate": "PASS",
+  "pendingDecisions": [
+    {
+      "id": "B07",
+      "question": "同供应商同号跨日期是否也提醒重复？",
+      "changed": false
+    }
+  ],
+  "userDecision": "低置信度仅提示，保持当前可提交流程"
+}

@@ -1,0 +1,94 @@
+# 独立单机试用文件；不与根目录 Compose 合并，避免端口列表合并后意外对公网开放。
+# docker compose --env-file /opt/delivery-audit/.env -p delivery \
+#   -f /opt/delivery-audit/app/deploy/compose.trial.yml up -d --build
+x-runtime: &runtime
+  image: delivery-audit:trial
+  env_file:
+    - ../../.env
+  environment:
+    NODE_ENV: production
+    DATABASE_URL: postgresql://delivery:${POSTGRES_PASSWORD:?required}@postgres:5432/delivery_audit
+    REDIS_URL: redis://redis:6379
+  restart: unless-stopped
+  volumes:
+    - uploads:/app/.data/uploads
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  postgres:
+    image: public.ecr.aws/docker/library/postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: delivery
+      POSTGRES_DB: delivery_audit
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?required}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U delivery -d delivery_audit"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  redis:
+    image: public.ecr.aws/docker/library/redis:7-alpine
+    restart: unless-stopped
+    command: [redis-server, --appendonly, "yes", --maxmemory, 512mb, --maxmemory-policy, noeviction]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  app:
+    <<: *runtime
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        NODE_IMAGE: public.ecr.aws/docker/library/node:24-bookworm-slim
+        APT_MIRROR: http://mirrors.aliyun.com
+    command: [sh, -c, "npx prisma migrate deploy && npm start"]
+    ports:
+      - "127.0.0.1:3000:3000"
+    mem_limit: 2g
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://localhost:3000/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      start_period: 60s
+      retries: 20
+
+  worker:
+    <<: *runtime
+    command: [node, --require, ./scripts/preload.cjs, --import, tsx, scripts/worker.ts]
+    mem_limit: 1g
+    depends_on:
+      app:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  redis_data:
+  uploads:

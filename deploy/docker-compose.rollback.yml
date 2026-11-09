@@ -1,0 +1,15 @@
+# 回滚专用覆写：用已存在的镜像 tag 启动，不再重新构建
+# 用法：由 deploy/rollback.sh 自动调用，或手工：
+#   APP_IMAGE=delivery-app:20261023-1030 WORKER_IMAGE=delivery-worker:20261023-1030 \
+#   docker compose -p delivery -f docker-compose.yml -f docker-compose.override.yml \
+#                  -f deploy/docker-compose.rollback.yml up -d --no-build
+#
+# 说明：image 字段会覆盖服务的镜像来源，配合 --no-build 使用；
+#       主文件中的 build: 字段保留不影响启动，只是不会被触发。
+
+services:
+  app:
+    image: ${APP_IMAGE:?请设置 APP_IMAGE 环境变量}
+
+  worker:
+    image: ${WORKER_IMAGE:?请设置 WORKER_IMAGE 环境变量}

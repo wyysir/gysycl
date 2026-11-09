@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-30",
+  "status": "LOCAL_VERIFIED_NOT_DEPLOYED",
+  "scope": [
+    "公众号菜单入口",
+    "员工微信绑定/登录"
+  ],
+  "templateNotifications": "REMOVED_BY_USER_REQUEST",
+  "tests": {
+    "files": 11,
+    "passed": 129,
+    "failed": 0
+  },
+  "regression": [
+    "提交、退回、再次提交、通过、撤回保留正确状态和审计，不创建通知记录或调用fetch",
+    "并发提交只成功一次，保留单条提交审计且通知为零",
+    "识别失败后的手工保存与提交不创建通知记录"
+  ],
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "wechatLoginRoutes": "RETAINED_BUILD_PASS_REAL_ACCOUNT_NOT_VERIFIED",
+  "templateCodeAndConfigurationReferences": "REMOVED_FROM_APPLICATION_AND_ENV_EXAMPLES",
+  "databaseMigration": "NONE",
+  "historicalNotificationRecords": "PRESERVED_NO_SCHEMA_CHANGE",
+  "testEnvironment": "Isolated PGlite, mock OCR and local storage; no private environment copied",
+  "serverChanges": false,
+  "productionBusinessWrites": 0,
+  "realWechatCalls": 0,
+  "paidOcrCalls": 0,
+  "icpFiling": "PENDING_AUTHORITY_REVIEW_USER_CONFIRMED",
+  "domainConfiguration": "WAIT_FOR_ICP_APPROVAL",
+  "releaseTag": null,
+  "limitations": [
+    "尚未部署",
+    "菜单发布与真实微信绑定/登录仍待域名及实际参数就绪后验收"
+  ],
+  "deploymentDecision": {
+    "date": "2026-10-30",
+    "source": "用户明确回复：等备案通过后上线",
+    "status": "DEFER_UNTIL_ICP_APPROVED"
+  }
+}

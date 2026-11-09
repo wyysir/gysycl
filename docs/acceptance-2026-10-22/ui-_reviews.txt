@@ -1,0 +1,139 @@
+Browser tab: 1, Title: "食安链 · 送货单识别与比价", URL: "http://localhost:3107/reviews".
+1 AXWebArea 食安链 · 送货单识别与比价, URL: localhost:3107/reviews
+	2 container
+		3 text 食
+		4 text 食安链
+		5 text 10/22
+		6 link Description: 新建单据, Value: localhost:3107/upload
+		7 heading 复核中心, Value: 1
+			8 text 复核中心
+		9 text 先看异常，再对照原图；主管可直接修正，所有修改都会留痕。 待审核  4 退回待处理  0
+		10 button 待审核
+		11 button 已退回
+		12 text 4  单
+		13 button 上海鲜禾农副产品有限公司 待主管审核 上海总部食堂 2026/10/22 ¥335.70 DEMO-48083938 2 异常
+			14 text 上海鲜禾农副产品有限公司
+			15 text 待主管审核
+			16 text 上海总部食堂
+			17 text 2026/10/22
+			18 text ¥
+			19 text 335.70
+			20 text DEMO-48083938
+			21 text 2
+			22 text  异常
+		23 button 上海鲜禾农副产品有限公司 待主管审核 上海总部食堂 2026/10/22 ¥335.70 DEMO-48083293 2 异常
+			24 text 上海鲜禾农副产品有限公司
+			25 text 待主管审核
+			26 text 上海总部食堂
+			27 text 2026/10/22
+			28 text ¥
+			29 text 335.70
+			30 text DEMO-48083293
+			31 text 2
+			32 text  异常
+		33 button 江苏丰味食品有限公司 待主管审核 苏州工厂食堂 2026/10/16 ¥4,560.00 FW20261016003 1 异常
+			34 text 江苏丰味食品有限公司
+			35 text 待主管审核
+			36 text 苏州工厂食堂
+			37 text 2026/10/16
+			38 text ¥
+			39 text 4,560.00
+			40 text FW20261016003
+			41 text 1
+			42 text  异常
+		43 button 杭州绿源蔬菜配送有限公司 待主管审核 杭州园区食堂 2026/10/15 ¥384.00 LY20261015008 1 异常
+			44 text 杭州绿源蔬菜配送有限公司
+			45 text 待主管审核
+			46 text 杭州园区食堂
+			47 text 2026/10/15
+			48 text ¥
+			49 text 384.00
+			50 text LY20261015008
+			51 text 1
+			52 text  异常
+		53 heading 上海鲜禾农副产品有限公司, Value: 3
+			54 text 上海鲜禾农副产品有限公司
+		55 container
+			56 text 上海总部食堂  ·  DEMO-48083938  · 2026/10/22
+		57 text 待主管审核 单据总价
+		58 container
+			59 text ¥ 335.70
+		60 text 明细行数
+		61 text 2
+		62 text 识别置信度
+		63 container
+			64 text 76 %
+		65 text 异常 / 提醒
+		66 container
+			67 text 2  /  2
+		68 image acceptance-15.png
+		69 link Description: 对照原图校正, Value: localhost:3107/documents/cmvj4du4p005t3o85itif2kel
+		70 table
+			71 row
+				72 cell
+					73 text 品名
+				74 cell
+					75 text 规格 / 单位
+				76 cell
+					77 text 数量
+				78 cell
+					79 text 单价
+				80 cell
+					81 text 行金额
+				82 cell
+					83 text 置信
+			84 row
+				85 cell
+					86 text 青菜
+				87 cell
+					88 text 散装  /  kg
+				89 cell
+					90 text 36
+				91 cell
+					92 text ¥ 4.25
+				93 cell
+					94 text ¥ 153.00
+				95 cell
+					96 text 78 %
+			97 row
+				98 cell
+					99 text 土豆
+				100 cell
+					101 text 散装  /  kg
+				102 cell
+					103 text 58
+				104 cell
+					105 text ¥ 3.15
+				106 cell
+					107 text ¥ 182.70
+				108 cell
+					109 text 74 %
+		110 text 青菜 高于合同价
+		111 text 本项目合同价 4.20 元/kg，本次 4.25 元/kg，上浮 1.2%。
+		112 container
+			113 text 合同价  · 必须处理
+		114 text 土豆 高于合同价
+		115 text 本项目合同价 3.10 元/kg，本次 3.15 元/kg，上浮 1.6%。
+		116 container
+			117 text 合同价  · 必须处理
+		118 text 青菜 识别置信度偏低
+		119 text 置信度 78.0%，低于 90%，请对照原图确认。
+		120 container
+			121 text 识别质量  · 建议确认
+		122 text 土豆 识别置信度偏低
+		123 text 置信度 74.0%，低于 90%，请对照原图确认。
+		124 container
+			125 text 识别质量  · 建议确认
+		126 text 审核说明 / 强制通过原因
+		127 text entry area (settable) 审核说明 / 强制通过原因, ID: reviewNote
+		128 link Description: 修改并留痕, Value: localhost:3107/documents/cmvj4du4p005t3o85itif2kel
+		129 button 退回补充
+		130 button 强制通过
+	131 container
+		132 link Description: 经营总览, Value: localhost:3107/dashboard
+		133 link Description: 新建单据, Value: localhost:3107/upload
+		134 link Description: 单据中心, Value: localhost:3107/documents
+		135 link Description: 复核中心, Value: localhost:3107/reviews
+		136 link Description: 价格分析, Value: localhost:3107/analytics
+
+The focused UI element is 1 AXWebArea 食安链 · 送货单识别与比价, URL: localhost:3107/reviews

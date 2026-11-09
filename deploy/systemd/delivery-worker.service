@@ -1,0 +1,37 @@
+[Unit]
+Description=食安链 送货单识别系统 - BullMQ OCR Worker
+Documentation=file:///opt/delivery-audit/app/docs/deployment.md
+After=network.target redis-server.service postgresql.service delivery-web.service
+Requires=redis-server.service
+
+[Service]
+Type=simple
+User=deliv
+Group=deliv
+WorkingDirectory=/opt/delivery-audit/app
+
+EnvironmentFile=/opt/delivery-audit/.env
+Environment=NODE_ENV=production
+Environment=NEXT_TELEMETRY_DISABLED=1
+
+# 需要 REDIS_URL，否则 Worker 会直接退出；tsx 用于直跑 TypeScript 源码
+ExecStart=/usr/bin/node --import tsx scripts/worker.ts
+
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+StandardOutput=append:/var/log/delivery-audit/worker.log
+StandardError=append:/var/log/delivery-audit/worker.log
+SyslogIdentifier=delivery-worker
+LogsDirectory=delivery-audit
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/delivery-audit /var/log/delivery-audit
+
+[Install]
+WantedBy=multi-user.target

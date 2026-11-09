@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>食安链 · 10张单据批量核对 · 方案演示</title>
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <div class="proposal"><span><b>方案预览</b> · 全部为虚构数据，尚未实施</span><button id="reset">重置演示</button></div>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">食</span><div>食安链<small>采购单据工作台</small></div></div>
+    <div class="nav-caption">采购管理</div>
+    <button class="side-link" data-view="upload"><span>＋</span> 批量上传</button>
+    <button class="side-link active" data-view="review"><span>☷</span> 核对明细</button>
+    <button class="side-link" data-view="result"><span>✓</span> 提交结果</button>
+    <div class="sidebar-foot"><span class="avatar">员</span><div>项目点员工<small>演示身份</small></div></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span class="breadcrumb">采购管理 <i>/</i> <b id="crumb">核对明细</b></span><span class="desktop-note">A版暖棕配色 · B版弹窗编辑</span><span class="mobile-brand">食安链</span></header>
+    <nav class="steps" aria-label="演示页面"><button data-view="upload">① 拍照上传</button><span>—</span><button data-view="review" class="active">② 核对明细</button><span>—</span><button data-view="result">③ 提交结果</button></nav>
+    <main id="content"></main>
+  </div>
+  <footer id="actionbar" class="actionbar"></footer>
+  <dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="demo.js"></script>
+</body>
+</html>

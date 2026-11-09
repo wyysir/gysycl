@@ -1,0 +1,3512 @@
+{
+  "base": "http://localhost:3107",
+  "runAt": "2026-10-27T17:10:55.975Z",
+  "summary": {
+    "total": 44,
+    "passed": 43,
+    "failed": 0,
+    "pendingDecision": 1,
+    "requests": 385
+  },
+  "refs": {
+    "fivePage": "cmvqxz52l002r80up2fxcd9x7",
+    "hzPage": {
+      "id": "cmvqxz52m002s80upvezkp8a2",
+      "pageNo": 1,
+      "fileName": "acceptance-4.png",
+      "url": "/api/files?key=documents%2F2026%2F10%2F7472f2ec-f111-40df-b295-df7ae80fb92f-processed.jpg",
+      "status": "COMPLETED",
+      "width": 204,
+      "height": 120
+    },
+    "flow": "cmvqxz59j003780uplg4o97a0",
+    "override": "cmvqxz5p0003z80upanjkdtoo",
+    "financeSubmit": "cmvqxz5w7004k80upsabuc8h0",
+    "boundary": "cmvqxz61y004u80up76m928jc",
+    "concurrent": "cmvqxz69p005780upegg3ebsg",
+    "lowConfidence": "cmvqxz6fx005o80upthoce33e",
+    "zeroTotal": "cmvqxz6le006480upsvvg5878",
+    "duplicate": [
+      "cmvqxz6sm006k80uprsj9r37b",
+      "cmvqxz6x3006u80uproejyx9d"
+    ],
+    "supplier": "cmvqxz757007i80upquyd6m7l",
+    "ingredient": "cmvqxz762007l80upgipzw44l",
+    "project": "cmvqxz7eg007u80up8r6wpmsk",
+    "user": "cmvqxz7fz007w80up4kotqijn",
+    "contract": "cmvqxz7lt008180up9k4p9pml",
+    "concurrentBatches": [
+      [
+        200,
+        409,
+        409
+      ],
+      [
+        200,
+        409,
+        409
+      ],
+      [
+        200,
+        409,
+        409
+      ],
+      [
+        200,
+        409,
+        409
+      ],
+      [
+        200,
+        409,
+        409
+      ],
+      [
+        200,
+        409,
+        409
+      ],
+      [
+        200,
+        409,
+        409
+      ],
+      [
+        200,
+        409,
+        409
+      ],
+      [
+        200,
+        409,
+        409
+      ],
+      [
+        200,
+        409,
+        409
+      ]
+    ],
+    "reviewRace": {
+      "id": "cmvqxz8fm00as80up7yvqwl0e",
+      "status": "APPROVED",
+      "approvals": [
+        {
+          "id": "cmvqxz8mi00b680upu8pdskrq",
+          "action": "APPROVE",
+          "reviewerName": "华东项目主管",
+          "note": "",
+          "createdAt": "2026-10-27T17:10:54.570Z"
+        }
+      ]
+    }
+  },
+  "results": [
+    {
+      "id": "A01",
+      "name": "健康检查及首次建库",
+      "status": "PASS",
+      "evidence": {
+        "method": "GET",
+        "path": "/api/health",
+        "role": "none",
+        "status": 200,
+        "ms": 50.81
+      },
+      "requests": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "A02",
+      "name": "未登录业务读取接口返回401",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        2,
+        12
+      ]
+    },
+    {
+      "id": "A03",
+      "name": "四种演示角色登录和12小时安全Cookie",
+      "status": "PASS",
+      "evidence": {
+        "roles": [
+          "admin",
+          "supervisor",
+          "site_sh",
+          "finance"
+        ]
+      },
+      "requests": [
+        13,
+        16
+      ]
+    },
+    {
+      "id": "A04",
+      "name": "账号密码错误、非法JSON和跨源请求",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        17,
+        19
+      ]
+    },
+    {
+      "id": "A05",
+      "name": "项目采购列表和初始化数据按项目隔离",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        20,
+        23
+      ]
+    },
+    {
+      "id": "A06",
+      "name": "候选匹配返回前三及错字首选正确",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        24,
+        25
+      ]
+    },
+    {
+      "id": "A07",
+      "name": "仪表盘、分析、审核队列可读取",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        26,
+        31
+      ]
+    },
+    {
+      "id": "A08",
+      "name": "Excel三工作表模板和财务导出",
+      "status": "PASS",
+      "evidence": {
+        "documents": 8,
+        "total": 12642.8
+      },
+      "requests": [
+        32,
+        34
+      ]
+    },
+    {
+      "id": "S01",
+      "name": "导出指定其他项目必须拒绝且不泄漏数据",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        35,
+        35
+      ]
+    },
+    {
+      "id": "U01",
+      "name": "三种图片格式上传和无登录图片访问拒绝",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        36,
+        42
+      ]
+    },
+    {
+      "id": "U02",
+      "name": "上传格式、大小、令牌、文件内容校验",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        43,
+        50
+      ]
+    },
+    {
+      "id": "U03",
+      "name": "0页和6页拒绝；不存在图片应返回业务错误",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        51,
+        53
+      ]
+    },
+    {
+      "id": "U04",
+      "name": "5页上传顺序、预处理、异步Mock及私有图片权限",
+      "status": "PASS",
+      "evidence": {
+        "id": "cmvqxz52l002r80up2fxcd9x7",
+        "pages": [
+          {
+            "id": "cmvqxz52m002s80upvezkp8a2",
+            "pageNo": 1,
+            "fileName": "acceptance-4.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F7472f2ec-f111-40df-b295-df7ae80fb92f-processed.jpg",
+            "status": "COMPLETED",
+            "width": 204,
+            "height": 120
+          },
+          {
+            "id": "cmvqxz52m002t80ups7ahaspg",
+            "pageNo": 2,
+            "fileName": "acceptance-5.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2Fa9ad1efe-c538-47e8-a156-6351acd0675f-processed.jpg",
+            "status": "COMPLETED",
+            "width": 205,
+            "height": 120
+          },
+          {
+            "id": "cmvqxz52m002u80updotmbnub",
+            "pageNo": 3,
+            "fileName": "acceptance-6.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F530483b2-b3d2-4355-b0f9-4ec50b55255a-processed.jpg",
+            "status": "COMPLETED",
+            "width": 206,
+            "height": 120
+          },
+          {
+            "id": "cmvqxz52m002v80upzjytq4qm",
+            "pageNo": 4,
+            "fileName": "acceptance-7.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2F7ffd8309-5378-477a-93f5-75dd61c07902-processed.jpg",
+            "status": "COMPLETED",
+            "width": 207,
+            "height": 120
+          },
+          {
+            "id": "cmvqxz52m002w80up9lzunhpw",
+            "pageNo": 5,
+            "fileName": "acceptance-8.png",
+            "url": "/api/files?key=documents%2F2026%2F10%2Fb333a2f8-769d-49a1-a637-7566344c8106-processed.jpg",
+            "status": "COMPLETED",
+            "width": 208,
+            "height": 120
+          }
+        ]
+      },
+      "requests": [
+        54,
+        68
+      ]
+    },
+    {
+      "id": "U05",
+      "name": "越权创建和财务创建均拒绝",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        69,
+        72
+      ]
+    },
+    {
+      "id": "F01",
+      "name": "采购草稿校正保存与过期版本409",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        73,
+        79
+      ]
+    },
+    {
+      "id": "F02",
+      "name": "财务保存、审核、重比对和重识别拒绝",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        80,
+        84
+      ]
+    },
+    {
+      "id": "F03",
+      "name": "提交、主管修改、退回、重提和普通通过闭环",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        85,
+        99
+      ]
+    },
+    {
+      "id": "F04",
+      "name": "严重异常阻止普通通过且强制通过必须原因",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        100,
+        109
+      ]
+    },
+    {
+      "id": "S02",
+      "name": "财务只读：不得提交已有草稿",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        110,
+        115
+      ]
+    },
+    {
+      "id": "S03",
+      "name": "已通过单据管理员也不得原地修改",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        116,
+        118
+      ]
+    },
+    {
+      "id": "B01",
+      "name": "非法数量、空明细、无供应商和200行上限",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        119,
+        128
+      ]
+    },
+    {
+      "id": "B02",
+      "name": "不存在的日期必须拒绝",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        129,
+        130
+      ]
+    },
+    {
+      "id": "B03",
+      "name": "非法状态筛选必须返回4xx",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        131,
+        131
+      ]
+    },
+    {
+      "id": "B04",
+      "name": "同版本并发保存返回一个200和一个409",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        132,
+        138
+      ]
+    },
+    {
+      "id": "B05",
+      "name": "按用户决定保持低置信度提示后可提交的现有流程",
+      "status": "PASS",
+      "evidence": {
+        "decision": "用户要求保持现有流程，不新增人工确认门槛"
+      },
+      "requests": [
+        139,
+        144
+      ]
+    },
+    {
+      "id": "B06",
+      "name": "非零明细与0总价不一致应阻止普通通过",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        145,
+        153
+      ]
+    },
+    {
+      "id": "B07",
+      "name": "同供应商同号跨日期应触发重复单告警",
+      "status": "PENDING_DECISION",
+      "actual": "checks=contract_price,contract_price,low_confidence,low_confidence",
+      "requests": [
+        154,
+        168
+      ]
+    },
+    {
+      "id": "M01",
+      "name": "新建主数据需确认、单位必填、重复名称409",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        169,
+        173
+      ]
+    },
+    {
+      "id": "M02",
+      "name": "关联已通过单据新建主数据不能绕过只读",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        174,
+        176
+      ]
+    },
+    {
+      "id": "M03",
+      "name": "管理员合并供应商保留单据金额且普通员工禁止",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        177,
+        179
+      ]
+    },
+    {
+      "id": "M04",
+      "name": "实际Excel导入、dryRun无写入与非法文件处理",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        180,
+        185
+      ]
+    },
+    {
+      "id": "M05",
+      "name": "错误工作簿整批回滚并提供行级错误",
+      "status": "PASS",
+      "evidence": {
+        "dryRun": false,
+        "errors": [
+          {
+            "sheet": "项目合同价",
+            "row": 2,
+            "message": "项目点编码不存在"
+          },
+          {
+            "sheet": "项目合同价",
+            "row": 2,
+            "message": "原材料不存在，或规格、单位不匹配"
+          },
+          {
+            "sheet": "项目合同价",
+            "row": 2,
+            "message": "单价必须大于 0"
+          },
+          {
+            "sheet": "项目合同价",
+            "row": 2,
+            "message": "生效日期格式无效"
+          }
+        ],
+        "summary": null
+      },
+      "requests": [
+        186,
+        188
+      ]
+    },
+    {
+      "id": "M06",
+      "name": "合同新增删除、项目创建和账号管理",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        189,
+        200
+      ]
+    },
+    {
+      "id": "M07",
+      "name": "架构文档声明的GET合同列表接口可用",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        201,
+        201
+      ]
+    },
+    {
+      "id": "M08",
+      "name": "Excel合同引用按品名规格单位正确选择",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        202,
+        203
+      ]
+    },
+    {
+      "id": "B08",
+      "name": "连续10轮真实并发保存冲突全部返回409",
+      "status": "PASS",
+      "evidence": [
+        [
+          200,
+          409,
+          409
+        ],
+        [
+          200,
+          409,
+          409
+        ],
+        [
+          200,
+          409,
+          409
+        ],
+        [
+          200,
+          409,
+          409
+        ],
+        [
+          200,
+          409,
+          409
+        ],
+        [
+          200,
+          409,
+          409
+        ],
+        [
+          200,
+          409,
+          409
+        ],
+        [
+          200,
+          409,
+          409
+        ],
+        [
+          200,
+          409,
+          409
+        ],
+        [
+          200,
+          409,
+          409
+        ]
+      ],
+      "requests": [
+        204,
+        243
+      ]
+    },
+    {
+      "id": "B09",
+      "name": "同一图片重复使用触发重复图片报警",
+      "status": "PASS",
+      "evidence": {
+        "ids": [
+          "cmvqxz86400a780upo21tf4zh",
+          "cmvqxz8ak00ah80upa7bu6cy0"
+        ]
+      },
+      "requests": [
+        244,
+        252
+      ]
+    },
+    {
+      "id": "B10",
+      "name": "并发通过和退回必须只有一个生效",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        253,
+        263
+      ]
+    },
+    {
+      "id": "U06",
+      "name": "上传已过期签名及实际超过15MB文件拒绝",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        264,
+        266
+      ]
+    },
+    {
+      "id": "F05",
+      "name": "具备单一项目主管角色时不能审核其他项目",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        267,
+        269
+      ]
+    },
+    {
+      "id": "W01",
+      "name": "未配置微信时入口降级、伪造绑定凭证拒绝",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        270,
+        271
+      ]
+    },
+    {
+      "id": "P01",
+      "name": "100次10并发混合只读稳定性采样",
+      "status": "PASS",
+      "evidence": {
+        "requests": 100,
+        "concurrency": 10,
+        "p50ms": 58.23,
+        "p95ms": 114.39,
+        "maxms": 131.01,
+        "errors": 0,
+        "documentsBefore": 21,
+        "documentsAfter": 21
+      },
+      "requests": [
+        272,
+        373
+      ]
+    },
+    {
+      "id": "S04",
+      "name": "登录连续10次失败后第11次限流",
+      "status": "PASS",
+      "evidence": [
+        401,
+        401,
+        401,
+        401,
+        401,
+        401,
+        401,
+        401,
+        401,
+        401,
+        429
+      ],
+      "requests": [
+        374,
+        384
+      ]
+    },
+    {
+      "id": "S05",
+      "name": "注销清除Cookie",
+      "status": "PASS",
+      "evidence": null,
+      "requests": [
+        385,
+        385
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "none",
+      "status": 200,
+      "ms": 50.81
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "none",
+      "status": 401,
+      "ms": 11.58,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "none",
+      "status": 401,
+      "ms": 487.34,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "none",
+      "status": 401,
+      "ms": 8.24,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/doc_demo_001",
+      "role": "none",
+      "status": 401,
+      "ms": 8.71,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "none",
+      "status": 401,
+      "ms": 4.52,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/reviews",
+      "role": "none",
+      "status": 401,
+      "ms": 5.04,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/users",
+      "role": "none",
+      "status": 401,
+      "ms": 5.54,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/master-data/template",
+      "role": "none",
+      "status": 401,
+      "ms": 553.24,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/master-data/suggest?q=x&type=ingredient",
+      "role": "none",
+      "status": 401,
+      "ms": 7.47,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/export/documents",
+      "role": "none",
+      "status": 401,
+      "ms": 3.87,
+      "error": "请先登录"
+    },
+    {
+      "method": "GET",
+      "path": "/api/files?key=x",
+      "role": "none",
+      "status": 401,
+      "ms": 3.61,
+      "error": "请先登录"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 200,
+      "ms": 56.57
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 200,
+      "ms": 44.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 200,
+      "ms": 43.21
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 200,
+      "ms": 43.07
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 44.06,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 400,
+      "ms": 3.13,
+      "error": "请求 JSON 格式错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 403,
+      "ms": 2.44,
+      "error": "请求来源校验失败"
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 21.8
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 13.57
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents?projectId=prj_hz",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 6.2,
+      "error": "无权查看该项目点"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/doc_demo_002",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 13.29,
+      "error": "无权查看该单据"
+    },
+    {
+      "method": "GET",
+      "path": "/api/master-data/suggest?type=ingredient&q=%E9%9D%92%E8%8E%B1",
+      "role": "admin",
+      "status": 200,
+      "ms": 19.34
+    },
+    {
+      "method": "GET",
+      "path": "/api/master-data/suggest?type=ingredient&q=%E5%A3%AB%E8%B1%86",
+      "role": "admin",
+      "status": 200,
+      "ms": 9.31
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 27.81
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 18.8
+    },
+    {
+      "method": "GET",
+      "path": "/api/reviews",
+      "role": "admin",
+      "status": 200,
+      "ms": 16.34
+    },
+    {
+      "method": "GET",
+      "path": "/api/reviews",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 8.64,
+      "error": "只有项目主管可以查看"
+    },
+    {
+      "method": "GET",
+      "path": "/api/users",
+      "role": "finance",
+      "status": 403,
+      "ms": 4.91,
+      "error": "只有管理员可以查看员工账号"
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics?from=2099-01-01&to=2099-01-02",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.93
+    },
+    {
+      "method": "GET",
+      "path": "/api/master-data/template",
+      "role": "admin",
+      "status": 200,
+      "ms": 34.45,
+      "bytes": 8539
+    },
+    {
+      "method": "GET",
+      "path": "/api/export/documents",
+      "role": "finance",
+      "status": 200,
+      "ms": 31.96,
+      "bytes": 11625
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "finance",
+      "status": 200,
+      "ms": 12.22
+    },
+    {
+      "method": "GET",
+      "path": "/api/export/documents?projectId=prj_hz",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 6.17,
+      "bytes": 60
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 10.29
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2Fdccd0dbf-ecc2-439e-976b-ddb8a14f548a.jpg&mime=image%2Fjpeg&expiresAt=1793121649814&token=mJDxfm39VguaqXel1g1f81zgDFUE2ZkClGpFv0wxRL4",
+      "role": "none",
+      "status": 200,
+      "ms": 8.39
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 6.41
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2Fdce3996f-2425-47f4-aac1-cb0f8fe50844.png&mime=image%2Fpng&expiresAt=1793121649832&token=cGIK0Zpw8FT5u6Vdt0cYCAoRMzHjshegDJPW3Xx6R5I",
+      "role": "none",
+      "status": 200,
+      "ms": 4.38
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 5.98
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F8ac540bf-3fc4-4427-a25e-4c5da329dc19.webp&mime=image%2Fwebp&expiresAt=1793121649846&token=JgoTTt1gZiOLedLoFrVNe45Nd5zDlegQSI47QdKTvyI",
+      "role": "none",
+      "status": 200,
+      "ms": 4.05
+    },
+    {
+      "method": "GET",
+      "path": "/api/files?key=anything",
+      "role": "none",
+      "status": 401,
+      "ms": 2.01,
+      "error": "请先登录"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 400,
+      "ms": 6.86,
+      "error": "请求参数不合法"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 400,
+      "ms": 5.66,
+      "error": "请求参数不合法"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 400,
+      "ms": 5.24,
+      "error": "请求参数不合法"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 5.36
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 5.16
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2Fb23c0075-bf14-4b66-9542-a1f4c327278a.png&mime=image%2Fpng&expiresAt=1793121649881&token=FxKiYG1YElIsQ1nEcdXHbi6dpjjRHaMDWzJMcPswZb8",
+      "role": "none",
+      "status": 400,
+      "ms": 2.31,
+      "error": "文件内容与图片格式不一致"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2Fb23c0075-bf14-4b66-9542-a1f4c327278a.png&mime=image%2Fpng&expiresAt=1793121649881&token=bad",
+      "role": "none",
+      "status": 403,
+      "ms": 2.25,
+      "error": "上传地址无效或已过期"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "finance",
+      "status": 403,
+      "ms": 5,
+      "error": "当前账号没有上传单据权限"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 400,
+      "ms": 7.07,
+      "error": "请求参数不合法"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 400,
+      "ms": 5.52,
+      "error": "请求参数不合法"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 400,
+      "ms": 6.91,
+      "error": "图片 x.png 尚未上传完成，请重新上传"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 5.03
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F7472f2ec-f111-40df-b295-df7ae80fb92f.png&mime=image%2Fpng&expiresAt=1793121649918&token=Uje77ppSXeExpS030hbqFK3uL9a2gQw_VqCbw6N24sQ",
+      "role": "none",
+      "status": 200,
+      "ms": 3.37
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 5.17
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2Fa9ad1efe-c538-47e8-a156-6351acd0675f.png&mime=image%2Fpng&expiresAt=1793121649928&token=Vp5pdlM9Ot3VmhVBmWyzIW1PFAFqMXTStltznJLL-WI",
+      "role": "none",
+      "status": 200,
+      "ms": 3.44
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 4.79
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F530483b2-b3d2-4355-b0f9-4ec50b55255a.png&mime=image%2Fpng&expiresAt=1793121649937&token=wA_YcZpuhHevqDc4Nogb_4NsbRK6F0fZjMwsqSKLAlY",
+      "role": "none",
+      "status": 200,
+      "ms": 2.74
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 4.48
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F7ffd8309-5378-477a-93f5-75dd61c07902.png&mime=image%2Fpng&expiresAt=1793121649945&token=b1mwMjMpzgRjuDMPkXJIXk9L5hcUfE_1Gk_ExHgoCUw",
+      "role": "none",
+      "status": 200,
+      "ms": 2.9
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 4.72
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2Fb333a2f8-769d-49a1-a637-7566344c8106.png&mime=image%2Fpng&expiresAt=1793121649954&token=isqUlcjfWMUiMEOBgYcmC7NG-pjuMJfTrKqqQzob6ok",
+      "role": "none",
+      "status": 200,
+      "ms": 2.88
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 201,
+      "ms": 19.51
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz52l002r80up2fxcd9x7",
+      "role": "admin",
+      "status": 200,
+      "ms": 15.87
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz52l002r80up2fxcd9x7",
+      "role": "admin",
+      "status": 200,
+      "ms": 50.21
+    },
+    {
+      "method": "GET",
+      "path": "/api/files?key=documents%2F2026%2F10%2F7472f2ec-f111-40df-b295-df7ae80fb92f-processed.jpg",
+      "role": "admin",
+      "status": 200,
+      "ms": 8.87,
+      "bytes": 399
+    },
+    {
+      "method": "GET",
+      "path": "/api/files?key=documents%2F2026%2F10%2F7472f2ec-f111-40df-b295-df7ae80fb92f-processed.jpg",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 8.07,
+      "error": "无权查看该文件"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 5.83
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F3768bbe1-30c1-4eb1-8a2f-abe099d79f16.png&mime=image%2Fpng&expiresAt=1793121650180&token=d1aaysmvStZtE1oLVZ4Wob6IO3k7wgAQeIMflnxpeP4",
+      "role": "none",
+      "status": 200,
+      "ms": 3.66
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 5.41,
+      "error": "无权在该项目点上传单据"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "finance",
+      "status": 403,
+      "ms": 5.21,
+      "error": "无权在该项目点上传单据"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 6.54
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F446f6171-3f6f-4c9d-aa41-bae06cec3bb2.png&mime=image%2Fpng&expiresAt=1793121650202&token=SCzlONOa7MO5MCbTahTle4vjBweQmqwjJPMpUDN8chc",
+      "role": "none",
+      "status": 200,
+      "ms": 3.79
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 13.98
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 14.11
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 30.35
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 47.01
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 7.29,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "finance",
+      "status": 200,
+      "ms": 13.32
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "finance",
+      "status": 403,
+      "ms": 6.56,
+      "error": "无权修改该单据"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0/review",
+      "role": "finance",
+      "status": 403,
+      "ms": 13.34,
+      "error": "只有本项目主管可以审核"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0/recheck",
+      "role": "finance",
+      "status": 403,
+      "ms": 9.21,
+      "error": "当前账号只读，不能重新比对"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0/ocr",
+      "role": "finance",
+      "status": 403,
+      "ms": 7.81,
+      "error": "无权重试该单据识别"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0/submit",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 39.97
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 14.02
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 6.72,
+      "error": "无权修改该单据"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "supervisor",
+      "status": 200,
+      "ms": 12.6
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "supervisor",
+      "status": 200,
+      "ms": 34.57
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0/review",
+      "role": "supervisor",
+      "status": 400,
+      "ms": 8.65,
+      "error": "退回补充必须填写原因"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0/review",
+      "role": "supervisor",
+      "status": 200,
+      "ms": 19.15
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "admin",
+      "status": 200,
+      "ms": 13.98
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 13.88
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 37.11
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0/submit",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 27.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0/review",
+      "role": "supervisor",
+      "status": 200,
+      "ms": 18.78
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "admin",
+      "status": 200,
+      "ms": 12.85
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 12.2
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 6.31,
+      "error": "无权修改该单据"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 5.42
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F6cb920cf-b4d2-4dcb-969d-75de81e4ad93.png&mime=image%2Fpng&expiresAt=1793121650761&token=ElzMta4KBYyrOXgx2OK23Zy2PPmfgT2EyGdLKf9QgYA",
+      "role": "none",
+      "status": 200,
+      "ms": 3.43
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 11.74
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz5p0003z80upanjkdtoo",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 12.11
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz5p0003z80upanjkdtoo",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 25.98
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz5p0003z80upanjkdtoo/submit",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 34.22
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz5p0003z80upanjkdtoo/review",
+      "role": "supervisor",
+      "status": 422,
+      "ms": 11.01,
+      "error": "存在必须处理的严重异常，不能普通通过"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz5p0003z80upanjkdtoo/review",
+      "role": "supervisor",
+      "status": 400,
+      "ms": 9.8,
+      "error": "强制通过必须填写原因"
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz5p0003z80upanjkdtoo/review",
+      "role": "supervisor",
+      "status": 200,
+      "ms": 18.48
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz5p0003z80upanjkdtoo",
+      "role": "admin",
+      "status": 200,
+      "ms": 13.52
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 5.28
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F7635ab3c-38cc-4342-9f01-9c9530b11d78.png&mime=image%2Fpng&expiresAt=1793121651021&token=-emIb_0g74dTDgBJSlUipwnONfrRCat3bId14KZ4TX0",
+      "role": "none",
+      "status": 200,
+      "ms": 2.99
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 10.9
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz5w7004k80upsabuc8h0",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 12.64
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz5w7004k80upsabuc8h0",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 29.41
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz5w7004k80upsabuc8h0/submit",
+      "role": "finance",
+      "status": 403,
+      "ms": 9.17,
+      "error": "无权提交该单据"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "admin",
+      "status": 200,
+      "ms": 13.3
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "admin",
+      "status": 200,
+      "ms": 12.34
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "admin",
+      "status": 403,
+      "ms": 6.41,
+      "error": "无权修改该单据"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 4.97
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F49a2b416-5e0b-4909-b267-e3a12693dde6.png&mime=image%2Fpng&expiresAt=1793121651229&token=if3X_P3b7PTsFJeusZ1WjiqKyJ15yP1iT8sUZ2r24qw",
+      "role": "none",
+      "status": 200,
+      "ms": 3.06
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 9.95
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz61y004u80up76m928jc",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 11.55
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz61y004u80up76m928jc",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 31.15
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz61y004u80up76m928jc",
+      "role": "site_sh",
+      "status": 400,
+      "ms": 5.82,
+      "error": "请求参数不合法"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz61y004u80up76m928jc",
+      "role": "site_sh",
+      "status": 400,
+      "ms": 5.16,
+      "error": "请求参数不合法"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz61y004u80up76m928jc",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 14.31
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz61y004u80up76m928jc",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 40.13
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz61y004u80up76m928jc/submit",
+      "role": "site_sh",
+      "status": 422,
+      "ms": 8.16,
+      "error": "请先确认供应商"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz61y004u80up76m928jc",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 12.82
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz61y004u80up76m928jc",
+      "role": "site_sh",
+      "status": 400,
+      "ms": 6.89,
+      "error": "单据日期无效"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents?status=NOT_A_STATUS",
+      "role": "admin",
+      "status": 400,
+      "ms": 4.86,
+      "error": "单据状态无效"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 4.89
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F39ac8b50-80c9-40a1-9585-24e17041c6af.png&mime=image%2Fpng&expiresAt=1793121651507&token=XTMUv8mt8P9QM0Z2_afuwwN-3m-aBWu9QUT21pO53gs",
+      "role": "none",
+      "status": 200,
+      "ms": 3.8
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 10.48
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 13.13
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 27.83
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 43.18
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 50.64,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 4.99
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F974ccfa5-2ffb-475f-922f-a79d0fe4db9f.png&mime=image%2Fpng&expiresAt=1793121651732&token=2dCBWgj6Ur7vedCBtnCTUdZyz2xQWRwHHRggPK5RFgo",
+      "role": "none",
+      "status": 200,
+      "ms": 2.76
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 9.9
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6fx005o80upthoce33e",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 12.38
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6fx005o80upthoce33e",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 25.48
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz6fx005o80upthoce33e/submit",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 30.82
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 5.23
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F510f301d-e0aa-46d2-9fbf-1579219fb054.png&mime=image%2Fpng&expiresAt=1793121651928&token=1kvOVfom6y4IfPCLMY-xSy8QvhkWqQzGqEM7tsQDCVs",
+      "role": "none",
+      "status": 200,
+      "ms": 3.64
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 9.83
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6le006480upsvvg5878",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 12.55
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6le006480upsvvg5878",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 26.29
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6le006480upsvvg5878",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 13.83
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz6le006480upsvvg5878",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 37.06
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz6le006480upsvvg5878/submit",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 28.79
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz6le006480upsvvg5878/review",
+      "role": "supervisor",
+      "status": 422,
+      "ms": 8.99,
+      "error": "存在必须处理的严重异常，不能普通通过"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 4.76
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2Fbd9617fb-4b32-4f03-9d54-c3efbe6898e1.png&mime=image%2Fpng&expiresAt=1793121652188&token=xTiocW6IsSEdxQY8D_JTDzJFJz_CMUn3ihM285CVe1Q",
+      "role": "none",
+      "status": 200,
+      "ms": 3.18
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 10.33
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6sm006k80uprsj9r37b",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 11.92
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6sm006k80uprsj9r37b",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 29.18
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 5.4
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F9ce50723-e96c-4a3d-842d-a775a72d896c.png&mime=image%2Fpng&expiresAt=1793121652350&token=KIItymDCnolSutYZnF_uVwm80rSR8_6cuIJcd8ZTdUI",
+      "role": "none",
+      "status": 200,
+      "ms": 3.14
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 11.63
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6x3006u80uproejyx9d",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 11.36
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6x3006u80uproejyx9d",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 31.27
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6sm006k80uprsj9r37b",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 12.74
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz6sm006k80uprsj9r37b",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 38.41
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6x3006u80uproejyx9d",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 11.63
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz6x3006u80uproejyx9d",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 35.82
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz6x3006u80uproejyx9d",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.59
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/suppliers",
+      "role": "admin",
+      "status": 400,
+      "ms": 8.54,
+      "error": "请求参数不合法"
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/suppliers",
+      "role": "admin",
+      "status": 201,
+      "ms": 16.7
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/suppliers",
+      "role": "admin",
+      "status": 409,
+      "ms": 7.02,
+      "error": "数据库中已存在“验收供应商”，请直接选择"
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/ingredients",
+      "role": "admin",
+      "status": 400,
+      "ms": 8.21,
+      "error": "请求参数不合法"
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/ingredients",
+      "role": "admin",
+      "status": 201,
+      "ms": 14.51
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "admin",
+      "status": 200,
+      "ms": 19.39
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/suppliers",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 16.11,
+      "error": "来源单据当前状态不允许修改，已通过单据请走变更流程"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz59j003780uplg4o97a0",
+      "role": "admin",
+      "status": 200,
+      "ms": 17.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/merge",
+      "role": "site_sh",
+      "status": 403,
+      "ms": 8.08,
+      "error": "只有管理员可以合并主数据"
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/merge",
+      "role": "admin",
+      "status": 200,
+      "ms": 27.11
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/merge",
+      "role": "admin",
+      "status": 400,
+      "ms": 4.51,
+      "error": "不能合并到自身"
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 15.88
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/import?dryRun=1",
+      "role": "admin",
+      "status": 200,
+      "ms": 41.97
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.16
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/import",
+      "role": "admin",
+      "status": 200,
+      "ms": 31.04
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 10.95
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/import",
+      "role": "admin",
+      "status": 400,
+      "ms": 7.88,
+      "error": "Excel 文件无法解析，请使用系统模板"
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.39
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/import",
+      "role": "admin",
+      "status": 200,
+      "ms": 18.37
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.23
+    },
+    {
+      "method": "GET",
+      "path": "/api/users",
+      "role": "admin",
+      "status": 200,
+      "ms": 10.58
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects",
+      "role": "admin",
+      "status": 201,
+      "ms": 16.14
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects",
+      "role": "admin",
+      "status": 409,
+      "ms": 5.48,
+      "error": "项目点编码或名称已存在"
+    },
+    {
+      "method": "POST",
+      "path": "/api/users",
+      "role": "admin",
+      "status": 201,
+      "ms": 51.07
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 200,
+      "ms": 42.17
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/users/cmvqxz7fz007w80up4kotqijn",
+      "role": "admin",
+      "status": 200,
+      "ms": 49.31
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 42.7,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 200,
+      "ms": 43.75
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/users/cmvqxz7fz007w80up4kotqijn",
+      "role": "admin",
+      "status": 200,
+      "ms": 8.26
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "accept_user",
+      "status": 401,
+      "ms": 4.27,
+      "error": "请先登录"
+    },
+    {
+      "method": "POST",
+      "path": "/api/contracts",
+      "role": "admin",
+      "status": 201,
+      "ms": 17.58
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/contracts/cmvqxz7lt008180up9k4p9pml",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.39
+    },
+    {
+      "method": "GET",
+      "path": "/api/contracts",
+      "role": "admin",
+      "status": 200,
+      "ms": 10.41
+    },
+    {
+      "method": "POST",
+      "path": "/api/master-data/import",
+      "role": "admin",
+      "status": 200,
+      "ms": 26.87
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.7
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 24.23
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 48.62
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 53.96,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 59.99,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 14.32
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 39.95
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 44.1,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 48.35,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.9
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 38.81
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 43.63,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 48.52,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 12.54
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 39.31
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 43.53,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 47.9,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 12.9
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 40.08
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 44.82,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 49.36,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 16.47
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 40.96
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 45.17,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 49.41,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.51
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 38.29
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 42.94,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 47.66,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 12.02
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 40.42
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 44.74,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 48.93,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 12.42
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 39.83
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 45.33,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 51.06,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "admin",
+      "status": 200,
+      "ms": 15.49
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 40.98
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 45.34,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz69p005780upegg3ebsg",
+      "role": "site_sh",
+      "status": 409,
+      "ms": 49.55,
+      "error": "单据已被其他人修改，请刷新后重试"
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 4.38
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F61a6f638-b5c1-4c8d-821c-7f2de3ddafb4.png&mime=image%2Fpng&expiresAt=1793121653971&token=Np9fAF_DKPK8tZFP4RwerAZtrdxcdyoKlvzTzTF7vgw",
+      "role": "none",
+      "status": 200,
+      "ms": 2.49
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 201,
+      "ms": 9.91
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz86400a780upo21tf4zh",
+      "role": "admin",
+      "status": 200,
+      "ms": 10.7
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz86400a780upo21tf4zh",
+      "role": "admin",
+      "status": 200,
+      "ms": 31.92
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 201,
+      "ms": 10.38
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz8ak00ah80upa7bu6cy0",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.95
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz8ak00ah80upa7bu6cy0",
+      "role": "admin",
+      "status": 200,
+      "ms": 30.06
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz8ak00ah80upa7bu6cy0",
+      "role": "admin",
+      "status": 200,
+      "ms": 15.83
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 5.34
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2F11859462-d6c7-49f4-a631-d84f883d6712.png&mime=image%2Fpng&expiresAt=1793121654312&token=1dFnsuYfLPCwUccvB6x52UvN6-gKYGHkug0KFj_PJ8c",
+      "role": "none",
+      "status": 200,
+      "ms": 3.36
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents",
+      "role": "site_sh",
+      "status": 201,
+      "ms": 10.29
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz8fm00as80up7yvqwl0e",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 12.88
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz8fm00as80up7yvqwl0e",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 34.29
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz8fm00as80up7yvqwl0e",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 13.91
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/documents/cmvqxz8fm00as80up7yvqwl0e",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 35.28
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz8fm00as80up7yvqwl0e/submit",
+      "role": "site_sh",
+      "status": 200,
+      "ms": 27.14
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz8fm00as80up7yvqwl0e/review",
+      "role": "supervisor",
+      "status": 200,
+      "ms": 18.05
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/cmvqxz8fm00as80up7yvqwl0e/review",
+      "role": "supervisor",
+      "status": 403,
+      "ms": 24.17,
+      "error": "只有本项目主管可以审核"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents/cmvqxz8fm00as80up7yvqwl0e",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.4
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploads/presign",
+      "role": "admin",
+      "status": 200,
+      "ms": 4.64
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2Ff6ad974b-cdf1-426e-a33f-3b7126b5538f.png&mime=image%2Fpng&expiresAt=1&token=EQEnUlXPeoM2ftCpxfoF93_3Zq52Zg5xk5YfSoTD-to",
+      "role": "none",
+      "status": 403,
+      "ms": 1.64,
+      "error": "上传地址无效或已过期"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/uploads/local?key=documents%2F2026%2F10%2Ff6ad974b-cdf1-426e-a33f-3b7126b5538f.png&mime=image%2Fpng&expiresAt=1793121654599&token=EQEnUlXPeoM2ftCpxfoF93_3Zq52Zg5xk5YfSoTD-to",
+      "role": "none",
+      "status": 413,
+      "ms": 14.29,
+      "error": "图片不能超过 15MB"
+    },
+    {
+      "method": "POST",
+      "path": "/api/users",
+      "role": "admin",
+      "status": 201,
+      "ms": 63.44
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 200,
+      "ms": 60.62
+    },
+    {
+      "method": "POST",
+      "path": "/api/documents/doc_demo_002/review",
+      "role": "accept_super",
+      "status": 403,
+      "ms": 8.99,
+      "error": "只有本项目主管可以审核"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/wechat/start",
+      "role": "none",
+      "status": 307,
+      "ms": 3.99
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/wechat/bind",
+      "role": "none",
+      "status": 400,
+      "ms": 4.74,
+      "error": "绑定凭证已过期，请重新从公众号进入"
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 12.26
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 4.07
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 10.53
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 33.38
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 47.76
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 58.23
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 69.52
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 98.4
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 109.95
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 119.95
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 131.01
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 2.6
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 8.51
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 30.62
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 42.42
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 52.67
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 62.27
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 82.1
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 95.18
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 105.08
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 114.01
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 4.44
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 9.54
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 30.55
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 41.09
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 51.03
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 60.77
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 77.66
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 88.75
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 99.06
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 110.72
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 3.03
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.14
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 33.51
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 44.82
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 54.85
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 63.72
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 81.32
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 93.79
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 105.75
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 115.57
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 3.07
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 8.6
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 33.43
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 44.79
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 57.09
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 68.03
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 85.99
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 97.67
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 108.8
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 118.32
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 2.45
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 7.53
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 29.91
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 43.67
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 55.56
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 65.9
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 85.32
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 95.99
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 105.82
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 114.39
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 2.62
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 7.83
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 29
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 40.12
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 50.52
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 60.15
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 80.71
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 91.87
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 102.81
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 112
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 2.31
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 8.05
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 29.55
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 41.39
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 51.42
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 61.46
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 80.45
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 92.23
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 103.67
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 114.69
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 2.6
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 8.02
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 31.3
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 42.8
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 52.84
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 62.03
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 79.25
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 90.49
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 100.27
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 110.32
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 5.64
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "role": "admin",
+      "status": 200,
+      "ms": 10.73
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 31.58
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 42.38
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 51.91
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 61.03
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "role": "admin",
+      "status": 200,
+      "ms": 78.21
+    },
+    {
+      "method": "GET",
+      "path": "/api/analytics",
+      "role": "admin",
+      "status": 200,
+      "ms": 88.96
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 98.51
+    },
+    {
+      "method": "GET",
+      "path": "/api/bootstrap",
+      "role": "admin",
+      "status": 200,
+      "ms": 107.5
+    },
+    {
+      "method": "GET",
+      "path": "/api/documents",
+      "role": "admin",
+      "status": 200,
+      "ms": 11.69
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 3.42,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 2.6,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 2.91,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 2.59,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 2.6,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 2.38,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 2.4,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 2.35,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 2.52,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 401,
+      "ms": 2.69,
+      "error": "工号或密码错误"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "role": "none",
+      "status": 429,
+      "ms": 1.52,
+      "error": "登录失败次数过多，请 15 分钟后再试"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/logout",
+      "role": "finance",
+      "status": 200,
+      "ms": 4.41
+    }
+  ]
+}

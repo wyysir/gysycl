@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-29T12:50:35.595Z",
+  "totalNeedsManualReview": true,
+  "documents": [
+    {
+      "status": "PASS",
+      "documentStatus": "DRAFT",
+      "itemCount": 20,
+      "pageCount": 5,
+      "pageItems": [
+        {
+          "pageNo": 1,
+          "itemCount": 2
+        },
+        {
+          "pageNo": 2,
+          "itemCount": 1
+        },
+        {
+          "pageNo": 3,
+          "itemCount": 10
+        },
+        {
+          "pageNo": 4,
+          "itemCount": 4
+        },
+        {
+          "pageNo": 5,
+          "itemCount": 3
+        }
+      ],
+      "originalDatePreserved": true,
+      "originalObjectsPreserved": true
+    },
+    {
+      "status": "PASS",
+      "documentStatus": "DRAFT",
+      "itemCount": 20,
+      "pageCount": 5,
+      "pageItems": [
+        {
+          "pageNo": 1,
+          "itemCount": 2
+        },
+        {
+          "pageNo": 2,
+          "itemCount": 1
+        },
+        {
+          "pageNo": 3,
+          "itemCount": 10
+        },
+        {
+          "pageNo": 4,
+          "itemCount": 4
+        },
+        {
+          "pageNo": 5,
+          "itemCount": 3
+        }
+      ],
+      "originalDatePreserved": true,
+      "originalObjectsPreserved": true
+    }
+  ],
+  "automaticApproval": false,
+  "duplicateUploads": true,
+  "userAuthorized": true
+}

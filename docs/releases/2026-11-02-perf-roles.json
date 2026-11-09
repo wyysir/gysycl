@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-02",
+  "tag": "release/2026-11-02-perf-roles",
+  "status": "DEPLOYED_TO_TRIAL_VERIFIED",
+  "environment": "TEST_DEMO_NOT_FORMAL_PRODUCTION",
+  "sourceCommit": "01c38a266e24191b088f7960eef0291096aee940",
+  "tagTarget": "发布归档提交，以Git标签查询；sourceCommit是实际部署源码，之后的文档提交不代表重建镜像",
+  "deploymentStartedAt": "2026-11-02T00:31:07+08:00",
+  "deploymentCompletedAt": "2026-11-02T00:33:16+08:00",
+  "verifiedAt": "2026-11-02T00:35:09+08:00",
+  "features": [
+    "管理员创建、编辑、停用自定义角色，独立配置20项业务权限",
+    "已有员工按项目分配内置或自定义角色，主管可上传，权限变更按请求实时读取",
+    "供应商直接输入检索，单据和原材料搜索框移除放大镜",
+    "页面精简上下文、轮询复用，图片最多两张并发上传、预处理复用、按单据批量匹配",
+    "保留模型、提示词、清晰度参数、每图一次请求及不自动收费重试规则，新增处理阶段耗时日志"
+  ],
+  "image": "sha256:53eea125d7780bad4444b9c607ece6b054dad913b30215cecd679c3fedd2412e",
+  "imageTag": "delivery-audit:perf-roles-20261102",
+  "appAndWorkerImageIdentical": true,
+  "previousImage": "sha256:8108deb621c9176f36af163560bc700adc304da88a809337d31c437f864942f9",
+  "previousImageTag": "delivery-audit:before-perf-roles-20261102",
+  "dependencyImage": "sha256:1aa4e3a38d3ebd8a978b94e90a056cf36dc942f7455b94129dc2b8f255fb1546",
+  "sourceArchive": "/opt/delivery-audit/releases/perf-roles-20261102.tar.gz",
+  "sourceArchiveSha256": "6f4c8dbef903bba89c48e74a30b59fc3c2585f771ff096a285f31f3f11fb1973",
+  "sourceBefore": "/opt/delivery-audit/releases/perf-roles-20261102/source-before.tar.gz",
+  "deploymentLog": "/opt/delivery-audit/releases/perf-roles-20261102-deploy.log",
+  "backupPath": "/opt/delivery-audit/backups/20261102-003108",
+  "backupChecksums": {
+    "database.sql.gz": "134114b6e6b023be28b32e7d65057f386940cf4a9f38b40a3a84fce925ac2b6e",
+    "uploads.tar.gz": "0ccc64b716fcfc148a33b1542653f7f2c27538d559c991f9f6d98a71c850c0e9"
+  },
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "migration": {
+    "name": "0004_custom_roles",
+    "status": "APPLIED_BEFORE_NEW_APP_AND_WORKER_START",
+    "changes": "新增CustomRole表、ProjectMembership可空customRoleId列、索引及外键；无重置或演示数据导入",
+    "appliedMigrationRows": 1,
+    "customRolesAfterVerification": 0,
+    "customAssignmentsAfterVerification": 0,
+    "log": "/opt/delivery-audit/releases/perf-roles-20261102/migration.log"
+  },
+  "configuration": "私有环境配置、模型、存储及Nginx配置保持，复用既有依赖镜像构建",
+  "dataPreservation": {
+    "status": "IDENTICAL_BEFORE_AFTER_AND_AFTER_BROWSER_CHECK",
+    "comparison": "18张既有表全部行，ProjectMembership排除新增的空customRoleId以保持迁移前后可比；另核对新增表/授权数量",
+    "sha256": "bdd67266b70b7fe8dfd79e9e0ca337444a7b74d8897a2df0274deff0bfc2e750",
+    "counts": {"ApprovalRecord":31,"AuditLog":294,"CheckResult":191,"Contract":150,"Document":34,"DocumentItem":191,"DocumentPage":5,"ImportBatch":0,"Ingredient":72,"IngredientAlias":7,"Notification":1,"Project":7,"ProjectMembership":1,"Supplier":19,"SupplierAlias":0,"SystemSetting":1,"User":2,"WechatBinding":0},
+    "uploadFiles": 10,
+    "uploadSha256": "6315266b35bb8d28dde70a1b79a9b82c8c98b190d493df2c7f8c9c7587678173",
+    "serverDiagnosticScripts": ["/opt/delivery-audit/releases/perf-roles-fingerprint.py","/opt/delivery-audit/releases/catalog-fingerprint.py"]
+  },
+  "checks": {
+    "testFiles": 19,
+    "tests": 170,
+    "testStatus": "PASS",
+    "typecheck": "PASS",
+    "localProductionBuild": "PASS",
+    "serverProductionBuild": "PASS",
+    "localBrowser": "390px：创建角色、勾选权限、创建临时员工、修改已有员工不同项目角色、直接供应商搜索及无重叠搜索图标通过；自建临时角色/账号已清除",
+    "permissionRegression": "自定义角色不继承兼容员工权限；所有权与修改/提交/删除/审核分离；跨项目隔离；财务只读；权限修改/停用影响现有会话；版本冲突返回409",
+    "live": {
+      "viewport": "390x844, Edge mobile emulation",
+      "routes": ["/documents","/ingredients","/upload","/settings","/documents/:id"],
+      "horizontalOverflow": false,
+      "overlappingInputSearchIcons": 0,
+      "roleSettingsPermissionCheckboxes": 20,
+      "directSupplierSearchResults": "PASS",
+      "obsoleteSupplierSearchButtons": 0,
+      "rolesApiStatus": 200,
+      "pageErrors": [],
+      "httpsCertificateErrorsIgnored": false,
+      "businessMutationRequests": 0,
+      "paidOcrCalls": 0,
+      "appHealth": "healthy",
+      "worker": "running",
+      "ocrActive": 0,
+      "ocrWaiting": 0
+    }
+  },
+  "performance": {
+    "baseline": {"bootstrapBytes":97873,"matching10LinesMs":149,"syntheticUploadBytes":1019378,"syntheticUploadMs":68,"syntheticUploadStatus":200,"syntheticProbeImageRemoved":true},
+    "after": {
+      "fullBootstrapBytes":97873,
+      "contextBootstrapBytes":1839,
+      "contextResponseMs":[11,8,8,7],
+      "legacyStyleMatching10LinesMs":174,
+      "batchedMatching10LinesMs":14,
+      "publicMobileEmulationReadyMsIncludingNetworkIdle500ms":{"documents":1881,"ingredients":1063,"upload":850,"settings":1396,"documentDetail":1235}
+    },
+    "serverBaseline": "load0.04/0.09/0.08，约6GB可用内存，磁盘约76GB可用；无识别排队",
+    "recentHistoricalOcrRunMs": [10624,5835,11914,9566,16761,10385,13535],
+    "limits": "样本小，接口为服务器内部测量；公网页面时延受网络和冷启动影响，前后页面数据不能证明真机整体速度提升。未新增收费识别，模型耗时和准确率未重新验收。"
+  },
+  "rollback": {
+    "oldImagePreserved": true,
+    "rule": "回退旧镜像前检查ProjectMembership.customRoleId非空数量；零时可回退Web/Worker并保留新增表列，非零时不得直接回退，以免旧代码把自定义角色当作普通员工；先隔离相关账号访问并制定权限迁移方案。",
+    "database": "不自动回退迁移、删除新增列、清空授权或恢复整库；数据库恢复与应用回退分开处理。",
+    "failedDeployment": "本次未触发回退"
+  },
+  "repository": "仅本地Git，无远程仓库，未推送",
+  "maintenance": "docs/performance-roles-2026-11-02/使用与维护.md"
+}

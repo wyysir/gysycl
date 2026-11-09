@@ -1,0 +1,86 @@
+{
+  "before": {
+    "counts": {
+      "ApprovalRecord": 17,
+      "AuditLog": 191,
+      "CheckResult": 196,
+      "Contract": 0,
+      "Document": 14,
+      "DocumentItem": 79,
+      "DocumentPage": 20,
+      "ImportBatch": 0,
+      "Ingredient": 40,
+      "IngredientAlias": 4,
+      "Notification": 23,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 4,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "4935e0453d474cc41dc39ff28d2f5840158595c96f521a6eef4132b18b5a52b5",
+    "uploadFiles": 40,
+    "uploadSha256": "5111e5e997d15fa73d1ba4398da55aa7e1de7b66d0fb2ec41b36feeb67ccccce"
+  },
+  "after": {
+    "counts": {
+      "ApprovalRecord": 17,
+      "AuditLog": 191,
+      "CheckResult": 196,
+      "Contract": 0,
+      "Document": 14,
+      "DocumentItem": 79,
+      "DocumentPage": 20,
+      "ImportBatch": 0,
+      "Ingredient": 40,
+      "IngredientAlias": 4,
+      "Notification": 23,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 4,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "4935e0453d474cc41dc39ff28d2f5840158595c96f521a6eef4132b18b5a52b5",
+    "uploadFiles": 40,
+    "uploadSha256": "5111e5e997d15fa73d1ba4398da55aa7e1de7b66d0fb2ec41b36feeb67ccccce"
+  },
+  "fullBefore": {
+    "counts": {
+      "items": 79,
+      "pages": 20,
+      "audits": 192,
+      "aliases": 4,
+      "approvals": 17,
+      "contracts": 0,
+      "documents": 14,
+      "ingredients": 40
+    },
+    "sha256": "2f9124b3962891fbd0dfb6f83bf8ad04ee6761672c87373a1ca830477b405ded",
+    "uploadFiles": 40,
+    "uploadSha256": "5111e5e997d15fa73d1ba4398da55aa7e1de7b66d0fb2ec41b36feeb67ccccce"
+  },
+  "fullAfter": {
+    "counts": {
+      "items": 79,
+      "pages": 20,
+      "audits": 192,
+      "aliases": 4,
+      "approvals": 17,
+      "contracts": 0,
+      "documents": 14,
+      "ingredients": 40
+    },
+    "sha256": "2f9124b3962891fbd0dfb6f83bf8ad04ee6761672c87373a1ca830477b405ded",
+    "uploadFiles": 40,
+    "uploadSha256": "5111e5e997d15fa73d1ba4398da55aa7e1de7b66d0fb2ec41b36feeb67ccccce"
+  },
+  "allFingerprintsIdentical": true,
+  "configUnchanged": true,
+  "browserBusinessMutationRequests": 0,
+  "serverSmokeBusinessWrites": 0
+}

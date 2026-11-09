@@ -1,0 +1,481 @@
+{
+  "date": "2026-10-23",
+  "scope": "正式生产 云端部署 托管数据库和Redis",
+  "region": "华东1杭州 cn-hangzhou",
+  "assumptions": [
+    [
+      "项目点",
+      30,
+      "个",
+      "用户确认的采购测算基准 不是已实测的容量上限"
+    ],
+    [
+      "账号",
+      200,
+      "个",
+      "用户确认的采购测算基准 不是已实测的容量上限"
+    ],
+    [
+      "日均单据",
+      500,
+      "张每天",
+      "用户确认的采购测算基准 不是已实测的容量上限"
+    ],
+    [
+      "每月计费天数",
+      30,
+      "天",
+      "预算统一按30天每月 首年按12个预算月"
+    ],
+    [
+      "每单图片页数",
+      3,
+      "页每单",
+      "用户确认的采购测算基准 不是已实测的容量上限"
+    ],
+    [
+      "单页原图大小",
+      2,
+      "MB每页",
+      "待真实样本测量 预算按1024MB等于1GB换算"
+    ],
+    [
+      "图片版本余量系数",
+      1.2,
+      "倍",
+      "OSS版本和冗余余量 不是增强图副本"
+    ],
+    [
+      "识别重复调用比例",
+      0.1,
+      "比例",
+      "预留重试与人工重新识别 两通道都计入"
+    ],
+    [
+      "每页图像输入Token",
+      3000,
+      "Token每页",
+      "内部估计 以百炼实际计量替换"
+    ],
+    [
+      "每单提示文本Token",
+      1000,
+      "Token每单",
+      "内部估计 以百炼实际计量替换"
+    ],
+    [
+      "每单输出Token",
+      2000,
+      "Token每单",
+      "内部估计 与明细数量有关"
+    ],
+    [
+      "每页图片查看次数",
+      2,
+      "次每页",
+      "应用代理图片的公网流量保守估计"
+    ],
+    [
+      "初始OSS存量",
+      0,
+      "GB",
+      "不含历史数据迁移 初期按新库测算"
+    ],
+    [
+      "识别压缩图大小",
+      0.8,
+      "MB每页",
+      "只计算识别请求网络流量 OSS模式未保存增强图"
+    ],
+    [
+      "其他Web公网出流量",
+      10,
+      "GB每月",
+      "页面接口和Excel等预留"
+    ],
+    [
+      "预备费",
+      0.15,
+      "比例",
+      "覆盖价格与业务量偏差 不是官方收费项"
+    ],
+    [
+      "在线保留期",
+      5,
+      "年",
+      "原图和结构化数据保留要求 不包含自动到期删除"
+    ],
+    [
+      "工作时段",
+      10,
+      "小时每天",
+      "用于计算平均任务需求 不代表可用性SLA"
+    ],
+    [
+      "Worker副本数",
+      2,
+      "个",
+      "Worker ECS运行两个进程副本"
+    ],
+    [
+      "每副本并发",
+      2,
+      "任务",
+      "当前scripts/worker.ts固定为2"
+    ],
+    [
+      "单任务规划耗时",
+      60,
+      "秒",
+      "仅容量规划假设 上线前用真实OCR测量"
+    ],
+    [
+      "峰值同时操作用户",
+      10,
+      "人",
+      "用户确认的采购测算基准 不是已实测的容量上限"
+    ]
+  ],
+  "items": [
+    {
+      "id": "C01",
+      "name": "Web ECS",
+      "qty": 1,
+      "unit": "台每月",
+      "estimate": 650,
+      "cycle": "月",
+      "spec": "x86计算型4vCPU 8GB Ubuntu24.04LTS 非突发 不含盘与公网",
+      "url": "https://www.aliyun.com/product/ecs",
+      "class": "必需",
+      "note": "同地域同VPC 启用云助手 首期单Web 不构成应用高可用"
+    },
+    {
+      "id": "C02",
+      "name": "OCR Worker ECS",
+      "qty": 1,
+      "unit": "台每月",
+      "estimate": 650,
+      "cycle": "月",
+      "spec": "x86计算型4vCPU 8GB Ubuntu24.04LTS 运行两个Worker副本",
+      "url": "https://www.aliyun.com/product/ecs",
+      "class": "必需",
+      "note": "独立于Web 队列峰值后按实测扩容 不采购GPU"
+    },
+    {
+      "id": "C03",
+      "name": "ECS系统盘",
+      "qty": 2,
+      "unit": "块每月",
+      "estimate": 40,
+      "cycle": "月",
+      "spec": "每台80GB SSD ESSD可选受支持等级 两台合计160GB",
+      "url": "https://www.aliyun.com/product/disk",
+      "class": "必需",
+      "note": "容量用于系统镜像日志 原图存OSS 不包含在ECS测算单价中"
+    },
+    {
+      "id": "C04",
+      "name": "RDS PostgreSQL",
+      "qty": 1,
+      "unit": "套每月",
+      "estimate": 750,
+      "cycle": "月",
+      "spec": "PostgreSQL17 高可用版 双可用区 2vCPU4GB 100GB云盘",
+      "url": "https://www.aliyun.com/product/rds/postgresql",
+      "class": "必需",
+      "note": "一套报价含主备与100GB盘 不是采购两个独立实例 确认PITR及备份保留能力"
+    },
+    {
+      "id": "C05",
+      "name": "Tair Redis兼容",
+      "qty": 1,
+      "unit": "套每月",
+      "estimate": 300,
+      "cycle": "月",
+      "spec": "兼容Redis7 标准非分片 主从 可用内存2GB 私网TLS",
+      "url": "https://www.aliyun.com/product/kvstore",
+      "class": "必需",
+      "note": "确认BullMQ6兼容Lua脚本 QPS noeviction持久化及故障切换 以可售规格为准"
+    },
+    {
+      "id": "C06",
+      "name": "固定EIP保有费用预留",
+      "qty": 2,
+      "unit": "个每月",
+      "estimate": 20,
+      "cycle": "月",
+      "spec": "Web和Worker各一固定IPv4 按流量计费 出流量另列",
+      "url": "https://www.aliyun.com/product/eip",
+      "class": "必需",
+      "note": "峰值带宽建议50Mbps起 以额度和实际计费为准 Web EIP用于微信白名单"
+    },
+    {
+      "id": "C07",
+      "name": "日志服务SLS",
+      "qty": 1,
+      "unit": "套每月",
+      "estimate": 80,
+      "cycle": "月",
+      "spec": "应用与Nginx日志采集 普通日志7天 错误日志30天",
+      "url": "https://www.aliyun.com/product/sls",
+      "class": "必需",
+      "note": "内部费用预留 按写入存储索引查询核价 审计记录在数据库按业务期保留"
+    },
+    {
+      "id": "C08",
+      "name": "备份和快照费用预留",
+      "qty": 1,
+      "unit": "套每月",
+      "estimate": 100,
+      "cycle": "月",
+      "spec": "RDS超出免费额度的备份 ECS快照 月度数据库归档",
+      "url": "https://www.aliyun.com/product/dbs",
+      "class": "必需",
+      "note": "先扣除实例自带额度再报价 不重复购买相同保障 不含全量图片跨地域复制"
+    },
+    {
+      "id": "V01",
+      "name": "表格OCR首档",
+      "qty": 1,
+      "unit": "元每图片调用",
+      "estimate": 0.0825,
+      "cycle": "用量",
+      "spec": "独立表格识别 每月前10000次",
+      "url": "https://help.aliyun.com/zh/ocr/product-overview/pay-as-you-go",
+      "class": "必需",
+      "note": "2026-10-23已读取官方公开首档价 累进计费 不扣未确认免费额度"
+    },
+    {
+      "id": "V02",
+      "name": "Qwen输入Token",
+      "qty": 1,
+      "unit": "元每千Token",
+      "estimate": 0.001,
+      "cycle": "用量",
+      "spec": "候选qwen3-vl-plus 北京 输入不超过32K 每百万Token1元",
+      "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "class": "必需",
+      "note": "2026-10-23官方公开价 折算每千Token 旧默认模型未在当前价格表找到"
+    },
+    {
+      "id": "V03",
+      "name": "Qwen输出Token",
+      "qty": 1,
+      "unit": "元每千Token",
+      "estimate": 0.01,
+      "cycle": "用量",
+      "spec": "候选qwen3-vl-plus 北京 输入不超过32K 每百万输出Token10元",
+      "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "class": "必需",
+      "note": "2026-10-23官方公开价 不计Batch或缓存折扣 上线前需兼容及盲测验证"
+    },
+    {
+      "id": "V04",
+      "name": "OSS存储",
+      "qty": 1,
+      "unit": "元每GB每月",
+      "estimate": 0.15,
+      "cycle": "用量",
+      "spec": "私有Bucket 标准存储 优先同城冗余 若地域支持",
+      "url": "https://www.aliyun.com/product/oss",
+      "class": "必需",
+      "note": "内部占位单价 平均存量计费 保留5年 不以100GB固定包覆盖全部存量"
+    },
+    {
+      "id": "V05",
+      "name": "OSS公网下行",
+      "qty": 1,
+      "unit": "元每GB",
+      "estimate": 0.5,
+      "cycle": "用量",
+      "spec": "保守计算Worker回源及页面看图消耗",
+      "url": "https://www.aliyun.com/product/oss",
+      "class": "必需",
+      "note": "若确认同地域访问计费可减免则调低回源系数 不默认免费"
+    },
+    {
+      "id": "V06",
+      "name": "EIP公网出流量",
+      "qty": 1,
+      "unit": "元每GB",
+      "estimate": 0.8,
+      "cycle": "用量",
+      "spec": "Web看图响应和Worker发往识别服务的请求",
+      "url": "https://www.aliyun.com/product/eip",
+      "class": "必需",
+      "note": "内部占位单价 按两台总出流量计算 与IP保有费分列"
+    },
+    {
+      "id": "V07",
+      "name": "OSS请求",
+      "qty": 1,
+      "unit": "元每万次",
+      "estimate": 0.1,
+      "cycle": "用量",
+      "spec": "上传检查与读图请求预算合并预留",
+      "url": "https://www.aliyun.com/product/oss",
+      "class": "必需",
+      "note": "采购核价应拆分请求类型 本表使用统一保守测算单价"
+    },
+    {
+      "id": "V08",
+      "name": "表格OCR第二档",
+      "qty": 1,
+      "unit": "元每图片调用",
+      "estimate": 0.0495,
+      "cycle": "用量",
+      "spec": "每月累进调用 10000次以上至100000次",
+      "url": "https://help.aliyun.com/zh/ocr/product-overview/pay-as-you-go",
+      "class": "必需",
+      "note": "2026-10-23已读取官方公开价 只对该区间内调用计费 不是整月套用一档"
+    },
+    {
+      "id": "V09",
+      "name": "表格OCR第三档",
+      "qty": 1,
+      "unit": "元每图片调用",
+      "estimate": 0.0415,
+      "cycle": "用量",
+      "spec": "每月累进调用 100000次以上至500000次",
+      "url": "https://help.aliyun.com/zh/ocr/product-overview/pay-as-you-go",
+      "class": "必需",
+      "note": "2026-10-23已读取官方公开价 只对该区间内调用计费 不是整月套用一档"
+    },
+    {
+      "id": "V10",
+      "name": "表格OCR第四档",
+      "qty": 1,
+      "unit": "元每图片调用",
+      "estimate": 0.0248,
+      "cycle": "用量",
+      "spec": "每月累进调用 500000次以上至1000000次",
+      "url": "https://help.aliyun.com/zh/ocr/product-overview/pay-as-you-go",
+      "class": "必需",
+      "note": "2026-10-23已读取官方公开价 只对该区间内调用计费 不是整月套用一档"
+    },
+    {
+      "id": "V11",
+      "name": "表格OCR第五档",
+      "qty": 1,
+      "unit": "元每图片调用",
+      "estimate": 0.009,
+      "cycle": "用量",
+      "spec": "每月累进调用 1000000次以上",
+      "url": "https://help.aliyun.com/zh/ocr/product-overview/pay-as-you-go",
+      "class": "必需",
+      "note": "2026-10-23已读取官方公开价 只对该区间内调用计费 不是整月套用一档"
+    },
+    {
+      "id": "V12",
+      "name": "Qwen第二档输入",
+      "qty": 1,
+      "unit": "元每千Token",
+      "estimate": 0.0015,
+      "cycle": "用量",
+      "spec": "候选qwen3-vl-plus 北京 32K小于单次输入不超过128K 每百万输入1.5元",
+      "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "class": "必需",
+      "note": "2026-10-23已读取官方公开价 按单次输入Token所在阶梯选择输入和输出价格"
+    },
+    {
+      "id": "V13",
+      "name": "Qwen第二档输出",
+      "qty": 1,
+      "unit": "元每千Token",
+      "estimate": 0.015,
+      "cycle": "用量",
+      "spec": "候选qwen3-vl-plus 北京 32K小于单次输入不超过128K 每百万输出15元",
+      "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "class": "必需",
+      "note": "2026-10-23已读取官方公开价 按单次输入Token所在阶梯选择输入和输出价格"
+    },
+    {
+      "id": "V14",
+      "name": "Qwen第三档输入",
+      "qty": 1,
+      "unit": "元每千Token",
+      "estimate": 0.003,
+      "cycle": "用量",
+      "spec": "候选qwen3-vl-plus 北京 128K小于单次输入不超过256K 每百万输入3元",
+      "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "class": "必需",
+      "note": "2026-10-23已读取官方公开价 按单次输入Token所在阶梯选择输入和输出价格"
+    },
+    {
+      "id": "V15",
+      "name": "Qwen第三档输出",
+      "qty": 1,
+      "unit": "元每千Token",
+      "estimate": 0.03,
+      "cycle": "用量",
+      "spec": "候选qwen3-vl-plus 北京 128K小于单次输入不超过256K 每百万输出30元",
+      "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "class": "必需",
+      "note": "2026-10-23已读取官方公开价 按单次输入Token所在阶梯选择输入和输出价格"
+    },
+    {
+      "id": "A01",
+      "name": "域名年费",
+      "qty": 1,
+      "unit": "个每年",
+      "estimate": 80,
+      "cycle": "年",
+      "spec": "企业主体域名及实名信息 同备案与公众号主体协调",
+      "url": "https://wanwang.aliyun.com/domain",
+      "class": "必需或复用",
+      "note": "已有域名时正式报价可填0 备案服务和年费不是同一项目"
+    },
+    {
+      "id": "A02",
+      "name": "HTTPS证书预算",
+      "qty": 1,
+      "unit": "份每年",
+      "estimate": 600,
+      "cycle": "年",
+      "spec": "业务域名受信任DV证书或企业现有证书",
+      "url": "https://www.aliyun.com/product/cas",
+      "class": "必需或复用",
+      "note": "内部预算 可采用自动续期证书 采用免费或现有证书时填0"
+    },
+    {
+      "id": "A03",
+      "name": "微信公众号认证预算",
+      "qty": 1,
+      "unit": "次每年",
+      "estimate": 300,
+      "cycle": "年",
+      "spec": "已认证服务号及所需网页授权模板消息权限",
+      "url": "https://mp.weixin.qq.com/",
+      "class": "必需或复用",
+      "note": "内部费用预留 以主体认证页面通知为准 已有认证按到期安排"
+    }
+  ],
+  "price_status": "基础设施为内部预算占位 OCR与候选Qwen3-VL-Plus为已读取的官方公开价 最终以账号适用计费和正式报价为准 未含实施人工和选配资源",
+  "confirmed_business_rules": [
+    "低置信度沿当前提示及提交流程 不新增强制确认拦截 不列未闭环问题",
+    "跨日期跨项目查重沿当前范围 不扩大查重 不列待确认问题"
+  ],
+  "source_note": "技术规格来自当前代码和用户确认 OCR累进及候选模型阶梯价已于2026-10-23读取官方页面 其余产品入口供正式询价 不作为已取得报价",
+  "verified_sources": [
+    {
+      "url": "https://help.aliyun.com/zh/ocr/product-overview/pay-as-you-go",
+      "claim": "表格识别累进阶梯 .0825 .0495 .0415 .0248 .009元每次",
+      "date": "2026-10-23"
+    },
+    {
+      "url": "https://help.aliyun.com/zh/ocr/product-overview/resource-plans",
+      "claim": "表格识别共享包每次10点 专用包10万次2805元 有效期需按购买确认",
+      "date": "2026-10-23"
+    },
+    {
+      "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "claim": "Qwen3-VL-Plus北京三档输入输出每百万Token价格 1/10 1.5/15 3/30元 未找到qwen-vl-max-latest",
+      "date": "2026-10-23"
+    },
+    {
+      "url": "https://help.aliyun.com/zh/model-studio/vision",
+      "claim": "Qwen3-VL-Plus支持视觉多图 OpenAI兼容接入 默认关闭思考 仍需本项目JSON与真单联调",
+      "date": "2026-10-23"
+    }
+  ]
+}

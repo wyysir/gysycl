@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-29T06:23:22.095Z",
+  "unitTests": 85,
+  "apiChecks": 44,
+  "additionalApiChecks": 10,
+  "browserChecks": 14,
+  "liveReadOnlyChecks": 6,
+  "typecheck": "PASS",
+  "build": "PASS",
+  "historicalDataUnchanged": true,
+  "backupCopyHashesMatch": true,
+  "liveImage": "sha256:eb57b3ca4b93849f2be17115e7a694677e6519709fe61f286e26313ab3ff63e4",
+  "knowledgeProposal": {
+    "id": "pr-30c1c2fd6e63485ca0282f0dc579e556",
+    "status": "pending"
+  }
+}

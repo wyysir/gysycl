@@ -1,0 +1,77 @@
+{
+  "name": "delivery-aliyun",
+  "services": {
+    "app": {
+      "image": "${APP_IMAGE:?请设置经过验收的APP_IMAGE版本}",
+      "env_file": [
+        "${APP_ENV_FILE:-/etc/delivery-audit/app.env}"
+      ],
+      "restart": "unless-stopped",
+      "init": true,
+      "volumes": [
+        "/etc/delivery-audit/certs:/run/certs:ro"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "20m",
+          "max-file": "5"
+        }
+      },
+      "profiles": [
+        "web"
+      ],
+      "command": [
+        "npm",
+        "start"
+      ],
+      "ports": [
+        "127.0.0.1:3000:3000"
+      ],
+      "mem_limit": "3g",
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:3000/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
+        ],
+        "interval": "15s",
+        "timeout": "5s",
+        "retries": 5,
+        "start_period": "45s"
+      }
+    },
+    "worker": {
+      "image": "${APP_IMAGE:?请设置经过验收的APP_IMAGE版本}",
+      "env_file": [
+        "${APP_ENV_FILE:-/etc/delivery-audit/app.env}"
+      ],
+      "restart": "unless-stopped",
+      "init": true,
+      "volumes": [
+        "/etc/delivery-audit/certs:/run/certs:ro"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "20m",
+          "max-file": "5"
+        }
+      },
+      "profiles": [
+        "worker"
+      ],
+      "command": [
+        "node",
+        "--require",
+        "./scripts/preload.cjs",
+        "--import",
+        "tsx",
+        "scripts/worker.ts"
+      ],
+      "mem_limit": "2g",
+      "stop_grace_period": "5m"
+    }
+  }
+}

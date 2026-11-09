@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "documentId": "cmvqyekc4000054up5cts5ofi",
+  "status": "DRAFT",
+  "supplierId": "sup_sh",
+  "items": [
+    {"rawName": "青莱", "canonicalName": "青菜", "matchStatus": "MATCHED", "ingredientId": "ing_qc"},
+    {"rawName": "士豆", "canonicalName": "土豆", "matchStatus": "MATCHED", "ingredientId": "ing_td"}
+  ]
+}

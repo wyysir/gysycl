@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-29T17:02:38.846Z",
+  "unitTests": {
+    "files": 10,
+    "passed": 121,
+    "failed": 0
+  },
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "browserChecks": [
+    "管理员上传原图字节一致、旧版本409、跨域403",
+    "品牌设置预览与取消",
+    "1440px与390px关键页无整页横向溢出",
+    "多页选择与离开拦截",
+    "财务禁止上传Logo及录入单据",
+    "公开登录页展示公司Logo",
+    "两页图片上传与Mock识别生成草稿",
+    "添加明细后离开提示、取消保留编辑",
+    "手机原图查看及Esc返回",
+    "严重异常阻止普通通过，强制通过必填原因并二次确认",
+    "已通过单据只读",
+    "分析→来源单据→返回保留日期及选中材料",
+    "工作台状态快捷入口覆盖旧筛选",
+    "B02重新比对先保存当前修改，不覆盖输入",
+    "B07供应商手动查询失败显示反馈，无未处理异常",
+    "B03延迟旧请求不覆盖最后选中单据",
+    "B05非法新文件清除旧待上传文件，保存禁用",
+    "B08审核接口返回真实配置阈值",
+    "B04空队列不保留其他队列详情",
+    "手机更多菜单使用统一品牌中性色",
+    "B09取消后清空原生选择，能够重选同一图片"
+  ],
+  "browserCheckCount": 21,
+  "pageErrors": [],
+  "widths": [
+    390,
+    1440
+  ],
+  "isolation": ".tmp/brand-ledger-20261029",
+  "paidOcrCalls": 0,
+  "knownOpenBugs": [
+    "B06"
+  ],
+  "branchCoverage": "NOT_MEASURED",
+  "eslint": "NOT_CONFIGURED",
+  "liveVerification": "See docs/releases/2026-10-30-brand-ledger.json"
+}

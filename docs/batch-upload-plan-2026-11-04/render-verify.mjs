@@ -1,0 +1,57 @@
+import {chromium} from 'playwright-core';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+const root=path.dirname(fileURLToPath(import.meta.url));
+const out=path.join(root,'screenshots');await mkdir(out,{recursive:true});
+const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
+const errors=[],results=[];
+try{
+ for(const width of [375,390,430,1440]){
+  const ctx=await browser.newContext({viewport:{width,height:width>767?1000:900},locale:'zh-CN'});
+  const page=await ctx.newPage();page.on('pageerror',e=>errors.push(e.message));
+  await ctx.route('**/*',async route=>{const url=route.request().url();if(url.startsWith('file:')||url.startsWith('data:'))return route.continue();throw new Error('Unexpected network request: '+url);});
+  await page.goto(pathToFileURL(path.join(root,'demo.html')).href);
+  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);assert.equal(overflow,false,'review overflow '+width);
+  assert.equal(await page.locator('.doc').count(),10);
+  assert.match(await page.locator('[data-action=submit]').innerText(),/7张/);
+  if(width===390||width===1440)await page.screenshot({path:path.join(out,`review-${width}.png`)});
+  await page.locator('[data-action=edit][data-id="1"][data-row="2"]').first().click();
+  assert.equal(await page.locator('dialog').isVisible(),true);
+  if(width===390||width===1440)await page.screenshot({path:path.join(out,`edit-${width}.png`)});
+  await page.locator('#edit-unit').selectOption('斤');
+  const sourceButton=width<768?page.locator('.modal-source-mobile [data-action=source]'):page.locator('.source-panel [data-action=source]');
+  await sourceButton.click();await page.locator('[data-action=back-edit]').click();assert.equal(await page.locator('#edit-unit').inputValue(),'斤','source viewing preserves edit');
+  await page.locator('[data-action=save]').click();
+  assert.doesNotMatch(await page.locator('#doc-1').innerText(),/单位待确认/);
+  assert.match(await page.locator('[data-action=submit]').innerText(),/7张/,'saving does not imply checked');
+  await page.locator('[data-action=confirm][data-id="1"]').click();
+  assert.match(await page.locator('[data-action=submit]').innerText(),/8张/);
+  await page.locator('#doc-1 [data-action=source]').click();assert.match(await page.locator('#modal-title').innerText(),/第01张原图/);await page.locator('[data-action=close]').first().click();
+  await page.locator('[data-action=submit]').click();assert.match(await page.locator('.result-hero h2').innerText(),/已提交 8 张，剩余 2 张保留/);
+  await page.locator('#reset').click();await page.locator('[data-action=submit]').click();
+  await page.locator('#toast').evaluate(el=>el.classList.remove('show'));
+  if(width===390||width===1440)await page.screenshot({path:path.join(out,`result-${width}.png`)});
+  assert.match(await page.locator('.result-hero h2').innerText(),/已提交 7 张，剩余 3 张保留/);
+  await page.locator('[data-action=continue]').click();assert.equal(await page.locator('[data-action=submit]').isDisabled(),true);
+  await page.locator('[data-action=retry][data-id="10"]').click();assert.match(await page.locator('#doc-10').innerText(),/供应商待确认/);
+  await page.locator('[data-action=docinfo][data-id="10"]').first().click();await page.locator('#info-supplier').selectOption({label:'鲜禾蔬菜配送'});await page.locator('[data-action=save-info]').click();
+  assert.match(await page.locator('#doc-10').innerText(),/待核对/);
+  await page.locator('[data-action=confirm][data-id="10"]').click();assert.match(await page.locator('[data-action=submit]').innerText(),/1张/);
+  await page.locator('#reset').click();await page.locator('.steps [data-view=upload]').click();
+  assert.equal(await page.locator('.photo').count(),10);
+  if(width===390||width===1440)await page.screenshot({path:path.join(out,`upload-${width}.png`)});
+  await page.locator('[data-action=removephoto][data-id="1"]').click();assert.equal(await page.locator('.photo').count(),9);
+  await page.locator('[data-action=addphoto]').click();assert.equal(await page.locator('.photo').count(),10);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'upload overflow');
+  await page.locator('[data-action=start]').click();await page.locator('[data-action=submit]').waitFor();
+  assert.match(await page.locator('h1').innerText(),/核对明细/);
+  results.push({width,checks:['no-horizontal-overflow','10-independent-documents','edit-associated-image','resolve-unit','save-does-not-confirm-document','explicit-confirm','partial-submit-7-keep-3','submitted-not-resubmitted','retry-only-failed-document','supplier-confirmation','photo-limit-remove-append','simulated-progress'],passed:true});await ctx.close();
+ }
+ assert.equal(errors.length,0);
+ const board=`<!doctype html><html lang="zh-CN"><meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;background:#eeeae3;color:#342e28;font-family:'Microsoft YaHei',sans-serif;padding:30px 30px 35px}.heading{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px}h1{margin:0;font-size:27px;font-weight:600}.heading p{font-size:12px;color:#7b6c5d}.grid{display:grid;grid-template-columns:repeat(3,390px);gap:26px}.label{display:flex;gap:10px;align-items:center;margin-bottom:13px}.label b{display:grid;place-items:center;background:#76543e;color:#fff;width:28px;height:28px;border-radius:50%;font-size:12px}.label span{font-size:15px;font-weight:600}.device{border:1px solid #d3c7b9;border-radius:17px;overflow:hidden;background:#fff;box-shadow:0 8px 28px #5b3b1912}.device img{display:block;width:390px;height:900px}.caption{font-size:12px;line-height:1.7;color:#756b5f;margin-top:13px}</style><div class="heading"><h1>食安链 · 批量核对方案</h1><p>A版暖棕配色 / B版弹窗编辑 / 尚未实施</p></div><div class="grid">${[['review','01','集中核对，看更多明细','供应商分组，照片独立成单；问题行突出显示。'],['edit','02','点开即改，对照原图','查看当前单据原图，保存后继续下一项。'],['result','03','一键提交，问题单保留','示例7张送审，2张待确认、1张失败继续处理。']].map(([file,n,title,cap])=>`<div><div class="label"><b>${n}</b><span>${title}</span></div><div class="device"><img src="${pathToFileURL(path.join(out,file+'-390.png')).href}"></div><div class="caption">${cap}</div></div>`).join('')}</div></html>`;
+ const page=await browser.newPage({viewport:{width:1282,height:1090}});await page.goto(pathToFileURL(path.join(root,'demo.html')).href);await page.setContent(board);await page.screenshot({path:path.join(out,'mobile-flow.png'),fullPage:true});
+ await writeFile(path.join(root,'prototype-validation.json'),JSON.stringify({scope:'Standalone synthetic prototype only. No production code or backend, no OCR, no real WeChat validation.',checkedAt:new Date().toISOString(),results,consoleErrors:errors,screenshots:8,board:'screenshots/mobile-flow.png'},null,2)+'\n');
+ console.log(JSON.stringify({ok:true,widths:results.map(r=>r.width),consoleErrors:errors.length,screenshots:9}));
+}finally{await browser.close();}

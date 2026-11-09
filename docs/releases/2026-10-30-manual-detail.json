@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-30",
+  "tag": "release/2026-10-30-manual-detail",
+  "status": "DEPLOYED_AND_VERIFIED",
+  "sourceCommit": "acd90724f3b237f8ea8d92897c5e8144f3624c81",
+  "tagTarget": "最终发布留档提交，以git查询，sourceCommit为实际部署源码",
+  "verifiedAt": "2026-10-30T14:59:04.037Z",
+  "features": [
+    "无图手工录入送货单",
+    "系统自动生成只读单号，OCR和保存不覆盖",
+    "手机收起明细显示单位数量单价总金额，展开直接新建品名与删除",
+    "送货日期和供应商常显于明细之前",
+    "取消模板通知"
+  ],
+  "image": "sha256:b65fd28eb0741ba940172d9ecf67ef013a056784dbc87ee7263b695825cda440",
+  "imageTag": "delivery-audit:manual-detail-20261030",
+  "previousImage": "sha256:dc4673a7c984de952c8679fd9100b217eec51b395f3141e0339af7d9f947af99",
+  "previousImageTag": "delivery-audit:before-manual-detail-20261030",
+  "sourceArchive": "/opt/delivery-audit/releases/manual-detail-20261030.tar.gz",
+  "sourceArchiveSha256": "9661fb632d73042dc940acfd0c3d62c1ac84ffdc620afc4b1cd4426f60cf043d",
+  "sourceBefore": "/opt/delivery-audit/releases/manual-detail-20261030/source-before.tar.gz",
+  "backupPath": "/opt/delivery-audit/backups/20261030-225659",
+  "backupChecksums": "51e539ceddec1018640bf03cde054aff627464afcbd21e777edb6d9c0c8365eb  database.sql.gz\n2721af548f55a79dd0541dcbf3afc8a418698db7aeca7d0df1ebbc4f3a0cb4f1  uploads.tar.gz",
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "localFullBackupCopied": false,
+  "migration": "NONE",
+  "migrationsApplied": [
+    "0001_init",
+    "0002_ingredient_maintenance"
+  ],
+  "checks": {
+    "unitTests": 130,
+    "typecheck": "PASS",
+    "localBuild": "PASS",
+    "serverBuild": "PASS",
+    "isolatedBrowser": "PASS",
+    "live": {
+      "status": "PASS",
+      "checkedAt": "2026-10-30T14:59:04.037Z",
+      "checks": [
+        "公网HTTPS与健康检查正常（未忽略证书错误）",
+        "新建单据手工入口可见且可用，未创建测试业务单据",
+        "送货日期、供应商常显，系统单号只读",
+        "手机收起显示四个值，展开直接显示新建品名和删除",
+        "三种手机宽度无横向溢出",
+        "桌面明细展开正常"
+      ],
+      "pageErrors": [],
+      "businessMutationRequests": 0,
+      "paidOcrCalls": 0,
+      "httpsCertificateErrorsIgnored": false
+    }
+  },
+  "dataPreservationRecord": "docs/detail-cards-2026-10-30/data-preservation.json",
+  "rollback": "将delivery-audit:before-manual-detail-20261030重新标记为delivery-audit:trial，使用现有compose.trial.yml及私有env同步更新app/worker；保留数据卷。无迁移，无需数据库恢复。旧版本不支持无图新建、可能重新允许改号及恢复旧通知逻辑；部署后新增的手工单据和系统号不得随应用回退删除。数据库恢复单独评估，不自动覆盖新数据。",
+  "remaining": [
+    "公众号域名及登录接入等待备案",
+    "手机实机验收",
+    "OCR待处理保持原状态"
+  ],
+  "gitRemote": "NONE; local Git only"
+}

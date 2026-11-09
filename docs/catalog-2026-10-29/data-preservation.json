@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "before": {
+    "counts": {
+      "items": 29,
+      "pages": 9,
+      "audits": 59,
+      "aliases": 1,
+      "approvals": 6,
+      "contracts": 0,
+      "documents": 8,
+      "ingredients": 12
+    },
+    "sha256": "41d98efb36cb130b5788390456b3f5b88bd50e43e83dd376e553350e822f14c9",
+    "uploadFiles": 18,
+    "uploadSha256": "bb1bb133dded1d028860c38ed08ff32cf9301ff849b2456b74faec034e1b48cb"
+  },
+  "after": {
+    "counts": {
+      "items": 29,
+      "pages": 9,
+      "audits": 59,
+      "aliases": 1,
+      "approvals": 6,
+      "contracts": 0,
+      "documents": 8,
+      "ingredients": 12
+    },
+    "sha256": "41d98efb36cb130b5788390456b3f5b88bd50e43e83dd376e553350e822f14c9",
+    "uploadFiles": 18,
+    "uploadSha256": "bb1bb133dded1d028860c38ed08ff32cf9301ff849b2456b74faec034e1b48cb"
+  },
+  "backupCopy": {
+    "directory": ".data/server-backups/20261029-141559/",
+    "files": [
+      {
+        "name": "database.sql.gz",
+        "sha256": "d1b2f52065fb7d46c3e50b29c54ba86177f6e11524ad587704b4a51884865d65"
+      },
+      {
+        "name": "uploads.tar.gz",
+        "sha256": "3d92df1ecacfa8bf6a46a317ec993077ac6bff1ef4dc40d32f78d205520beec4"
+      }
+    ],
+    "hashesMatch": true
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "version": "1.0.0",
+  "name": "delivery-audit",
+  "dependencies": {
+    "@alicloud/ocr-api20210707": {
+      "version": "3.1.3",
+      "resolved": "https://registry.npmjs.org/@alicloud/ocr-api20210707/-/ocr-api20210707-3.1.3.tgz",
+      "overridden": false
+    },
+    "@alicloud/openapi-client": {
+      "version": "0.4.15",
+      "resolved": "https://registry.npmjs.org/@alicloud/openapi-client/-/openapi-client-0.4.15.tgz",
+      "overridden": false
+    },
+    "@alicloud/tea-util": {
+      "version": "1.4.11",
+      "resolved": "https://registry.npmjs.org/@alicloud/tea-util/-/tea-util-1.4.11.tgz",
+      "overridden": false
+    },
+    "@prisma/adapter-pg": {
+      "version": "7.10.1",
+      "resolved": "https://registry.npmjs.org/@prisma/adapter-pg/-/adapter-pg-7.10.1.tgz",
+      "overridden": false
+    },
+    "@prisma/client": {
+      "version": "7.10.1",
+      "resolved": "https://registry.npmjs.org/@prisma/client/-/client-7.10.1.tgz",
+      "overridden": false
+    },
+    "@types/ali-oss": {
+      "version": "6.23.3",
+      "resolved": "https://registry.npmjs.org/@types/ali-oss/-/ali-oss-6.23.3.tgz",
+      "overridden": false
+    },
+    "@types/node": {
+      "version": "24.19.2",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-24.19.2.tgz",
+      "overridden": false
+    },
+    "@types/pg": {
+      "version": "8.23.1",
+      "resolved": "https://registry.npmjs.org/@types/pg/-/pg-8.23.1.tgz",
+      "overridden": false
+    },
+    "@types/react-dom": {
+      "version": "19.3.0",
+      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.3.0.tgz",
+      "overridden": false
+    },
+    "@types/react": {
+      "version": "19.3.0",
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-19.3.0.tgz",
+      "overridden": false
+    },
+    "ali-oss": {
+      "version": "6.23.0",
+      "resolved": "https://registry.npmjs.org/ali-oss/-/ali-oss-6.23.0.tgz",
+      "overridden": false
+    },
+    "bullmq": {
+      "version": "6.3.17",
+      "resolved": "https://registry.npmjs.org/bullmq/-/bullmq-6.3.17.tgz",
+      "overridden": false
+    },
+    "dotenv": {
+      "version": "17.4.2",
+      "resolved": "https://registry.npmjs.org/dotenv/-/dotenv-17.4.2.tgz",
+      "overridden": false
+    },
+    "exceljs": {
+      "version": "4.4.0",
+      "resolved": "https://registry.npmjs.org/exceljs/-/exceljs-4.4.0.tgz",
+      "overridden": false
+    },
+    "ioredis": {
+      "version": "5.11.1",
+      "resolved": "https://registry.npmjs.org/ioredis/-/ioredis-5.11.1.tgz",
+      "overridden": false
+    },
+    "jose": {
+      "version": "6.2.12",
+      "resolved": "https://registry.npmjs.org/jose/-/jose-6.2.12.tgz",
+      "overridden": false
+    },
+    "lucide-react": {
+      "version": "1.59.0",
+      "resolved": "https://registry.npmjs.org/lucide-react/-/lucide-react-1.59.0.tgz",
+      "overridden": false
+    },
+    "next": {
+      "version": "16.4.2",
+      "resolved": "https://registry.npmjs.org/next/-/next-16.4.2.tgz",
+      "overridden": false
+    },
+    "opencc-js": {
+      "version": "1.4.2",
+      "resolved": "https://registry.npmjs.org/opencc-js/-/opencc-js-1.4.2.tgz",
+      "overridden": false
+    },
+    "pg": {
+      "version": "8.23.1",
+      "resolved": "https://registry.npmjs.org/pg/-/pg-8.23.1.tgz",
+      "overridden": false
+    },
+    "pinyin-pro": {
+      "version": "3.29.5",
+      "resolved": "https://registry.npmjs.org/pinyin-pro/-/pinyin-pro-3.29.5.tgz",
+      "overridden": false
+    },
+    "prisma-pglite": {
+      "version": "3.0.2",
+      "resolved": "https://registry.npmjs.org/prisma-pglite/-/prisma-pglite-3.0.2.tgz",
+      "overridden": false
+    },
+    "prisma": {
+      "version": "7.10.1",
+      "resolved": "https://registry.npmjs.org/prisma/-/prisma-7.10.1.tgz",
+      "overridden": false
+    },
+    "react-dom": {
+      "version": "19.3.1",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.3.1.tgz",
+      "overridden": false
+    },
+    "react": {
+      "version": "19.3.1",
+      "resolved": "https://registry.npmjs.org/react/-/react-19.3.1.tgz",
+      "overridden": false
+    },
+    "sharp": {
+      "version": "0.35.5",
+      "resolved": "https://registry.npmjs.org/sharp/-/sharp-0.35.5.tgz",
+      "overridden": false
+    },
+    "tsx": {
+      "version": "4.23.15",
+      "resolved": "https://registry.npmjs.org/tsx/-/tsx-4.23.15.tgz",
+      "overridden": false
+    },
+    "typescript": {
+      "version": "5.9.3",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+      "overridden": false
+    },
+    "vitest": {
+      "version": "5.0.5",
+      "resolved": "https://registry.npmjs.org/vitest/-/vitest-5.0.5.tgz",
+      "overridden": false
+    },
+    "zod": {
+      "version": "4.6.7",
+      "resolved": "https://registry.npmjs.org/zod/-/zod-4.6.7.tgz",
+      "overridden": false
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "build": "PASS",
+  "tests": 134,
+  "manualBulkAdd": 2,
+  "savedAndReloaded": true,
+  "feedbackPersists": true,
+  "emptyFeedbackRejected": true,
+  "unauthenticatedReadRejected": true,
+  "viewports": [
+    320,
+    390,
+    430,
+    1440
+  ],
+  "pageErrors": [],
+  "isolatedDemo": true,
+  "paidCalls": 0,
+  "deployed": false,
+  "fiveCharacterHeader": true,
+  "longNameUploadAt320": true,
+  "returnedDeleteButtonAndConfirmation": true,
+  "returnedDeletedAnd404": true
+}

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "typecheck": "PASS (production build)",
+  "productionBuild": "PASS",
+  "tests": 132,
+  "editableTotal": true,
+  "visibleInputBorder": {
+    "border": "1px",
+    "borderStyle": "solid",
+    "background": "rgb(255, 255, 255)"
+  },
+  "decimalEditing": true,
+  "viewportWidths": [
+    320,
+    390,
+    430,
+    1440
+  ],
+  "noOverflow": true,
+  "pageErrors": [],
+  "isolatedDemo": true,
+  "paidCalls": 0,
+  "deployed": false
+}

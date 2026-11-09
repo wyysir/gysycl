@@ -1,0 +1,161 @@
+{
+  "summary": {
+    "total": 19,
+    "passed": 19,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "错误密码留在登录表单并显示真实错误",
+      "status": "PASS"
+    },
+    {
+      "name": "管理员表单登录",
+      "status": "PASS"
+    },
+    {
+      "name": "desktop /dashboard",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "name": "desktop /documents",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "name": "desktop /documents/doc_demo_002",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "name": "desktop /upload",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "name": "desktop /reviews",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "name": "desktop /analytics",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "name": "desktop /master",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "name": "mobile /dashboard",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      }
+    },
+    {
+      "name": "mobile /documents",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      }
+    },
+    {
+      "name": "mobile /documents/doc_demo_002",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      }
+    },
+    {
+      "name": "mobile /upload",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      }
+    },
+    {
+      "name": "mobile /reviews",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      }
+    },
+    {
+      "name": "mobile /analytics",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      }
+    },
+    {
+      "name": "mobile /master",
+      "status": "PASS",
+      "evidence": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      }
+    },
+    {
+      "name": "手机选择图片、上传、OCR轮询和草稿保存",
+      "status": "PASS",
+      "evidence": {
+        "id": "cmvqyc5az00boawupqpekd7lq",
+        "status": "DRAFT"
+      }
+    },
+    {
+      "name": "财务页面只读并隐藏上传和审核入口",
+      "status": "PASS"
+    },
+    {
+      "name": "页面运行无未捕获异常和5xx响应",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "failedResponses": []
+}

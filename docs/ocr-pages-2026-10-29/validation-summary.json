@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-29T12:52:40.771Z",
+  "unitTests": 97,
+  "build": "PASS",
+  "typecheck": "PASS",
+  "isolatedBrowserChecks": 6,
+  "preRecoveryLiveReadOnlyChecks": 5,
+  "postRecoveryLiveReadOnlyChecks": 4,
+  "authorizedPaidRecoveryDocuments": 2,
+  "authorizedPaidRecoveryPages": 10,
+  "itemsPerRecoveredDraft": 20,
+  "sourcePageItemCounts": [
+    2,
+    1,
+    10,
+    4,
+    3
+  ],
+  "recognitionAccuracyAcceptance": "NOT_COMPLETED",
+  "remaining": "两笔为同一组图片，用户选一笔核对；部分单位/金额需人工复核，两笔总价暂为0；已通过五页单据仍须原撤回流程处理"
+}

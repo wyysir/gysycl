@@ -1,0 +1,158 @@
+{
+  "date": "2026-11-02",
+  "tag": "release/2026-11-02-business-demo-week",
+  "status": "DEPLOYED_TO_TRIAL_VERIFIED",
+  "environment": "TEST_DEMO_NOT_FORMAL_PRODUCTION",
+  "sourceCommit": "023ca4c59311905161a2dfd1033eeface772b70b",
+  "tagTarget": "发布归档提交；实际镜像源码为sourceCommit，标签创建后用git rev-parse查询目标",
+  "gitRemote": "LOCAL_GIT_ONLY",
+  "features": [
+    "A版配色+B版校对弹窗",
+    "重复图片审核拦截原因与权限提示",
+    "列表隐藏系统单号、详情复制",
+    "全部材料跨项目价格热力图及限定项目历史",
+    "每日营业额权限、版本校验、审计",
+    "原材料分类占比与采购口径毛利率",
+    "5测试项目一周演示数据"
+  ],
+  "localChecks": {
+    "testFiles": 22,
+    "tests": 182,
+    "status": "PASS",
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "compactReviewWidths": [
+      375,
+      390,
+      430,
+      1440
+    ],
+    "businessAndHeatmapWidths": [
+      390,
+      1440
+    ],
+    "browserErrors": 0
+  },
+  "liveChecks": {
+    "health": "PASS",
+    "serverProductionBuild": "PASS",
+    "browserWidths": [
+      390,
+      1440
+    ],
+    "browserErrors": 0,
+    "duplicateImageBlock": "PASS",
+    "revenueApiPersistence": "PASS_AND_DEMO_AMOUNT_RESTORED",
+    "documentSheetApiPersistence": "PASS_AND_DEMO_VALUES_RESTORED",
+    "customRoleCheckboxes": 27,
+    "ocrQueueActive": 0,
+    "ocrQueueWaiting": 0,
+    "realPhoneKeyboardAndIos": "AWAIT_USER_CHECK"
+  },
+  "migration": {
+    "new": "0005_project_daily_revenue",
+    "appliedCount": 5,
+    "status": "APPLIED",
+    "behavior": "仅新增营业额表；不改旧采购、图片、角色配置"
+  },
+  "deploymentStartedAt": "2026-11-02T15:45:55+08:00",
+  "deploymentCompletedAt": "2026-11-02T15:48:05+08:00",
+  "verifiedAt": "2026-11-02T15:57:14+08:00",
+  "image": "sha256:b02e00dd9f291059c853b78c0647b4b081b54a04db107e841c3d4fb453bb48ae",
+  "imageTag": "delivery-audit:business-20261102",
+  "appAndWorkerImageIdentical": true,
+  "previousImage": "sha256:c9f228aeafc02b1786a4bf3ad525a1cf5169fb8b4f4e2535a7fbb3eadae7ff8c",
+  "previousImageTag": "delivery-audit:before-business-20261102",
+  "sourceArchive": "/opt/delivery-audit/releases/business-20261102.tar.gz",
+  "sourceArchiveSha256": "cf233fa75a6ec10fb1f4373a7907b26911661e45432891d10b5cd44d48959f45",
+  "sourceBefore": "/opt/delivery-audit/releases/business-20261102/source-before.tar.gz",
+  "deploymentLog": "/opt/delivery-audit/releases/business-20261102-deploy.log",
+  "backupBefore": {
+    "path": "/opt/delivery-audit/backups/20261102-154556",
+    "databaseSha256": "026b7e13adfca0420454a6479687bd3d772153d05fc1d3f68a072635019d01c6",
+    "uploadsSha256": "3b98b06878b173dd371f0e362b355d30f30d9bb800788c456db3ecdea199ac6d",
+    "checksumsAndCompression": "PASS"
+  },
+  "backupAfterDemo": {
+    "path": "/opt/delivery-audit/backups/20261102-155230",
+    "databaseSha256": "e1954d07ea1b4b187eb1011f6f980310d92e9118b8485c9824303cba57f93d5f",
+    "uploadsSha256": "3b98b06878b173dd371f0e362b355d30f30d9bb800788c456db3ecdea199ac6d",
+    "checksumsAndCompression": "PASS"
+  },
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "preexistingRecordsAfterMigrationAndDemoBrowser": {
+    "status": "UNCHANGED",
+    "scope": "19张旧业务表全部既存行全部字段和18个上传文件；排除本次独立演示批次及其验收审计新增行",
+    "fingerprint": {
+      "counts": {
+        "ApprovalRecord": 35,
+        "AuditLog": 323,
+        "CheckResult": 229,
+        "Contract": 150,
+        "CustomRole": 0,
+        "Document": 37,
+        "DocumentItem": 203,
+        "DocumentPage": 9,
+        "ImportBatch": 0,
+        "Ingredient": 73,
+        "IngredientAlias": 7,
+        "Notification": 1,
+        "Project": 7,
+        "ProjectMembership": 1,
+        "Supplier": 19,
+        "SupplierAlias": 0,
+        "SystemSetting": 1,
+        "User": 2,
+        "WechatBinding": 0
+      },
+      "sha256": "a4c9b2c581e3bb6f1b347616b504a3686d4c5e71bea9782566f9ff8d6e82ca55",
+      "uploadFiles": 18,
+      "uploadSha256": "a68a96455b85c83c1d5585b6db9e080b324d4b27c3fbbc66f9a0a00b8e807f84"
+    },
+    "serverEvidence": "/opt/delivery-audit/releases/business-20261102/protected-after-browser.json"
+  },
+  "demoData": {
+    "batch": "demo-week-20261102",
+    "from": "2026-10-27",
+    "to": "2026-11-02",
+    "projects": 5,
+    "documents": 35,
+    "items": 350,
+    "revenues": 35,
+    "approved": 30,
+    "pendingReview": 5,
+    "idPrefix": "demo_week_20261102_",
+    "preexistingRowsUnchangedOnInsert": true,
+    "rerun": "SKIPPED_NO_WRITES_VERIFIED",
+    "afterInsertCounts": {
+      "Project": 7,
+      "ProjectMembership": 1,
+      "CustomRole": 0,
+      "Supplier": 19,
+      "SupplierAlias": 0,
+      "Ingredient": 73,
+      "IngredientAlias": 7,
+      "Contract": 150,
+      "Document": 72,
+      "DocumentPage": 9,
+      "DocumentItem": 553,
+      "CheckResult": 588,
+      "ApprovalRecord": 65,
+      "Notification": 1,
+      "ImportBatch": 0,
+      "User": 2,
+      "WechatBinding": 0,
+      "AuditLog": 394,
+      "SystemSetting": 1,
+      "ProjectDailyRevenue": 35
+    },
+    "afterBrowserAuditCount": 398,
+    "evidence": "/opt/delivery-audit/releases/business-20261102/demo-week-apply.json",
+    "notice": "虚构交易及脚本审批状态，已标注；不代表真实采购或人工审批，不补回旧批次删除记录"
+  },
+  "paidOcrCalls": 0,
+  "configuration": "保留私有环境、图片存储和识别模型，不reset，不改真实用户授权",
+  "rollback": "回退app和worker到previousImage，保留营业额表与数据，旧界面无经营入口；不删表、不自动恢复整库，不覆盖新增业务；数据库恢复需单独评估备份时点与之后数据",
+  "evidenceLocal": ".data/business-20261102/",
+  "maintenance": "docs/business-2026-11-02/使用与维护.md"
+}

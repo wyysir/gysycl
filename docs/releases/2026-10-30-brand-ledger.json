@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-30",
+  "tag": "release/2026-10-30-brand-ledger",
+  "status": "DEPLOYED_AND_VERIFIED",
+  "sourceCommit": "78bbe923e452f4aeeda6c63b24050923b0eb68c5",
+  "sourceNote": "发布标签指向最终留档提交；部署业务源码为 sourceCommit。标签实际目标使用 Git 查询。",
+  "verifiedAt": "2026-10-29T17:09:29.860Z",
+  "image": "sha256:ec4cfef43920c53b32c641cc23290128b6cbc02d2d06223783e0a1a6e5dd004d",
+  "previousImage": "sha256:1dec3484b9d29acfe4dfcccc672d1108c13e17ea63af32740b1871c2dcf53baf",
+  "previousImageTag": "delivery-audit:before-brand-ledger-20261030",
+  "sourceArchive": "/opt/delivery-audit/releases/brand-ledger-20261030.tar.gz",
+  "sourceArchiveSha256": "f333037fea465811dfa15e8a0e6b88d34cf074b6155a051db192629c028d2f66",
+  "sourceBefore": "/opt/delivery-audit/releases/brand-ledger-20261030/source-before.tar.gz",
+  "migration": "NONE; existing SystemSetting and AuditLog tables only",
+  "brand": {
+    "version": 1,
+    "sha256": "adc79814f1bc0fd06c725fc3f4224810da0adc92bf6cd466f772bce96bde2817",
+    "bytes": 43299,
+    "originalUnchanged": true,
+    "settingKey": "company.brand",
+    "auditRowsAdded": 1
+  },
+  "backups": [
+    {
+      "phase": "before-deployment",
+      "path": "/opt/delivery-audit/backups/20261030-010611",
+      "sha256": {
+        "database.sql.gz": "76d2f0c6d744fb075c6b788337a8a98bf2b9d515183296adc656e87f99c18cae",
+        "uploads.tar.gz": "86a27e77ac2b427997e6be84b9c3303e8e82f24728c608df73532a1082d461ea"
+      }
+    },
+    {
+      "phase": "after-logo",
+      "path": "/opt/delivery-audit/backups/20261030-011033",
+      "sha256": {
+        "database.sql.gz": "56a0c073f8067e579a069ae5023af18f47085d93ae45d8eb2c94ae24e366f65b",
+        "uploads.tar.gz": "86a27e77ac2b427997e6be84b9c3303e8e82f24728c608df73532a1082d461ea"
+      }
+    }
+  ],
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "localFullBackupCopied": false,
+  "localBackupNote": "自动审批拒绝完整生产数据跨环境导出，改为在服务器校验并仅获取脱敏摘要；需要用户明确授权后才可下载完整副本。",
+  "checks": {
+    "unitTests": 121,
+    "typecheck": "PASS",
+    "localBuild": "PASS",
+    "serverBuild": "PASS",
+    "isolatedBrowserChecks": 21,
+    "liveBrowserChecks": 6,
+    "paidOcrCalls": 0,
+    "businessMutationRequests": 0
+  },
+  "dataPreservationRecord": "docs/ui-brand-2026-10-30/data-preservation.json",
+  "qualityReview": "docs/ui-brand-2026-10-30/01-代码质量检查.md",
+  "bugs": "docs/ui-brand-2026-10-30/02-Bug记录与修改方向.md",
+  "handoff": "docs/ui-brand-2026-10-30/03-交接文档.md",
+  "manualReview": "docs/ui-brand-2026-10-30/04-待人工审核清单.md",
+  "knownOpenBugs": [
+    "B06: SPA历史后退/手机手势未统一触发未保存提醒"
+  ],
+  "rollback": "将保留旧镜像重新标记为 delivery-audit:trial，使用原 Compose 与私有 env 同步更新 app/worker；不删除卷、不恢复数据库。旧版不显示新品牌设置但不删除它。数据恢复必须另行评估，防止覆盖后续业务。",
+  "gitRemote": "NONE; local Git only"
+}

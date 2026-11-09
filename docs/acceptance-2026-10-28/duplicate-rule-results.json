@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-28",
+  "rule": "同供应商、同单号跨日期，只提醒重复，可以提交和审核",
+  "status": "implemented",
+  "severity": "WARNING",
+  "blocksSubmission": false,
+  "requiresApprovalOverride": false,
+  "independentSeriousErrorsRemainBlocking": true,
+  "targetedTests": {"passed": 9, "failed": 0},
+  "fullSuite": {"passed": 59, "failed": 0},
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "previousDecision": {"id": "B07", "status": "closed"}
+}

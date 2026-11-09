@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-28",
+  "files": [
+    {
+      "file": "src/app/(workspace)/documents/[id]/page.tsx",
+      "kind": "modified",
+      "sha256": "0d419062bbca9e1ca75a27a7db6ee9cde86f04c100e10c1b02ae803fb72b3782"
+    },
+    {
+      "file": "src/app/api/contracts/route.ts",
+      "kind": "modified",
+      "sha256": "653a50126f01dcaf74a8cebf4ad2e0b0a8af59f311b22abcd7ca393c774e225f"
+    },
+    {
+      "file": "src/app/api/documents/route.ts",
+      "kind": "modified",
+      "sha256": "b385919a0bf4cb7e37f3d707b369553f30f05c868585af117574c72403d6e2c6"
+    },
+    {
+      "file": "src/app/api/documents/[id]/route.ts",
+      "kind": "modified",
+      "sha256": "123a50f3b395f09afe0748768121645f18ee3232459e26c36dff7e5765dd64be"
+    },
+    {
+      "file": "src/lib/client/api.ts",
+      "kind": "modified",
+      "sha256": "cdb3ecf21d5777145f6a70432ba070e1bf72419139c3d3c6d2759ed59623f0cf"
+    },
+    {
+      "file": "src/server/analytics.ts",
+      "kind": "modified",
+      "sha256": "0c6e6835257b0ea1d8e6586533faeab1067fe964ea65ec6bfa77c96c422b848b"
+    },
+    {
+      "file": "src/server/checks.ts",
+      "kind": "modified",
+      "sha256": "f7dd06406f09765f863c895128dc85a05ddef7e0dd51fae8e8ae9b6c15460219"
+    },
+    {
+      "file": "src/server/document-lock.ts",
+      "kind": "added",
+      "sha256": "d621d42c317062dc5973e6164f79196abf1f05cf0cfeb189e5de974d00447b92"
+    },
+    {
+      "file": "src/server/document-service.ts",
+      "kind": "modified",
+      "sha256": "9676292d3b3bbc3e63d3a2728a68a85330178b7cb10184a24ef9a429df5638c3"
+    },
+    {
+      "file": "src/server/documents.ts",
+      "kind": "modified",
+      "sha256": "51a381e737e1a24821fb1b883aec74cdf146fe0e117b90220d6f0c92ce1afefa"
+    },
+    {
+      "file": "src/server/excel.ts",
+      "kind": "modified",
+      "sha256": "84f2d4e24590547312c9725d58403008a975ebd09d400b934fd284bfafe32f04"
+    },
+    {
+      "file": "src/server/master-commands.ts",
+      "kind": "modified",
+      "sha256": "cccfc99b1f5ee3606ed3f99d33c59ebbd1e1f5479e3e3532ea3e6f79fa5df91b"
+    },
+    {
+      "file": "src/server/ocr.ts",
+      "kind": "modified",
+      "sha256": "d4570bb2fa822640906c4e90e736e4b62842737674bf70796128d81a1376bd92"
+    },
+    {
+      "file": "src/server/storage.ts",
+      "kind": "modified",
+      "sha256": "b97f7db365ccf124e153bdad005fd5f7e1986ddcfa880894ea673a3803709c9c"
+    },
+    {
+      "file": "tests/client-api.test.ts",
+      "kind": "added",
+      "sha256": "db4bb8b217b6847cf59dba63959f5311bf6b34e961545b4614b7f8594676611c"
+    },
+    {
+      "file": "tests/ocr-recovery.test.ts",
+      "kind": "added",
+      "sha256": "af9b3951730c0d34c7f167764ea8d47a361d29e4ff825d60ad34859fa10de18c"
+    },
+    {
+      "file": "tests/ocr.test.ts",
+      "kind": "added",
+      "sha256": "5e33731b25c064c13fc1d5b1eccfa82a4e8caa540876850135eda3310d3d6007"
+    },
+    {
+      "file": "tests/stability.test.ts",
+      "kind": "added",
+      "sha256": "a920cd5d574c970fa436476dce014d29c7170d35c8d98e350b0c438df22dde47"
+    },
+    {
+      "file": "package.json",
+      "kind": "modified",
+      "sha256": "eca6469ea4460fd4df9e40639de7f36d6de3070ec080a6a1f999fd6a2b1ca088"
+    },
+    {
+      "file": "package-lock.json",
+      "kind": "modified",
+      "sha256": "424c4abc64254fa75ce91fa95b389c57593b6ae93d357270f04ddb3e0ca29ab8"
+    },
+    {
+      "file": "tsconfig.json",
+      "kind": "modified",
+      "sha256": "eb3b6063ca9ecc579104bd416260075e7b2c2132e4745b66eecd97a21af81159"
+    },
+    {
+      "file": ".gitignore",
+      "kind": "modified",
+      "sha256": "c914a499b0e1074eadd438e5286e02be885f92357a3b1282c9222b85c7c76b3e"
+    },
+    {
+      "file": "README.md",
+      "kind": "modified",
+      "sha256": "50b31948c1d58e5fcc286a752abb3f96df48f8a567a442aab79a21ce0ba31997"
+    }
+  ]
+}

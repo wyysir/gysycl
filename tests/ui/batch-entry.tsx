@@ -1,0 +1,17 @@
+import { createRoot } from "react-dom/client";
+import { BatchReview } from "../../src/components/BatchReview";
+import UploadPage from "../../src/app/(workspace)/upload/page";
+import { AppShell } from "../../src/components/AppShell";
+import { ToastProvider } from "../../src/components/ToastProvider";
+import { BrandProvider } from "../../src/components/BrandProvider";
+import { LeaveProtectionProvider } from "../../src/components/LeaveProtection";
+import { emptyBrand } from "../../src/lib/client/brand";
+import type { Bootstrap } from "../../src/lib/client/types";
+import "../../src/app/globals.css";
+import "../../src/app/extra.css";
+import "../../src/app/design.css";
+import "../../src/app/ledger.css";
+import "../../src/app/compact-review.css";
+import "../../src/app/batches.css";
+const bootstrap=(window as unknown as {fixtureBootstrap:Bootstrap}).fixtureBootstrap;
+createRoot(document.getElementById("root")!).render(<BrandProvider initialBrand={emptyBrand}><ToastProvider><LeaveProtectionProvider owner={bootstrap.user.id}><AppShell user={bootstrap.user}>{location.pathname==="/upload"?<UploadPage/>:<BatchReview id="fixture" bootstrap={bootstrap}/>}</AppShell></LeaveProtectionProvider></ToastProvider></BrandProvider>);

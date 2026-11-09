@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "id": "I04",
+      "name": "会话查询的登录及未登录行为",
+      "status": "PASS"
+    },
+    {
+      "id": "I05",
+      "name": "草稿重新比对和重新识别成功恢复",
+      "status": "PASS"
+    },
+    {
+      "id": "I06",
+      "name": "从明细新建材料并合并后金额保持一致",
+      "status": "PASS",
+      "evidence": {
+        "documentId": "cmvj4dtzf005c3o854l9txsjz",
+        "sourceId": "cmvj4xipa000vm8858cvoklib",
+        "targetId": "cmvj4xipv000ym885bisqam3k"
+      }
+    },
+    {
+      "id": "I07",
+      "name": "合并已引用供应商后历史单据金额保持一致",
+      "status": "PASS"
+    }
+  ]
+}

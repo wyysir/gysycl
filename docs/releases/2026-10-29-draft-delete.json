@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-29",
+  "tag": "release/2026-10-29-draft-delete",
+  "sourceCommit": "54d3273f084b6a3d4735d68740ce1d8051914e1e",
+  "sourceNote": "标签指向最终发布留档提交；业务代码与此 sourceCommit 一致，最终提交号用 Git 查询，不在同一提交内自引用。",
+  "verifiedAt": "2026-10-29T13:25:47.209723+00:00",
+  "image": "sha256:1dec3484b9d29acfe4dfcccc672d1108c13e17ea63af32740b1871c2dcf53baf",
+  "previousImage": "sha256:b0473ed0759cda34d273a07f4a4565cee285d2701442bcc97996ae95fdcdb2be",
+  "previousImageTag": "delivery-audit:before-draft-delete-20261029",
+  "sourceArchive": "/opt/delivery-audit/releases/draft-delete-20261029.tar.gz",
+  "sourceArchiveSha256": "86e036fb0a616571d37221b94980d9d6bd9f9dab324c0707498d5599508042d5",
+  "sourceBefore": "/opt/delivery-audit/releases/draft-delete-20261029/source-before.tar.gz",
+  "backup": "/opt/delivery-audit/backups/20261029-212150",
+  "localBackup": ".data/server-backups/20261029-212150",
+  "backupHashes": {
+    "SHA256SUMS": "29d921bb5f6f50a826237aa6cbc1048387afddaab4b98b8ce84c99247e6680dc",
+    "database.sql.gz": "e3f8a6b97a232072e8a2c5507e82dbe92d09cb4f9c4406d0c281c90ffa968b65",
+    "uploads.tar.gz": "86a27e77ac2b427997e6be84b9c3303e8e82f24728c608df73532a1082d461ea"
+  },
+  "backupCopyHashesMatch": true,
+  "backupReadable": true,
+  "migration": "NONE; retain 0001_init and 0002_ingredient_maintenance",
+  "databaseChange": "未新增表或列。直接删除草稿和图片的操作由用户确认后触发；本次上线及线上只读验证未改业务库。原页信息使用现有 ocrRaw，删除操作保留审计。",
+  "features": [
+    "草稿整单与当前误传图片直接删除，不设回收站",
+    "单页来源明细同步移除，旧无来源明细保留提示，剩余页/行连续编号",
+    "单页删除前保存其他修改，总价重新核对；最后一页明确确认删除整单",
+    "财务/非创建人/识别中及已提交状态拒绝；版本和归属校验",
+    "共享文件保留，关联重复提醒刷新，历史审计和审核快照留痕"
+  ],
+  "checks": {
+    "unitTests": 114,
+    "isolatedBrowserChecks": 9,
+    "liveReadOnlyChecks": 6,
+    "typecheck": "PASS",
+    "build": "PASS",
+    "liveDeleteRequests": 0,
+    "paidOcrCalls": 0
+  },
+  "dataPreservationRecord": "docs/draft-delete-2026-10-29/data-preservation.json",
+  "validationRecord": "docs/draft-delete-2026-10-29/validation-summary.json",
+  "rollback": "同步切回保留旧Web/Worker镜像，无DDL回退。不会恢复用户已删除的草稿/图片；数据恢复须从独立备份单独评估，避免覆盖后续数据。旧版未读取持久化页来源字段，回退后的来源展示需额外核对。",
+  "limitations": [
+    "不自动选择或删除两笔重复业务草稿，用户需自行操作",
+    "没有来源页的旧明细不猜测删除，人工核对；移除图片后总价暂为0",
+    "存储不可用时记录已删除，文件清理失败有提示和审计；相关提醒刷新失败可重新比对",
+    "公众号计划和真实试用仍继续，当前不新增识别准确率验收结论"
+  ]
+}

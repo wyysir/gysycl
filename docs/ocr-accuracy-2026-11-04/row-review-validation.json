@@ -1,0 +1,282 @@
+{
+  "status": "development experiment only; NOT deployed",
+  "newPaidRequests": 26,
+  "primaryMode": "frozen fresh1 replay; NOT new end-to-end inference",
+  "variants": {
+    "r4": {
+      "documents": 26,
+      "handwritten": {
+        "correct": 27,
+        "total": 33
+      },
+      "printed": {
+        "correct": 111,
+        "total": 111
+      },
+      "primaryHandwritten": {
+        "correct": 26,
+        "total": 33
+      },
+      "primaryPrinted": {
+        "correct": 111,
+        "total": 111
+      },
+      "changes": 2,
+      "corrected": 1,
+      "regressed": 0,
+      "otherChanged": 0,
+      "excludedNames": 11,
+      "nonNameDataPreserved": true,
+      "reasons": {
+        "row-alignment": 27,
+        "uncertain-name": 2,
+        "accepted": 12,
+        "not-certain-handwriting": 114
+      },
+      "errors": 0
+    },
+    "r4b": {
+      "documents": 26,
+      "handwritten": {
+        "correct": 29,
+        "total": 33
+      },
+      "printed": {
+        "correct": 111,
+        "total": 111
+      },
+      "primaryHandwritten": {
+        "correct": 26,
+        "total": 33
+      },
+      "primaryPrinted": {
+        "correct": 111,
+        "total": 111
+      },
+      "changes": 6,
+      "corrected": 3,
+      "regressed": 0,
+      "otherChanged": 0,
+      "excludedNames": 11,
+      "nonNameDataPreserved": true,
+      "reasons": {
+        "numeric-anchor-mismatch": 18,
+        "accepted": 21,
+        "uncertain-name": 2,
+        "not-certain-handwriting": 114
+      },
+      "errors": 0
+    }
+  },
+  "classification": {
+    "printedRows": 112,
+    "handwrittenRows": 43,
+    "printedAsHandwritten": 0,
+    "handwrittenAsPrinted": 0,
+    "unknown": 0,
+    "reference": "Historical document type used as proxy; NOT manually labeled per-name handwriting truth"
+  },
+  "apiLatencyMs": {
+    "mean": 8033,
+    "max": 15946
+  },
+  "usage": {
+    "prompt_tokens": 301184,
+    "completion_tokens": 12307,
+    "total_tokens": 313491
+  },
+  "hashes": {
+    "frozenConfig": "07f1f725843762f427475aee6ad5581f004c718beea2485a0db5a2381009eb63",
+    "calls": "ba5d285d53bcbcd9b91385ed9dc8e5f64377823f339ad1f54eb8018484bbd66e",
+    "r4Guard": "61f163477b008f7c0389a41059c0b834859b1581dbf8ffea9f25ecbae9c2a442",
+    "r4bGuard": "60bce5585e49ac5bc1bc313a231c70fb85e8739bad76121de9a9e0fef4ba33b1",
+    "truth": "c0f7e85b4bdff939550e57aab95ed791d4646194ce5a18ad8cf78aa5fd39e733"
+  },
+  "independentAcceptance": false,
+  "decision": "Not eligible for deployment. Replayed primary, no independent new samples; handwriting target remains unverified.",
+  "freshRotationTrial": {
+    "status": "fresh complete development workflow; NOT deployed",
+    "documents": 26,
+    "newPaidRequests": 26,
+    "primaryRequests": 26,
+    "secondaryRequests": 0,
+    "errors": 1,
+    "changed": 0,
+    "corrected": 0,
+    "regressed": 0,
+    "nonNameDataPreserved": true,
+    "excludedNames": 11,
+    "scores": {
+      "handwritten": {
+        "rowCount": {
+          "correct": 15,
+          "total": 15,
+          "percent": 100
+        },
+        "documentTotal": {
+          "correct": 9,
+          "total": 10,
+          "percent": 90
+        },
+        "sourceDate": {
+          "correct": 5,
+          "total": 6,
+          "percent": 83.33
+        },
+        "name": {
+          "correct": 26,
+          "total": 33,
+          "percent": 78.79
+        },
+        "primaryName": {
+          "correct": 26,
+          "total": 33,
+          "percent": 78.79
+        },
+        "quantity": {
+          "correct": 42,
+          "total": 43,
+          "percent": 97.67
+        },
+        "unitPrice": {
+          "correct": 43,
+          "total": 43,
+          "percent": 100
+        },
+        "amount": {
+          "correct": 41,
+          "total": 42,
+          "percent": 97.62
+        },
+        "dateBlank": {
+          "correct": 8,
+          "total": 8,
+          "percent": 100
+        },
+        "unit": {
+          "correct": 28,
+          "total": 34,
+          "percent": 82.35
+        }
+      },
+      "printed": {
+        "rowCount": {
+          "correct": 11,
+          "total": 11,
+          "percent": 100
+        },
+        "documentTotal": {
+          "correct": 11,
+          "total": 11,
+          "percent": 100
+        },
+        "sourceDate": {
+          "correct": 11,
+          "total": 11,
+          "percent": 100
+        },
+        "name": {
+          "correct": 111,
+          "total": 111,
+          "percent": 100
+        },
+        "primaryName": {
+          "correct": 111,
+          "total": 111,
+          "percent": 100
+        },
+        "unit": {
+          "correct": 109,
+          "total": 112,
+          "percent": 97.32
+        },
+        "quantity": {
+          "correct": 112,
+          "total": 112,
+          "percent": 100
+        },
+        "unitPrice": {
+          "correct": 112,
+          "total": 112,
+          "percent": 100
+        },
+        "amount": {
+          "correct": 112,
+          "total": 112,
+          "percent": 100
+        }
+      }
+    },
+    "reasons": {},
+    "usage": {
+      "prompt_tokens": 88218,
+      "completion_tokens": 27543,
+      "total_tokens": 115761
+    },
+    "classification": {
+      "printedRows": 112,
+      "handwrittenRows": 43,
+      "printedAsHandwritten": 15,
+      "handwrittenAsPrinted": 0,
+      "handwrittenAtThreshold": 1,
+      "reference": "Historical document type is a proxy, not separately confirmed per-name handwriting labels"
+    },
+    "wallClockPerDocumentMs": {
+      "mean": 6599,
+      "max": 14816
+    },
+    "hashes": {
+      "config": "1a483e58ad451bddcc5e4159e550a6a5c51cee658bb4b6b11e136ce0ceb33d70",
+      "calls": "ad0c0550cd7147b6263b93c63b562cf44b30f74766a1c9cba412c5375474bbb2",
+      "guard": "60bce5585e49ac5bc1bc313a231c70fb85e8739bad76121de9a9e0fef4ba33b1",
+      "truth": "c0f7e85b4bdff939550e57aab95ed791d4646194ce5a18ad8cf78aa5fd39e733"
+    },
+    "independentAcceptance": false,
+    "decision": "Do not deploy; independent business-confirmed samples remain unavailable. Strict handwriting confidence may suppress secondary review."
+  },
+  "totalNewPaidRequests": 52,
+  "checks": {
+    "testFiles": 27,
+    "testsPassed": 245,
+    "typecheck": "passed",
+    "applicationBuild": "not rerun; application source unchanged",
+    "productionImportedGuard": false,
+    "deployed": false,
+    "databaseMigration": false
+  },
+  "serverReadOnlyCheck": {
+    "at": "2026-11-04T14:58:54.994Z",
+    "services": [
+      {
+        "service": "app",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "service": "postgres",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "service": "redis",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "service": "worker",
+        "state": "running",
+        "health": ""
+      }
+    ],
+    "images": [
+      {
+        "name": "/delivery-app-1",
+        "image": "sha256:314621b7b0c72367c56760a6c1606fb011e77e14175e90b904deda445e2941bd"
+      },
+      {
+        "name": "/delivery-worker-1",
+        "image": "sha256:314621b7b0c72367c56760a6c1606fb011e77e14175e90b904deda445e2941bd"
+      }
+    ]
+  }
+}

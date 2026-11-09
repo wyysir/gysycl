@@ -1,0 +1,143 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-07T08:20:59.670814+00:00",
+  "baseSourceCommit": "1c3998070b0fd7f01d2f1db82927352ef3c9bf9b",
+  "previousPatchCommit": "e9ef907",
+  "patchFiles": [
+    "src/app/(workspace)/ingredients/page.tsx",
+    "src/app/(workspace)/master/page.tsx",
+    "src/app/api/master-data/import/route.ts",
+    "src/app/api/master-data/ingredient-categories/route.ts",
+    "src/app/api/master-data/ingredients/bulk/route.ts",
+    "src/app/api/master-data/template/route.ts",
+    "src/components/IngredientCategories.tsx",
+    "src/components/MasterImport.tsx",
+    "src/lib/master-import.ts",
+    "src/server/excel.ts",
+    "src/server/ingredient-maintenance.ts",
+    "src/server/ingredients.ts",
+    "src/server/master-commands.ts"
+  ],
+  "storageSha256": "467e2eb55d673d5e48d9f6f9f684aae2b2b36f0630b7a40068c3ab448c232b82",
+  "image": "sha256:252fd90d69d1247c038624f85cc72c12d8a319052e1e37b069ad5cf7089fd66d",
+  "archiveSha256": "1156e974c9c3a9b733d0f70dc19cb0203baf956f9d4f78a633aa318a63047746",
+  "backup": "/opt/delivery-audit/backups/20261107-162040",
+  "backupChecksums": {
+    "database.sql.gz": "c6a51a9bff9fd498951a63d0333acf41dae021c9ee226cd51d5c217785a79230",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "oss-manifest.private.json": "f2aec3d11f0e80b95dabc8bb3ed9e25c2d7250a9fedcaf5d45512df73a4cceb8"
+  },
+  "ossSnapshot": {
+    "objects": 10,
+    "bytes": 6668259,
+    "manifestSha256": "f2aec3d11f0e80b95dabc8bb3ed9e25c2d7250a9fedcaf5d45512df73a4cceb8"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 22,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 487,
+      "Contract": 150,
+      "Document": 68,
+      "Supplier": 19,
+      "BatchPhoto": 35,
+      "CustomRole": 0,
+      "Ingredient": 81,
+      "CheckResult": 549,
+      "ImportBatch": 0,
+      "UploadBatch": 6,
+      "DocumentItem": 541,
+      "DocumentPage": 5,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 10,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "8eb8105f0ef5a55888b096468d5bbac9f5c4a182f58f2adae68d1ce418aa0d1c",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "migrations": 8,
+  "storage": "oss",
+  "restoreTested": false,
+  "deployedPatchFileHashes": {
+    "src/app/(workspace)/ingredients/page.tsx": "cc5548b3f97c8e917b73c8cf2a897cfada0f274e19bb8f748a36d57faa56b52a",
+    "src/app/(workspace)/master/page.tsx": "4759de340ce0c191151b7e013c0f61a89fe4922ccc1d3b95f0d97482ca8b6b8d",
+    "src/app/api/master-data/import/route.ts": "9ca82dc8a7856a3f70c88d4c3b41fef5ca0351d7a8559e5c68ced42c431b8099",
+    "src/app/api/master-data/ingredient-categories/route.ts": "12de2fedf90b8ce1f05b19726a4ba9c9c52475648b306ac17524bea1b782798d",
+    "src/app/api/master-data/ingredients/bulk/route.ts": "b2f75d44b327a34908df5b4fd9f45449085a6df4dc33db78a9ba0d305f82d674",
+    "src/app/api/master-data/template/route.ts": "e4502f5ef22d94e23ebcd9dd5c83822195a65bcb434bc5359eccf23b096bec61",
+    "src/components/IngredientCategories.tsx": "addab5bf06f4858705c010749472201c1b01381186058031f60067eb5560eff7",
+    "src/components/MasterImport.tsx": "2e70e5df40bc4a5f00dd1b2cb07ec517de433991e8d49eb67f4d382d6892bf98",
+    "src/lib/master-import.ts": "e059c3b21baa528eb0a38e6be874ef5dc3e6d5e7fbdbf16846a401e402ec30bb",
+    "src/server/excel.ts": "44046cf961752bf70feb5281a7e9e574006a8198cdbb7691fadca3b0c6656f37",
+    "src/server/ingredient-maintenance.ts": "4829bfa2200bdbfcf9ac5b2d86a2992a1f29f8e4cebd76484a4edfea4d7fdb84",
+    "src/server/ingredients.ts": "955904ce74cf04a175ca318d12dc86d78408c9371159a5bbeda2b658ee87c978",
+    "src/server/master-commands.ts": "a16b9465a3656bd58def67542a86e4569065ccd6ef92decbc893f6779a17a27e"
+  },
+  "patchCommit": "c3380d6411118e8efdb414f46340c962f60553b2",
+  "releaseTag": "release/2026-11-07-master-maintenance",
+  "validation": {
+    "testFiles": 29,
+    "tests": 253,
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "browser": {
+      "checks": [
+        {
+          "width": 390,
+          "templateDownload": 200,
+          "importTypeSwitch": true,
+          "validationBeforeImport": true,
+          "bulkDisable": true,
+          "bulkCategory": true,
+          "categoryCreate": true,
+          "settingsFourCategories": true,
+          "mutationsIntercepted": 5
+        },
+        {
+          "width": 1440,
+          "templateDownload": 200,
+          "importTypeSwitch": true,
+          "validationBeforeImport": true,
+          "bulkDisable": true,
+          "bulkCategory": true,
+          "categoryCreate": true,
+          "settingsFourCategories": true,
+          "mutationsIntercepted": 5
+        }
+      ],
+      "mode": "Production UI, synthetic maintenance mutations intercepted; real backend writes verified in isolated tests",
+      "errors": [],
+      "status": "PASS"
+    },
+    "afterBrowserBusinessFingerprintUnchanged": true,
+    "phoneWechatTested": false
+  },
+  "rollback": {
+    "image": "sha256:79ee48e865bc3c71b8c9529a0be2dd054066c33104517932e96afac2c37e1786",
+    "sourceArchive": "/opt/delivery-audit/releases/master-maintenance-20261107/source-before.tar.gz",
+    "instruction": "Retag rollback image as delivery-audit:trial and recreate app and worker with existing compose. Restore pre-release source separately, remove only newly added patch files before rebuilding. No schema migration. Category settings added after deployment remain in database on app rollback. Database restore is a separate decision and must preserve new business writes.",
+    "tested": false
+  },
+  "knownGaps": [
+    "Supplier maintenance currently uses create/import/merge; dedicated edit and enable/disable UI remains absent.",
+    "Contract prices currently support create/delete; dedicated edit UI remains absent.",
+    "Project maintenance supports creation and existing member assignment; independent project rename/disable entry remains absent.",
+    "Real phone WeChat testing remains pending."
+  ],
+  "notes": [
+    "Built on previous deployed source, only 13 selected patch files changed; local OCR trials excluded.",
+    "Category definitions use existing SystemSetting table, no schema migration.",
+    "Public browser mutations were intercepted synthetic fixtures; real service writes, permissions and transaction rollback were verified in isolated database tests.",
+    "OSS fingerprint covers 10 DocumentPage-referenced objects; database fingerprint covers 22 tables.",
+    "Backup is on the same server, not off-host disaster recovery.",
+    "Local Git only."
+  ]
+}

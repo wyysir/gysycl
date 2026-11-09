@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-31",
+  "tag": "release/2026-10-31-qwen-single",
+  "status": "DEPLOYED_SINGLE_REQUEST_VERIFIED_ACCURACY_NOT_ACCEPTED",
+  "sourceCommit": "4f3ca192cf8666abd3276f7f97a8ea6e70477d29",
+  "tagTarget": "发布留档提交，以Git标签查询；sourceCommit为实际部署源包",
+  "verifiedAt": "2026-10-31T06:41:15.632Z",
+  "features": [
+    "保留Qwen3.6-Flash，传统OCR保持移除",
+    "取消每页固定二次校读，每次识别每页一个模型请求和一张图",
+    "新任务attempts=1，不自动重试；主动重试重新计费",
+    "单次响应提取纸上日期原文、品名/单位置信度及手写提醒，保留实际行金额",
+    "不采用数字变差的扶正试验，原有多页汇总和抹零异常规则不变"
+  ],
+  "image": "sha256:8108deb621c9176f36af163560bc700adc304da88a809337d31c437f864942f9",
+  "imageTag": "delivery-audit:qwen-single-20261031",
+  "previousImage": "sha256:428759ddbd1c80be41fcc4808f308215b9b842f05a3cad4cd1c328d3a658311b",
+  "previousImageTag": "delivery-audit:before-qwen-single-20261031",
+  "sourceArchive": "/opt/delivery-audit/releases/qwen-single-20261031.tar.gz",
+  "sourceArchiveSha256": "bfcbe7dcb980609de3636d4b449b15c7e12e2d48110c9d20bb7ccad5f2ba6861",
+  "sourceBefore": "/opt/delivery-audit/releases/qwen-single-20261031/source-before.tar.gz",
+  "backupPath": "/opt/delivery-audit/backups/20261031-143836",
+  "backupChecksums": "e5481bfbb350341e999eae9feef43f62f6ea22e82debaf0fef17a5f7fe8409c2  database.sql.gz\n0b95b546a2f21e8fe0de0b6a1b1e9d834ad0e414133d00885a157c2e47c3948b  uploads.tar.gz",
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "migration": "NONE; existing schema and business data preserved",
+  "configuration": "UNCHANGED; current model, private settings and storage retained",
+  "dataFingerprintIdentical": true,
+  "checks": {
+    "unitTests": 160,
+    "typecheck": "PASS",
+    "isolatedProductionBuild": "PASS",
+    "serverProductionBuild": "PASS",
+    "live": {
+      "status": "PASS",
+      "checkedAt": "2026-10-31T06:40:54.542Z",
+      "checks": [
+        "桌面登录页使用智能单据识别标识",
+        "公网HTTPS、登录与健康检查正常，未忽略证书错误",
+        "右上角五字姓名、反馈入口、反馈读取与提交表单正常",
+        "线上42.2×1.2=50.64、实收50.60可明确确认0.04元抹零并撤销；未保存业务数据",
+        "线上材料库可多选两项并加入页面，四种宽度无横向溢出；未保存业务修改",
+        "真实退回单据删除按钮和确认弹窗正常，仅取消确认，未删除业务单据"
+      ],
+      "returnedVerification": "BUTTON_AND_CONFIRMATION_PASS_NOT_DELETED",
+      "pageErrors": [],
+      "businessMutationRequests": 0,
+      "paidOcrCalls": 0,
+      "httpsCertificateErrorsIgnored": false
+    },
+    "serverRealInference": {
+      "status": "PASS",
+      "at": "2026-10-31T06:41:15.632Z",
+      "sample": "S01",
+      "model": "qwen3.6-flash",
+      "requests": 1,
+      "images": 1,
+      "queueAttempts": 1,
+      "queueJobsPersisted": 0,
+      "elapsedMs": 4940,
+      "itemCount": 2,
+      "recognizedDate": "2026-10-02T16:00:00.000Z",
+      "recognitionVersion": "qwen-single-v3",
+      "usage": {
+        "prompt_tokens": 3275,
+        "total_tokens": 3599,
+        "completion_tokens": 324,
+        "prompt_tokens_details": {
+          "image_tokens": 2496,
+          "text_tokens": 779
+        },
+        "completion_tokens_details": {
+          "text_tokens": 324
+        }
+      },
+      "businessWrites": 0
+    },
+    "serverSmokeEstimateYuan": 0.0062628,
+    "realPhoto": "docs/ocr-single-2026-10-31/real-photo-validation.json",
+    "reportBrowserCheck": {
+      "status": "PASS",
+      "cards": 26,
+      "rows": 155,
+      "filterHandwritten": 15,
+      "filterPrinted": 11,
+      "issueCards": 9,
+      "mobileOverflow": false,
+      "pageErrors": 0
+    }
+  },
+  "cost": {
+    "evaluationRequests": 35,
+    "evaluationEstimateYuan": 0.3260544,
+    "additionalServerRequests": 1,
+    "additionalServerEstimateYuan": 0.0062628,
+    "totalNewPaidRequests": 36,
+    "totalStandardEstimateYuan": 0.33231720000000003,
+    "note": "标准价估算，实际以账户账单、缓存优惠及额度为准；不是读取账单"
+  },
+  "remainingIssues": [
+    "打印单位仍错5/112，手写单位仍错4/34",
+    "确定手写品名误读5/33，另外10个手写模糊品名不计准确率",
+    "完整可判日期15/17：1个误读、1个未采用；另1个年份歧义排除",
+    "数字误读4/464，原单总价错1/21；未达到至少30张手写最终验收"
+  ],
+  "dataPreservationRecord": "docs/ocr-single-2026-10-31/data-preservation.json",
+  "rollback": "将delivery-audit:before-qwen-single-20261031重新标记为delivery-audit:trial，使用现有compose.trial.yml同步重建app和worker，保留数据库与图片卷。必要时从source-before.tar.gz恢复应用源码。无新增迁移，不用旧数据库备份覆盖后续业务。回退会恢复固定二次校读和旧自动重试费用。",
+  "gitRemote": "NONE; local Git only"
+}

@@ -1,0 +1,150 @@
+Browser tab: 1, Title: "食安链 · 送货单识别与比价", URL: "http://localhost:3107/documents/doc_demo_002".
+1 AXWebArea 食安链 · 送货单识别与比价, URL: localhost:3107/documents/doc_demo_002
+	2 container
+		3 text 食
+		4 text 食安链
+		5 text 10/22
+		6 link Description: 新建单据, Value: localhost:3107/upload
+		7 link Description: 返回单据中心, Value: localhost:3107/documents
+		8 heading LY20261015008, Value: 1
+			9 text LY20261015008
+		10 text 待主管审核 杭州绿源蔬菜配送有限公司 · 杭州园区食堂 · 2026/10/15 · 识别置信度  85 %
+		11 button 重新比对
+		12 link Description: 进入审核, Value: localhost:3107/reviews?doc=doc_demo_002
+		13 text 示例手写送货单.svg
+		14 text 第  1  /  1  页 · 点击放大查看手写细节
+		15 button 放大 / 还原
+		16 image 送货单第 1 页
+		17 text 原图不会被修改；低置信字段已在右侧标黄。
+		18 heading 单据信息 核对供应商、单号与日期, Value: 2
+			19 text 单据信息  核对供应商、单号与日期
+		20 text 1 必须处理
+		21 text 单据编号
+		22 text field (settable) LY20261015008
+		23 text 送货日期
+		24 date field (settable) 2026-10-15
+			25 container
+				26 stepper
+				27 stepper
+				28 stepper
+			29 pop up button 显示日期选择器
+		30 text 项目点
+		31 text field (disabled) 杭州园区食堂
+		32 text 供应商
+		33 text 杭州绿源蔬菜配送有限公司
+		34 text 已匹配
+		35 button 查找供应商
+		36 text field (settable) 杭州绿源蔬菜配送有限公司
+		37 button 新建供应商
+		38 heading 明细校正品名自动高亮相近主数据，数量或单价变化时重算行金额, Value: 2
+			39 text 明细校正 品名自动高亮相近主数据，数量或单价变化时重算行金额
+		40 button 增加一行
+		41 table
+			42 row
+				43 cell
+					44 text #
+				45 cell
+					46 text 品名
+				47 cell
+					48 text 规格
+				49 cell
+					50 text 单位
+				51 cell
+					52 text 数量
+				53 cell
+					54 text 单价
+				55 cell
+					56 text 行金额
+				57 cell
+					58 text 置信
+			59 row
+				60 cell
+					61 text 1
+				62 cell
+					63 container
+						64 text field (settable) 青菜
+						65 text 已匹配
+					66 button 青菜 100%
+					67 button 验收同名材料 7%
+					68 button 验收同名材料 7%
+				69 cell
+					70 text field (settable) 散装
+				71 cell
+					72 text field (settable) kg
+				73 cell
+					74 stepper (settable, integer) 40
+				75 cell
+					76 stepper (settable, float) Value: 4.800000190734863, Details: 4.8
+				77 cell
+					78 stepper (settable, integer) 192
+				79 cell
+					80 text 79 %
+				81 cell
+					82 button 删除
+			83 row
+				84 cell
+					85 text 2
+				86 cell
+					87 container
+						88 text field (settable) 土豆
+						89 text 已匹配
+					90 button 土豆 100%
+					91 button 食用油 16%
+					92 button 豆腐 16%
+				93 cell
+					94 text field (settable) 散装
+				95 cell
+					96 text field (settable) kg
+				97 cell
+					98 stepper (settable, integer) 60
+				99 cell
+					100 stepper (settable, float) Value: 3.200000047683716, Details: 3.2
+				101 cell
+					102 stepper (settable, integer) 192
+				103 cell
+					104 text 91 %
+				105 cell
+					106 button 删除
+		107 text 未匹配品名需确认后才能提交 明细合计
+		108 container
+			109 text ¥ 384.00
+		110 text 单据总价
+		111 stepper (settable, integer) 384
+		112 heading 多维比对 合同价 · 跨供应商 · 历史价 · 金额勾稽, Value: 2
+			113 text 多维比对  合同价 · 跨供应商 · 历史价 · 金额勾稽
+		114 text 5  项未关闭
+		115 text 青菜 高于合同价
+		116 text 本项目合同价 4.35 元/kg，本次 4.80 元/kg，上浮 10.3%。
+		117 container
+			118 text 合同价  · 必须处理
+		119 text 青菜 识别置信度偏低
+		120 text 置信度 79.0%，低于 90%，请对照原图确认。
+		121 container
+			122 text 识别质量  · 建议确认
+		123 text 青菜 存在相近品名
+		124 text 当前已关联一个相近品名，请确认没有误合并。
+		125 container
+			126 text 主数据匹配  · 建议确认
+		127 text 青菜 可比样本不足
+		128 text 近 30 天仅有 1 条可比价格，暂不判定异常。
+		129 container
+			130 text 跨供应商比价  · 提示
+		131 text 土豆 可比样本不足
+		132 text 近 30 天仅有 1 条可比价格，暂不判定异常。
+		133 container
+			134 text 跨供应商比价  · 提示
+		135 text 备注 / 审核说明
+		136 text entry area (settable) 手写单，单价需重点复核
+		137 text 主管修改会记录修改前后值
+		138 button 保存修改
+		139 link Description: 进入主管审核, Value: localhost:3107/reviews?doc=doc_demo_002
+		140 heading 操作记录, Value: 2
+			141 text 操作记录
+	142 container
+		143 link Description: 经营总览, Value: localhost:3107/dashboard
+		144 link Description: 新建单据, Value: localhost:3107/upload
+		145 link Description: 单据中心, Value: localhost:3107/documents
+		146 link Description: 复核中心, Value: localhost:3107/reviews
+		147 link Description: 价格分析, Value: localhost:3107/analytics
+
+The focused UI element is 1 AXWebArea 食安链 · 送货单识别与比价, URL: localhost:3107/documents/doc_demo_002

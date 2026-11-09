@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-29T08:21:15.536355+00:00",
+  "appUrl": "https://42.121.106.105",
+  "wechatConfigured": false,
+  "pendingTemplateConfigured": false,
+  "resultTemplateConfigured": false,
+  "image": "sha256:eb57b3ca4b93849f2be17115e7a694677e6519709fe61f286e26313ab3ff63e4",
+  "health": "healthy",
+  "nginxSites": [
+    "default",
+    "shian-trial.conf"
+  ],
+  "mpVerifyFileCount": 0,
+  "scope": "Read-only configuration check; no deployment, DNS, menu or credentials changed",
+  "liveWechatVerified": false,
+  "accountType": "UNKNOWN",
+  "accountCertification": "USER_CONFIRMED_COMPLETED_NOT_CONSOLE_VERIFIED",
+  "domainAndIcpStatus": "USER_CONFIRMED_NONE",
+  "scopeChoice": "CONFIRMED_ALL_THREE",
+  "userConfirmed": {
+    "existingOfficialAccount": true,
+    "wechatCertificationCompleted": true,
+    "hasDomain": false,
+    "hasIcpFiling": false,
+    "scope": ["公众号菜单入口", "微信网页授权绑定登录", "审核通知"],
+    "evidence": "用户在本会话直接答复；账号类型与后台权限尚未核验"
+  },
+  "sourceCheckpoint": "f99652e",
+  "liveReleaseTag": "release/2026-10-29-catalog",
+  "officialDocs": {
+    "retrievedAt": "2026-10-29",
+    "retrieval": "Official HTML fetched via Python urllib with gzip decoding; built-in web opener returned errors",
+    "urls": [
+      "https://developers.weixin.qq.com/doc/service/guide/h5/auth.html",
+      "https://developers.weixin.qq.com/doc/service/guide/product/menu/intro.html",
+      "https://developers.weixin.qq.com/doc/service/guide/product/template_message/Template_Message_Interface.html",
+      "https://developers.weixin.qq.com/doc/service/guide/product/template_message/Template_Message_Operation_Specifications.html"
+    ],
+    "httpStatus": 200
+  },
+  "knowledge": {
+    "id": "kb-8ff06090660a4125a7ee8a59eb5261dd",
+    "status": "confirmed",
+    "revision": "967a3381005274dfa9dc4d859fd77e6599fa2efc3c9e0db2a2c9fb588af55aff",
+    "updated": "2026-10-29T15:53:27+08:00",
+    "note": "上线进展已确认；本次公众号推进指示尚待同步正式正文"
+  }
+}

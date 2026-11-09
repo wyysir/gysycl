@@ -1,0 +1,124 @@
+{
+  "status": "LOCAL_VERIFICATION_SNAPSHOT",
+  "tests": {
+    "files": 26,
+    "passed": 213
+  },
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "ui": {
+    "mode": "ACTUAL_UI_SYNTHETIC_API",
+    "results": [
+      {
+        "width": 375,
+        "result": "PASS",
+        "assertions": [
+          "ten-documents",
+          "no-overflow",
+          "preserve-amount",
+          "failed-save-retained",
+          "save-next-new-ids",
+          "create-bind-version",
+          "partial-submit",
+          "eleven-rejected",
+          "ten-selected",
+          "remove-photo",
+          "camera-entry"
+        ]
+      },
+      {
+        "width": 390,
+        "result": "PASS",
+        "assertions": [
+          "ten-documents",
+          "no-overflow",
+          "preserve-amount",
+          "failed-save-retained",
+          "save-next-new-ids",
+          "create-bind-version",
+          "partial-submit",
+          "eleven-rejected",
+          "ten-selected",
+          "remove-photo",
+          "camera-entry"
+        ]
+      },
+      {
+        "width": 430,
+        "result": "PASS",
+        "assertions": [
+          "ten-documents",
+          "no-overflow",
+          "preserve-amount",
+          "failed-save-retained",
+          "save-next-new-ids",
+          "create-bind-version",
+          "partial-submit",
+          "eleven-rejected",
+          "ten-selected",
+          "remove-photo",
+          "camera-entry"
+        ]
+      },
+      {
+        "width": 1440,
+        "result": "PASS",
+        "assertions": [
+          "ten-documents",
+          "no-overflow",
+          "preserve-amount",
+          "failed-save-retained",
+          "save-next-new-ids",
+          "create-bind-version",
+          "partial-submit",
+          "eleven-rejected",
+          "ten-selected",
+          "remove-photo",
+          "camera-entry"
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "notEstablished": [
+    "95% field accuracy",
+    "10-second end-to-end batch target",
+    "Android/iOS WeChat physical-device compatibility"
+  ],
+  "compression": {
+    "status": "PASS",
+    "maxEdge": 3000,
+    "jpegQuality": 0.91,
+    "triggerBytes": 1258291.2,
+    "neverUpscale": true,
+    "useOnlyWhenSmaller": true,
+    "smallFilePassThrough": true,
+    "results": [
+      {
+        "id": "S01",
+        "inputFormat": "lossless PNG of existing photo",
+        "inputBytes": 4240948,
+        "outputBytes": 522583,
+        "width": 2000,
+        "height": 1506,
+        "savedPercent": 87.68
+      },
+      {
+        "id": "S10",
+        "inputFormat": "lossless PNG of existing photo",
+        "inputBytes": 4018359,
+        "outputBytes": 648536,
+        "width": 2000,
+        "height": 1500,
+        "savedPercent": 83.86
+      }
+    ],
+    "largeImage": {
+      "width": 3000,
+      "height": 2250,
+      "smaller": true
+    },
+    "limit": "Rewrapped existing pictures exercise compression; they are not new phone-camera originals. OCR comparison is a separate server test."
+  },
+  "finalRelease": "2026-11-04-batch-upload.json"
+}

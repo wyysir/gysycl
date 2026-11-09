@@ -1,0 +1,105 @@
+{
+  "after": {
+    "counts": {
+      "ApprovalRecord": 17,
+      "AuditLog": 188,
+      "CheckResult": 180,
+      "Contract": 0,
+      "Document": 13,
+      "DocumentItem": 72,
+      "DocumentPage": 19,
+      "ImportBatch": 0,
+      "Ingredient": 40,
+      "IngredientAlias": 4,
+      "Notification": 23,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 4,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "d7e834637a7ae295280c01d3109e3e74a2bfc70a098f5ffb784ac4388b751225",
+    "uploadFiles": 38,
+    "uploadSha256": "63e95dd905d078dda09016191cc7e91c9bcb60f693c9d9766f807ed2f2f0035f"
+  },
+  "backupChecksums": "91a6b3ba4bec2843ca84c8479e07d93190cd6e87bb3a5cb97e5f5939df027702  database.sql.gz\n19d6a87e328095477b5247da3066ce074909731b41d52abdd411fbdfbf13eb45  uploads.tar.gz",
+  "backupPath": "/opt/delivery-audit/backups/20261031-001434",
+  "before": {
+    "counts": {
+      "ApprovalRecord": 17,
+      "AuditLog": 188,
+      "CheckResult": 180,
+      "Contract": 0,
+      "Document": 13,
+      "DocumentItem": 72,
+      "DocumentPage": 19,
+      "ImportBatch": 0,
+      "Ingredient": 40,
+      "IngredientAlias": 4,
+      "Notification": 23,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 4,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "d7e834637a7ae295280c01d3109e3e74a2bfc70a098f5ffb784ac4388b751225",
+    "uploadFiles": 38,
+    "uploadSha256": "63e95dd905d078dda09016191cc7e91c9bcb60f693c9d9766f807ed2f2f0035f"
+  },
+  "checkedAt": "2026-10-30T16:16:32.511308+00:00",
+  "fullAfter": {
+    "counts": {
+      "aliases": 4,
+      "approvals": 17,
+      "audits": 189,
+      "contracts": 0,
+      "documents": 13,
+      "ingredients": 40,
+      "items": 72,
+      "pages": 19
+    },
+    "sha256": "5ca2005d8a7325a65e6dc9354092a8821c53e1660c768ca14faf7f5a4dcdc1c9",
+    "uploadFiles": 38,
+    "uploadSha256": "63e95dd905d078dda09016191cc7e91c9bcb60f693c9d9766f807ed2f2f0035f"
+  },
+  "fullBefore": {
+    "counts": {
+      "aliases": 4,
+      "approvals": 17,
+      "audits": 189,
+      "contracts": 0,
+      "documents": 13,
+      "ingredients": 40,
+      "items": 72,
+      "pages": 19
+    },
+    "sha256": "5ca2005d8a7325a65e6dc9354092a8821c53e1660c768ca14faf7f5a4dcdc1c9",
+    "uploadFiles": 38,
+    "uploadSha256": "63e95dd905d078dda09016191cc7e91c9bcb60f693c9d9766f807ed2f2f0035f"
+  },
+  "migrations": [
+    "0001_init",
+    "0002_ingredient_maintenance"
+  ],
+  "queue": {
+    "active": "0",
+    "waiting": "0"
+  },
+  "runtime": [
+    {
+      "image": "sha256:aaaccdbe573fd2633e3541cf534c484626063dada11e8600cb630f9178b954fd",
+      "name": "/delivery-app-1",
+      "status": "running"
+    },
+    {
+      "image": "sha256:aaaccdbe573fd2633e3541cf534c484626063dada11e8600cb630f9178b954fd",
+      "name": "/delivery-worker-1",
+      "status": "running"
+    }
+  ]
+}

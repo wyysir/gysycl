@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-30",
+  "tag": "release/2026-10-30-navigation-recovery",
+  "status": "DEPLOYED_AND_VERIFIED",
+  "sourceCommit": "8d99bd6ce4102fcd097deb0857606932afa774b4",
+  "sourceNote": "发布标签指向最终留档提交；部署业务源码为 sourceCommit。标签实际目标用 Git 查询，避免自引用。",
+  "verifiedAt": "2026-10-29T18:19:42.798Z",
+  "features": [
+    "B06 历史后退/前进、站内链接与退出统一保护",
+    "账号/标签页会话/单据隔离，字段和原始图片字节12小时本地恢复",
+    "存储/保存失败留页，版本冲突不覆盖，上传成功和明确放弃清理"
+  ],
+  "image": "sha256:0d1fca32a9339a6a8c5bcedcfb2c75215d80eb34ef0288ca1e386fa0a975bda8",
+  "imageTag": "delivery-audit:navigation-recovery-20261030",
+  "previousImage": "sha256:ec4cfef43920c53b32c641cc23290128b6cbc02d2d06223783e0a1a6e5dd004d",
+  "previousImageTag": "delivery-audit:before-navigation-recovery-20261030",
+  "sourceArchive": "/opt/delivery-audit/releases/navigation-recovery-20261030.tar.gz",
+  "sourceArchiveSha256": "a418639c8d767388c4bc558a5beee1e7a29515a149da643b69429363649822cd",
+  "sourceBefore": "/opt/delivery-audit/releases/navigation-recovery-20261030/source-before.tar.gz",
+  "migration": "NONE; client-side IndexedDB recovery only; no database schema or business data changes",
+  "brand": {
+    "version": 1,
+    "sha256": "adc79814f1bc0fd06c725fc3f4224810da0adc92bf6cd466f772bce96bde2817",
+    "unchanged": true
+  },
+  "backups": [
+    {
+      "phase": "before-deployment",
+      "path": "/opt/delivery-audit/backups/20261030-021709",
+      "sha256": {
+        "database.sql.gz": "caaa10fdb6ef3208bd7d1d05672207b6a95602e267933eeb4c79d3c8d809098f",
+        "uploads.tar.gz": "86a27e77ac2b427997e6be84b9c3303e8e82f24728c608df73532a1082d461ea"
+      }
+    }
+  ],
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "localFullBackupCopied": false,
+  "localBackupNote": "完整备份保留在服务器，本次仅获取脱敏摘要和校验值。",
+  "checks": {
+    "unitTests": 125,
+    "typecheck": "PASS",
+    "localBuild": "PASS",
+    "serverBuild": "PASS",
+    "isolatedBrowserChecks": {
+      "chromium": 21,
+      "webkit": 21
+    },
+    "liveBrowserChecks": 6,
+    "paidOcrCalls": 0,
+    "businessMutationRequests": 0
+  },
+  "dataPreservationRecord": "docs/ui-brand-2026-10-30/b06-data-preservation.json",
+  "validation": "docs/ui-brand-2026-10-30/b06-validation-summary.json",
+  "bugs": "docs/ui-brand-2026-10-30/02-Bug记录与修改方向.md",
+  "handoff": "docs/ui-brand-2026-10-30/03-交接文档.md",
+  "manualReview": "docs/ui-brand-2026-10-30/04-待人工审核清单.md",
+  "resolvedBugIds": [
+    "B06"
+  ],
+  "remainingAcceptance": [
+    "H02 共用设备规范、复制标签页与浏览器重启",
+    "H03 安卓/iPhone/微信真实返回手势与相机流程"
+  ],
+  "rollback": "保留旧镜像重新标记为 delivery-audit:trial，以原 Compose 和私有 env 同步更新 app/worker；不删除卷、不恢复数据库、不移除 Logo。旧版不会读取 B06 浏览器恢复副本，回退前先保存未提交编辑。数据库恢复单独评估，不覆盖后续业务数据。",
+  "gitRemote": "NONE; local Git only"
+}

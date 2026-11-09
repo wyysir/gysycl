@@ -1,0 +1,113 @@
+{
+  "capturedAt": "2026-10-29T16:57:35.310Z",
+  "timeZone": "Asia/Shanghai",
+  "scope": "仅本会话交接，其他会话改动不纳入提交",
+  "head": "4343218c1c96d485d5facb8801a56446f08ba3ba",
+  "releaseTag": "release/2026-10-29-draft-delete",
+  "releaseCommit": "f5674c8127eb8487f2259f55e56343343523fde4",
+  "stagedFiles": "",
+  "remoteNames": "",
+  "trackedChanges": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "e1731642fb05c4f3f57a6502fad192ca8a47713d3e9d85854af08f75256f06ba"
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha256": "a778780b0bcbb4fcb5664b7d78818cc4bbc0da5462e54e7f14232b7429aa30f6"
+    },
+    {
+      "path": "src/app/(workspace)/analytics/page.tsx",
+      "sha256": "a482b741502c8d7bd877d2f0b69e58619e7f9be975506e4a881cb927de2294fc"
+    },
+    {
+      "path": "src/app/(workspace)/dashboard/page.tsx",
+      "sha256": "2a9600fe17f59237c3a37fa685c165f88f9eecdbdb902e5e93b0184f38e1e0f9"
+    },
+    {
+      "path": "src/app/(workspace)/documents/[id]/page.tsx",
+      "sha256": "7ac44508a9b2d2d14623d3b396e82b84f619e50821c17a49a420a89fdb1eae78"
+    },
+    {
+      "path": "src/app/(workspace)/documents/page.tsx",
+      "sha256": "ec16be3da7edbd02aee4cc8dd1926bb4c02da459d794f23f844c471422dfc824"
+    },
+    {
+      "path": "src/app/(workspace)/ingredients/page.tsx",
+      "sha256": "abcacb0d206b2d6e186d07f08b1059cb5fd62dde477b69c76ade2f1748257467"
+    },
+    {
+      "path": "src/app/(workspace)/reviews/page.tsx",
+      "sha256": "a43291d91649e37962cf7d2100808d93b754a6b3f5746fa1df4e5997bd76f04a"
+    },
+    {
+      "path": "src/app/(workspace)/settings/SettingsClient.tsx",
+      "sha256": "552b6cede637f5968515107fa4634b0b16c3891a6e07927fc29d4f289680d329"
+    },
+    {
+      "path": "src/app/(workspace)/upload/page.tsx",
+      "sha256": "fd3439a05916417c70c427010dce698152364d52b0f4b775e7ddfdd066232091"
+    },
+    {
+      "path": "src/app/api/master-data/ingredients/[id]/history/route.ts",
+      "sha256": "57a461f8aaa241b4edc64abc936c708ec19901682e25262ea6da2b9c2a668b74"
+    },
+    {
+      "path": "src/app/bind/BindClient.tsx",
+      "sha256": "4a40ac63a9531f585216f5c862f3866dc60c5078bdca9783d705feb1409a90b8"
+    },
+    {
+      "path": "src/app/extra.css",
+      "sha256": "b9c37494d446c6bde50e499b5df6205fd6d3723d20470244a89214ecc41331f7"
+    },
+    {
+      "path": "src/app/globals.css",
+      "sha256": "2f3d98dc1e1593096c504b85b6c7aface4e47fb3b6e0da280e1672aa38cb8f02"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "sha256": "9782ce117698b04c1f1a8e4160da9a0ed2bf8ffc80c1736bbb396d64505ad304"
+    },
+    {
+      "path": "src/app/login/LoginClient.tsx",
+      "sha256": "371ec52ab82214ddc67f3ca21370caccc5003c39702c2268c943504657becf54"
+    },
+    {
+      "path": "src/components/AppShell.tsx",
+      "sha256": "988559d3f3429acc053f02ded4d0ff05e508a38e544ef1b82a23b78e3ac15644"
+    },
+    {
+      "path": "src/components/DocumentItemsEditor.tsx",
+      "sha256": "e208cacf956797129e7e49435f5d763abf495163b7c1d4d68972804a8d48fbcd"
+    },
+    {
+      "path": "src/components/ui.tsx",
+      "sha256": "74c0eb7bc16a80d3a0ee95070e754944110ef98fde2223bf4f0a6684c4cfd6d1"
+    },
+    {
+      "path": "src/server/analytics.ts",
+      "sha256": "8552da0fe09ae7eb1b6249a45563d4a3d9c792311237ca4d593d49e490d0e7de"
+    },
+    {
+      "path": "src/server/ingredients.ts",
+      "sha256": "6a6c3cb974ba89d1a8fcd345465e98090978ec48ae9ffb4343bcbd52d3017ce0"
+    }
+  ],
+  "untrackedFiles": [
+    "docs/ui-brand-2026-10-30/使用与维护说明.md",
+    "docs/ui-redesign-2-checkbench-2026-10-29/capture.mjs",
+    "docs/ui-redesign-2-checkbench-2026-10-29/shots/README.txt",
+    "docs/ui-redesign-2-checkbench-2026-10-29/shots/capture-report.json",
+    "docs/ui-redesign-2-checkbench-2026-10-29/原型.html",
+    "docs/ui-redesign-2-checkbench-2026-10-29/废弃说明.md",
+    "src/app/api/brand/logo/route.ts",
+    "src/app/api/brand/route.ts",
+    "src/app/design.css",
+    "src/components/BrandProvider.tsx",
+    "src/components/BrandSettings.tsx",
+    "src/lib/client/brand.ts",
+    "src/lib/client/page-memory.ts",
+    "src/server/brand.ts",
+    "tests/brand.test.ts"
+  ]
+}

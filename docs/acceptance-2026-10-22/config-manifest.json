@@ -1,0 +1,58 @@
+[
+  {
+    "Path": "D:\\codex\\gysycl\\package.json",
+    "Hash": "184E8A15F7BBE5B83B90D6FC3C3BF815E1D0FEC72D46AEFF3276802DF7F4EBF2"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\package-lock.json",
+    "Hash": "25B8FCB47F30C5D33B0BB12141696354477061E1BBA8C4586C03BFFF3799E0D1"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\next.config.ts",
+    "Hash": "F19DA3FE5766DE808A40A935D305489F564A8CF21E90A85175023171FB968118"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\tsconfig.json",
+    "Hash": "28E1D75FE02D1E2300ECE28A357BE9680647FBB20FF94ABEBDF7A2A55035353C"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\.env.example",
+    "Hash": "11167D4CEF76715CA53A9CCBBFC05E3EBED4D9184FCC3ED348F707680AB704B5"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\AGENTS.md",
+    "Hash": "063098F6CB31BB44C6F8FBEA25B3876DE7EE1E5F7D00A50DBAB506F6415EB7F0"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\README.md",
+    "Hash": "5857028E0B2500F8ADC615A3634D7F537920628ED6A405F586189F5C327279A0"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\Dockerfile",
+    "Hash": "DADACF87E1F9E70F00E11EDBC56D795C782267EF8F753540F051B215A041E9AC"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\docker-compose.yml",
+    "Hash": "7D11F7B2B49E276A8E1B13511E467F85F3161246D3BB5F0ADE777659B06D2CA2"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\prisma.config.ts",
+    "Hash": "92FDDEA99FC02B1C05E5FF44DD64A82F996FF46584F18880096FA78591780552"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\vitest.config.ts",
+    "Hash": "6CF459844586DA7075B4F2755B9ABD8DA26345FE2B7E9D860C425258D1CA247C"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\deploy\\nginx.conf",
+    "Hash": "A381A25E7C9F5532F0817D770894DEF99F21B5140CA4EB9647600EC08D0E43D5"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\.dockerignore",
+    "Hash": "D12B677950C484AC88CC785E3B859B761F0EDE04DC01F2B3F21008D58520F6A8"
+  },
+  {
+    "Path": "D:\\codex\\gysycl\\.gitignore",
+    "Hash": "A69A40FC6E2FD9CDE9BC138F8B2CF40349FED9B8CF31D7616548684B883C106E"
+  }
+]

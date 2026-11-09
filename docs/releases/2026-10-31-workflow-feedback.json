@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-31",
+  "tag": "release/2026-10-31-workflow-feedback",
+  "status": "DEPLOYED_AND_VERIFIED",
+  "sourceCommit": "27e07b0ffa7c89810e175cdcfbe17dabd97e1928",
+  "tagTarget": "最终发布留档提交，以Git查询；sourceCommit为实际部署源码",
+  "verifiedAt": "2026-10-30T16:16:38.244Z",
+  "features": [
+    "退回修改单据允许有编辑权限用户删除，保留删除确认和审核历史摘要",
+    "常用材料多选添加、材料库搜索分页",
+    "右上角员工名称最多显示五字，保留全名账号菜单",
+    "反馈建议入口、提交与本人/管理员查看",
+    "包含7686289未保存手工明细新建材料修复"
+  ],
+  "image": "sha256:aaaccdbe573fd2633e3541cf534c484626063dada11e8600cb630f9178b954fd",
+  "imageTag": "delivery-audit:workflow-feedback-20261031",
+  "previousImage": "sha256:a0f40e83cc76cb87314f484d47173b2c3c0047e0ddd3516e3ad0b9e78a860e8f",
+  "previousImageTag": "delivery-audit:before-workflow-feedback-20261031",
+  "sourceArchive": "/opt/delivery-audit/releases/workflow-feedback-20261031.tar.gz",
+  "sourceArchiveSha256": "2addad99e49178421e8dca1a29277141f2f4025114249b2b4da08346c82d07b0",
+  "sourceBefore": "/opt/delivery-audit/releases/workflow-feedback-20261031/source-before.tar.gz",
+  "backupPath": "/opt/delivery-audit/backups/20261031-001434",
+  "backupChecksums": "91a6b3ba4bec2843ca84c8479e07d93190cd6e87bb3a5cb97e5f5939df027702  database.sql.gz\n19d6a87e328095477b5247da3066ce074909731b41d52abdd411fbdfbf13eb45  uploads.tar.gz",
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "localFullBackupCopied": false,
+  "migration": "NONE",
+  "migrationsApplied": [
+    "0001_init",
+    "0002_ingredient_maintenance"
+  ],
+  "checks": {
+    "unitTests": 134,
+    "typecheck": "PASS",
+    "localBuild": "PASS",
+    "serverBuild": "PASS",
+    "isolatedBrowser": "PASS",
+    "live": {
+      "status": "PASS",
+      "checkedAt": "2026-10-30T16:16:38.244Z",
+      "checks": [
+        "公网HTTPS、登录与健康检查正常，未忽略证书错误",
+        "右上角五字姓名、反馈入口、反馈读取与提交表单正常",
+        "线上材料库可多选两项并加入页面，四种宽度无横向溢出；未保存业务修改",
+        "真实退回单据删除按钮和确认弹窗正常，仅取消确认，未删除业务单据"
+      ],
+      "returnedVerification": "BUTTON_AND_CONFIRMATION_PASS_NOT_DELETED",
+      "pageErrors": [],
+      "businessMutationRequests": 0,
+      "paidOcrCalls": 0,
+      "httpsCertificateErrorsIgnored": false
+    }
+  },
+  "dataPreservationRecord": "docs/workflow-feedback-2026-10-31/data-preservation.json",
+  "rollback": "将delivery-audit:before-workflow-feedback-20261031标记为delivery-audit:trial，使用现有compose.trial.yml及私有env同步更新app和worker，保留数据卷。应用回退后旧版本不能删除退回单据、没有材料多选与反馈入口，也不含7686289手工新增材料修复。已有反馈保留在AuditLog。无数据库迁移，不需要恢复数据库；任何数据恢复应单独评估，不能覆盖上线后的新单据、反馈或审计。",
+  "gitRemote": "NONE; local Git only"
+}

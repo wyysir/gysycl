@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "albumHasNoCapture": true,
+  "albumSupportsMultiple": true,
+  "cameraCapture": "environment",
+  "cameraAndAlbumCanAppend": true,
+  "maxPages": 5,
+  "mobileGeometry": {
+    "width": 390,
+    "scroll": 390
+  },
+  "pageErrors": []
+}

@@ -1,0 +1,118 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: delivery_audit
+      POSTGRES_USER: delivery
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U delivery -d delivery_audit"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  app:
+    build: .
+    command:
+      - sh
+      - -c
+      - npx prisma migrate deploy && npm start
+    environment:
+      APP_URL: ${APP_URL:-http://localhost:3000}
+      SESSION_SECRET: ${SESSION_SECRET:-local-docker-secret-change-before-production}
+      DATABASE_URL: postgresql://delivery:${POSTGRES_PASSWORD:-change-me}@postgres:5432/delivery_audit
+      REDIS_URL: redis://redis:6379
+      OCR_MODE: ${OCR_MODE:-mock}
+      OCR_CONFIDENCE_THRESHOLD: ${OCR_CONFIDENCE_THRESHOLD:-0.9}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      STORAGE_DRIVER: ${STORAGE_DRIVER:-local}
+      OSS_REGION: ${OSS_REGION:-}
+      OSS_BUCKET: ${OSS_BUCKET:-}
+      OSS_ENDPOINT: ${OSS_ENDPOINT:-}
+      OSS_ACCESS_KEY_ID: ${OSS_ACCESS_KEY_ID:-}
+      OSS_ACCESS_KEY_SECRET: ${OSS_ACCESS_KEY_SECRET:-}
+      ALIYUN_ACCESS_KEY_ID: ${ALIYUN_ACCESS_KEY_ID:-}
+      ALIYUN_ACCESS_KEY_SECRET: ${ALIYUN_ACCESS_KEY_SECRET:-}
+      ALIYUN_OCR_ENDPOINT: ${ALIYUN_OCR_ENDPOINT:-ocr-api.cn-hangzhou.aliyuncs.com}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
+      DASHSCOPE_BASE_URL: ${DASHSCOPE_BASE_URL:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+      QWEN_VL_MODEL: ${QWEN_VL_MODEL:-qwen-vl-max-latest}
+      CROSS_PRICE_TOLERANCE: ${CROSS_PRICE_TOLERANCE:-0.1}
+      HISTORY_PRICE_TOLERANCE: ${HISTORY_PRICE_TOLERANCE:-0.1}
+      QUANTITY_OUTLIER_MULTIPLIER: ${QUANTITY_OUTLIER_MULTIPLIER:-2}
+      MIN_BENCHMARK_SAMPLES: ${MIN_BENCHMARK_SAMPLES:-3}
+      WECHAT_APP_ID: ${WECHAT_APP_ID:-}
+      WECHAT_APP_SECRET: ${WECHAT_APP_SECRET:-}
+      WECHAT_TEMPLATE_REVIEW_PENDING: ${WECHAT_TEMPLATE_REVIEW_PENDING:-}
+      WECHAT_TEMPLATE_REVIEW_RESULT: ${WECHAT_TEMPLATE_REVIEW_RESULT:-}
+    ports:
+      - "3000:3000"
+    volumes:
+      - uploads:/app/.data/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>{if(!r.ok)process.exit(1)})"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  worker:
+    build: .
+    command:
+      - node
+      - --require
+      - ./scripts/preload.cjs
+      - --import
+      - tsx
+      - scripts/worker.ts
+    environment:
+      APP_URL: ${APP_URL:-http://localhost:3000}
+      SESSION_SECRET: ${SESSION_SECRET:-local-docker-secret-change-before-production}
+      DATABASE_URL: postgresql://delivery:${POSTGRES_PASSWORD:-change-me}@postgres:5432/delivery_audit
+      REDIS_URL: redis://redis:6379
+      OCR_MODE: ${OCR_MODE:-mock}
+      OCR_CONFIDENCE_THRESHOLD: ${OCR_CONFIDENCE_THRESHOLD:-0.9}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      STORAGE_DRIVER: ${STORAGE_DRIVER:-local}
+      OSS_REGION: ${OSS_REGION:-}
+      OSS_BUCKET: ${OSS_BUCKET:-}
+      OSS_ENDPOINT: ${OSS_ENDPOINT:-}
+      OSS_ACCESS_KEY_ID: ${OSS_ACCESS_KEY_ID:-}
+      OSS_ACCESS_KEY_SECRET: ${OSS_ACCESS_KEY_SECRET:-}
+      ALIYUN_ACCESS_KEY_ID: ${ALIYUN_ACCESS_KEY_ID:-}
+      ALIYUN_ACCESS_KEY_SECRET: ${ALIYUN_ACCESS_KEY_SECRET:-}
+      ALIYUN_OCR_ENDPOINT: ${ALIYUN_OCR_ENDPOINT:-ocr-api.cn-hangzhou.aliyuncs.com}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
+      DASHSCOPE_BASE_URL: ${DASHSCOPE_BASE_URL:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+      QWEN_VL_MODEL: ${QWEN_VL_MODEL:-qwen-vl-max-latest}
+      CROSS_PRICE_TOLERANCE: ${CROSS_PRICE_TOLERANCE:-0.1}
+      HISTORY_PRICE_TOLERANCE: ${HISTORY_PRICE_TOLERANCE:-0.1}
+      QUANTITY_OUTLIER_MULTIPLIER: ${QUANTITY_OUTLIER_MULTIPLIER:-2}
+      MIN_BENCHMARK_SAMPLES: ${MIN_BENCHMARK_SAMPLES:-3}
+    volumes:
+      - uploads:/app/.data/uploads
+    depends_on:
+      app:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  redis_data:
+  uploads:

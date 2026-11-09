@@ -1,0 +1,8 @@
+{
+  "httpsTrusted": true,
+  "demoLoginHidden": true,
+  "actualPasswordFormLogin": true,
+  "authenticatedDashboard": true,
+  "mobileDocument": true,
+  "pageErrors": []
+}

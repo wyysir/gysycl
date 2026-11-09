@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-30",
+  "tag": "release/2026-10-30-brand-ledger-alignment",
+  "status": "DEPLOYED_AND_VERIFIED",
+  "sourceCommit": "53fe66417ce5fe34970c70e081f2bbe7ba0e97c6",
+  "sourceNote": "发布标签指向最终留档提交，部署源码为sourceCommit；实际标签目标由Git查询，避免自引用。",
+  "verifiedAt": "2026-10-30T03:32:08.797Z",
+  "features": [
+    "五个关键页面严格对照已确认金棕色品牌台账结构与规范",
+    "手机折叠两列明细、桌面表格三栏、中屏依据抽屉",
+    "录入三步与成功replace、矩阵/价差/采购来源",
+    "保留B06和既有Logo，修复B10–B16"
+  ],
+  "image": "sha256:72dc4a24f22e99ee25dd47147300b51ab148b28d979e98e2e170ba16deed9e9c",
+  "imageTag": "delivery-audit:brand-ledger-alignment-20261030",
+  "previousImage": "sha256:0d1fca32a9339a6a8c5bcedcfb2c75215d80eb34ef0288ca1e386fa0a975bda8",
+  "previousImageTag": "delivery-audit:before-brand-ledger-alignment-20261030",
+  "sourceArchive": "/opt/delivery-audit/releases/brand-ledger-alignment-20261030.tar.gz",
+  "sourceArchiveSha256": "de0658ea07ea12ff8f30596ac1d124a6ec37a6da7ccbb807590a3989c54fa77b",
+  "sourceBefore": "/opt/delivery-audit/releases/brand-ledger-alignment-20261030/source-before.tar.gz",
+  "migration": "NONE; no schema, API, business-data or logo changes",
+  "brand": {
+    "version": 1,
+    "sha256": "adc79814f1bc0fd06c725fc3f4224810da0adc92bf6cd466f772bce96bde2817",
+    "unchanged": true,
+    "reuploaded": false
+  },
+  "backups": [
+    {
+      "phase": "before-deployment",
+      "path": "/opt/delivery-audit/backups/20261030-112829",
+      "sha256": {
+        "database.sql.gz": "db48bb8b78961316269a4d39d3ac0ef38aae0b00b07e479794de32fdcd264c69",
+        "uploads.tar.gz": "de98f8493cb27354fdf8027f28220a30e82a449e000e978082ec22d3fe5d3f67"
+      }
+    }
+  ],
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "localFullBackupCopied": false,
+  "localBackupNote": "完整备份仅保留在服务器，当前仅收集脱敏计数与摘要。",
+  "checks": {
+    "unitTests": 125,
+    "typecheck": "PASS",
+    "localBuild": "PASS",
+    "serverBuild": "PASS",
+    "fidelityBrowserChecks": 12,
+    "isolatedRecoveryChecks": {
+      "chromium": 21,
+      "webkit": 21
+    },
+    "liveBrowserChecks": 11,
+    "paidOcrCalls": 0,
+    "businessMutationRequests": 0,
+    "httpsCertificateErrorsIgnored": false
+  },
+  "dataPreservationRecord": "docs/ui-brand-2026-10-30/alignment-data-preservation.json",
+  "validation": "docs/ui-brand-2026-10-30/alignment-validation-summary.json",
+  "baseline": "docs/ui-brand-2026-10-30/品牌台账-原方案基线.md",
+  "implementationMap": "docs/ui-brand-2026-10-30/品牌台账-实施对照.md",
+  "bugs": "docs/ui-brand-2026-10-30/02-Bug记录与修改方向.md",
+  "handoff": "docs/ui-brand-2026-10-30/03-交接文档.md",
+  "manualReview": "docs/ui-brand-2026-10-30/04-待人工审核清单.md",
+  "resolvedBugIds": [
+    "B10",
+    "B11",
+    "B12",
+    "B13",
+    "B14",
+    "B15",
+    "B16"
+  ],
+  "remainingAcceptance": [
+    "H01 五页真人视觉与品牌观感",
+    "H02/H03 共用设备与安卓/iPhone/微信实际手势和相机",
+    "H04–H09 业务制度、采购口径、真实OCR、恢复演练、容量及无障碍"
+  ],
+  "rollback": "将 delivery-audit:before-brand-ledger-alignment-20261030 重新标记为 delivery-audit:trial，以现有Compose和私有env同步更新app/worker。旧版含B06但界面回到校准前；先保存未提交编辑。保留数据卷与Logo，不恢复数据库，不运行seed/reset；数据库恢复单独评估。",
+  "gitRemote": "NONE; local Git only"
+}

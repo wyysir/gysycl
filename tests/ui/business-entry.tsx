@@ -1,0 +1,16 @@
+import { createRoot } from "react-dom/client";
+import BusinessPage from "../../src/app/(workspace)/business/page";
+import AnalyticsPage from "../../src/app/(workspace)/analytics/page";
+import { AppShell } from "../../src/components/AppShell";
+import { ToastProvider } from "../../src/components/ToastProvider";
+import { BrandProvider } from "../../src/components/BrandProvider";
+import { LeaveProtectionProvider } from "../../src/components/LeaveProtection";
+import { emptyBrand } from "../../src/lib/client/brand";
+import "../../src/app/globals.css";
+import "../../src/app/extra.css";
+import "../../src/app/design.css";
+import "../../src/app/ledger.css";
+import "../../src/app/compact-review.css";
+import "../../src/app/business.css";
+const user={id:"fixture",employeeNo:"fixture",name:"演示管理员",globalRole:"ADMIN" as const,memberships:[]};
+createRoot(document.getElementById("root")!).render(<BrandProvider initialBrand={emptyBrand}><ToastProvider><LeaveProtectionProvider owner={user.id}><AppShell user={user}>{location.pathname==="/business"?<BusinessPage/>:<AnalyticsPage/>}</AppShell></LeaveProtectionProvider></ToastProvider></BrandProvider>);

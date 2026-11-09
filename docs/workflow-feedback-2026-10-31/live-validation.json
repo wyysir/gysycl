@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-30T16:16:38.244Z",
+  "checks": [
+    "公网HTTPS、登录与健康检查正常，未忽略证书错误",
+    "右上角五字姓名、反馈入口、反馈读取与提交表单正常",
+    "线上材料库可多选两项并加入页面，四种宽度无横向溢出；未保存业务修改",
+    "真实退回单据删除按钮和确认弹窗正常，仅取消确认，未删除业务单据"
+  ],
+  "returnedVerification": "BUTTON_AND_CONFIRMATION_PASS_NOT_DELETED",
+  "pageErrors": [],
+  "businessMutationRequests": 0,
+  "paidOcrCalls": 0,
+  "httpsCertificateErrorsIgnored": false
+}

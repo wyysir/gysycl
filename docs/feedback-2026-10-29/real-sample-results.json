@@ -1,0 +1,15 @@
+{
+  "status": "PASS_SPEC_AND_UNIT",
+  "scope": "Two user-uploaded photos, actual Aliyun OCR and qwen3.6-flash calls; checks specification/unit consistency, not all-field accuracy",
+  "databaseWrites": false,
+  "moduleSha256": "568ba9ab0c49a176fd0f3d0663420c54490eb7221fe15f63241ba140d02983d0",
+  "results": [
+    {"sample": 1, "itemCount": 3, "units": ["斤", "斤", "斤"], "allSpecsMatchUnits": true},
+    {"sample": 2, "itemCount": 7, "units": ["斤", "包", "包", "斤", "斤", "件", "瓶"], "allSpecsMatchUnits": true}
+  ],
+  "remainingObservedIssues": [
+    "Some handwritten quantities differed between calls and require manual comparison with the original",
+    "A handwritten ingredient name was misread; manual correction remains necessary",
+    "The receipt did not clearly supply the year, so date warnings remain"
+  ]
+}

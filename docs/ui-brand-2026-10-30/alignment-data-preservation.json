@@ -1,0 +1,86 @@
+{
+  "verifiedAt": "2026-10-30T03:32:08.797Z",
+  "before": {
+    "counts": {
+      "ApprovalRecord": 8,
+      "AuditLog": 105,
+      "CheckResult": 141,
+      "Contract": 0,
+      "Document": 11,
+      "DocumentItem": 61,
+      "DocumentPage": 21,
+      "ImportBatch": 0,
+      "Ingredient": 24,
+      "IngredientAlias": 1,
+      "Notification": 8,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 3,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "23bdcb4cbc98dba80d491cc51553a48fa855bfe5a364500dc009c97a6b603379",
+    "uploadFiles": 42,
+    "uploadSha256": "531e0d67f868d665014a25250284cfe86589485f0e30633e7548f4f13d218a61"
+  },
+  "after": {
+    "counts": {
+      "ApprovalRecord": 8,
+      "AuditLog": 105,
+      "CheckResult": 141,
+      "Contract": 0,
+      "Document": 11,
+      "DocumentItem": 61,
+      "DocumentPage": 21,
+      "ImportBatch": 0,
+      "Ingredient": 24,
+      "IngredientAlias": 1,
+      "Notification": 8,
+      "Project": 2,
+      "ProjectMembership": 1,
+      "Supplier": 3,
+      "SupplierAlias": 0,
+      "SystemSetting": 0,
+      "User": 2,
+      "WechatBinding": 0
+    },
+    "sha256": "23bdcb4cbc98dba80d491cc51553a48fa855bfe5a364500dc009c97a6b603379",
+    "uploadFiles": 42,
+    "uploadSha256": "531e0d67f868d665014a25250284cfe86589485f0e30633e7548f4f13d218a61"
+  },
+  "includingBrandAuditBefore": {
+    "counts": {
+      "items": 61,
+      "pages": 21,
+      "audits": 106,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "d49b960c6d99047f2a0b8130987b56f7440501d54cbef1cac137e7fa4f58366a",
+    "uploadFiles": 42,
+    "uploadSha256": "531e0d67f868d665014a25250284cfe86589485f0e30633e7548f4f13d218a61"
+  },
+  "includingBrandAuditAfter": {
+    "counts": {
+      "items": 61,
+      "pages": 21,
+      "audits": 106,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "d49b960c6d99047f2a0b8130987b56f7440501d54cbef1cac137e7fa4f58366a",
+    "uploadFiles": 42,
+    "uploadSha256": "531e0d67f868d665014a25250284cfe86589485f0e30633e7548f4f13d218a61"
+  },
+  "unchanged": true,
+  "businessMutationRequests": 0,
+  "note": "Compared against this deployment’s fresh baseline. Previous releases have their own historical counts; no old database snapshot was restored."
+}

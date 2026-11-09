@@ -1,0 +1,53 @@
+{
+  "stage": "deployment and authorized recovery",
+  "deploymentBefore": {
+    "counts": {
+      "items": 38,
+      "pages": 24,
+      "audits": 100,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "cc1df0d83308a428481523ebde66b3f53e685dac73b74a2a245512484263819a",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "deploymentAfter": {
+    "counts": {
+      "items": 38,
+      "pages": 24,
+      "audits": 100,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "cc1df0d83308a428481523ebde66b3f53e685dac73b74a2a245512484263819a",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "deploymentDatabaseAndImagesUnchanged": true,
+  "postAuthorizedRecovery": {
+    "counts": {
+      "items": 78,
+      "pages": 24,
+      "audits": 102,
+      "aliases": 1,
+      "approvals": 8,
+      "contracts": 0,
+      "documents": 11,
+      "ingredients": 24
+    },
+    "sha256": "f21af172384357fdf8c8726e709527c2239ffe02208f997b591ce3b0e44a8252",
+    "uploadFiles": 48,
+    "uploadSha256": "c758f603cd269acec53cec6556f24c247e7a6cddaf053265b6ba287851f40627"
+  },
+  "untouchedDocumentCount": 9,
+  "untouchedStatusVersionItemCountsUnchanged": true,
+  "originalUploadContentsUnchanged": true,
+  "notes": "两笔空草稿经用户授权各恢复20条明细，因此恢复后数据库摘要不同；两笔是同一组图片的重复上传，未自动删除。其他9笔单据状态/版本/行数保留。"
+}

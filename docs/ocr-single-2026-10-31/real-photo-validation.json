@@ -1,0 +1,127 @@
+{
+  "model": "qwen3.6-flash",
+  "method": "真实调用，每张1次、1张图片；逐行核对单人参考，不含生产业务写入",
+  "samples": 26,
+  "handwrittenSamples": 15,
+  "printedSamples": 11,
+  "main": {
+    "suffix": "single-recharged",
+    "samples": 26,
+    "failed": [],
+    "rows": {
+      "actual": 155,
+      "expected": 155
+    },
+    "numeric": {
+      "correct": 460,
+      "total": 464
+    },
+    "units": {
+      "printed": {
+        "correct": 107,
+        "total": 112
+      },
+      "handwritten": {
+        "correct": 30,
+        "total": 34
+      }
+    },
+    "names": {
+      "printed": {
+        "correct": 111,
+        "total": 111
+      },
+      "handwritten": {
+        "correct": 28,
+        "total": 33
+      },
+      "ambiguous": 11
+    },
+    "dates": {
+      "complete": 17,
+      "correct": 15,
+      "wrong": 1,
+      "withheld": 1,
+      "missing": 8,
+      "correctMissing": 8,
+      "ambiguous": 1
+    },
+    "totals": {
+      "correct": 20,
+      "total": 21
+    },
+    "usage": {
+      "requests": 26,
+      "successful": 26,
+      "images": 26,
+      "promptTokens": 85150,
+      "completionTokens": 19360,
+      "averageRequestMs": 4754.7692307692305,
+      "standardPriceEstimateYuan": 0.241572
+    }
+  },
+  "rejectedPilot": {
+    "samples": 9,
+    "numeric": {
+      "correct": 142,
+      "total": 155
+    },
+    "units": {
+      "printed": {
+        "correct": 25,
+        "total": 30
+      },
+      "handwritten": {
+        "correct": 11,
+        "total": 14
+      }
+    },
+    "usage": {
+      "requests": 9,
+      "successful": 9,
+      "images": 9,
+      "promptTokens": 29920,
+      "completionTokens": 6747,
+      "averageRequestMs": 4996.888888888889,
+      "standardPriceEstimateYuan": 0.0844824
+    },
+    "decision": "REJECTED; 数字准确性变差，未采用扶正/颜色/单位列方案"
+  },
+  "referenceCorrections": [
+    {
+      "id": "S06",
+      "field": "date",
+      "old": null,
+      "new": "2026-10-17",
+      "reason": "重新看原图，完整写有2026年10月17日，先前漏标。"
+    },
+    {
+      "id": "S22",
+      "field": "date",
+      "old": "2026-10-28",
+      "new": null,
+      "reason": "年份笔迹有歧义，疑似2016；不以拍摄水印推断2026。排除年份准确率，待业务人员确认。"
+    }
+  ],
+  "oldDoubleReview": {
+    "method": "此前主结果回放+真实二次校读，不等同于充值后完整实时双次流程",
+    "printedUnits": {
+      "correct": 110,
+      "total": 112
+    },
+    "handwrittenUnits": {
+      "correct": 34,
+      "total": 34
+    },
+    "remainingFoldErrors": 2
+  },
+  "scope": "26张中只有15张手写，未达到30张真实手写验收要求；模糊品名11行、歧义年份1张不记作确定真值；模型重复推理存在波动",
+  "price": {
+    "source": "https://help.aliyun.com/zh/model-studio/qwen3-6-flash",
+    "inputPerMillion": 1.2,
+    "outputPerMillion": 7.2,
+    "note": "按中国内地标准在线调用公开单价估算；实际以账单、缓存优惠和额度为准"
+  },
+  "totalEvaluationCalls": 35,
+  "totalEvaluationEstimateYuan": 0.3260544
+}

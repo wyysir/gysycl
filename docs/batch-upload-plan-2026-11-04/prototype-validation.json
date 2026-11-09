@@ -1,0 +1,81 @@
+{
+  "scope": "Standalone synthetic prototype only. No production code or backend, no OCR, no real WeChat validation.",
+  "checkedAt": "2026-11-04T08:34:41.544Z",
+  "results": [
+    {
+      "width": 375,
+      "checks": [
+        "no-horizontal-overflow",
+        "10-independent-documents",
+        "edit-associated-image",
+        "resolve-unit",
+        "save-does-not-confirm-document",
+        "explicit-confirm",
+        "partial-submit-7-keep-3",
+        "submitted-not-resubmitted",
+        "retry-only-failed-document",
+        "supplier-confirmation",
+        "photo-limit-remove-append",
+        "simulated-progress"
+      ],
+      "passed": true
+    },
+    {
+      "width": 390,
+      "checks": [
+        "no-horizontal-overflow",
+        "10-independent-documents",
+        "edit-associated-image",
+        "resolve-unit",
+        "save-does-not-confirm-document",
+        "explicit-confirm",
+        "partial-submit-7-keep-3",
+        "submitted-not-resubmitted",
+        "retry-only-failed-document",
+        "supplier-confirmation",
+        "photo-limit-remove-append",
+        "simulated-progress"
+      ],
+      "passed": true
+    },
+    {
+      "width": 430,
+      "checks": [
+        "no-horizontal-overflow",
+        "10-independent-documents",
+        "edit-associated-image",
+        "resolve-unit",
+        "save-does-not-confirm-document",
+        "explicit-confirm",
+        "partial-submit-7-keep-3",
+        "submitted-not-resubmitted",
+        "retry-only-failed-document",
+        "supplier-confirmation",
+        "photo-limit-remove-append",
+        "simulated-progress"
+      ],
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "checks": [
+        "no-horizontal-overflow",
+        "10-independent-documents",
+        "edit-associated-image",
+        "resolve-unit",
+        "save-does-not-confirm-document",
+        "explicit-confirm",
+        "partial-submit-7-keep-3",
+        "submitted-not-resubmitted",
+        "retry-only-failed-document",
+        "supplier-confirmation",
+        "photo-limit-remove-append",
+        "simulated-progress"
+      ],
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "screenshots": 8,
+  "board": "screenshots/mobile-flow.png"
+}

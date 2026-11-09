@@ -1,0 +1,52 @@
+{
+  "createdAt": "2026-11-04T22:43:44+08:00",
+  "status": "preserved; verified offline; not deployed",
+  "sourceCommit": "3bfcc0ce01d9d900664176d54de6bbb862f9e907",
+  "archive": {
+    "path": ".data/maintenance/ocr-accuracy-20261104-handoff.zip",
+    "bytes": 164420938,
+    "sha256": "2790cbb16a06dadef669189925e278036e25faa3cfb0463077e591dbaa2ff6c9",
+    "sourceFiles": 667,
+    "zipEntries": 668,
+    "sourceBytes": 167163269,
+    "internalManifest": "preservation-manifest.private.json"
+  },
+  "groups": {
+    "experimentEvidence": {
+      "files": 576,
+      "bytes": 29735618
+    },
+    "originalImages": {
+      "files": 26,
+      "bytes": 117984980
+    },
+    "historicalReportImages": {
+      "files": 26,
+      "bytes": 18846868
+    },
+    "experimentScriptsAndJobs": {
+      "files": 30,
+      "bytes": 78228
+    },
+    "historicalManifests": {
+      "files": 2,
+      "bytes": 37075
+    },
+    "committedSourceAndReportSnapshot": {
+      "files": 7,
+      "bytes": 480500
+    }
+  },
+  "verification": {
+    "originalAndCompressedImagesMatchFrozenManifest": true,
+    "archivedFilesMatchSourceSha256": true,
+    "sourcesUnchangedAfterArchiving": true,
+    "paidRequestRecords": 315,
+    "newPaidRequests": 0,
+    "secretsOrSessionFilesIntentionallyIncluded": false,
+    "offsiteBackup": false,
+    "businessDatabaseBackup": false
+  },
+  "retention": "Keep archive and working evidence. Do not delete based on .tmp or .data location. Restore into a separate directory and verify manifest; do not auto-execute scripts.",
+  "limitations": "Same-computer snapshot only. Handwriting target 95% not met. Full experiment trials are development samples, not independent acceptance. No new application tests or deployment in preservation turn."
+}

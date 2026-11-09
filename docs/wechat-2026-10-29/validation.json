@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-29",
+  "status": "PASS",
+  "scope": "documentation and read-only readiness",
+  "localMarkdownLinksChecked": 36,
+  "uniqueWechatTodos": 12,
+  "readinessMatchesReleaseImage": true,
+  "userConfirmedScopeRecorded": true,
+  "businessCodeChanged": false,
+  "deploymentPerformed": false,
+  "liveWechatPassed": false,
+  "dnsOrMenuChanged": false,
+  "messagesSent": false,
+  "knowledgeCaptureId": "kb-c594630e444b4d91bb3b508a437b4fc3",
+  "knowledgeCaptureStatus": "inbox",
+  "limits": [
+    "公众号类型与后台实际权限未核验",
+    "域名与备案尚无，未进行授权绑定或真实通知联调",
+    "本轮仅文档检查，未重复业务自动化/API全回归",
+    "新接入决定已存第二大脑收件箱，未直接改写正式项目"
+  ]
+}

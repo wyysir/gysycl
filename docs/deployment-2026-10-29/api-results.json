@@ -1,0 +1,64 @@
+{
+  "projectId": "cmvsbhda5000024qjrs45x8vy",
+  "url": "https://42.121.106.105",
+  "model": "qwen3.6-flash",
+  "checks": [
+    {
+      "name": "HTTPS + PostgreSQL health",
+      "result": {
+        "ok": true,
+        "database": "up",
+        "time": "2026-10-28T17:05:29.662Z"
+      }
+    },
+    {
+      "name": "管理员登录和 Secure Cookie",
+      "result": true
+    },
+    {
+      "name": "六个主要页面可访问",
+      "result": true
+    },
+    {
+      "name": "图片上传到持久卷",
+      "result": true
+    },
+    {
+      "name": "识别任务进入队列",
+      "result": "queued"
+    },
+    {
+      "name": "云端双通道识别",
+      "result": {
+        "provider": "aliyun-ocr+qwen3.6-flash",
+        "warnings": [],
+        "rows": 2,
+        "total": 458
+      }
+    },
+    {
+      "name": "私有图片可读取",
+      "result": true
+    },
+    {
+      "name": "校正保存",
+      "result": true
+    },
+    {
+      "name": "退回后实际修改并保存",
+      "result": true
+    },
+    {
+      "name": "提交、退回、重提、审核通过",
+      "result": true
+    },
+    {
+      "name": "Excel 三张工作表导出",
+      "result": true
+    }
+  ],
+  "documentId": "cmvsd85ce000023o8bmf6wvr2",
+  "dualChannelPassed": true,
+  "functionalFlowPassed": true,
+  "complete": true
+}

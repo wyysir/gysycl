@@ -1,0 +1,53 @@
+# 生产覆写文件（与主 docker-compose.yml 合并使用）
+# 用法：
+#   cd /opt/delivery-audit/app
+#   docker compose --env-file ../.env -p delivery \
+#     -f docker-compose.yml -f docker-compose.override.yml up -d --build
+#
+# 本覆写只做四件事：端口收敛、开机自启、日志轮转、资源限制。
+# 不改变主文件中的环境变量与启动命令（容器内仍会自动执行 prisma migrate deploy）。
+
+services:
+  app:
+    restart: unless-stopped
+    ports:
+      # 只绑定本机，外网一律经 Nginx 反向代理，避免绕过 HTTPS 直连 3000
+      - "127.0.0.1:3000:3000"
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "5"
+    mem_limit: 2g
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  worker:
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "5"
+    mem_limit: 1g
+
+  postgres:
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "3"
+
+  redis:
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "512mb", "--maxmemory-policy", "noeviction"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-30",
+  "tag": "release/2026-10-30-ingredient-edit",
+  "status": "DEPLOYED_AND_VERIFIED",
+  "sourceCommit": "34f0b7d955d98af835eff0930b8b4cbbc2263b0d",
+  "sourceNote": "标签指向最终发布留档提交，以Git查询；实际部署源码为sourceCommit。",
+  "verifiedAt": "2026-10-30T12:30:37.815Z",
+  "features": [
+    "管理员可独立修改原材料规格及单位",
+    "已引用材料可修改单位，仅更新材料资料及审计，不改已有单据和合同快照",
+    "新增材料自定义规格不再被计量单位覆盖"
+  ],
+  "image": "sha256:dc4673a7c984de952c8679fd9100b217eec51b395f3141e0339af7d9f947af99",
+  "imageTag": "delivery-audit:ingredient-edit-20261030",
+  "previousImage": "sha256:72dc4a24f22e99ee25dd47147300b51ab148b28d979e98e2e170ba16deed9e9c",
+  "previousImageTag": "delivery-audit:before-ingredient-edit-20261030",
+  "sourceArchive": "/opt/delivery-audit/releases/ingredient-edit-20261030.tar.gz",
+  "sourceArchiveSha256": "8759af6f69a66a30a43cbc52c1fda24e24ea8aca465eace739dff24b25d96c5b",
+  "sourceBefore": "/opt/delivery-audit/releases/ingredient-edit-20261030/source-before.tar.gz",
+  "migration": "NONE; existing 0001_init and 0002_ingredient_maintenance unchanged",
+  "migrationsApplied": [
+    "0001_init",
+    "0002_ingredient_maintenance"
+  ],
+  "backups": [
+    {
+      "phase": "before-deployment",
+      "path": "/opt/delivery-audit/backups/20261030-172745",
+      "sha256": {
+        "database.sql.gz": "78587ece5be4fa0c7351926c62fbb9f860a2657a79aab9d67299159c2c8d201e",
+        "uploads.tar.gz": "de98f8493cb27354fdf8027f28220a30e82a449e000e978082ec22d3fe5d3f67"
+      }
+    }
+  ],
+  "backupServerChecksumsMatch": true,
+  "backupCompressionReadable": true,
+  "backupRestoreDrill": "NOT_PERFORMED",
+  "localFullBackupCopied": false,
+  "checks": {
+    "unitTests": 128,
+    "ingredientTests": 16,
+    "typecheck": "PASS",
+    "localBuild": "PASS",
+    "serverBuild": "PASS",
+    "isolatedBrowserChecks": 5,
+    "liveBrowserChecks": 5,
+    "paidOcrCalls": 0,
+    "businessMutationRequests": 0,
+    "httpsCertificateErrorsIgnored": false
+  },
+  "brand": {
+    "version": 1,
+    "sha256": "adc79814f1bc0fd06c725fc3f4224810da0adc92bf6cd466f772bce96bde2817",
+    "unchanged": true,
+    "reuploaded": false
+  },
+  "dataPreservationRecord": "docs/ingredient-edit-2026-10-30/data-preservation.json",
+  "validation": "docs/ingredient-edit-2026-10-30/validation-summary.json",
+  "usage": "docs/ingredient-edit-2026-10-30/使用与维护说明.md",
+  "approvalNote": "先前上传被自动审批拒绝后，用户明确回复“上线”；本次依该授权上传源码并部署。未通过其他通道绕过拒绝。",
+  "rollback": "将delivery-audit:before-ingredient-edit-20261030重新标记为delivery-audit:trial，以现有Compose及私有env同步更新app/worker，保留全部数据卷与Logo。无数据库迁移，无需恢复数据库；旧界面会重新限制规格/已引用单位编辑，不能覆盖后来保存的材料资料。数据库恢复单独评估。",
+  "remainingAcceptance": [
+    "安卓/iPhone/微信真机验收",
+    "真实单据识别准确率、公众号接入等既有待办未因本次发布完成"
+  ],
+  "gitRemote": "NONE; local Git only"
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "beforeSha256": "913d04ab8bb0b7a150f13e0db75cd2b51f88920ff6b51aae8c8e3935898f1e7c",
+  "afterSha256": "913d04ab8bb0b7a150f13e0db75cd2b51f88920ff6b51aae8c8e3935898f1e7c",
+  "counts": {"documents": 5, "pages": 5, "items": 17, "approvals": 6, "audits": 51},
+  "scope": "Canonical ordered database rows for documents, pages, items, approvals and audits match before and after deployment; no historical document rewrite",
+  "previousImage": "sha256:0a99c617f2a9fd98052655b0de54a1cb8280b399e9c8bfea57c8ea755098f316",
+  "currentImage": "sha256:f7e62f8abdba66864ea56a5dac9b1406774eb23c3cd368f826f8b183d6891b12",
+  "backup": "/opt/delivery-audit/backups/20261029-120552"
+}

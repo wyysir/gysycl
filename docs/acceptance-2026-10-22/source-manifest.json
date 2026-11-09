@@ -1,0 +1,458 @@
+[
+  {
+    "path": "src\\app\\extra.css",
+    "sha256": "CF7C3209121B46FEB3B67853835DAA4FC2A50011FEDDE8CCCC6F5142BCCAA4DE"
+  },
+  {
+    "path": "src\\app\\globals.css",
+    "sha256": "1B3440D84E08F7F4F583C2C64C411D6FA0207D90910225E08D293190B293B174"
+  },
+  {
+    "path": "src\\app\\layout.tsx",
+    "sha256": "D90752E08ABB196E1FE2C64EF9C34DC0475D0BC4E3BD2DAC88A6BF32BAF1AFFA"
+  },
+  {
+    "path": "src\\app\\page.tsx",
+    "sha256": "254550BF84B949BF0A1E8B1F27C510AB92D7EDC8FD9CAC63EEB768D1663BB900"
+  },
+  {
+    "path": "src\\app\\(workspace)\\layout.tsx",
+    "sha256": "A23724CEA2916005D09886C478BF8C08C3FA1A55BF3F4C1C88462BBAAF851B14"
+  },
+  {
+    "path": "src\\app\\(workspace)\\analytics\\page.tsx",
+    "sha256": "ABF4CA8160C5AFD0BF1F0CB75A02E006E0575900FB3404DC5EFF46A32D9C3C49"
+  },
+  {
+    "path": "src\\app\\(workspace)\\dashboard\\page.tsx",
+    "sha256": "B613AE5B882F3225CA2AFAD002EBE49DA9F126DEE303D678290B8A347749CACD"
+  },
+  {
+    "path": "src\\app\\(workspace)\\documents\\page.tsx",
+    "sha256": "4814F3EDDB98C7388694901EDC3BE6DDCBB9D3FF26780D83F23AA4C71AB0BB3D"
+  },
+  {
+    "path": "src\\app\\(workspace)\\documents\\[id]\\page.tsx",
+    "sha256": "08489CF92FA58FCF51CE694C5119925ABB4D68711ED7B3147ED37757358DFFE7"
+  },
+  {
+    "path": "src\\app\\(workspace)\\master\\page.tsx",
+    "sha256": "936E0A0D49A9E9AFA96E03D4E2A84EC9FF784F0FBB19CB762E5AE85E82643435"
+  },
+  {
+    "path": "src\\app\\(workspace)\\reviews\\page.tsx",
+    "sha256": "665A82EB3BE28F66EDB9D1B492D2CEEA1FF1DFE5AFDDD40773AEC90998D82389"
+  },
+  {
+    "path": "src\\app\\(workspace)\\upload\\page.tsx",
+    "sha256": "16EDE049CE672F687F14EDFB5AAB55381D34462FE90C0C8BE159A1140E3E0D71"
+  },
+  {
+    "path": "src\\app\\api\\analytics\\route.ts",
+    "sha256": "AEC446A1A5938EEC726E0BB09CE5510B9B11C32A64E026FD9286D3079B18C1AA"
+  },
+  {
+    "path": "src\\app\\api\\auth\\login\\route.ts",
+    "sha256": "7CE312DA8279BA1C0658AD4930B0CC8B7D695155A0A3C783E6676E789F513458"
+  },
+  {
+    "path": "src\\app\\api\\auth\\logout\\route.ts",
+    "sha256": "637199BC01619D8D8C9A7D947ED9DDC6DD2741DEE05DD99A1079A1F654DF403D"
+  },
+  {
+    "path": "src\\app\\api\\auth\\session\\route.ts",
+    "sha256": "243A0B835F2815ABD73CCBC5E9C6498E7CE1818213607888844654DD542424C7"
+  },
+  {
+    "path": "src\\app\\api\\auth\\wechat\\bind\\route.ts",
+    "sha256": "16C6AE476D3D8BA7E0191854542513437B0C624C91396475DF13C39597BFB5AA"
+  },
+  {
+    "path": "src\\app\\api\\auth\\wechat\\callback\\route.ts",
+    "sha256": "A8EBE61468C5971DBC6C48F0F313ED038EE11E1D2A9F01F8CC2C97B78C053C90"
+  },
+  {
+    "path": "src\\app\\api\\auth\\wechat\\start\\route.ts",
+    "sha256": "FCDCEBEDB6196D4B6702430CC9F8535E312BC11C4F045EACA13E78F18620A548"
+  },
+  {
+    "path": "src\\app\\api\\bootstrap\\route.ts",
+    "sha256": "CC46383BD8A281D8D338CCCECC7EA02A34C47A6D71EF918D65A58B035D9AFC76"
+  },
+  {
+    "path": "src\\app\\api\\contracts\\route.ts",
+    "sha256": "25ADC6C9FF88FF880EAA1859CA112F7B39AE2E8AFCE541FF1FDEFA5678A357D1"
+  },
+  {
+    "path": "src\\app\\api\\contracts\\[id]\\route.ts",
+    "sha256": "43DBD08941D1F89459F797214A848D3854B90B7BC5D0031CDC8265F1085B6F5B"
+  },
+  {
+    "path": "src\\app\\api\\dashboard\\route.ts",
+    "sha256": "29C13911C6716BB2937877152645689061E00C89D830BD619C058BDB43E70B47"
+  },
+  {
+    "path": "src\\app\\api\\documents\\route.ts",
+    "sha256": "89E50712B294E49C1DFE6E1EAEE85E5EA6E47C1B3B4E491986622DA30D014DC2"
+  },
+  {
+    "path": "src\\app\\api\\documents\\[id]\\route.ts",
+    "sha256": "3AE3A6E5161AB5A0A5B8FC6F47D4E8FED0EEF772EB0BE77E7A88A5D09DD74ABE"
+  },
+  {
+    "path": "src\\app\\api\\documents\\[id]\\ocr\\route.ts",
+    "sha256": "7E3D1BF8823D782C6B892D3274E4C97ECA6AEBA567F7C841E4ABFFBC5A8F3DB9"
+  },
+  {
+    "path": "src\\app\\api\\documents\\[id]\\recheck\\route.ts",
+    "sha256": "0BCDD4B560E8E31DC889A2C93480F67AE9105AB7DE87E26E0B70912C880FFDA7"
+  },
+  {
+    "path": "src\\app\\api\\documents\\[id]\\review\\route.ts",
+    "sha256": "9782AC2AC14CD3C6D85DC06B1BFCB990880FA86541942B1DEF0A948221B65174"
+  },
+  {
+    "path": "src\\app\\api\\documents\\[id]\\submit\\route.ts",
+    "sha256": "CEFE9098A229F702A47E0D0123C9E600EE4122B80E34821B99B574F507C61307"
+  },
+  {
+    "path": "src\\app\\api\\export\\documents\\route.ts",
+    "sha256": "ABECA5683F5CEB1746B79375B3AB491BF461704F55F0CBFEF7E814D67E5BE50D"
+  },
+  {
+    "path": "src\\app\\api\\files\\route.ts",
+    "sha256": "B2D9B9E3C088D1116100CA420BB21F1547E85B57EF83ADEA248F7F28EF6C342E"
+  },
+  {
+    "path": "src\\app\\api\\health\\route.ts",
+    "sha256": "6B7FC585E20F1766ED375BBE382D2DD36E542DF29352B5B5A2CAB9BC686F4DC6"
+  },
+  {
+    "path": "src\\app\\api\\master-data\\import\\route.ts",
+    "sha256": "965AB5BDAB23468D34BCB6C146731DA3C36C5DE8EA3B3646A7567683BB71EF32"
+  },
+  {
+    "path": "src\\app\\api\\master-data\\ingredients\\route.ts",
+    "sha256": "1D3CE46B62373FA572F555E8D090924E9C11E4535F32DB7FA9A19CB1FA298B23"
+  },
+  {
+    "path": "src\\app\\api\\master-data\\merge\\route.ts",
+    "sha256": "2216D5A15C4104A8F8C6A45FDC0BF131C04E1C4AF3A4A548727D58C35287B794"
+  },
+  {
+    "path": "src\\app\\api\\master-data\\suggest\\route.ts",
+    "sha256": "A065EE6A13927C51FB09636EAB417BD8BC56CA6187F956FC1A9AD788E86D5FEB"
+  },
+  {
+    "path": "src\\app\\api\\master-data\\suppliers\\route.ts",
+    "sha256": "215D231F2B9E95F933336FEF20CD6331D32C821995D0AC3D929CAB11CD43BFD3"
+  },
+  {
+    "path": "src\\app\\api\\master-data\\template\\route.ts",
+    "sha256": "692FF4769A16BD45F9490778EFE1716DC6C00116CADE296C0628FA3B7FA23468"
+  },
+  {
+    "path": "src\\app\\api\\projects\\route.ts",
+    "sha256": "3F609D4C989623957F6B6D21F3E4B3B65971AB8C3D0F25F99A61515469C733A2"
+  },
+  {
+    "path": "src\\app\\api\\reviews\\route.ts",
+    "sha256": "60520783E32B1E86C97345D2A1F65886910036BCD32AEAD7D749062A9511D1AF"
+  },
+  {
+    "path": "src\\app\\api\\uploads\\local\\route.ts",
+    "sha256": "7418CB2E28583E1CE66B51A51E60805F27E49080A517860E4E505D4F9960DB47"
+  },
+  {
+    "path": "src\\app\\api\\uploads\\presign\\route.ts",
+    "sha256": "DEC7DAF7ECC6A261F0E8D3AC2346A8A5FC5F51C2BEF6B7465E37A251E3E429CB"
+  },
+  {
+    "path": "src\\app\\api\\users\\route.ts",
+    "sha256": "834628E380092D90B1418DFEA6B73B2B521ADCFA895A489B4579667CCCED94D3"
+  },
+  {
+    "path": "src\\app\\api\\users\\[id]\\route.ts",
+    "sha256": "999656BD0376A58C5E34F6A36DB1A129928C3A6685F3A160107EB7A9D0B4CE38"
+  },
+  {
+    "path": "src\\app\\bind\\BindClient.tsx",
+    "sha256": "EAEAE1117903384A872113D790D3BBABD032E1F26511E6F2F82ECE58FA5D9F77"
+  },
+  {
+    "path": "src\\app\\bind\\page.tsx",
+    "sha256": "7B82181E8D93548FE7982A0BD2E6E4CDB2F9D040E3D978FD077B696DFBF05FA2"
+  },
+  {
+    "path": "src\\app\\login\\LoginClient.tsx",
+    "sha256": "E4FF2D1E0DA32FDA5C0F447CE3CE18DD74727F7D8B052E0AF06325FD69BA8CEE"
+  },
+  {
+    "path": "src\\app\\login\\page.tsx",
+    "sha256": "EB773F1098CF5135E337C737C6A5BD02C24F93B3BAD61EEA7C7CFF613AFAFB54"
+  },
+  {
+    "path": "src\\components\\AppShell.tsx",
+    "sha256": "763ABD4D7795BD42F0C2D84C4D795BFC6F516E2DC7C1DAC15B48A1BB7D42CE8C"
+  },
+  {
+    "path": "src\\components\\ToastProvider.tsx",
+    "sha256": "EF0A1B54E1C4FE9C1A8998084110AA6D5D33D0ABFEBBF26AD3CE690CC12C1AF1"
+  },
+  {
+    "path": "src\\components\\ui.tsx",
+    "sha256": "BD32B0E999C0B77A5A0370CCAFD97303AF414E7E53417983BE7CA9C25E135CDC"
+  },
+  {
+    "path": "src\\domain\\checks.ts",
+    "sha256": "E23FB393018B30844AEE337030D867D1C5668B1BA7B296590834831C52701353"
+  },
+  {
+    "path": "src\\generated\\prisma\\browser.ts",
+    "sha256": "899C0C02952A25E0BB98A71607A01A49C17382091C521C4EE9ECCB22872973B2"
+  },
+  {
+    "path": "src\\generated\\prisma\\client.ts",
+    "sha256": "2BB6FA6A36539B959298C5DEEBB10284A400D33217FB6A570D8FBB76E5D992B8"
+  },
+  {
+    "path": "src\\generated\\prisma\\commonInputTypes.ts",
+    "sha256": "2FA4C9D1AC312C9DF9D82D309FFC32D54A700542922DD3EE0CD8D229459346B1"
+  },
+  {
+    "path": "src\\generated\\prisma\\enums.ts",
+    "sha256": "F01E4791F6E485B415399B39FA946B15278857CDD294C2B969B652C2E19828A7"
+  },
+  {
+    "path": "src\\generated\\prisma\\models.ts",
+    "sha256": "9B63A4CF771BDE8FFDF24A132C18F61D861D813A54A092F45BEEA2ACE6551468"
+  },
+  {
+    "path": "src\\generated\\prisma\\internal\\class.ts",
+    "sha256": "75FD2B5B103A11ABDFF6CECA423A271CE1FAA2E3A25CFDC269172367A1694880"
+  },
+  {
+    "path": "src\\generated\\prisma\\internal\\prismaNamespace.ts",
+    "sha256": "4CB1E68541D786C6E5C3A59950049E3B2EC6C809931860E9EAFA3C1F92316444"
+  },
+  {
+    "path": "src\\generated\\prisma\\internal\\prismaNamespaceBrowser.ts",
+    "sha256": "22ADC63B7DE67A60FA447E7795869C37D8E1C3B1CBD51021B74E02D45B96A42A"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\ApprovalRecord.ts",
+    "sha256": "F8BD94A25D9A26B75BD70BE2CEA5C16765864E6B52D73CD4DA4C92FD95646F47"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\AuditLog.ts",
+    "sha256": "E64EDD0487433E3952CE694D180AE51A7D5C8D2D39B2EFABDB8653E9029A6B46"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\CheckResult.ts",
+    "sha256": "65F2689FA2EFC01E32920FAF9F691D18DC034C72DDE0783BDD05FC6852202DE3"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\Contract.ts",
+    "sha256": "DB56E3147D7481CA5DE36FC8BE60633EE5E4546B50F9A3C8F0FD59E63096943F"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\Document.ts",
+    "sha256": "32DF4170E04AE1C144BA268F06356921234E101707E89D301BABCFC68CB7D300"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\DocumentItem.ts",
+    "sha256": "37F7674F83D8A4BF0F348EF30319070019B0B695BFC7BA184F077FDDE7BBA783"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\DocumentPage.ts",
+    "sha256": "B78FA4CB3F528720F9CE5861C49876F986C6CF4797B9C7DF1C8E66651B2A217B"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\ImportBatch.ts",
+    "sha256": "6BAC211D8A0F7F0CF199F6943C44B435E09EB33C92C65183B40FC297C1D03386"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\Ingredient.ts",
+    "sha256": "3D7FE659F3DD7F31B423694F69CF8F798B5F6DBD54CABB4B871A5E91C72D4EDC"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\IngredientAlias.ts",
+    "sha256": "AB9F203918919C43ED512B38BB69999740D0645FEC734EE27A3D7906E479D16A"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\Notification.ts",
+    "sha256": "99ECBFD3070315D3012D7B1668854C15596F363F779051A159985BF765800ADA"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\Project.ts",
+    "sha256": "C322803DDF6C8BBBFAE1F7974F416BCD75719EF0B1DAE5A3ED657A63B15598B0"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\ProjectMembership.ts",
+    "sha256": "531CB8AD3C5327CC214C7A1F64E1AC10112010210191C2578D4CEF35187B6E72"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\Supplier.ts",
+    "sha256": "53515958B5FC51F2C4252924460705E948F383AEDF862139D196F48A065E32E7"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\SupplierAlias.ts",
+    "sha256": "6BBE43F5DAC6876EDE0811C4523FA035A19CCCD95038B6E68326DD1F3836E86E"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\SystemSetting.ts",
+    "sha256": "AF6C3C1DDA879E257559758A819611EAEF8B9746F01D4EF705CFD037BAEA62AB"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\User.ts",
+    "sha256": "DFB8179A5363FC1F5852891B8F449D0EDE4352C0E5F9968383A100DF621EB13A"
+  },
+  {
+    "path": "src\\generated\\prisma\\models\\WechatBinding.ts",
+    "sha256": "46C4C65BFA0810C3D58DE8FF2C898B7BEC7A5E7D26551CB893BC80BD450E66B7"
+  },
+  {
+    "path": "src\\lib\\bootstrap.ts",
+    "sha256": "FEB4A9A3EA64B1C6CE9E0AEEA95B1FADA634E5EB37BC717EF4C7BCB1DDEE35A7"
+  },
+  {
+    "path": "src\\lib\\config.ts",
+    "sha256": "34628E38882E6198B9F638FA88A7D7714DF2A0ABD4B2996C431D6A58634D381F"
+  },
+  {
+    "path": "src\\lib\\passwords.ts",
+    "sha256": "C86C2CB3FB8F0C3E8F3BDBC6EFA2BF7012D5A00344C63A0625F8173919AFC28F"
+  },
+  {
+    "path": "src\\lib\\prisma.ts",
+    "sha256": "7538F4CC6A0C29DC3AA7C648A2620AFD2206318F07A6BEDD17B7130327873EA9"
+  },
+  {
+    "path": "src\\lib\\text.ts",
+    "sha256": "0CC5FEB10D890E3D4477D702C410967CBF552B53B8DABAE77DBC78EC79982B83"
+  },
+  {
+    "path": "src\\lib\\client\\api.ts",
+    "sha256": "E9D510EB3B582A83AA95846D41DB80DDDC957D265D19700C83D4DF5A20C51C86"
+  },
+  {
+    "path": "src\\lib\\client\\types.ts",
+    "sha256": "EAC9B1413C00F44F023DD5052EFC266E94E021455E58B63D1BF42FFA08DAC35A"
+  },
+  {
+    "path": "src\\server\\analytics.ts",
+    "sha256": "8B3B7E79B2A9AD8F4EACCCBE4DAEDF6C8719AF5A42A4FDECD5B0F24214D1DA3E"
+  },
+  {
+    "path": "src\\server\\auth.ts",
+    "sha256": "6F15C0A8511BA88534B963238C73915A4506D4F2EA04F18B936978D15B303DCB"
+  },
+  {
+    "path": "src\\server\\checks.ts",
+    "sha256": "D1794D5030F0EDEF7C41A963B0E4E6ABD1F3F594E1E7DD400E6FDFB7C161C6E8"
+  },
+  {
+    "path": "src\\server\\document-service.ts",
+    "sha256": "AA10FA3E316DA28B2AD30CE45739B99943DFF20CB33F41C8CD59C13F2B19BCD5"
+  },
+  {
+    "path": "src\\server\\documents.ts",
+    "sha256": "1E226629A9CFE7C592F805924DB4AC07CAD7D2B8ECAA823369474BFDF194CA80"
+  },
+  {
+    "path": "src\\server\\excel.ts",
+    "sha256": "A42C52E1697563069B7599523647AB3F5E12927FBA90130E13A3EBA143D049EB"
+  },
+  {
+    "path": "src\\server\\http.ts",
+    "sha256": "E1151DEC3F54FBD5E9B0429222143A4438770264875E0781888E4772001538B5"
+  },
+  {
+    "path": "src\\server\\master-commands.ts",
+    "sha256": "074E19C343CE4968B6840109BAF1066E4C65357E87C006741808A9482791CE79"
+  },
+  {
+    "path": "src\\server\\master-data.ts",
+    "sha256": "45FF6B1944B68D1B276993893BA15A35CFCFAC3B0D683BDC60E011C63303FCD4"
+  },
+  {
+    "path": "src\\server\\ocr.ts",
+    "sha256": "620ED476EAE0B2F0D7C6BB6F17669595653154F65B427B905EF764CCB3C55F2C"
+  },
+  {
+    "path": "src\\server\\seed.ts",
+    "sha256": "9E11CDF6D1253B1A0BDE398EBD0BB172E7B58EC1388BC8A7677687229B900666"
+  },
+  {
+    "path": "src\\server\\storage.ts",
+    "sha256": "25B678B99A9608209468ADD49229A8F0DDD10610931AE7EE2AF63A9852415069"
+  },
+  {
+    "path": "src\\server\\wechat.ts",
+    "sha256": "A3AE045ED67C202A463FF3C7E1D5616242CBE91BBB5DF8DD597F067EF77F3219"
+  },
+  {
+    "path": "prisma\\schema.prisma",
+    "sha256": "58A5EDAC49651F28EB2A542E48B3E02F0D020C1AA6C8D2E5753623C3D569DF94"
+  },
+  {
+    "path": "prisma\\migrations\\migration_lock.toml",
+    "sha256": "162FF5818ED32B5113B4FB76482715281A9F8809C6EBD1B72DD604DE469F1746"
+  },
+  {
+    "path": "prisma\\migrations\\0001_init\\migration.sql",
+    "sha256": "B8BB96A18F584ADCA1EE2596A0A8033683EC4D4E776589B335C8A2356D7F9B26"
+  },
+  {
+    "path": "public\\favicon.svg",
+    "sha256": "F33F54761070FD7D85C402953CC88B20D6DC66C44B91252A85FC8CBC6B16293A"
+  },
+  {
+    "path": "public\\sample-delivery.svg",
+    "sha256": "AC58BACA2FE42999EDF274560820AFCD1F1E6B64355B494124AB00FE73E8BE43"
+  },
+  {
+    "path": "scripts\\create-admin.ts",
+    "sha256": "A5ABC3B530CA480EA6759ED2268AF2613E7CDFFFA3D25687DFA15C8BED8D579A"
+  },
+  {
+    "path": "scripts\\preload.cjs",
+    "sha256": "C7DAA4C393FE78D89CFDF04B73BD412E2DACCD9B166654A74847C5157535B854"
+  },
+  {
+    "path": "scripts\\reset-db.ts",
+    "sha256": "5DF802F442DD717F55DB98B5BF40BFF9B1161AF730DB11F7D018FDC89839B734"
+  },
+  {
+    "path": "scripts\\seed.ts",
+    "sha256": "F93E7F1154C8E666C9B113FA3D5DDFF4BE8B5118FFE703756CBA3443F2FB5507"
+  },
+  {
+    "path": "scripts\\smoke-test.ts",
+    "sha256": "34410D57F7986E262AD692FD0BCC55724BAF835581CCBBE598F75A28A9B255D4"
+  },
+  {
+    "path": "scripts\\visual-check.ts",
+    "sha256": "2FA3A2BCA9591E7087C893E5019FC87C99C81D04EC4E679707457F6C8061EFF4"
+  },
+  {
+    "path": "scripts\\worker.ts",
+    "sha256": "D10984B711807AECD43CD3EE85A6DAF6640C85270993F8360AE84F24948751DB"
+  },
+  {
+    "path": "tests\\database.test.ts",
+    "sha256": "69FC59309E8918E1CFDABEDBE850695FCD7F37D606364CC45C25B1953DB5F1CB"
+  },
+  {
+    "path": "tests\\domain.test.ts",
+    "sha256": "45D92BB65FBF23333C40C8BBFD544F270C72B2AB9F5D0C72A910F77CF8130CF0"
+  },
+  {
+    "path": "docs\\acceptance.md",
+    "sha256": "6EA5FC405E0C5C293C3C7A526A066C39266881F4A22A04A6181618CB448DA511"
+  },
+  {
+    "path": "docs\\architecture.md",
+    "sha256": "C0B6E61771CEAFE1F51048144DDDF21AFC5EC8042063376EACA90E1DF6502AC1"
+  }
+]

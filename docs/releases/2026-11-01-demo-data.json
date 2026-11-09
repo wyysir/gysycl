@@ -1,0 +1,63 @@
+{
+  "kind": "trial_database_demo_data",
+  "date": "2026-11-01",
+  "formalLaunch": false,
+  "target": "42.121.106.105",
+  "applicationRedeployed": false,
+  "databaseMigration": false,
+  "paidOcrCalls": 0,
+  "baseGitCommit": "2552597",
+  "applicationSourceCommit": "4f3ca192cf8666abd3276f7f97a8ea6e70477d29",
+  "unchangedReleaseTag": "release/2026-10-31-qwen-single",
+  "unchangedImageDigest": "sha256:8108deb621c9176f36af163560bc700adc304da88a809337d31c437f864942f9",
+  "newApplicationSourceArchive": null,
+  "gitRemote": null,
+  "batches": ["test-master-20261101", "test-purchases-20261101"],
+  "created": { "projects": 5, "suppliers": 15, "ingredients": 30, "contracts": 150, "documents": 45, "items": 270 },
+  "initialDocumentStatuses": { "APPROVED": 30, "DRAFT": 5, "PENDING_REVIEW": 5, "NEEDS_REVISION": 5 },
+  "snapshot": {
+    "time": "2026-11-01T00:33:38+08:00",
+    "activeProjects": 7,
+    "activeSuppliers": 19,
+    "activeIngredients": 67,
+    "totalIngredients": 70,
+    "demoDocuments": 30,
+    "demoItems": 180,
+    "demoContracts": 150,
+    "demoDocumentStatuses": { "APPROVED": 30 },
+    "totalDocuments": 31,
+    "concurrentWebDeletedDemoDocuments": 15,
+    "concurrentWebDeletedOriginalDocuments": 13
+  },
+  "sourceFilesSha256": {
+    "scripts/seed-test-master-data.ts": "9f3811bcc581245829e13c95bb5565842f05be85a1a83fa0ae41fe12ec3737b8",
+    "scripts/seed-test-purchases.ts": "46045ce318dee5d99f136b63ffd876b5fa31df78713f5fa674783c8659a41177",
+    "src/server/test-master-data.ts": "ccca157c91c53377473d4f6e0f34fa8b193ddec08f06472a523e2e327cce4c7f",
+    "src/server/test-purchases.ts": "113ac7ae1685b44d4bdbbca81360794c4adea1bf6010a2e5066f2a89b0088e0e"
+  },
+  "backupDirectory": "/opt/delivery-audit/backups/test-master-20261101-002538",
+  "backupsSha256": {
+    "database.dump": "0d3ac602599adfdacdf42fbeda3c012ef0ed3887407339c3653471c99e429b53",
+    "before-purchases.dump": "bda42a35a3c4820564b47d0000c2bc620c54ea927514ba6b7c31098016da692d",
+    "after-demo.dump": "7f8046031e83b94f04c60976c91285e92d3491c7c238b6b1106991dbab2c05e2"
+  },
+  "validation": {
+    "tests": { "files": 16, "passed": 162 },
+    "followUpDeletionProtectionTestsPassed": 2,
+    "typecheck": "passed",
+    "backupReadableCatalog": true,
+    "backupRestoreDrill": false,
+    "rerunCreatedRows": 0,
+    "authenticatedWebApis": ["bootstrap", "documents", "document details", "dashboard", "analytics"],
+    "comparableMaterials": 30,
+    "projectsPerMaterial": 5,
+    "suppliersPerMaterial": 5,
+    "browserScreenshots": false,
+    "publicLoginHttp": 200,
+    "publicHealthHttp": 200,
+    "existingMasterDataUsersMembershipsPreserved": true,
+    "wholeDatabaseAndImagesUnchanged": false,
+    "concurrentChanges": "Administrator web return/delete operations observed and retained. Deleted demonstration documents are skipped on later imports."
+  },
+  "rollback": "Use batch audit IDs and verify references before targeted cleanup; preserve current web edits/deletions. Full database restore requires separate assessment and does not restore images. Image rollback alone does not remove demonstration records."
+}

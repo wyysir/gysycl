@@ -1,0 +1,455 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum GlobalRole {
+  ADMIN
+  FINANCE
+  STAFF
+}
+
+enum ProjectRole {
+  SUBMITTER
+  SUPERVISOR
+}
+
+enum DocumentStatus {
+  PROCESSING
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  NEEDS_REVISION
+}
+
+enum MatchStatus {
+  MATCHED
+  SIMILAR
+  NEW
+  UNMATCHED
+}
+
+enum CheckSeverity {
+  ERROR
+  WARNING
+  INFO
+}
+
+enum CheckStatus {
+  OPEN
+  RESOLVED
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+  MOCKED
+}
+
+enum PageStatus {
+  UPLOADED
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum ApprovalAction {
+  APPROVE
+  RETURN
+  OVERRIDE_APPROVE
+}
+
+enum ImportStatus {
+  VALIDATED
+  IMPORTED
+  FAILED
+}
+
+model User {
+  id              String              @id @default(cuid())
+  employeeNo      String              @unique
+  passwordHash    String
+  name            String
+  globalRole      GlobalRole          @default(STAFF)
+  active          Boolean             @default(true)
+  deletedAt       DateTime?
+  wechatBinding   WechatBinding?
+  memberships     ProjectMembership[]
+  createdDocuments Document[]         @relation("DocumentCreator")
+  reviewedDocuments Document[]        @relation("DocumentReviewer")
+  auditLogs       AuditLog[]
+  approvals       ApprovalRecord[]
+  notifications   Notification[]
+  importBatches   ImportBatch[]
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+}
+
+model WechatBinding {
+  id         String   @id @default(cuid())
+  openid     String   @unique
+  unionid    String?
+  userId     String   @unique
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  boundAt    DateTime @default(now())
+  lastSeenAt DateTime @default(now())
+}
+
+model Project {
+  id           String              @id @default(cuid())
+  code         String              @unique
+  name         String
+  region       String              @default("")
+  active       Boolean             @default(true)
+  memberships  ProjectMembership[]
+  contracts    Contract[]
+  documents    Document[]
+  dailyRevenues ProjectDailyRevenue[]
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+}
+
+model ProjectDailyRevenue {
+  id String @id @default(cuid())
+  projectId String
+  project Project @relation(fields: [projectId], references: [id], onDelete: Restrict)
+  date DateTime @db.Date
+  amount Decimal @db.Decimal(14, 2)
+  notes String @default("")
+  createdById String
+  updatedById String
+  status String @default("PENDING_REVIEW")
+  reviewedById String?
+  reviewedAt DateTime?
+  reviewNote String @default("")
+  version Int @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([projectId, date])
+}
+
+model ProjectMembership {
+  id        String      @id @default(cuid())
+  userId    String
+  projectId String
+  role      ProjectRole
+  customRoleId String?
+  customRole CustomRole? @relation(fields: [customRoleId], references: [id], onDelete: Restrict)
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project   Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt DateTime    @default(now())
+
+  @@unique([userId, projectId, role])
+  @@index([projectId, role])
+  @@index([customRoleId])
+}
+
+model CustomRole {
+  id String @id @default(cuid())
+  name String @unique
+  description String @default("")
+  permissions Json @default("[]")
+  active Boolean @default(true)
+  version Int @default(1)
+  memberships ProjectMembership[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Supplier {
+  id               String          @id @default(cuid())
+  name             String          @unique
+  normalizedName   String
+  contactName      String          @default("")
+  contactPhone     String          @default("")
+  active           Boolean         @default(true)
+  sourceDocumentId String?
+  createdById      String?
+  aliases          SupplierAlias[]
+  contracts        Contract[]
+  documents        Document[]
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  @@index([normalizedName])
+}
+
+model SupplierAlias {
+  id             String   @id @default(cuid())
+  supplierId     String
+  alias          String
+  normalizedAlias String
+  supplier       Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+
+  @@unique([supplierId, normalizedAlias])
+  @@index([normalizedAlias])
+}
+
+model Ingredient {
+  id               String            @id @default(cuid())
+  name             String
+  normalizedName   String
+  spec             String            @default("")
+  normalizedSpec   String            @default("")
+  unit             String
+  category         String            @default("")
+  notes            String            @default("")
+  version          Int               @default(1)
+  active           Boolean           @default(true)
+  sourceDocumentId String?
+  createdById      String?
+  aliases          IngredientAlias[]
+  contracts        Contract[]
+  items            DocumentItem[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@unique([normalizedName, normalizedSpec, unit])
+  @@index([normalizedName])
+}
+
+model IngredientAlias {
+  id               String     @id @default(cuid())
+  ingredientId     String
+  alias            String
+  normalizedAlias  String
+  ingredient       Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+  createdAt        DateTime   @default(now())
+
+  @@unique([ingredientId, normalizedAlias])
+  @@index([normalizedAlias])
+}
+
+model Contract {
+  id           String     @id @default(cuid())
+  projectId    String
+  supplierId   String
+  ingredientId String
+  spec         String     @default("")
+  unit         String
+  unitPrice    Decimal    @db.Decimal(14, 4)
+  startsOn     DateTime
+  endsOn       DateTime?
+  createdById  String?
+  project      Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  supplier     Supplier   @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@index([projectId, supplierId, ingredientId, startsOn])
+}
+
+model Document {
+  batchId             String?
+  batchPosition       Int?
+  checkedVersion      Int?
+  checkedById         String?
+  checkedAt           DateTime?
+  batch               UploadBatch? @relation(fields: [batchId], references: [id], onDelete: Restrict)
+  batchPhoto          BatchPhoto?
+  id                 String             @id @default(cuid())
+  docNo              String             @default("")
+  docDate            DateTime
+  projectId          String
+  supplierId         String?
+  status             DocumentStatus     @default(PROCESSING)
+  ocrSupplierName    String             @default("")
+  supplierMatchStatus MatchStatus       @default(UNMATCHED)
+  supplierMatchScore Float?
+  subtotal           Decimal            @default(0) @db.Decimal(14, 4)
+  taxAmount          Decimal            @default(0) @db.Decimal(14, 4)
+  totalAmount        Decimal            @default(0) @db.Decimal(14, 4)
+  notes              String             @default("")
+  reviewNote         String             @default("")
+  overrideReason     String             @default("")
+  version            Int                @default(1)
+  ocrError           String             @default("")
+  createdById        String
+  reviewedById       String?
+  submittedAt        DateTime?
+  reviewedAt         DateTime?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  project            Project            @relation(fields: [projectId], references: [id])
+  supplier           Supplier?          @relation(fields: [supplierId], references: [id])
+  createdBy          User               @relation("DocumentCreator", fields: [createdById], references: [id])
+  reviewedBy         User?              @relation("DocumentReviewer", fields: [reviewedById], references: [id])
+  pages              DocumentPage[]
+  items              DocumentItem[]
+  checks             CheckResult[]
+  approvals          ApprovalRecord[]
+  auditLogs          AuditLog[]
+  notifications      Notification[]
+
+  @@index([projectId, docDate])
+  @@index([supplierId, docDate])
+  @@index([status])
+  @@unique([batchId, batchPosition])
+}
+
+model UploadBatch {
+  id          String @id @default(cuid())
+  requestId   String @unique
+  projectId   String
+  createdById String
+  docDate     DateTime
+  createdAt   DateTime @default(now())
+  photos      BatchPhoto[]
+  documents   Document[]
+  @@index([createdById, createdAt])
+}
+
+model BatchPhoto {
+  id          String @id @default(cuid())
+  batchId     String
+  position    Int
+  fileName    String
+  mime        String @default("")
+  objectKey   String @default("")
+  documentId  String? @unique
+  completedAt DateTime?
+  version     Int @default(1)
+  batch       UploadBatch @relation(fields: [batchId], references: [id], onDelete: Restrict)
+  document    Document? @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  @@unique([batchId, position])
+}
+
+model DocumentPage {
+  id                  String     @id @default(cuid())
+  documentId          String
+  pageNo              Int
+  objectKey           String
+  processedObjectKey  String?
+  mime                String
+  fileName            String
+  sha256              String
+  width               Int?
+  height              Int?
+  status              PageStatus @default(UPLOADED)
+  ocrRaw              Json?
+  error               String     @default("")
+  document            Document   @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+
+  @@unique([documentId, pageNo])
+  @@index([sha256])
+}
+
+model DocumentItem {
+  id            String     @id @default(cuid())
+  documentId    String
+  lineNo        Int
+  rawName       String     @default("")
+  name          String
+  spec          String     @default("")
+  unit          String     @default("")
+  quantity      Decimal    @default(0) @db.Decimal(14, 4)
+  unitPrice     Decimal    @default(0) @db.Decimal(14, 4)
+  amount        Decimal    @default(0) @db.Decimal(14, 4)
+  confidence    Float      @default(1)
+  ingredientId  String?
+  matchStatus   MatchStatus @default(UNMATCHED)
+  matchScore    Float?
+  rawOcr        Json?
+  roundingAdjustment Json?
+  document      Document   @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  ingredient    Ingredient? @relation(fields: [ingredientId], references: [id])
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@unique([documentId, lineNo])
+  @@index([ingredientId])
+}
+
+model CheckResult {
+  id            String        @id @default(cuid())
+  documentId    String
+  itemId        String?
+  dimension     String
+  type          String
+  severity      CheckSeverity
+  status        CheckStatus   @default(OPEN)
+  title         String
+  detail        String
+  expectedValue Decimal?      @db.Decimal(14, 4)
+  actualValue   Decimal?      @db.Decimal(14, 4)
+  ruleVersion   String        @default("1.0")
+  document      Document      @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  createdAt     DateTime      @default(now())
+
+  @@index([documentId, status, severity])
+}
+
+model ApprovalRecord {
+  id          String         @id @default(cuid())
+  documentId  String
+  reviewerId  String
+  action      ApprovalAction
+  note        String         @default("")
+  beforeValue Json?
+  afterValue  Json?
+  document    Document       @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  reviewer    User           @relation(fields: [reviewerId], references: [id])
+  createdAt   DateTime       @default(now())
+
+  @@index([documentId, createdAt])
+}
+
+model AuditLog {
+  id         String    @id @default(cuid())
+  entityType String
+  entityId   String
+  documentId String?
+  userId     String?
+  action     String
+  beforeValue Json?
+  afterValue Json?
+  ip         String    @default("")
+  createdAt  DateTime  @default(now())
+  document   Document? @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  user       User?     @relation(fields: [userId], references: [id])
+
+  @@index([documentId, createdAt])
+  @@index([entityType, entityId])
+}
+
+model Notification {
+  id         String             @id @default(cuid())
+  documentId String
+  userId     String
+  template   String
+  status     NotificationStatus @default(PENDING)
+  error      String             @default("")
+  sentAt     DateTime?
+  document   Document           @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  user       User               @relation(fields: [userId], references: [id])
+  createdAt  DateTime           @default(now())
+
+  @@index([userId, status])
+}
+
+model ImportBatch {
+  id        String       @id @default(cuid())
+  userId    String
+  fileName  String
+  status    ImportStatus
+  summary   Json?
+  errors    Json?
+  user      User         @relation(fields: [userId], references: [id])
+  createdAt DateTime     @default(now())
+}
+
+model SystemSetting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}

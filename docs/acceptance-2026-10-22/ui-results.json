@@ -1,0 +1,94 @@
+{
+  "screens": [
+    {
+      "page": "/dashboard",
+      "bodyWidth": 375,
+      "headings": [
+        "经营总览"
+      ],
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "page": "/upload",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": ""
+        },
+        {
+          "disabled": true,
+          "text": "上传并开始识别"
+        }
+      ],
+      "headings": [
+        "上传送货单"
+      ],
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "page": "/documents",
+      "headings": [
+        "单据中心"
+      ],
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "page": "/reviews",
+      "errors": [],
+      "headings": [
+        "复核中心"
+      ],
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "page": "/analytics",
+      "errors": [],
+      "headings": [
+        "价格分析"
+      ],
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "page": "/master",
+      "errors": [],
+      "headings": [
+        "合同主数据"
+      ],
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "page": "/documents/doc_demo_002",
+      "errors": [],
+      "headings": [
+        "LY20261015008"
+      ],
+      "scrollWidth": 375,
+      "width": 390
+    }
+  ],
+  "consoleErrors": [],
+  "method": "CUA IAB; DOM sizing; screenshots; 390x844",
+  "footer": {
+    "actions": [
+      {
+        "bottom": 626.515625,
+        "text": "保存修改",
+        "top": 586.515625
+      }
+    ],
+    "nav": [
+      {
+        "bottom": 835,
+        "top": 774
+      }
+    ],
+    "scrollY": 1906,
+    "viewport": 844
+  }
+}
