@@ -2,6 +2,7 @@
   "name": "delivery-audit",
   "version": "1.0.0",
   "private": true,
+  "license": "PolyForm-Noncommercial-1.0.0",
   "type": "module",
   "description": "餐饮原材料送货单识别、智能建档与多项目比价系统",
   "scripts": {
