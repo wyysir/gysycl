@@ -6,9 +6,10 @@
   "type": "module",
   "description": "餐饮原材料送货单识别、智能建档与多项目比价系统",
   "scripts": {
-    "dev": "node --require ./scripts/preload.cjs ./node_modules/next/dist/bin/next dev",
+    "dev": "node --require ./scripts/preload.cjs --import tsx scripts/server.ts --dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node --require ./scripts/preload.cjs --import tsx scripts/server.ts",
+    "logs": "node --import tsx scripts/read-logs.ts",
     "worker": "node --require ./scripts/preload.cjs --import tsx scripts/worker.ts",
     "db:generate": "prisma generate",
     "db:reset": "node --require ./scripts/preload.cjs --import tsx scripts/reset-db.ts",

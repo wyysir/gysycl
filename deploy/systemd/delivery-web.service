@@ -16,7 +16,7 @@ Environment=NODE_ENV=production
 Environment=PORT=3000
 Environment=NEXT_TELEMETRY_DISABLED=1
 # 只监听本机，外网访问一律经 Nginx
-Environment=HOSTNAME=127.0.0.1
+Environment=BIND_HOST=127.0.0.1
 
 ExecStart=/usr/bin/npm start
 ExecReload=/bin/kill -HUP $MAINPID

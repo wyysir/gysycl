@@ -7,6 +7,7 @@ import { ApiError } from "./errors";
 import { claimDocumentVersion } from "./document-lock";
 import { recomputeDocumentChecks, recomputeDocumentChecksInTransaction } from "./checks";
 import { deleteObject } from "./storage";
+import { recordError } from "./observability/logger";
 
 const include = {
   pages: { orderBy: { pageNo: "asc" as const } },
@@ -58,15 +59,16 @@ async function finishDeletion(user: SessionUser, entityId: string, keys: string[
     try {
       if (await db.documentPage.count({where: {OR: [{objectKey: key}, {processedObjectKey: key}]}})) continue;
       await deleteObject(key);
-    } catch {
+    } catch (error) {
+      recordError("storage.cleanup_failed", error, { document_id: entityId });
       warnings.push("有图片文件暂未清理，记录已删除，请联系管理员检查存储");
       try {
         await db.auditLog.create({data: {
           entityType: "document", entityId, userId: user.id,
           action: "storage.cleanup_failed", afterValue: {objectKey: key},
         }});
-      } catch {
-        console.error("Could not record image cleanup failure", entityId);
+      } catch (error) {
+        recordError("storage.cleanup_audit_failed", error, { document_id: entityId });
       }
     }
   }
@@ -75,7 +77,8 @@ async function finishDeletion(user: SessionUser, entityId: string, keys: string[
   for (const id of related) {
     try {
       await recomputeDocumentChecks(db, id);
-    } catch {
+    } catch (error) {
+      recordError("document.delete_recheck_failed", error, { document_id: id });
       warnings.push("关联单据提醒未刷新，请打开保留的单据点重新比对");
     }
   }

@@ -35,6 +35,8 @@ services:
       SESSION_SECRET: ${SESSION_SECRET:-local-docker-secret-change-before-production}
       DATABASE_URL: postgresql://delivery:${POSTGRES_PASSWORD:-change-me}@postgres:5432/delivery_audit
       REDIS_URL: redis://redis:6379
+      APP_LOG_DIR: /app/.data/logs
+      RELEASE_ID: ${RELEASE_ID:-local-compose}
       OCR_MODE: ${OCR_MODE:-mock}
       OCR_CONFIDENCE_THRESHOLD: ${OCR_CONFIDENCE_THRESHOLD:-0.9}
       DEMO_MODE: ${DEMO_MODE:-true}
@@ -62,6 +64,7 @@ services:
       - "3000:3000"
     volumes:
       - uploads:/app/.data/uploads
+      - logs:/app/.data/logs
     depends_on:
       postgres:
         condition: service_healthy
@@ -87,6 +90,8 @@ services:
       SESSION_SECRET: ${SESSION_SECRET:-local-docker-secret-change-before-production}
       DATABASE_URL: postgresql://delivery:${POSTGRES_PASSWORD:-change-me}@postgres:5432/delivery_audit
       REDIS_URL: redis://redis:6379
+      APP_LOG_DIR: /app/.data/logs
+      RELEASE_ID: ${RELEASE_ID:-local-compose}
       OCR_MODE: ${OCR_MODE:-mock}
       OCR_CONFIDENCE_THRESHOLD: ${OCR_CONFIDENCE_THRESHOLD:-0.9}
       DEMO_MODE: ${DEMO_MODE:-true}
@@ -108,6 +113,7 @@ services:
       MIN_BENCHMARK_SAMPLES: ${MIN_BENCHMARK_SAMPLES:-3}
     volumes:
       - uploads:/app/.data/uploads
+      - logs:/app/.data/logs
     depends_on:
       app:
         condition: service_healthy
@@ -116,3 +122,4 @@ volumes:
   postgres_data:
   redis_data:
   uploads:
+  logs:

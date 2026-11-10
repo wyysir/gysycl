@@ -4,6 +4,7 @@ import { hasPermission } from "@/lib/permissions";
 import { NextResponse, type NextRequest } from "next/server";
 import { requireOrigin, requireUser } from "@/server/auth";
 import { importMasterWorkbook } from "@/server/excel";
+import { captureFormData } from "@/server/observability/logger";
 
 export const runtime = "nodejs";
 
@@ -15,6 +16,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "当前角色没有导入基础资料权限" }, { status: 403 });
     }
     const form = await request.formData();
+    captureFormData(form);
     const file = form.get("file");
     if (!(file instanceof File)) {
       return NextResponse.json({ error: "请选择 Excel 文件" }, { status: 400 });

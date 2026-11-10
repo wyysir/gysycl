@@ -3,6 +3,7 @@ import crypto from "node:crypto";
 import { generateDocumentNumber } from "./document-number";
 import type { Prisma } from "@/generated/prisma/client";
 import { ApiError } from "./errors";
+import { logContext, recordError } from "./observability/logger";
 import { getReadyDb } from "@/lib/bootstrap";
 import { dateOnly, normalizeName, normalizeUnit } from "@/lib/text";
 import { createIngredientMatcher, bestSupplierMatch } from "./master-data";
@@ -318,7 +319,7 @@ export async function enqueueOcr(documentId: string, requestedVersion?: number) 
   if (!env.REDIS_URL) {
     setTimeout(() => {
       processDocumentOcr(documentId, expectedVersion).catch((error) => {
-        console.error("OCR job failed", documentId, error);
+        recordError("ocr.inline_failed", error, { document_id: documentId });
       });
     }, 10);
     return "inline";
@@ -331,7 +332,7 @@ export async function enqueueOcr(documentId: string, requestedVersion?: number) 
   }
   await queueInstance.add(
     "extract",
-    { documentId, expectedVersion },
+    { documentId, expectedVersion, traceRequestId: logContext()?.requestId },
     {
       jobId: `document-${documentId}-v${expectedVersion}`,
       // A timeout may still be billable. Let the user explicitly retry instead

@@ -1,4 +1,5 @@
 import { assertCategoryActive } from "./ingredient-maintenance";
+import { recordError } from "./observability/logger";
 import { hasPermission } from "@/lib/permissions";
 import { getReadyDb } from "@/lib/bootstrap";
 import { normalizeName, normalizeUnit } from "@/lib/text";
@@ -323,7 +324,7 @@ export async function mergeMasterData(
         if (!current || current.status === "APPROVED") continue;
         await recomputeDocumentChecks(db, document.id);
       } catch (error) {
-        console.error("合并供应商后重算单据失败", document.id, error);
+        recordError("supplier.merge_recheck_failed", error, { document_id: document.id });
       }
     }
     return { targetId: target.id, targetName: target.name };
@@ -440,7 +441,7 @@ export async function mergeMasterData(
       if (!current || current.status === "APPROVED") continue;
       await recomputeDocumentChecks(db, document.id);
     } catch (error) {
-      console.error("合并原材料后重算单据失败", document.id, error);
+      recordError("ingredient.merge_recheck_failed", error, { document_id: document.id });
     }
   }
   return { targetId: target.id, targetName: target.name };

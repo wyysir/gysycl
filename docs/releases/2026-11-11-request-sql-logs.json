@@ -1,0 +1,245 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-10T16:17:31.552884+00:00",
+  "baseSourceCommit": "1c3998070b0fd7f01d2f1db82927352ef3c9bf9b",
+  "previousPatchCommit": "4621da1",
+  "patchFiles": [
+    "Dockerfile",
+    "deploy/compose.trial.yml",
+    "deploy/nginx-observability.conf",
+    "package.json",
+    "scripts/read-logs.ts",
+    "scripts/server.ts",
+    "scripts/worker.ts",
+    "src/app/api/brand/route.ts",
+    "src/app/api/health/route.ts",
+    "src/app/api/master-data/import/route.ts",
+    "src/instrumentation.ts",
+    "src/lib/prisma.ts",
+    "src/server/auth.ts",
+    "src/server/document-deletion.ts",
+    "src/server/documents.ts",
+    "src/server/http.ts",
+    "src/server/master-commands.ts",
+    "src/server/observability/database.ts",
+    "src/server/observability/file-sink.ts",
+    "src/server/observability/http.ts",
+    "src/server/observability/logger.ts",
+    "src/server/observability/redaction.ts"
+  ],
+  "storageSha256": "467e2eb55d673d5e48d9f6f9f684aae2b2b36f0630b7a40068c3ab448c232b82",
+  "image": "sha256:279787411f43ef0ce91a07ba946a82d75ac75dd457be0a95cc8bae9c2746bb89",
+  "archiveSha256": "36a02e9e6c4e686af1521a3c7cd47bb03f598e5e48d8c7a72007f340c6f2748f",
+  "backup": "/opt/delivery-audit/backups/20261111-001711",
+  "backupChecksums": {
+    "database.sql.gz": "3dcaf75f7a5333f63c32c7a5e571e7310c34fac46583ece08449b711e31fdaac",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "oss-manifest.private.json": "f2aec3d11f0e80b95dabc8bb3ed9e25c2d7250a9fedcaf5d45512df73a4cceb8"
+  },
+  "ossSnapshot": {
+    "objects": 10,
+    "bytes": 6668259,
+    "manifestSha256": "f2aec3d11f0e80b95dabc8bb3ed9e25c2d7250a9fedcaf5d45512df73a4cceb8"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 22,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 487,
+      "Contract": 150,
+      "Document": 68,
+      "Supplier": 19,
+      "BatchPhoto": 35,
+      "CustomRole": 0,
+      "Ingredient": 81,
+      "CheckResult": 549,
+      "ImportBatch": 0,
+      "UploadBatch": 6,
+      "DocumentItem": 541,
+      "DocumentPage": 5,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 10,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "8eb8105f0ef5a55888b096468d5bbac9f5c4a182f58f2adae68d1ce418aa0d1c",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "migrations": 8,
+  "storage": "oss",
+  "restoreTested": false,
+  "releaseTag": "release/2026-11-11-request-sql-logs",
+  "sourcePatchCommit": "8c09aa2447bbeaffb8d1233b0caaff0bc66b292c",
+  "previousImage": "sha256:85665624f009f82205f6cdc320fcb2ab4085b4aabc12db0f849954132d3047c0",
+  "deploymentScope": "Existing deployed source + listed logging patch only; unrelated OCR trial not deployed",
+  "baselineSourceFilesVerified": [
+    "scripts/worker.ts",
+    "src/app/api/brand/route.ts",
+    "src/app/api/health/route.ts",
+    "src/app/api/master-data/import/route.ts",
+    "src/lib/prisma.ts",
+    "src/server/auth.ts",
+    "src/server/document-deletion.ts",
+    "src/server/documents.ts",
+    "src/server/http.ts",
+    "src/server/master-commands.ts"
+  ],
+  "unrelatedOcrTrialExcluded": true,
+  "tests": {
+    "files": 32,
+    "passed": 269,
+    "typecheck": "PASS",
+    "localProductionBuild": "PASS",
+    "serverProductionBuild": "PASS"
+  },
+  "isolatedLoggingAcceptance": {
+    "status": "PASS",
+    "image": "sha256:279787411f43ef0ce91a07ba946a82d75ac75dd457be0a95cc8bae9c2746bb89",
+    "checks": {
+      "httpSqlCorrelationConcurrentRequests": 16,
+      "jsonRedaction": true,
+      "malformedAndOversizedJson": true,
+      "multipartMetadataAndBodyPreserved": true,
+      "binaryUploadDigestPreserved": true,
+      "actualDatabaseFailureSqlstate": "42P01",
+      "databaseRestored": true,
+      "workerJobAndSqlCorrelation": true,
+      "queryToolUnitTest": true
+    },
+    "webRecordsInspected": 412,
+    "paidOcrCalls": 0,
+    "businessEnvironment": "isolated PostgreSQL/Redis/local images; production untouched"
+  },
+  "persistenceAndConcurrency": {
+    "status": "PASS",
+    "durableVolumeSurvivesContainerRemoval": true,
+    "temporaryVolumeRemoved": true,
+    "healthRequests": 200,
+    "concurrency": 16,
+    "medianMs": 38.4,
+    "p95Ms": 426.8,
+    "loggingDrops": 0,
+    "loggingWriteFailures": 0,
+    "scope": "isolated warm application; not a production peak-capacity certification"
+  },
+  "isolatedBrowser": {
+    "checks": [
+      {
+        "width": 1440,
+        "supplierCreateEditDisableEnable": true,
+        "projectCreateRenameDisableEnable": true,
+        "contractCreateEditReload": true,
+        "roleCreateEditModal": true,
+        "employeeCreateDisableDeleteModal": true,
+        "brandUploadModal": true,
+        "ingredientRows": true,
+        "noInlineMaintenanceForms": true,
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "supplierCreateEditDisableEnable": true,
+        "projectCreateRenameDisableEnable": true,
+        "contractCreateEditReload": true,
+        "roleCreateEditModal": true,
+        "employeeCreateDisableDeleteModal": true,
+        "brandUploadModal": true,
+        "ingredientRows": true,
+        "noInlineMaintenanceForms": true,
+        "noPageOverflow": true
+      }
+    ],
+    "errors": [],
+    "serverErrors": [],
+    "mode": "real candidate app, isolated PostgreSQL, actual browser saves, no API interception",
+    "paidOcrCalls": 0,
+    "status": "PASS"
+  },
+  "productionLogging": {
+    "status": "PASS",
+    "httpsHealth": true,
+    "requestIdOverwritesUntrustedCaller": true,
+    "singleResponseRequestIdHeader": true,
+    "nginxHttpSqlCorrelation": true,
+    "queryTokenRedacted": true,
+    "nginxRejected413HasRequestIdAndAccessLog": true,
+    "webAndWorkerDurableVolume": "delivery_logs",
+    "loggingHealth": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "workerReleaseVerified": true,
+    "databaseMigrations": 8,
+    "requestIdExample": "1f5580b145d76700c6e305634ee80945"
+  },
+  "productionBrowser": {
+    "checks": [
+      {
+        "width": 390,
+        "ingredientRowsAndEdit": true,
+        "supplierCreateEditModals": true,
+        "contractCreateEditModals": true,
+        "settingsAllFourNestedModals": true,
+        "noInlineMaintenanceForms": true,
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "ingredientRowsAndEdit": true,
+        "supplierCreateEditModals": true,
+        "contractCreateEditModals": true,
+        "settingsAllFourNestedModals": true,
+        "noInlineMaintenanceForms": true,
+        "noPageOverflow": true
+      }
+    ],
+    "errors": [],
+    "serverErrors": [],
+    "unexpectedWrites": [],
+    "mode": "Public production UI read-only; writes verified separately against identical image with isolated PostgreSQL",
+    "status": "PASS"
+  },
+  "nginx": {
+    "status": "PASS",
+    "jsonAccessLog": true,
+    "requestIdForwarded": true,
+    "configurationTest": true,
+    "logrotateConfigurationTest": true,
+    "backup": "/opt/delivery-audit/releases/request-sql-logs-20261111/nginx-before.conf"
+  },
+  "logRetention": {
+    "directory": "/app/.data/logs",
+    "volume": "delivery_logs",
+    "perFileMiB": 20,
+    "filesPerService": 30,
+    "retentionDays": 14,
+    "boundedQueue": 2048,
+    "nginxDailyRotations": 14
+  },
+  "paidOcrCalls": 0,
+  "rollback": {
+    "image": "sha256:85665624f009f82205f6cdc320fcb2ab4085b4aabc12db0f849954132d3047c0",
+    "runtimeEnvBackup": "/opt/delivery-audit/backups/20261111-001711/runtime.env.private",
+    "composeBackup": "/opt/delivery-audit/backups/20261111-001711/compose.trial.yml",
+    "nginxBackup": "/opt/delivery-audit/releases/request-sql-logs-20261111/nginx-before.conf",
+    "sourceBackup": "/opt/delivery-audit/releases/request-sql-logs-20261111/source-before.tar.gz",
+    "databaseRestoreRequiredForThisPatch": false,
+    "loggingVolumeShouldBePreserved": true,
+    "restoreTested": false
+  },
+  "githubSync": {
+    "destination": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "policy": "Verified independent safe snapshot; no original main history or release tags pushed",
+    "status": "pending"
+  }
+}

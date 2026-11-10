@@ -30,7 +30,7 @@ COPY --chown=node:node --from=build /app/prisma.config.ts ./prisma.config.ts
 COPY --chown=node:node --from=build /app/package.json ./package.json
 COPY --chown=node:node --from=build /app/tsconfig.json ./tsconfig.json
 COPY --chown=node:node --from=build /app/next.config.ts ./next.config.ts
-RUN mkdir -p /app/.data/uploads && chown node:node /app/.data /app/.data/uploads
+RUN mkdir -p /app/.data/uploads /app/.data/logs && chown node:node /app/.data /app/.data/uploads /app/.data/logs
 USER node
 EXPOSE 3000
 CMD ["npm", "start"]

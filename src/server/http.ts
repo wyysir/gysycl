@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import type { ZodType } from "zod";
 import { ApiError, apiErrorResponse, requireOrigin } from "./auth";
+import { captureRequestData } from "./observability/logger";
 
 export async function parseJson<T>(
   request: NextRequest,
@@ -13,6 +14,7 @@ export async function parseJson<T>(
   } catch {
     throw new ApiError(400, "请求 JSON 格式错误");
   }
+  captureRequestData(payload);
   const result = schema.safeParse(payload);
   if (!result.success) {
     throw new ApiError(400, "请求参数不合法", result.error.flatten());

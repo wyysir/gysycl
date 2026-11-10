@@ -9,9 +9,12 @@ x-runtime: &runtime
     NODE_ENV: production
     DATABASE_URL: postgresql://delivery:${POSTGRES_PASSWORD:?required}@postgres:5432/delivery_audit
     REDIS_URL: redis://redis:6379
+    APP_LOG_DIR: /app/.data/logs
+    RELEASE_ID: ${RELEASE_ID:-unknown}
   restart: unless-stopped
   volumes:
     - uploads:/app/.data/uploads
+    - logs:/app/.data/logs
   logging:
     driver: json-file
     options:
@@ -92,3 +95,4 @@ volumes:
   postgres_data:
   redis_data:
   uploads:
+  logs:

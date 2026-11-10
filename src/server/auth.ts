@@ -6,6 +6,7 @@ import type { GlobalRole, ProjectRole } from "@/generated/prisma/client";
 import { env } from "@/lib/config";
 import { getReadyDb } from "@/lib/bootstrap";
 import { ApiError } from "./errors";
+import { logContext, recordError } from "./observability/logger";
 
 export { ApiError };
 
@@ -176,6 +177,8 @@ export async function requireUser(
 ): Promise<SessionUser> {
   const user = await getSessionUser(request);
   if (!user) throw new ApiError(401, "请先登录");
+  const context = logContext();
+  if (context) context.userId = user.id;
   return user;
 }
 
@@ -257,6 +260,7 @@ export function requireOrigin(request: NextRequest) {
 }
 
 export function apiErrorResponse(error: unknown) {
+  recordError("api.error", error, { status: error instanceof ApiError ? error.status : error && typeof error === "object" && "code" in error && error.code === "P2002" ? 409 : 500 });
   if(error && typeof error === 'object' && 'code' in error && error.code === 'P2002') {
     return NextResponse.json({error:'相同记录已存在，请刷新后复用已有记录',details:null},{status:409});
   }
@@ -266,6 +270,5 @@ export function apiErrorResponse(error: unknown) {
       { status: error.status },
     );
   }
-  console.error(error);
   return NextResponse.json({ error: "服务器内部错误" }, { status: 500 });
 }

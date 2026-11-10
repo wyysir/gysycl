@@ -4,6 +4,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { createPgliteAdapter } from "prisma-pglite";
 import { PrismaClient } from "@/generated/prisma/client";
 import { env, isLocalDatabase } from "./config";
+import { observeDatabase } from "../server/observability/database";
 
 type PrismaGlobal = typeof globalThis & {
   __deliveryAuditPrisma?: PrismaClient;
@@ -14,7 +15,7 @@ const globalForPrisma = globalThis as PrismaGlobal;
 
 async function createPrismaClient() {
   if (!isLocalDatabase) {
-    const adapter = new PrismaPg({ connectionString: env.DATABASE_URL });
+    const adapter = observeDatabase(new PrismaPg({ connectionString: env.DATABASE_URL }));
     return new PrismaClient({ adapter });
   }
 
@@ -23,7 +24,7 @@ async function createPrismaClient() {
     dbParentDirPath: path.join(process.cwd(), ".data", "pglite"),
     dbDirName: env.NODE_ENV === "test" ? "test" : "dev",
   });
-  const client = new PrismaClient({ adapter });
+  const client = new PrismaClient({ adapter: observeDatabase(adapter) });
   // PGlite reuses a local directory without running Prisma migrate deploy.
   // Apply this release's additive columns without resetting existing data.
   await client.$executeRaw`ALTER TABLE "Ingredient" ADD COLUMN IF NOT EXISTS "notes" TEXT NOT NULL DEFAULT ''`;
