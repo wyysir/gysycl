@@ -240,6 +240,17 @@
     "destination": "https://github.com/wyysir/gysycl",
     "branch": "main",
     "policy": "Verified independent safe snapshot; no original main history or release tags pushed",
-    "status": "pending"
+    "status": "PASS",
+    "verifiedAt": "2026-11-10T16:23:33.428279+00:00",
+    "verifiedSourceCommit": "7f9cc84c62c392b5d7990c70e39dea44bc5f291d",
+    "verifiedRemoteCommit": "dd0594e765509ae8c7701eeea96c83aaa2508e7a",
+    "visibilityObserved": "public",
+    "filesVerified": 540,
+    "credentialScanFindings": 0,
+    "note": "This records the verified functional/release snapshot. Subsequent handoff-only bookkeeping is synchronized normally; query remote main for latest commit."
+  },
+  "isolatedTestCleanup": {
+    "containersAndCredentialsRemoved": true,
+    "temporaryPersistentVolumeRemoved": true
   }
 }
