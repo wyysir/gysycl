@@ -16,7 +16,7 @@ export function BrandLogo({ compact = false }: { compact?: boolean }) {
   return <div className={`company-brand ${compact ? "company-brand--compact" : ""}`}>
     {brand.logoUrl ? <svg className="company-logo" viewBox={brand.viewBox} role="img" aria-label="公司Logo" preserveAspectRatio="xMidYMid meet">
       <image href={brand.logoUrl} width={brand.width} height={brand.height} />
-    </svg> : <strong className="brand-fallback">食安链</strong>}
+    </svg> : <img className="company-logo company-logo--official" src="/favicon.svg" alt="食安链官方Logo" width={36} height={36} />}
     {!compact && <span className="company-product">食安链 · 单据核验</span>}
   </div>;
 }

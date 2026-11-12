@@ -1,7 +1,7 @@
 /* Fidelity to the approved “品牌台账” proposal. Tokens are defined in design.css. */
 .nav-entry { display:contents; }
 .nav-section-label { margin:16px 8px 8px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
-.sidebar .login-brand { margin-bottom:16px; padding:12px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+.sidebar .login-brand { margin-bottom:16px; padding:8px; background:transparent; border:0; }
 .sidebar-project { display:none; }
 .nav-item { border-radius:10px; }
 .company-logo { background:transparent; }
@@ -61,25 +61,12 @@
 .line-inline-actions { display:flex; align-items:center; gap:16px; margin:8px 0; }
 .line-inline-actions .link-button { display:inline-flex; align-items:center; justify-content:center; gap:4px; min-height:44px; font-size:14px; white-space:nowrap; }
 .line-inline-actions .line-delete { color:var(--danger, #b42318); }
-.ledger-item-table { padding:12px 8px; }
-.ledger-item-table table { width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:22px; }
-.ledger-item-table th { background:#f6f3ed; font-weight:500; white-space:nowrap; }
-.ledger-item-table th,.ledger-item-table td { padding:8px 4px; border:1px solid var(--line); vertical-align:middle; }
-.ledger-item-table th:first-child { width:26px; }
-.ledger-item-table th:nth-child(2) { width:29%; text-align:left; }
-.ledger-item-table th:last-child { width:54px; }
-.ledger-item-table .input { width:100%; min-width:0; min-height:40px; border-radius:10px; padding:6px 3px; font-size:14px; background:#fff; }
-.ledger-item-table td:first-child { text-align:center; }
-.ledger-item-table .has-error td { background:var(--red-soft); }
+
 .document-page .input--error { border-color:var(--red); color:var(--red); }
-.ledger-item-table .source-page { font-size:12px; min-height:44px; text-decoration:underline; }
-.ledger-material { background:transparent; border:0; text-align:left; width:100%; padding:0; color:var(--ink); display:grid; gap:6px; }
-.ledger-material>span:last-child { display:flex; align-items:center; gap:4px; color:var(--brand); font-size:12px; }
+
 .ledger-line-badges { display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
 .ledger-line-badges .pill { display:inline-flex; align-items:center; gap:4px; white-space:nowrap; padding:3px 6px; border-radius:6px; }
-.ledger-item-table .ledger-line-badges .pill { font-size:11px; line-height:16px; padding:2px 4px; }
-.ledger-item-table .ledger-line-badges .pill--approved,.ledger-item-table .ledger-line-badges .pill--draft { display:none; }
-.ledger-item-table .ledger-line-badges:not(:has(.pill--warning)) { display:none; }
+
 .ledger-expanded-row>td { padding:12px; }
 .line-extra { min-width:0; }
 .line-extra summary { display:flex; gap:4px; align-items:center; color:var(--muted); list-style:none; font-size:12px; min-height:44px; cursor:pointer; }
@@ -198,7 +185,7 @@
 @media(min-width:768px) and (max-width:1100px) {
   .document-page .editor-layout { grid-template-columns:minmax(200px,.65fr) minmax(400px,1.35fr); gap:8px; }
   .document-page { padding:16px 12px 120px; }
-  .ledger-item-table { padding:8px 4px; }
+
   .ledger-document-head { gap:8px; }
 }
 @media(max-width:1199px) {

@@ -63,7 +63,7 @@ export function BatchReview({id,bootstrap,embedded=false,uploading=false}:{id:st
     const key=doc.supplierId?doc.supplierName:"待确认供应商";groups.set(key,[...(groups.get(key)||[]),doc]);
   }
   return <section className={"batch-review"+(embedded?" is-embedded":"")}>
-    <div className="batch-title"><div>{!embedded&&<Link className="link-button" href="/upload">‹ 拍照录入</Link>}<h1>批次核对</h1><p>{batch.projectName} · {batch.photos.length} 张独立单据</p></div><div className="batch-progress"><b>{ready.length}</b> 张可提交 <span>· 已提交 {submitted.length}</span></div></div>
+    <div className="batch-title"><div>{!embedded&&<Link className="link-button" href="/upload">‹ 新建单据</Link>}<h1>批次核对</h1><p>{batch.projectName} · {batch.photos.length} 张独立单据</p></div><div className="batch-progress"><b>{ready.length}</b> 张可提交 <span>· 已提交 {submitted.length}</span></div></div>
     {error&&<p className="notice notice--red" role="alert">{error}<button className="link-button" onClick={load}>刷新</button></p>}
     {recovery.error&&<p className="notice notice--red">{recovery.error}</p>}
     {recoveryConflict&&<p className="notice notice--red">恢复副本与服务器版本或当前权限不一致，未自动覆盖。<button className="link-button" onClick={()=>{if(window.confirm("放弃无法恢复的旧副本，继续使用服务器最新数据？")){setRecoveryConflict(false);void recovery.write(recoveryValue());}}}>放弃冲突副本</button></p>}

@@ -824,8 +824,8 @@ export default function IngredientsPage() {
                               </p>
                               <p>
                                 {item.quantity} {item.unit} ×{" "}
-                                {formatMoney(item.unitPrice)} ={" "}
-                                {formatMoney(item.amount)}
+                                {formatMoney(item.unitPrice, item.unitPrice !== null)} ={" "}
+                                {formatMoney(item.amount, item.amount !== null)}
                               </p>
                               <small>
                                 原单品名：{item.name} · 规格：

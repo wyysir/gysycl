@@ -1,9 +1,8 @@
 "use client";
 import { useEffect, useImperativeHandle, useRef, useState, type Ref, type ReactNode } from "react";
-import { AlertCircle, ArrowLeftRight, CheckCircle2, ChevronLeft, ChevronRight, Plus } from "lucide-react";
-import { useMobile } from "@/lib/client/use-mobile";
-import { formatMoney } from "./ui";
-import { EditorSheet } from "./EditorSheet";
+import { AlertCircle, ArrowLeftRight, CheckCircle2, Plus } from "lucide-react";
+import { itemEditPatch, reviewIssues, type ReviewField } from "@/lib/client/item-editing";
+import { ReviewInlineItems } from "./ReviewInlineItems";
 import { AmountInput } from "./AmountInput";
 import { canConfirmRounding, roundingDifference } from "@/domain/rounding";
 
@@ -31,6 +30,9 @@ export function DocumentItemsEditor({
   onSave,
   sourcePreview,
   saveError,
+  visibility,
+  mobileMode,
+  onActiveItem,
 }: {
   items: DocumentItem[];
   editable: boolean;
@@ -48,6 +50,9 @@ export function DocumentItemsEditor({
   onSave?: () => Promise<boolean>;
   sourcePreview?: ReactNode;
   saveError?: string;
+  visibility?: { unitPrice: boolean; amount: boolean };
+  mobileMode?: "compare" | "list";
+  onActiveItem?: (id: string) => void;
 }) {
   const { showToast } = useToast();
   const [pickerId, setPickerId] = useState<string | null>(null),
@@ -97,50 +102,60 @@ export function DocumentItemsEditor({
       window.clearTimeout(timer);
     };
   }, [pickerId, q, unit, page, editable]);
-  function choose(candidate: { id: string; name: string; unit: string }) {
+  function choose(candidate: { id: string; name: string; unit: string; spec?: string }) {
     if (!editable || !target) return;
     const index = items.findIndex((item) => item.id === target.id);
     onChange(index, {
       ingredientId: candidate.id,
       name: candidate.name,
       unit: candidate.unit,
-      spec: candidate.unit,
+      spec: candidate.spec ?? target.spec,
       matchStatus: "MATCHED",
       matchScore: 1,
     });
     setPickerId(null);
     showToast("已更换材料，数量、单价和行金额已保留，请核对");
   }
-  const mobile = useMobile();
   const [filter, setFilter] = useState<"all" | "attention">("all");
-  const [activeId, setActiveId] = useState<string | null>(null);
-  const [initialField, setInitialField] = useState<string | undefined>();
+  const [activeId, setActiveId] = useState<string | null>(items[0]?.id || null);
   const previousCount = useRef(items.length);
   const nextAfterSave = useRef<number | null>(null);
   const [savingRow, setSavingRow] = useState(false);
   const root = useRef<HTMLDivElement>(null);
-  const activeIndex = items.findIndex(item => item.id === activeId);
+  const activeIndex = Math.max(0, items.findIndex(item => item.id === activeId));
   const activeItem = items[activeIndex];
   const attention = (item: DocumentItem) => !item.ingredientId || item.confidence < threshold ||
     checks.some(check => check.itemId === item.id && check.status === "OPEN" && check.severity !== "INFO");
   const attentionItems = items.filter(attention);
-  function openItem(id: string, field?: string) { setInitialField(field); setActiveId(id); }
-  function closeItem() {
-    setActiveId(null);
-    requestAnimationFrame(() => root.current?.querySelector<HTMLElement>('[data-line-id="' + CSS.escape(activeId || "") + '"] button')?.focus({ preventScroll: true }));
+  const [observed, setObserved] = useState<Record<string, string>>({});
+  const fingerprint = (item: DocumentItem) => JSON.stringify([item.name,item.spec,item.unit,item.quantity,item.unitPrice,item.amount,item.ingredientId]);
+  function openItem(id: string, scroll = false) {
+    setActiveId(id); onActiveItem?.(id);
+    const item = items.find(row => row.id === id);
+    if (!batch && item?.sourcePageNo) onSourcePage?.(item.sourcePageNo);
+    if (scroll) requestAnimationFrame(() => (root.current?.querySelector<HTMLElement>('[data-line-id="' + CSS.escape(id) + '"]') || root.current?.querySelector<HTMLElement>(".review-inspector"))?.scrollIntoView({ block: "nearest" }));
+  }
+  function checkNext() {
+    if (!activeItem) return;
+    const nextObserved = { ...observed, [activeItem.id]: fingerprint(activeItem) };
+    setObserved(nextObserved);
+    const issues = reviewIssues(items, checks, threshold);
+    const next = issues.find(issue => nextObserved[issue.id] !== fingerprint(items.find(item => item.id === issue.id)!));
+    if (next) openItem(next.id, true);
+    else showToast("本轮问题已对照，请保存并重新比对；业务异常仍按校验处理");
   }
   useEffect(() => {
     if (nextAfterSave.current !== null && items[nextAfterSave.current]) {
-      setActiveId(items[nextAfterSave.current].id); nextAfterSave.current = null;
+      openItem(items[nextAfterSave.current].id, true); nextAfterSave.current = null;
       previousCount.current = items.length; return;
     }
     if (items.length > previousCount.current) {
-      setActiveId(items.at(-1)!.id); setInitialField("quantity"); setFilter("all");
+      openItem(items.at(-1)!.id, true); setFilter("all");
     }
     previousCount.current = items.length;
-    if (activeId && !items.some(item => item.id === activeId)) setActiveId(null);
+    if (activeId && !items.some(item => item.id === activeId)) setActiveId(items[0]?.id || null);
   }, [items, activeId]);
-  useImperativeHandle(editorRef, () => ({ locate(id) { setFilter("all"); openItem(id); } }));
+  useImperativeHandle(editorRef, () => ({ locate(id) { setFilter("all"); openItem(id, true); } }));
   function openPicker(item: DocumentItem) {
     setQ(item.name || item.rawName); setUnit(""); setPage(1);
     setList(null); setSuggestions([]); setPickerId(item.id);
@@ -152,33 +167,18 @@ export function DocumentItemsEditor({
       <span className={"pill pill--" + (low ? "warning" : "draft")} aria-label={"OCR置信度 " + Math.round(item.confidence * 100) + "%"}>{low && <AlertCircle size={13} />}OCR {Math.round(item.confidence * 100)}%</span>
     </span>;
   }
-  function fields(item: DocumentItem, index: number) {
-    return [
-      { key: "quantity", label: "数量", value: item.quantity, step: "0.0001" },
-      { key: "unit", label: "单位", value: item.unit },
-      { key: "unitPrice", label: "单价（元）", value: item.unitPrice, step: "0.0001" },
-      { key: "amount", label: "行金额（元）", value: item.amount, step: "0.01" },
-    ].map(field => {
-      if(field.value === null) return <div className="field" key={field.key}><span>{field.label}</span><span className="sheet-restricted">未授权</span></div>;
-      const numeric = field.key !== "unit";
-      const priceError = field.key === "unitPrice" && checks.some(check => check.itemId === item.id && check.status === "OPEN" && check.type === "contract_price" && check.severity === "ERROR");
-      const input = field.key === "unitPrice" || field.key === "amount" ? <AmountInput className={"input" + (priceError ? " input--error" : "")} aria-invalid={priceError || undefined} aria-label={`第${index + 1}项${field.label.replace("（元）", "")}`}
-        min="0" step={field.step} disabled={!editable} value={Number(field.value)} onValueChange={value => {
-          if (field.key === "unitPrice") onChange(index, { unitPrice: value, ...(batch || item.amount === null?{}:{amount:Math.round(item.quantity * value * 100) / 100}) });
-          else onChange(index, { amount: value });
-        }} /> : <input className="input" aria-label={`第${index + 1}项${field.label.replace("（元）", "")}`}
-        type={numeric ? "number" : "text"} inputMode={numeric ? "decimal" : undefined}
-        min={numeric ? "0" : undefined} step={field.step} disabled={!editable} value={field.value}
-        onChange={event => {
-          const value = event.target.value;
-          if (field.key === "unit") onChange(index, { unit: value, spec: value, ingredientId: null, matchStatus: "UNMATCHED", matchScore: null });
-          else if (field.key === "quantity") onChange(index, { quantity: Number(value), ...(batch || item.unitPrice === null || item.amount === null?{}:{amount:Math.round(Number(value) * item.unitPrice * 100) / 100}) });
-        }} />;
-      return <div className="field" key={field.key} data-edit-field={field.key}><span>{field.label}</span>{input}</div>;
-    });
+  function field(item: DocumentItem, index: number, key: ReviewField) {
+    const labels = { name: "品名", spec: "规格", quantity: "数量", unit: "单位", unitPrice: "单价", amount: "行金额" };
+    const hidden = key === "unitPrice" && visibility?.unitPrice === false || key === "amount" && visibility?.amount === false;
+    const value = item[key];
+    const priceError = key === "unitPrice" && checks.some(check => check.itemId === item.id && check.status === "OPEN" && check.type === "contract_price" && check.severity === "ERROR");
+    const change = (next: string | number) => onChange(index, itemEditPatch(item, key, next, batch));
+    return <label className="field" data-edit-field={key} key={key}><span>{labels[key]}</span>{hidden ? <span className="sheet-restricted">未授权</span> :
+      key === "quantity" || key === "unitPrice" || key === "amount" ? <AmountInput className={"input" + (priceError ? " input--error" : "")} aria-label={`第${index + 1}项${labels[key]}`} aria-invalid={priceError || undefined} min="0" step={key === "amount" ? "0.01" : "0.0001"} plain={key === "quantity"} value={value as number | null} placeholder="待补" disabled={!editable} onValueChange={change} /> :
+      <input className="input" aria-label={`第${index + 1}项${labels[key]}`} value={String(value ?? "")} disabled={!editable} placeholder={key === "spec" ? "无规格" : "待补"} onChange={event => change(event.target.value)} />}</label>;
   }
   function roundingNotice(item: DocumentItem, index: number) {
-    if(item.unitPrice === null || item.amount === null) return null;
+    if(visibility?.unitPrice === false || visibility?.amount === false || item.unitPrice === null || item.amount === null) return null;
     const monetaryItem={...item,unitPrice:item.unitPrice,amount:item.amount};
     const expected = Math.round(item.quantity * item.unitPrice * 100) / 100;
     const difference = roundingDifference(monetaryItem);
@@ -194,14 +194,18 @@ export function DocumentItemsEditor({
     </div>;
   }
   function alerts(item: DocumentItem) {
-    return <div className="line-alerts">
-      {checks.filter(check => check.itemId === item.id && check.status === "OPEN" && check.severity !== "INFO" && check.type !== "low_confidence" && check.type !== "line_arithmetic").map(check =>
+    const problems = checks.filter(check => check.itemId === item.id && check.status === "OPEN" && check.severity !== "INFO" && check.type !== "low_confidence" && check.type !== "line_arithmetic");
+    const titles = [...problems.map(check => check.title), ...(item.confidence < threshold ? ["低置信，请对照原图"] : []), ...(!item.ingredientId ? ["材料待匹配"] : [])];
+    if (!titles.length) return null;
+    return <details className={"line-alerts review-line-alerts " + (problems.some(check => check.severity === "ERROR") ? "has-error" : "")}>
+      <summary>{[...new Set(titles)].join(" · ")} · 查看原因</summary>
+      {problems.map(check =>
         <div key={check.id} className={"notice " + (check.severity === "ERROR" ? "notice--red" : "")}><AlertCircle size={18} /><span><strong>{check.title}</strong>：{check.detail}</span></div>)}
       {item.confidence < threshold && <div className="notice"><AlertCircle size={18} /><span>OCR {Math.round(item.confidence * 100)}% 仅提醒，请对照原图。</span></div>}
       {!item.ingredientId && <div className="notice"><AlertCircle size={18} /><span>未匹配，请选择材料或确认新建后提交。</span></div>}
-    </div>;
+    </details>;
   }
-  const shown = filter === "all" ? items : attentionItems;
+  const shown = filter === "all" ? items : items.filter(item => attention(item) || item.id === activeId);
   function compactBadge(item: DocumentItem) {
     const error = checks.some(check => check.itemId === item.id && check.status === "OPEN" && check.severity === "ERROR");
     const label = error ? "待处理" : !item.ingredientId ? "待匹配" : item.confidence < threshold ? "核对原单" : attention(item) ? "有提醒" : "";
@@ -215,54 +219,18 @@ export function DocumentItemsEditor({
           <button aria-pressed={filter === "attention"} className={filter === "attention" ? "is-active" : ""} onClick={() => setFilter("attention")}>提醒 {attentionItems.length}</button></>}
           {editable && <button className="ledger-add-line" onClick={onAdd}><Plus size={16} />增加一行</button>}
         </div>
-        {mobile ? <div className="line-cards compact-line-list">
-          {!batch && <div className="compact-line-columns" aria-hidden="true"><span>单位</span><span>数量</span><span>单价</span><span>金额</span></div>}
-          {shown.map(item => {
-            const index = items.findIndex(row => row.id === item.id);
-            return <article className="line-card ledger-line compact-line" id={"line-" + item.id} data-line-id={item.id} key={item.id} aria-label={`第${index + 1}项明细`}>
-              <button className="compact-line-button" aria-haspopup="dialog" onClick={event => openItem(item.id, (event.target as HTMLElement).closest<HTMLElement>("[data-field]")?.dataset.field)}>
-                <span className="compact-line-title"><small>{String(index + 1).padStart(2, "0")}</small><strong>{item.name || "未命名"}</strong>{compactBadge(item)}<ChevronRight size={15} /></span>
-                {batch ? <span className="batch-line-formula"><span>{item.quantity} {item.unit || "待补单位"} × {item.unitPrice === null ? "未授权" : item.unitPrice}</span><b>{formatMoney(item.amount)}</b></span> : <span className="compact-line-values">
-                  <span data-field="unit" aria-label={`单位 ${item.unit || "未填写"}`}>{item.unit || "—"}</span>
-                  <span data-field="quantity" aria-label={`数量 ${item.quantity}`}>{item.quantity}</span>
-                  <span data-field="unitPrice" aria-label="单价">{item.unitPrice === null ? "未授权" : item.unitPrice}</span>
-                  <b data-field="amount" aria-label="行金额">{formatMoney(item.amount)}</b>
-                </span>}
-              </button>
-            </article>;
-          })}
-        </div> : <div className="table-wrap ledger-item-table compact-item-table"><table><thead><tr><th>#</th><th>材料（规格）</th><th>数量</th><th>单位</th><th>单价（元）</th><th>金额（元）</th><th>来源</th></tr></thead><tbody>
-          {shown.map(item => {
-            const index = items.findIndex(row => row.id === item.id);
-            return <tr key={item.id} id={"line-" + item.id} data-line-id={item.id}>
-              <td>{index + 1}</td><td><button className="ledger-material" aria-haspopup="dialog" onClick={() => openItem(item.id)}><strong>{item.name || "未命名"}（{item.spec || item.unit || "—"}）</strong>{compactBadge(item)}</button></td>
-              {(["quantity", "unit", "unitPrice", "amount"] as const).map(field => <td key={field}><button className="compact-cell" aria-label={`第${index + 1}项${({quantity:"数量",unit:"单位",unitPrice:"单价",amount:"行金额"})[field]}`} onClick={() => openItem(item.id, field)}>{item[field] === null ? "未授权" : field === "amount" ? formatMoney(item.amount) : item[field]}</button></td>)}
-              <td>{item.sourcePageNo && onSourcePage ? <button className="link-button source-page" onClick={() => onSourcePage(item.sourcePageNo!)}>第 {item.sourcePageNo} 页</button> : "—"}</td>
-            </tr>;
-          })}
-        </tbody></table></div>}
-        {!shown.length && <div className="empty"><p>{items.length ? "没有需要提醒的明细" : "暂无明细，可增加一行手工录入。"}</p></div>}
+        <ReviewInlineItems items={items} shown={shown} activeId={activeItem?.id || activeId} selected={activeItem} select={openItem}
+          mobileMode={mobileMode} batch={batch} sourcePreview={sourcePreview} onChecked={checkNext}
+          reviewed={!!activeItem && observed[activeItem.id] === fingerprint(activeItem)} renderField={field} renderBadge={compactBadge}
+          renderDetails={(item,index) => <>{actions(item,index)}{roundingNotice(item,index)}{alerts(item)}
+            <details className="line-sheet-details"><summary>原文、规格与识别信息</summary><p>OCR原文：{item.rawName || "手工新增"}</p>{badges(item)}</details></>}
+          renderSave={onSave && (editable || savingRow) ? <div className="batch-row-save">{saveError && <p className="text-danger" role="alert">{saveError}</p>}{[false,true].map(next => <button key={String(next)} className={"btn " + (next ? "btn--primary" : "btn--outline")} disabled={savingRow || next && activeIndex >= items.length - 1} onClick={async () => {
+            setSavingRow(true); if (next) nextAfterSave.current = activeIndex + 1;
+            try { if (!await onSave()) nextAfterSave.current = null; } finally { setSavingRow(false); }
+          }}>{savingRow ? "保存中…" : next ? "保存并下一行" : "保存本行"}</button>)}</div> : undefined}
+        />
+        {!shown.length && items.length > 0 && <p className="empty">没有需要提醒的明细</p>}
       </div>
-      {activeItem && !pickerId && !externalModalOpen && <EditorSheet key={activeItem.id} className={batch?"batch-line-sheet":undefined} title={`第 ${activeIndex + 1} 行 · ${activeItem.name || "未命名"}`} onClose={()=>{if(!savingRow)closeItem();}} initialField={initialField}>
-        {sourcePreview && <div className="batch-edit-source">{sourcePreview}</div>}
-        <div className="line-sheet-body">
-          {saveError && <p className="text-danger" role="alert">{saveError}</p>}
-          <div className="line-sheet-fields">{fields(activeItem, activeIndex)}</div>
-          {actions(activeItem, activeIndex)}
-          {roundingNotice(activeItem, activeIndex)}
-          {alerts(activeItem)}
-          <details className="line-sheet-details"><summary>原文、规格与识别信息</summary><p>OCR原文：{activeItem.rawName || "手工新增"}</p><p>规格：{activeItem.spec || activeItem.unit || "未填写"}</p>{badges(activeItem)}</details>
-          <div className="line-sheet-navigation">
-            {activeItem.sourcePageNo && onSourcePage ? <button className="link-button" onClick={() => onSourcePage(activeItem.sourcePageNo!)}>查看第 {activeItem.sourcePageNo} 页原图</button> : <span className="text-muted">无来源原图</span>}
-            <div><button className="link-button" disabled={activeIndex <= 0} onClick={() => openItem(items[activeIndex - 1].id, initialField)}><ChevronLeft size={15} />上一行</button><button className="link-button" disabled={activeIndex >= items.length - 1} onClick={() => openItem(items[activeIndex + 1].id, initialField)}>下一行<ChevronRight size={15} /></button></div>
-          </div>
-          {onSave && (editable || savingRow) ? <div className="batch-row-save">{[false,true].map(next=><button key={String(next)} className={"btn " + (next?"btn--primary":"btn--outline")} disabled={savingRow || next && activeIndex>=items.length-1} onClick={async()=>{
-            setSavingRow(true); if(next)nextAfterSave.current=activeIndex+1;
-            try {if(await onSave()){if(!next)closeItem();}else nextAfterSave.current=null;} finally {setSavingRow(false);}
-          }}>{savingRow?"保存中…":next?"保存并下一行":"保存本行"}</button>)}</div> : <button className="btn btn--primary line-sheet-done" onClick={closeItem}>完成本行</button>}
-          <p className="line-sheet-hint">{editable ? batch?"保留原单金额，修改数量或单价不会自动改金额。":"修改已应用到本单，完成核对后请保存单据" : "当前单据只读"}</p>
-        </div>
-      </EditorSheet>}
       {pickerId && target && editable ? (
         <div className="modal-backdrop" onMouseDown={() => setPickerId(null)}>
           <section

@@ -4,9 +4,10 @@ import { DocumentImage } from "@/components/DocumentImage";
 
 import { hasPermission } from "@/lib/permissions";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Download, FileSearch, Plus, SlidersHorizontal } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Download, FileSearch, Plus } from "lucide-react";
 import { usePageMemory, useScrollMemory } from "@/lib/client/page-memory";
 import { api } from "@/lib/client/api";
 import type { Bootstrap, DocumentListItem } from "@/lib/client/types";
@@ -28,6 +29,9 @@ const statuses = [
 ];
 
 export default function DocumentsPage() {
+  const searchParams = useSearchParams();
+  const sequence = useRef(0);
+  const context = useRef<Bootstrap | null>(null);
   const [documents, setDocuments] = useState<DocumentListItem[]>([]);
   const [bootstrap, setBootstrap] = useState<Bootstrap | null>(null);
   const [filters, setFilters] = usePageMemory("documents-filters", () => ({
@@ -40,38 +44,42 @@ export default function DocumentsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  async function load(query = filters) {
+  const [search, setSearch] = useState(filters.q);
+  const load = useCallback(async (query: typeof filters) => {
+    const request = ++sequence.current;
     setLoading(true);
     setError("");
     try {
       const [bootstrapData, documentData] = await Promise.all([
-        bootstrap
-          ? Promise.resolve(bootstrap)
+        context.current
+          ? Promise.resolve(context.current)
           : api.get<Bootstrap>("/api/bootstrap?scope=context"),
         api.get<{ documents: DocumentListItem[] }>(
           `/api/documents?${new URLSearchParams(query).toString()}`,
         ),
       ]);
+      if (request !== sequence.current) return;
+      context.current = bootstrapData;
       setBootstrap(bootstrapData);
       setDocuments(documentData.documents);
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "加载失败");
+      if (request === sequence.current) setError(caught instanceof Error ? caught.message : "加载失败");
     } finally {
-      setLoading(false);
+      if (request === sequence.current) setLoading(false);
     }
-  }
+  }, []);
 
   useEffect(() => {
-    const status = new URLSearchParams(window.location.search).get("status");
-    if (status !== null) { const query = { ...filters, status }; setFilters(query); load(query); }
-    else load();
-    // Filters are applied explicitly through the search button.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const status = searchParams.get("status");
+    if (status !== null) setFilters(current => current.status === status ? current : { ...current, status });
+  }, [searchParams, setFilters]);
+  useEffect(() => { const timer = window.setTimeout(() => setSearch(filters.q), 220); return () => window.clearTimeout(timer); }, [filters.q]);
+  useEffect(() => { void load({ q: search, status: filters.status, from: filters.from, to: filters.to, projectId: filters.projectId }); }, [load, search, filters.status, filters.from, filters.to, filters.projectId]);
+  useEffect(() => () => { sequence.current++; }, []);
 
   useScrollMemory("documents", !loading && !!bootstrap);
 
-  if (error) return <ErrorState message={error} onRetry={load} />;
+  if (error && !bootstrap) return <ErrorState message={error} onRetry={() => load(filters)} />;
   if (loading && !bootstrap) return <PageLoading label="正在读取单据…" />;
 
   const exportQuery = new URLSearchParams({
@@ -102,11 +110,12 @@ export default function DocumentsPage() {
         </div>
       </div>
       <section className="card">
+        {error && <p className="notice notice--red" role="alert">{error}<button className="link-button" onClick={() => load(filters)}>重试</button></p>}
         <form
           className="toolbar"
           onSubmit={(event) => {
             event.preventDefault();
-            load();
+            setSearch(filters.q); void load(filters);
           }}
         >
             <input
@@ -159,9 +168,7 @@ export default function DocumentsPage() {
             }
             title="结束日期"
           />
-          <button className="btn btn--primary btn--small" type="submit">
-            <SlidersHorizontal size={13} /> 查询
-          </button>
+          <span className="filter-live-hint" role="status">{loading ? "正在更新列表…" : "条件自动应用"}</span>
           <span className="toolbar-spacer" />
           <span className="text-muted" style={{ fontSize: 12 }}>
             共 {documents.length} 张
@@ -193,7 +200,7 @@ export default function DocumentsPage() {
                   <td data-label="项目点">{document.projectName}</td>
                   <td data-label="日期">{formatDate(document.docDate)}</td>
                   <td data-label="明细">{document.itemCount} 项</td>
-                  <td className="money" data-label="金额">¥{formatMoney(document.totalAmount)}</td>
+                  <td className="money" data-label="金额">{formatMoney(document.totalAmount, !!bootstrap && hasPermission(bootstrap.user,"document.view_amount",document.projectId))}</td>
                   <td data-label="异常">
                     {document.errorCount ? (
                       <span className="count-badge count-badge--danger">{document.errorCount}</span>

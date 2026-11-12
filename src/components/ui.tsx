@@ -3,8 +3,9 @@
 import { AlertTriangle, CheckCircle2, Info, LoaderCircle } from "lucide-react";
 import type { CheckResult } from "@/lib/client/types";
 
-export function formatMoney(value: number | string | null | undefined) {
-  if (value == null) return "未授权";
+export function formatMoney(value: number | string | null | undefined, authorized = true) {
+  if (!authorized) return "未授权";
+  if (value == null) return "—";
   return Number(value || 0).toLocaleString("zh-CN", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,

@@ -6,6 +6,7 @@ import "./ledger.css";
 import "./compact-review.css";
 import "./business.css";
 import "./batches.css";
+import "./review-workspace.css";
 import { ToastProvider } from "@/components/ToastProvider";
 import { BrandProvider } from "@/components/BrandProvider";
 import { getBrand } from "@/server/brand";
@@ -22,7 +23,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#76543e",
+  themeColor: "#775740",
 };
 
 export default async function RootLayout({

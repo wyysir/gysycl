@@ -4,7 +4,8 @@ import { hasPermission, canEditRecord, canSubmitRecord, canDeleteRecord, canRevi
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { documentOrigin } from "@/lib/client/navigation";
 import {
   AlertTriangle,
   FileText,
@@ -21,6 +22,9 @@ import {
 } from "lucide-react";
 import { api } from "@/lib/client/api";
 import { currentItemChecks } from "@/lib/client/item-checks";
+import { DocumentOriginal } from "@/components/DocumentOriginal";
+import { DocumentAmountPanel } from "@/components/DocumentAmountPanel";
+import { DocumentReviewIssues } from "@/components/DocumentReviewIssues";
 import { BulkMaterialPicker } from "@/components/BulkMaterialPicker";
 import { DocumentItemsEditor, type DocumentItemsHandle } from "@/components/DocumentItemsEditor";
 import { EditorSheet } from "@/components/EditorSheet";
@@ -68,6 +72,10 @@ export default function DocumentPage() {
   const mobile = useMobile();
   const lineEditor = useRef<DocumentItemsHandle>(null);
   const [toolsOpen, setToolsOpen] = useState(false);
+  const [reviewTab, setReviewTab] = useState<"compare" | "image" | "list">("compare");
+  const [selectedItemId, setSelectedItemId] = useState<string>();
+  const [totalsOpen, setTotalsOpen] = useState(false);
+  const reviewRoot = useRef<HTMLDivElement>(null);
   const [infoOpen, setInfoOpen] = useState(false);
   const [evidenceOpen, setEvidenceOpen] = useState(false);
   const toolsRef = useRef<HTMLDivElement>(null);
@@ -104,7 +112,7 @@ export default function DocumentPage() {
   const [recoveryReady, setRecoveryReady] = useState(false);
   const [recoveryConflict, setRecoveryConflict] = useState<DocumentRecovery | null>(null);
   const restoredId = useRef("");
-  const [returnTarget, setReturnTarget] = useState("/documents");
+  const returnTarget = documentOrigin(useSearchParams().get("from")).href;
   const [imageOpen, setImageOpen] = useState(false);
   const [reviewNote, setReviewNote] = useState("");
   const [reviewing, setReviewing] = useState(false);
@@ -146,10 +154,6 @@ export default function DocumentPage() {
     return () => { loadSequence.current++; };
   }, [load]);
 
-  useEffect(() => {
-    const from = new URLSearchParams(window.location.search).get("from");
-    if (from && ["dashboard", "documents", "reviews", "analytics", "ingredients"].includes(from)) setReturnTarget("/" + from);
-  }, []);
   useEffect(() => {
     if (!imageOpen) return;
     const previousOverflow = window.document.body.style.overflow;
@@ -267,6 +271,11 @@ export default function DocumentPage() {
       void recovery.write(documentRecovery(document, dirty, reviewNote));
     }
   }, [recoveryReady, document, params.id, recoveryConflict, dirty, reviewNote, recovery.write]);
+  useEffect(() => {
+    const sync = () => reviewRoot.current?.style.setProperty("--review-vh", `${window.visualViewport?.height || window.innerHeight}px`);
+    sync(); window.visualViewport?.addEventListener("resize", sync); window.addEventListener("resize", sync);
+    return () => { window.visualViewport?.removeEventListener("resize", sync); window.removeEventListener("resize", sync); };
+  }, [recoveryReady, recovery.ready, params.id]);
   const working = saving || reviewing || rechecking || deleting || withdrawing;
   useLeaveProtection({
     dirty: dirty || !!reviewNote.trim() || !!recoveryConflict,
@@ -286,7 +295,8 @@ export default function DocumentPage() {
   }
   const currentDocument: DocumentDto = document;
   const busy = working || !!recoveryConflict;
-  const viewAmount=document.visibility?.amount ?? document.totalAmount !== null;
+  const viewAmount=document.visibility?.amount ?? hasPermission(bootstrap.user,"document.view_amount",document.projectId);
+  const viewUnitPrice=document.visibility?.unitPrice ?? hasPermission(bootstrap.user,"document.view_unit_price",document.projectId);
   const viewDetails=document.visibility?.sensitiveDetails ?? true;
 
   function updateDocument(patch: Partial<DocumentDto>) {
@@ -336,7 +346,7 @@ export default function DocumentPage() {
     setData((current) => {
       if (!current) return current;
       const items = current.document.items.map((item, itemIndex) =>
-        itemIndex === index ? { ...item, ...patch, ...(["quantity", "unitPrice", "amount", "name", "unit", "ingredientId"].some(key => key in patch && patch[key as keyof DocumentItem] !== item[key as keyof DocumentItem]) ? { roundingConfirmed: false, roundingAdjustment: null } : {}) } : item,
+        itemIndex === index ? { ...item, ...patch, ...(["quantity", "unitPrice", "amount", "name", "spec", "unit", "ingredientId"].some(key => key in patch && patch[key as keyof DocumentItem] !== item[key as keyof DocumentItem]) ? { roundingConfirmed: false, roundingAdjustment: null } : {}) } : item,
       );
       return {
         ...current,
@@ -743,8 +753,12 @@ export default function DocumentPage() {
             </div>
           </section>);
 
+  const knownTotal = document.items.every(item => item.amount !== null) ? total : null;
+  const amountPanel = <DocumentAmountPanel authorized={viewAmount} editable={editPermission && !busy} subtotal={knownTotal} total={document.totalAmount} onChange={value => updateDocument({ totalAmount:value })} />;
+
   return (
-    <div className={"page document-page " + (canReview ? "document-page--review" : "")}>
+    <div ref={reviewRoot} data-review-tab={reviewTab} className={"page document-page " + (canReview ? "document-page--review" : "")}>
+      <div className="review-page-content">
       {recovery.error && <div className="notice notice--red" role="alert">{recovery.error}</div>}
       {recoveryConflict && <section className="notice notice--red" role="alert"><div><strong>恢复副本与服务器版本或权限不一致</strong><p>已保留原输入，未覆盖服务器。请对照以下内容处理；当前页面暂不允许编辑。</p><details><summary>查看原输入</summary><pre className="recovery-content">{JSON.stringify(recoveryConflict.fields, null, 2)}{recoveryConflict.reviewNote}</pre></details><button className="btn btn--danger" onClick={async () => { if (window.confirm("确认放弃这份未提交的恢复副本？") && await recovery.clear()) setRecoveryConflict(null); }}>放弃恢复副本</button></div></section>}
       <header className="ledger-document-head">
@@ -756,6 +770,7 @@ export default function DocumentPage() {
           {toolsOpen && <div className="document-tools-menu">
             {editPermission && <button className="btn btn--outline" disabled={busy} onClick={() => { setToolsOpen(false); addRow(); }}><Plus size={14} />增加一行</button>}
             <button className="btn btn--outline" onClick={() => { setInfoOpen(true); setToolsOpen(false); }}>单据信息与供应商</button>
+            <button className="btn btn--outline" onClick={() => { setTotalsOpen(true); setToolsOpen(false); }}>单据金额与合计</button>
             <button className="btn btn--outline" onClick={() => { setEvidenceOpen(true); setToolsOpen(false); if (mobile) window.document.querySelector(".editor-evidence")?.scrollIntoView({ block: "start" }); }}>处理依据与记录</button>
             {editPermission && <button className="btn btn--outline" disabled={busy} onClick={() => { setToolsOpen(false); recheck(); }}><RefreshCw size={14} />重新比对</button>}
             {canWithdraw && <button className="btn btn--outline" onClick={() => { setToolsOpen(false); setWithdrawOpen(true); }}>撤回审核</button>}
@@ -798,73 +813,11 @@ export default function DocumentPage() {
         </details>
       ) : null}
 
-      <div className="editor-layout">
-        <section className="card image-card desktop-original">
-          <div className="image-card-head">
-            <div className="image-file-meta">
-              <strong className="panel-title">原单凭证</strong>
-              <span>{page ? `第 ${selectedPage + 1} / ${document.pages.length} 页 · 点击放大查看手写细节` : document.visibility?.sourceImages === false ? "原图按查看权限隐藏" : "手工录入送货单 · 无原图"}</span>
-              {page?.sourceDocDate || page?.sourceDocNo ? (
-                <span>原单日期：{page.sourceDocDate || "未识别"} · 原单号：{page.sourceDocNo || "未识别"}</span>
-              ) : null}
-            </div>
-            <button
-              className="icon-button"
-              type="button"
-              title="放大 / 还原"
-              disabled={!page}
-              onClick={() => { sourceFocus.current = window.document.activeElement as HTMLElement; setImageOpen(true); }}
-            >
-              <ZoomIn size={15} />
-            </button>
-          </div>
-          {page && <div className="original-toolbar">
-            <button className="btn btn--outline btn--small" aria-label="上一页原图" disabled={selectedPage <= 0} onClick={() => setSelectedPage(value => value - 1)}><ChevronLeft size={16} />上一页</button>
-            <span>第 {selectedPage + 1} / {document.pages.length} 页</span>
-            <button className="btn btn--outline btn--small" aria-label="下一页原图" disabled={selectedPage >= document.pages.length - 1} onClick={() => setSelectedPage(value => value + 1)}>下一页<ChevronRight size={16} /></button>
-          </div>}
-          <div className={`image-stage ${zoomed ? "is-zoomed" : ""}`}>
-            {page ? (
-              <DocumentImage src={page.url} alt={`送货单第 ${selectedPage + 1} 页`} />
-            ) : (
-              <div className="empty">
-                <p>手工录入送货单，无需上传图片。请填写单据信息，并点击“增加一行”录入明细。</p>
-              </div>
-            )}
-            {document.status === "PROCESSING" ? (
-              <div className="image-processing">
-                <LoaderCircle className="spin" size={26} />
-                <strong>正在识别图片…</strong>
-                <span>页面会自动刷新，无需手动操作</span>
-              </div>
-            ) : null}
-          </div>
-          {document.pages.length > 1 ? (
-            <div className="page-tabs">
-              {document.pages.map((item, index) => (
-                <button
-                  key={item.id}
-                  className={selectedPage === index ? "is-active" : ""}
-                  type="button"
-                  onClick={() => setSelectedPage(index)}
-                >
-                  <img className="page-thumb" src={item.url} alt="" />第 {index + 1} 页
-                </button>
-              ))}
-            </div>
-          ) : null}
-          <div className="image-tip">
-            <ScanLine size={12} /> 原图不会被修改；低置信字段已在右侧标黄。
-          </div>
-          {canDelete && page ? (
-            <div style={{padding: "0 16px 16px"}}>
-              <button className="btn btn--outline btn--small" type="button" disabled={saving || deleting}
-                onClick={() => setDeleteTarget("page")}>
-                <Trash2 size={14} /> 删除此图片
-              </button>
-            </div>
-          ) : null}
-        </section>
+      <DocumentReviewIssues items={document.items} checks={document.checks} threshold={bootstrap.system.confidenceThreshold} activeId={selectedItemId || document.items[0]?.id} onLocate={id => { if (reviewTab === "image") setReviewTab("compare"); lineEditor.current?.locate(id); }} onEvidence={() => setEvidenceOpen(true)} />
+      <nav className="review-mobile-tabs" aria-label="核对视图" role="tablist">{([["compare", "对照"], ["image", "原图"], ["list", "全部明细"]] as const).map(([key,label]) => <button key={key} role="tab" aria-selected={reviewTab === key} aria-controls="review-workspace" onClick={() => setReviewTab(key)}>{label}</button>)}</nav>
+      <div className="editor-layout" id="review-workspace">
+
+        <DocumentOriginal pages={document.pages} selectedPage={selectedPage} onSelect={setSelectedPage} authorized={document.visibility?.sourceImages !== false} status={document.status} zoomed={zoomed} canDelete={canDelete} disabled={saving || deleting} onZoom={() => { sourceFocus.current = window.document.activeElement as HTMLElement; setImageOpen(true); }} onDelete={() => setDeleteTarget("page")} />
 
         <div className="editor-panel">
 
@@ -886,10 +839,13 @@ export default function DocumentPage() {
             </div>
             <DocumentItemsEditor
               onAdd={addRow}
+              visibility={{ unitPrice: viewUnitPrice, amount: viewAmount }}
+              mobileMode={reviewTab === "list" ? "list" : "compare"}
+              onActiveItem={setSelectedItemId}
               editorRef={lineEditor}
               externalModalOpen={imageOpen || Boolean(newItem)}
               checks={document.checks}
-              onSourcePage={document.visibility?.sourceImages === false || !document.pages.length ? undefined : pageNo => { const index = document.pages.findIndex(p => p.pageNo === pageNo); if (index < 0) { showToast("未找到此明细的来源图片", "error"); return; } sourceFocus.current = window.document.activeElement as HTMLElement; setSelectedPage(index); setImageOpen(true); }}
+              onSourcePage={document.visibility?.sourceImages === false || !document.pages.length ? undefined : pageNo => { const index = document.pages.findIndex(p => p.pageNo === pageNo); if (index < 0) { showToast("未找到此明细的来源图片", "error"); return; } sourceFocus.current = window.document.activeElement as HTMLElement; setSelectedPage(index); }}
               items={document.items}
               editable={editPermission && !busy}
               canCreate={canCreateMaster}
@@ -901,7 +857,7 @@ export default function DocumentPage() {
                   setNewItem({
                     index,
                     name: item.name || item.rawName,
-                    spec: item.unit,
+                    spec: item.spec,
                     unit: item.unit,
                     category: "",
                   });
@@ -924,38 +880,6 @@ export default function DocumentPage() {
                 );
               }}
             />
-            <div className="items-footer">
-              <span className="text-muted" style={{ fontSize: 12 }}>
-                未匹配品名需确认后才能提交
-              </span>
-              {viewAmount ? <div className="totals">
-                <div className="total-row">
-                  <span>明细合计</span>
-                  <strong>¥{formatMoney(total)}</strong>
-                </div>
-                <div className="total-row total-row--grand">
-                  <label htmlFor="document-total">原单总价</label>
-                  <AmountInput
-                    className="cell-input cell-input--num"
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    id="document-total"
-                    aria-label="原单总价"
-                    aria-describedby="document-total-hint"
-                    value={document.totalAmount ?? 0}
-                    disabled={!editPermission || busy}
-                    onValueChange={(value) =>
-                      updateDocument({
-                        totalAmount: value,
-                      })
-                    }
-
-                  />
-                  <small id="document-total-hint" className="text-muted">{editPermission ? "可点击输入框修改，仅作核对提醒" : "仅作核对提醒"}</small>
-                </div>
-              </div> : <p className="text-muted">金额已按角色权限隐藏</p>}
-            </div>
           </section>
 
         </div>
@@ -974,7 +898,7 @@ export default function DocumentPage() {
             </div>
             <div className="panel-body">
               <CheckList checks={document.checks} onLocate={id => { setEvidenceOpen(false); lineEditor.current?.locate(id); }} />
-              {viewAmount && <div className="evidence-totals"><h3>金额核对</h3><div><span>明细合计（{document.items.length} 条）</span><strong>{formatMoney(total)}</strong></div><div><span>原单总价</span><strong>{formatMoney(document.totalAmount)}</strong></div><div><span>差额</span><strong className={Math.abs(total - (document.totalAmount ?? 0)) > .01 ? "text-warning" : "text-success"}>{formatMoney(total - (document.totalAmount ?? 0))}</strong></div></div>}
+              {viewAmount && <div className="evidence-totals"><h3>金额核对</h3><div><span>明细合计（{document.items.length} 条）</span><strong>{formatMoney(total)}</strong></div><div><span>原单总价</span><strong>{formatMoney(document.totalAmount)}</strong></div><div><span>差额</span><strong className={Math.abs(total - (document.totalAmount ?? 0)) > .01 ? "text-warning" : "text-success"}>{formatMoney(knownTotal === null || document.totalAmount === null ? null : total - document.totalAmount)}</strong></div></div>}
               <div className="field notes-field">
                 <label>备注 / 审核说明</label>
                 <textarea
@@ -1020,8 +944,9 @@ export default function DocumentPage() {
 </aside>
       </div>
       {evidenceOpen && <button className="evidence-backdrop" aria-label="关闭处理依据抽屉" onClick={() => setEvidenceOpen(false)} />}
+      </div>
       <footer className={"sticky-actions ledger-actions " + (canReview ? "ledger-actions--review" : "")}>
-        <div className="compact-footer-total"><small>{document.items.length} 项 · {dirty ? "修改未保存" : "明细合计"}</small><strong>{viewAmount ? `¥ ${formatMoney(total)}` : "金额未授权"}</strong></div>
+        <div className="compact-footer-total"><small>{document.items.length} 项 · {dirty ? "修改未保存" : "明细合计"}</small><strong>{viewAmount ? formatMoney(knownTotal) : "金额未授权"}</strong></div>
         <Link className="btn btn--outline desktop-return" href={returnTarget}>{returnTarget === "/reviews" ? "返回队列" : "返回列表"}</Link>
         {editPermission && <button className={"btn " + (canReview ? "btn--primary" : "btn--outline")} onClick={() => save()} disabled={busy}>{saving && <LoaderCircle className="spin" size={16} />}{document.status === "PENDING_REVIEW" ? "保存修改" : "保存草稿"}</button>}
         {canSubmit && <button className="btn btn--primary" disabled={busy} onClick={submit}>{document.batchId?"返回批次核对并提交":"提交审核"}</button>}
@@ -1035,6 +960,7 @@ export default function DocumentPage() {
       </footer>
       <p className="recovery-footnote">未提交内容在本浏览器暂存最长12小时，保存、放弃或退出后清理。</p>
 
+      {totalsOpen && <EditorSheet title="单据金额与合计" onClose={() => setTotalsOpen(false)}>{amountPanel}<button className="btn btn--primary" onClick={() => setTotalsOpen(false)}>完成</button></EditorSheet>}
       {infoOpen && !showSupplierDialog && <EditorSheet title="单据信息与供应商" onClose={() => setInfoOpen(false)}>{documentInfo}<button className="btn btn--primary line-sheet-done" onClick={() => setInfoOpen(false)}>完成</button></EditorSheet>}
       {imageOpen && <div className="modal-backdrop" onMouseDown={() => { setImageOpen(false); sourceFocus.current?.focus(); }}><section className="modal-card image-lightbox" role="dialog" aria-modal="true" aria-label="原图查看" onMouseDown={e => e.stopPropagation()}>
  <div className="modal-head"><h2>原图 第{selectedPage + 1}/{document.pages.length}页</h2><button className="icon-button" autoFocus aria-label="关闭原图" onClick={() => { setImageOpen(false); sourceFocus.current?.focus(); }}>×</button></div>

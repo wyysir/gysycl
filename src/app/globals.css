@@ -1,38 +1,5 @@
 @layer legacy {
-:root {
-  --ink: #18241f;
-  --ink-soft: #38463f;
-  --forest: #173f35;
-  --forest-deep: #102e27;
-  --forest-soft: #e0ebe2;
-  --paper: #f4f1e9;
-  --surface: #fffdf8;
-  --surface-2: #f8f5ed;
-  --line: #ded9cc;
-  --line-strong: #c9c3b5;
-  --muted: #797b72;
-  --muted-2: #a2a297;
-  --coral: #e9794a;
-  --coral-soft: #fbe7dd;
-  --red: #b8473f;
-  --red-soft: #f7deda;
-  --amber: #b97820;
-  --amber-soft: #f8ecd3;
-  --green: #28745c;
-  --green-soft: #dceee5;
-  --blue: #456b8b;
-  --blue-soft: #e1ebf3;
-  --shadow-sm: 0 1px 2px rgba(25, 36, 30, 0.04), 0 7px 22px rgba(25, 36, 30, 0.04);
-  --shadow-md: 0 18px 50px rgba(20, 43, 34, 0.1);
-  --radius: 18px;
-  --radius-sm: 12px;
-  --sidebar: 244px;
-  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
-  color: var(--ink);
-  background: var(--paper);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-}
+/* Shared tokens are defined only in design.css. */
 
 * {
   box-sizing: border-box;

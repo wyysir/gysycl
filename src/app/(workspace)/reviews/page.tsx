@@ -54,6 +54,7 @@ function ReviewsContent() {
     setError("");
     try {
       const data = await api.get<ReviewData>("/api/reviews");
+      data.pending.sort((a,b) => b.errorCount - a.errorCount || b.warningCount - a.warningCount || a.createdAt.localeCompare(b.createdAt));
       setReviews(data);
       const fromQuery = searchParams.get("doc");
       const requested = data[tab].find(row => row.id === fromQuery)?.id;
@@ -207,7 +208,7 @@ function ReviewsContent() {
                 <div className="review-item-meta">
                   <span>{item.projectName}</span>
                   <span>{formatDate(item.docDate)}</span>
-                  <span className="money">¥{formatMoney(item.totalAmount)}</span>
+                  <span className="money">{formatMoney(item.totalAmount, hasPermission(reviews.user,"document.view_amount",item.projectId))}</span>
                 </div>
                 <div className="review-item-meta">
 
@@ -252,7 +253,7 @@ function ReviewsContent() {
               <div className="review-summary-grid">
                 <div className="review-summary-cell">
                   <span>单据总价</span>
-                  <strong>¥{formatMoney(document.totalAmount)}</strong>
+                  <strong>{formatMoney(document.totalAmount, document.visibility?.amount ?? hasPermission(reviews.user,"document.view_amount",document.projectId))}</strong>
                 </div>
                 <div className="review-summary-cell">
                   <span>明细行数</span>
@@ -283,8 +284,8 @@ function ReviewsContent() {
                 {document.pages.slice(0, 3).map((page) => (
                   <DocumentImage key={page.id} src={page.url} alt={page.fileName} />
                 ))}
-                <Link className="btn btn--outline btn--small" href={`/documents/${document.id}`}>
-                  对照原图校正
+                <Link className="btn btn--outline btn--small" href={`/documents/${document.id}?from=reviews`}>
+                  核对明细
                 </Link>
               </div>
               <div className="table-wrap review-items-table">
@@ -300,8 +301,8 @@ function ReviewsContent() {
                         <td><strong>{item.name}</strong></td>
                         <td>{item.spec || "—"} / {item.unit || "—"}</td>
                         <td>{item.quantity}</td>
-                        <td className="money">¥{formatMoney(item.unitPrice)}</td>
-                        <td className="money">¥{formatMoney(item.amount)}</td>
+                        <td className="money">{formatMoney(item.unitPrice, document.visibility?.unitPrice ?? hasPermission(reviews.user,"document.view_unit_price",document.projectId))}</td>
+                        <td className="money">{formatMoney(item.amount, document.visibility?.amount ?? hasPermission(reviews.user,"document.view_amount",document.projectId))}</td>
                         <td className={item.confidence < reviews.confidenceThreshold ? "text-warning" : ""}>
                           {Math.round(item.confidence * 100)}%
                         </td>

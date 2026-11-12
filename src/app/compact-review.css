@@ -1,17 +1,10 @@
-/* Selected 2026-11-02: A palette with B's line editing sheet. */
+/* Shared dialogs and document images; direct review layout is in review-workspace.css. */
 .compact-document-meta { display:flex; justify-content:space-between; align-items:center; gap:12px; width:100%; min-height:44px; padding:8px 12px; border:1px solid var(--line); border-radius:8px; background:var(--surface); color:var(--ink); margin-bottom:12px; text-align:left; }
 .compact-document-meta>span { display:flex; align-items:center; gap:6px; min-width:0; overflow-wrap:anywhere; }
 .compact-document-meta time { flex-shrink:0; font-size:12px; font-variant-numeric:tabular-nums; color:var(--muted); }
 .compact-line-badge { display:inline-block; width:fit-content; padding:1px 5px; border-radius:3px; font-size:11px; line-height:18px; white-space:nowrap; color:var(--amber); background:var(--amber-soft); font-weight:400; }
 .compact-line-badge.is-error { color:var(--red); background:var(--red-soft); }
-.compact-item-table .ledger-material { gap:3px; min-height:44px; }
-.compact-item-table .ledger-material>strong { font-size:14px; }
-.compact-item-table .ledger-material>span:last-child { display:block; font-size:11px; color:var(--amber); }
-.compact-item-table .ledger-material>span.is-error { color:var(--red); }
-.compact-cell { width:100%; min-height:44px; padding:4px; border:0; background:transparent; color:var(--ink); font-variant-numeric:tabular-nums; overflow-wrap:anywhere; border-radius:4px; }
-.compact-cell:hover { background:var(--forest-soft); }
-.compact-item-table th { font-size:12px; white-space:normal; }
-.compact-item-table td { padding:2px 4px; }
+
 .compact-source-button { min-height:44px; font-size:12px; }
 .compact-source-button:disabled { color:var(--muted); }
 .compact-source-button { display:inline-flex; gap:7px; text-align:left; flex-shrink:0; }
@@ -114,21 +107,9 @@
   .document-page .ledger-tabs { gap:14px; margin:0 -12px; padding:0 12px; border-bottom:1px solid var(--line); background:var(--surface); }
   .document-page .ledger-tabs button { min-height:44px; padding:8px 4px; font-size:12px; line-height:20px; }
   .document-page .ledger-tabs .ledger-add-line { font-size:12px; }
-  .document-page .compact-line-list { display:block; margin:0 -12px; padding:0; }
-  .compact-line-columns { display:grid; grid-template-columns:40px 1fr 1fr 1.25fr; gap:5px; padding:4px 13px 4px 37px; background:var(--surface-2); color:var(--muted); font-size:10px; line-height:16px; }
-  .compact-line-columns>span:nth-child(3) { text-align:center; }
-  .compact-line-columns>span:last-child { text-align:right; }
+
   .document-page .compact-line { padding:0; border:0; border-bottom:1px solid var(--line); border-radius:0; background:var(--surface); }
-  .compact-line-button { display:block; width:100%; min-height:72px; padding:9px 13px; background:transparent; color:var(--ink); border:0; text-align:left; }
-  .compact-line-title { display:flex; align-items:center; gap:7px; min-height:20px; }
-  .compact-line-title small { min-width:17px; color:var(--muted); font-size:10px; font-variant-numeric:tabular-nums; }
-  .compact-line-title strong { flex:1; min-width:0; font-size:14px; font-weight:600; line-height:20px; overflow-wrap:anywhere; }
-  .compact-line-title>svg { color:var(--muted); flex-shrink:0; }
-  .compact-line-values { display:grid; grid-template-columns:40px 1fr 1fr 1.25fr; gap:5px; margin:6px 0 0 24px; font-size:15px; line-height:20px; font-variant-numeric:tabular-nums; }
-  .compact-line-values>* { min-width:0; overflow-wrap:anywhere; }
-  .compact-line-values>span:first-child { font-size:11px; color:var(--muted); }
-  .compact-line-values>span:nth-child(3) { text-align:center; }
-  .compact-line-values>b { text-align:right; font-weight:600; }
+
   .document-page .items-footer { margin-top:16px; border:1px solid var(--line); border-radius:8px; background:var(--surface); }
   .document-page .ledger-actions { display:flex; flex-wrap:nowrap; align-items:center; gap:8px; padding:8px 12px calc(8px + env(safe-area-inset-bottom)); background:var(--surface); }
   .ledger-actions>.btn { flex:0 0 auto; width:auto; min-height:44px; padding:8px 12px; font-size:13px; line-height:20px; }

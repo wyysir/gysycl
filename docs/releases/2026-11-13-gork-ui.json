@@ -1,0 +1,428 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-12T17:58:59.330576+00:00",
+  "baseSourceCommit": "1c3998070b0fd7f01d2f1db82927352ef3c9bf9b",
+  "previousPatchCommit": "8c09aa2",
+  "patchFiles": [
+    "src/app/(workspace)/analytics/page.tsx",
+    "src/app/(workspace)/dashboard/page.tsx",
+    "src/app/(workspace)/documents/[id]/page.tsx",
+    "src/app/(workspace)/documents/page.tsx",
+    "src/app/(workspace)/ingredients/page.tsx",
+    "src/app/(workspace)/reviews/page.tsx",
+    "src/app/(workspace)/upload/page.tsx",
+    "src/app/batches.css",
+    "src/app/business.css",
+    "src/app/compact-review.css",
+    "src/app/design.css",
+    "src/app/globals.css",
+    "src/app/layout.tsx",
+    "src/app/ledger.css",
+    "src/app/review-workspace.css",
+    "src/components/AmountInput.tsx",
+    "src/components/AppShell.tsx",
+    "src/components/BatchDocumentCard.tsx",
+    "src/components/BatchReview.tsx",
+    "src/components/BrandProvider.tsx",
+    "src/components/DocumentAmountPanel.tsx",
+    "src/components/DocumentItemsEditor.tsx",
+    "src/components/DocumentOriginal.tsx",
+    "src/components/DocumentReviewIssues.tsx",
+    "src/components/ReviewInlineItems.tsx",
+    "src/components/ui.tsx",
+    "src/lib/client/item-editing.ts",
+    "src/lib/client/navigation.ts"
+  ],
+  "storageSha256": "467e2eb55d673d5e48d9f6f9f684aae2b2b36f0630b7a40068c3ab448c232b82",
+  "image": "sha256:e2da8bf9cbe97ecfc485cd05eebbfcfdc40e47d4facc250380add35bd88b652c",
+  "archiveSha256": "8bc3c54f32c3ad2c27580409203c0b1a90e2fb495fc6c5e8f42c235c3f6bf01a",
+  "backup": "/opt/delivery-audit/backups/20261113-015835",
+  "backupChecksums": {
+    "database.sql.gz": "5bf32ac6583b354fad570752c547f1a30aa43c83f1f8eb955dc5fb13e00ddf56",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "oss-manifest.private.json": "f3900088515bed3bdf313e17423ace548affb537be3fc900a706169ac96b7c43"
+  },
+  "ossSnapshot": {
+    "objects": 12,
+    "bytes": 8195101,
+    "manifestSha256": "f3900088515bed3bdf313e17423ace548affb537be3fc900a706169ac96b7c43"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 22,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 491,
+      "Contract": 150,
+      "Document": 70,
+      "Supplier": 19,
+      "BatchPhoto": 37,
+      "CustomRole": 0,
+      "Ingredient": 81,
+      "CheckResult": 573,
+      "ImportBatch": 0,
+      "UploadBatch": 7,
+      "DocumentItem": 548,
+      "DocumentPage": 7,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 10,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "ec5b4c5db54d38366e7d4e5dd521d8bb16425f52be7792e17b529bacbf810e4a",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "migrations": 8,
+  "storage": "oss",
+  "restoreTested": false,
+  "releaseTag": "release/2026-11-13-gork-ui",
+  "sourcePatchCommit": "9fd00c3067a8d5a1caf193c53a991d6414bcc37b",
+  "previousImage": "sha256:279787411f43ef0ce91a07ba946a82d75ac75dd457be0a95cc8bae9c2746bb89",
+  "deployedAtAsiaShanghai": "2026-11-13T01:58:59.330576+08:00",
+  "phaseCommits": {
+    "1": "437e53253d1cb3aaf25c6574573b4482a4d80e32",
+    "2": "da2caeef2105b482400e1a0704022a116587fe57",
+    "3": "4ebfd92af7d08454d15dca56a4eef6465f2082a0",
+    "4": "054e1ed688d4102b8a1522e7496fa68d627508c3"
+  },
+  "designInputsSha256": {
+    "gork方案/食安链-UI落地实施方案.md": "4f4e64cc28b365d03257f2c6900505eb80b39556176c0ad910299f20828440e5",
+    "gork方案/食安链-UI交互稿.html": "59e8ac7479f30df1b807293202d3fa2a1c77c5ced09751f82745b1c684ade2e5"
+  },
+  "baselineFrontendFilesVerified": [
+    "src/app/(workspace)/analytics/page.tsx",
+    "src/app/(workspace)/dashboard/page.tsx",
+    "src/app/(workspace)/documents/[id]/page.tsx",
+    "src/app/(workspace)/documents/page.tsx",
+    "src/app/(workspace)/ingredients/page.tsx",
+    "src/app/(workspace)/reviews/page.tsx",
+    "src/app/(workspace)/upload/page.tsx",
+    "src/app/batches.css",
+    "src/app/business.css",
+    "src/app/compact-review.css",
+    "src/app/design.css",
+    "src/app/globals.css",
+    "src/app/layout.tsx",
+    "src/app/ledger.css",
+    "src/components/AmountInput.tsx",
+    "src/components/AppShell.tsx",
+    "src/components/BatchDocumentCard.tsx",
+    "src/components/BatchReview.tsx",
+    "src/components/BrandProvider.tsx",
+    "src/components/DocumentItemsEditor.tsx",
+    "src/components/ui.tsx"
+  ],
+  "deploymentScope": "Previous actual runtime source + 28 frontend files; unchanged API, schema, auth, storage, OCR and worker implementation",
+  "unrelatedOcrTrialExcluded": true,
+  "tests": {
+    "files": 35,
+    "passed": 281,
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "stages": [
+      269,
+      273,
+      279,
+      279
+    ],
+    "additionalReadonlyPermissionTests": 2
+  },
+  "isolatedCoreBrowser": {
+    "checks": [
+      {
+        "width": 1440,
+        "brandAndLogo": true,
+        "navigationAndReviewReturn": true,
+        "directStableInputs": true,
+        "recalculation": true,
+        "actualSaveAndReload": true,
+        "mobileTabsAndLastRow": false,
+        "resizedViewportActions": false,
+        "contractBlockNotDismissed": true,
+        "forceReasonRequired": true,
+        "roundingConfirmAndUndo": true,
+        "draftRecovered": true,
+        "automaticFilters": true
+      },
+      {
+        "width": 390,
+        "brandAndLogo": true,
+        "navigationAndReviewReturn": true,
+        "directStableInputs": true,
+        "recalculation": true,
+        "actualSaveAndReload": true,
+        "mobileTabsAndLastRow": true,
+        "resizedViewportActions": true,
+        "contractBlockNotDismissed": true,
+        "forceReasonRequired": true,
+        "roundingConfirmAndUndo": true,
+        "draftRecovered": true,
+        "automaticFilters": true
+      }
+    ],
+    "errors": [],
+    "serverErrors": [],
+    "mode": "real candidate app + isolated PostgreSQL; actual UI saves and reloads; no mocked write responses",
+    "paidOcrCalls": 0,
+    "image": "sha256:e2da8bf9cbe97ecfc485cd05eebbfcfdc40e47d4facc250380add35bd88b652c",
+    "restrictedAmountsAndNavigation": true,
+    "status": "PASS"
+  },
+  "isolatedBatchBrowser": {
+    "checks": [
+      {
+        "width": 1440,
+        "directBatchEditing": true,
+        "originalAmountPreserved": true,
+        "actualRowSave": true,
+        "submitBarAboveNavigation": false
+      },
+      {
+        "width": 390,
+        "directBatchEditing": true,
+        "originalAmountPreserved": true,
+        "actualRowSave": true,
+        "submitBarAboveNavigation": true
+      }
+    ],
+    "errors": [],
+    "paidOcrCalls": 0,
+    "image": "sha256:e2da8bf9cbe97ecfc485cd05eebbfcfdc40e47d4facc250380add35bd88b652c",
+    "status": "PASS"
+  },
+  "isolatedPagesBrowser": {
+    "checks": [
+      {
+        "width": 1440,
+        "route": "/dashboard",
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "route": "/documents",
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "route": "/reviews",
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "route": "/business",
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "route": "/analytics",
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "route": "/ingredients",
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "route": "/master",
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "route": "/settings",
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "route": "/upload",
+        "selectedTenImages": true,
+        "mainActionVisible": true,
+        "ocrNotTriggered": true
+      },
+      {
+        "width": 390,
+        "route": "/dashboard",
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "route": "/documents",
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "route": "/reviews",
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "route": "/business",
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "route": "/analytics",
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "route": "/ingredients",
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "route": "/master",
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "route": "/settings",
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "route": "/upload",
+        "selectedTenImages": true,
+        "mainActionVisible": true,
+        "ocrNotTriggered": true
+      }
+    ],
+    "errors": [],
+    "paidOcrCalls": 0,
+    "status": "PASS"
+  },
+  "isolatedMaintenanceBrowser": {
+    "checks": [
+      {
+        "width": 1440,
+        "supplierCreateEditDisableEnable": true,
+        "projectCreateRenameDisableEnable": true,
+        "contractCreateEditReload": true,
+        "roleCreateEditModal": true,
+        "employeeCreateDisableDeleteModal": true,
+        "brandUploadModal": true,
+        "ingredientRows": true,
+        "noInlineMaintenanceForms": true,
+        "noPageOverflow": true
+      },
+      {
+        "width": 390,
+        "supplierCreateEditDisableEnable": true,
+        "projectCreateRenameDisableEnable": true,
+        "contractCreateEditReload": true,
+        "roleCreateEditModal": true,
+        "employeeCreateDisableDeleteModal": true,
+        "brandUploadModal": true,
+        "ingredientRows": true,
+        "noInlineMaintenanceForms": true,
+        "noPageOverflow": true
+      }
+    ],
+    "errors": [],
+    "serverErrors": [],
+    "mode": "real candidate app, isolated PostgreSQL, actual browser saves, no API interception",
+    "paidOcrCalls": 0,
+    "status": "PASS"
+  },
+  "productionCoreBrowser": {
+    "checks": [
+      {
+        "width": 1440,
+        "corePagesReadOnly": true,
+        "logoBrand": true,
+        "directReviewControls": true,
+        "mobileTabs": false,
+        "saveDockClear": false,
+        "reviewReturn": true
+      },
+      {
+        "width": 390,
+        "corePagesReadOnly": true,
+        "logoBrand": true,
+        "directReviewControls": true,
+        "mobileTabs": true,
+        "saveDockClear": true,
+        "reviewReturn": true
+      }
+    ],
+    "errors": [],
+    "unexpectedWrites": [],
+    "mode": "Public deployment read-only; no real documents edited",
+    "status": "PASS"
+  },
+  "productionMaintenanceBrowser": {
+    "checks": [
+      {
+        "width": 390,
+        "ingredientRowsAndEdit": true,
+        "supplierCreateEditModals": true,
+        "contractCreateEditModals": true,
+        "settingsAllFourNestedModals": true,
+        "noInlineMaintenanceForms": true,
+        "noPageOverflow": true
+      },
+      {
+        "width": 1440,
+        "ingredientRowsAndEdit": true,
+        "supplierCreateEditModals": true,
+        "contractCreateEditModals": true,
+        "settingsAllFourNestedModals": true,
+        "noInlineMaintenanceForms": true,
+        "noPageOverflow": true
+      }
+    ],
+    "errors": [],
+    "serverErrors": [],
+    "unexpectedWrites": [],
+    "mode": "Public production UI read-only; writes verified separately against identical image with isolated PostgreSQL",
+    "status": "PASS"
+  },
+  "productionLogging": {
+    "status": "PASS",
+    "httpsHealth": true,
+    "requestIdOverwritesUntrustedCaller": true,
+    "singleResponseRequestIdHeader": true,
+    "nginxHttpSqlCorrelation": true,
+    "queryTokenRedacted": true,
+    "nginxRejected413HasRequestIdAndAccessLog": true,
+    "webAndWorkerDurableVolume": "delivery_logs",
+    "loggingHealth": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "workerReleaseVerified": true,
+    "databaseMigrations": 8,
+    "requestIdExample": "306b70bab43a533a80c0655688b3a909"
+  },
+  "postBrowserBusinessAndImagesUnchanged": true,
+  "paidOcrCalls": 0,
+  "physicalWechatPhoneTest": "Not performed; 390 browser and resized visual viewport are simulated checks",
+  "rollback": {
+    "image": "sha256:279787411f43ef0ce91a07ba946a82d75ac75dd457be0a95cc8bae9c2746bb89",
+    "runtimeEnvBackup": "/opt/delivery-audit/backups/20261113-015835/runtime.env.private",
+    "composeBackup": "/opt/delivery-audit/backups/20261113-015835/compose.trial.yml",
+    "sourceBackup": "/opt/delivery-audit/releases/gork-ui-20261113/source-before.tar.gz",
+    "databaseRestoreRequiredForThisUiPatch": false,
+    "logVolumeShouldBePreserved": true,
+    "restoreTested": false
+  },
+  "githubSync": {
+    "destination": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "status": "pending",
+    "policy": "Independent clean source snapshot, no original local history or tags pushed"
+  },
+  "isolatedTestCleanup": {
+    "containersRemoved": true,
+    "privateRuntimeAndSessionFilesRemoved": true,
+    "privateFixtureTokenRemoved": true
+  }
+}
