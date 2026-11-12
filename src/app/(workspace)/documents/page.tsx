@@ -96,7 +96,7 @@ export default function DocumentsPage() {
       <div className="page-head">
         <div>
           <h1 className="page-title">单据中心</h1>
-          <p className="page-subtitle">查找、校正并追踪每一张采购送货单。</p>
+          <p className="page-subtitle">查找、核对并追踪每一张采购送货单。</p>
         </div>
         <div className="page-actions">
           {canExport ? <a className="btn btn--outline" href={`/api/export/documents?${exportQuery}`}>
@@ -194,7 +194,7 @@ export default function DocumentsPage() {
                   <td>
                     <Link href={`/documents/${document.id}?from=documents`} className="document-preview-link">
                       {document.previewImageUrl && <DocumentImage src={document.previewImageUrl} alt="原单缩略图" thumbnail />}
-                      <span className="cell-stack"><strong>{document.supplierName || "供应商待确认"}</strong>{document.previewImageUrl && <small>查看原图与明细</small>}</span>
+                      <span className="cell-stack"><strong>{document.supplierName || "供应商待确认"}</strong><small>核对明细</small></span>
                     </Link>
                   </td>
                   <td data-label="项目点">{document.projectName}</td>
@@ -212,7 +212,7 @@ export default function DocumentsPage() {
                   </td>
                   <td data-label="状态"><StatusPill status={document.status} /></td>
                   <td>
-                    <Link className="icon-button" aria-label={`查看${document.supplierName || "单据"}明细`} href={`/documents/${document.id}?from=documents`}>
+                    <Link className="icon-button" aria-label={`核对明细：${document.supplierName || "单据"}`} href={`/documents/${document.id}?from=documents`}>
                       <FileSearch size={14} />
                     </Link>
                   </td>

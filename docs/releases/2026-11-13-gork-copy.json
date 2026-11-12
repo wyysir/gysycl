@@ -1,0 +1,155 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-12T18:54:12.635218+00:00",
+  "baseSourceCommit": "1c3998070b0fd7f01d2f1db82927352ef3c9bf9b",
+  "previousPatchCommit": "9fd00c3",
+  "patchFiles": [
+    "src/app/(workspace)/documents/page.tsx",
+    "src/components/LeaveProtection.tsx"
+  ],
+  "storageSha256": "467e2eb55d673d5e48d9f6f9f684aae2b2b36f0630b7a40068c3ab448c232b82",
+  "image": "sha256:fa99bfb0e2522615a8cb92406e4543cf7eb8047882502dad865f349e7ec28afc",
+  "archiveSha256": "22825e98fc976faf13b7ad9028ea4c11d5d8b1c26af40423c099e2d2561ada9c",
+  "backup": "/opt/delivery-audit/backups/20261113-025344",
+  "backupChecksums": {
+    "database.sql.gz": "588815380e9033aeb63eff0ae47d7b99a14a10cc1cd868dceb7a787cd8648b62",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "oss-manifest.private.json": "f3900088515bed3bdf313e17423ace548affb537be3fc900a706169ac96b7c43"
+  },
+  "ossSnapshot": {
+    "objects": 12,
+    "bytes": 8195101,
+    "manifestSha256": "f3900088515bed3bdf313e17423ace548affb537be3fc900a706169ac96b7c43"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 22,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 493,
+      "Contract": 150,
+      "Document": 70,
+      "Supplier": 19,
+      "BatchPhoto": 37,
+      "CustomRole": 0,
+      "Ingredient": 82,
+      "CheckResult": 574,
+      "ImportBatch": 0,
+      "UploadBatch": 7,
+      "DocumentItem": 548,
+      "DocumentPage": 7,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 10,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "0a950405e1d9e25f028fb6f9c1150d5459fe3c48cfa4a4f5fd5f98480c98418d",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "migrations": 8,
+  "storage": "oss",
+  "restoreTested": false,
+  "releaseTag": "release/2026-11-13-gork-copy",
+  "sourcePatchCommit": "a21d1ae6c588e0594b5e20d9f5c12d358e4518b4",
+  "previousImage": "sha256:e2da8bf9cbe97ecfc485cd05eebbfcfdc40e47d4facc250380add35bd88b652c",
+  "deployedAtAsiaShanghai": "2026-11-13T02:54:12.635218+08:00",
+  "scope": "Only document center entry/accessible labels, subtitle, and shared recovery banner copy. Existing deployed source patched with two frontend files; local OCR experiments excluded. No business/API/authorization/schema changes.",
+  "validation": {
+    "unitTests": {
+      "files": 35,
+      "passed": 281
+    },
+    "typecheck": "PASS",
+    "serverProductionBuild": "PASS",
+    "publicReadOnlyBrowser": {
+      "checks": [
+        {
+          "width": 1440,
+          "reviewEntryLabel": true,
+          "iconAccessibleLabel": true,
+          "subtitle": true,
+          "entryDestinationPreserved": true,
+          "recoveryBannerLabel": true
+        },
+        {
+          "width": 390,
+          "reviewEntryLabel": true,
+          "iconAccessibleLabel": true,
+          "subtitle": true,
+          "entryDestinationPreserved": true,
+          "recoveryBannerLabel": true
+        }
+      ],
+      "errors": [],
+      "unexpectedWrites": [],
+      "mode": "Public read-only label/click checks; synthetic recovery record exists only in fresh browser IndexedDB",
+      "status": "PASS"
+    },
+    "afterBrowserIntegrity": {
+      "status": "PASS",
+      "businessAndLocalImagesUnchangedAfterTestCleanup": true,
+      "oss": {
+        "objects": 12,
+        "bytes": 8195101,
+        "manifestSha256": "f3900088515bed3bdf313e17423ace548affb537be3fc900a706169ac96b7c43"
+      },
+      "counts": {
+        "User": 2,
+        "Project": 7,
+        "AuditLog": 493,
+        "Contract": 150,
+        "Document": 70,
+        "Supplier": 19,
+        "BatchPhoto": 37,
+        "CustomRole": 0,
+        "Ingredient": 82,
+        "CheckResult": 574,
+        "ImportBatch": 0,
+        "UploadBatch": 7,
+        "DocumentItem": 548,
+        "DocumentPage": 7,
+        "Notification": 1,
+        "SupplierAlias": 0,
+        "SystemSetting": 1,
+        "WechatBinding": 0,
+        "ApprovalRecord": 68,
+        "IngredientAlias": 10,
+        "ProjectMembership": 1,
+        "ProjectDailyRevenue": 36
+      }
+    },
+    "baselineAndDeployedFileHashes": {
+      "src/app/(workspace)/documents/page.tsx": {
+        "before": "68c736d274cccb361f14a69531688e930e3f49bb05bf681288289b2250cc7bed",
+        "current": "2ae569ac87dd0fe5b8844173efcb401b5abae348da8b66918ab9198701f14d67"
+      },
+      "src/components/LeaveProtection.tsx": {
+        "before": "fee12ebd583e538d64866aa954d5cf4b128a1d62a8903af20fab5b145ed2d618",
+        "current": "b2984919907935fe1e62e2be3b67d4406070f43520454effc62d018b65b6592c"
+      }
+    },
+    "realDocumentWrites": 0,
+    "paidOcrCalls": 0,
+    "entityPhoneTest": false
+  },
+  "rollback": {
+    "image": "sha256:e2da8bf9cbe97ecfc485cd05eebbfcfdc40e47d4facc250380add35bd88b652c",
+    "configurationBackup": "/opt/delivery-audit/backups/20261113-025344",
+    "sourceBeforeArchive": "/opt/delivery-audit/releases/gork-copy-20261113/source-before.tar.gz",
+    "steps": "Restore previous private runtime.env and compose, retag previous image as delivery-audit:trial, recreate app/worker, preserve log volume. Restore source-before archive before rebuilding old source. UI rollback does not automatically restore database or overwrite subsequent business data.",
+    "databaseMigrationsAdded": 0,
+    "databaseRestoreRehearsal": false
+  },
+  "githubSync": {
+    "status": "PENDING",
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "method": "Independent sanitized snapshot, normal fast-forward; original local history/tags/photos/private settings excluded"
+  }
+}

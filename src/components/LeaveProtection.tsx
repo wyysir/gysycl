@@ -85,7 +85,7 @@ export function LeaveProtectionProvider({ owner, children }: { owner: string; ch
   const value = useMemo(() => ({ owner, tab, register, request }), [owner, tab, register, request]);
   const otherDrafts = drafts.filter(row => row.scope !== pathname);
   return <context.Provider value={value}>
-    {otherDrafts.length > 0 && <aside className="notice recovery-banner" role="status">有未提交的恢复副本：{otherDrafts.map(row => <Link key={row.key} href={row.scope}>{row.scope === "/upload" ? "继续录入" : "继续校正单据"}</Link>)}</aside>}
+    {otherDrafts.length > 0 && <aside className="notice recovery-banner" role="status">有未提交的恢复副本：{otherDrafts.map(row => <Link key={row.key} href={row.scope}>{row.scope === "/upload" ? "继续录入" : "继续核对单据"}</Link>)}</aside>}
     {children}
     {open && <div className="modal-backdrop"><section ref={dialog} className="modal-card leave-dialog" role="dialog" aria-modal="true" aria-label="未保存的内容">
       <h2>有未保存的内容</h2><p>{allowKeep ? "取消可继续编辑；暂存后离开可在此浏览器、此标签页恢复，最长保留12小时。" : "退出登录将清除当前账号的恢复副本。请先保存，或明确放弃修改后退出。"}</p>
