@@ -701,9 +701,18 @@
     "databaseRestoreRehearsal": false
   },
   "githubSync": {
-    "status": "PENDING",
+    "status": "PASS",
     "repository": "https://github.com/wyysir/gysycl",
     "branch": "main",
-    "method": "Independent sanitized snapshot, normal fast-forward; original local history, tags, business photos and private settings excluded"
+    "method": "Independent sanitized snapshot, normal fast-forward; original local history, tags, business photos and private settings excluded",
+    "verifiedAt": "2026-11-13T13:19:14.470781+00:00",
+    "verifiedSourceCommit": "386a46c29953586ce3a58f1ce84bd85dc90c9c89",
+    "verifiedRemoteCommit": "fd0bcad806d44e43f641255983b3a97b979520d9",
+    "observedVisibility": "public",
+    "filesVerified": 557,
+    "credentialScanFindings": 0,
+    "riskyHistoryPaths": 0,
+    "blobsScanned": 638,
+    "note": "Verified full acceptance, deployed source and release snapshot. Subsequent completion bookkeeping is also synchronized normally; query remote main for its latest SHA. Original local release tag remains immutable."
   }
 }
