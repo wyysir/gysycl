@@ -61,7 +61,7 @@ export function LoginClient({
             <em>都经得起核对。</em>
           </h1>
           <p>
-            送货单识别与人工校正，供应商与品名匹配，合同价格核对和跨项目比价。识别结果请对照原图复核。
+            送货单识别与人工核对，供应商与品名匹配，合同价格核对和跨项目比价。识别结果请对照原图复核。
           </p>
           <div className="login-features">
             <span>智能单据识别</span>

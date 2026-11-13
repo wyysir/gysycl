@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>食安链 · Gork全面验收 2026-11-13</title>
+<style>:root{--brand:#775740;--gold:#D0A350;--paper:#f6f5f1;--ink:#282b2d;--line:#e5e0d7}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.7 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1240px;margin:auto;padding:28px 20px 60px}h1{color:var(--brand);font-size:28px;margin:0 0 10px}h2{font-size:20px}.status{border-left:4px solid var(--gold);background:#fffefa;padding:16px;margin:20px 0}.pass{color:#2d6b4c}code{overflow-wrap:anywhere}label{display:block;margin:14px 0}input{width:min(420px,100%);padding:10px;border:1px solid #a99a88;border-radius:8px;font:inherit}.wrap{overflow:auto;border:1px solid var(--line);background:#fffefa;border-radius:10px}table{width:100%;border-collapse:collapse;text-align:left;min-width:850px}th,td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}thead{background:#f4ede3}th{font-weight:600}td:first-child{width:120px;color:var(--brand)}a{color:#315c86}p{max-width:1000px}small{color:#6f685e}@media(max-width:600px){main{padding:20px 12px}h1{font-size:23px}.wrap{border:0;background:none}table{min-width:0}thead{display:none}tr{display:grid;background:#fffefa;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:12px}th,td{display:block;border:0;padding:3px 0}td:first-child{width:auto;font-size:12px}td:last-child{color:#6f685e;font-size:12px}}</style>
+<main>
+<h1>Gork方案 · 桌面与手机全面验收</h1>
+<p>2026-11-13 · 对照《食安链-UI落地实施方案》及同目录HTML交互稿。桌面1440、手机390；额外核对390×500视口。下表记录实际完成的检查，支持搜索。</p>
+<section class="status" id="release-status">全面验收通过，已上线 release/2026-11-13-gork-audit；公网1440/390只读复核通过，22张业务表、本地图片与11个引用OSS对象摘要全程一致。GitHub同步进行中，完成后补记。</section>
+<p>本轮补齐：登录说明“人工校正”→“人工核对”；设置权限说明“校正待审单”→“核对待审单”。应用补丁仅两个文件，业务接口和校验保持。</p>
+<p>
+<b>281项测试、类型检查和生产构建通过。</b>保存、审核、强制通过、撤回、删除与重试仅对隔离环境合成数据执行；公网屏蔽API写入。未改动真实单据，未调用付费OCR。</p>
+<label>筛选验收项 <input id="filter" type="search" placeholder="例如：Logo、权限、末行、合同价">
+</label>
+<div class="wrap">
+<table>
+<thead>
+<tr>
+<th>方案条款</th>
+<th>验收项</th>
+<th>结果</th>
+<th>实际验证</th>
+<th>证据来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1 / 阶段1</td>
+<th scope="row">色板与状态</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>19个Token逐个按计算样式核对；主色#775740、金#D0A350、绿/黄/红保持区分，theme-color正确。</td>
+<td>品牌脚本、源码</td>
+</tr>
+<tr>
+<td>1.2 / 阶段1</td>
+<th scope="row">官方与自定义Logo</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>无上传时登录/侧栏回退官方favicon.svg；隔离上传后登录和品牌位使用上传图，产品名保留；侧栏不超过约120×36。</td>
+<td>核心与品牌脚本</td>
+</tr>
+<tr>
+<td>1.3 / 阶段1</td>
+<th scope="row">唯一主题与登录</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>正式应用无选型主题开关；登录左侧保留深棕渐变。HTML交互稿只作对照。</td>
+<td>品牌脚本、源码</td>
+</tr>
+<tr>
+<td>阶段2.1</td>
+<th scope="row">统一用词</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>工作台、新建单据、单据中心、核对明细、审核队列保持一致；登录“人工核对”和角色说明“核对待审单”补齐旧词。</td>
+<td>核心、扩展、全源码用词检索</td>
+</tr>
+<tr>
+<td>阶段2.2</td>
+<th scope="row">来源与返回</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>从审核队列进入核对后返回队列，桌面面包屑标明审核队列；工作台等来源保留独立返回。</td>
+<td>核心脚本、来源映射源码</td>
+</tr>
+<tr>
+<td>阶段2.3</td>
+<th scope="row">权限导航</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>桌面菜单、手机底栏和更多逐项验证受限用户看不到新建、审核及基础资料等未授权入口；经营与分析使用不同图标。</td>
+<td>扩展脚本、导航源码</td>
+</tr>
+<tr>
+<td>阶段2.4–6</td>
+<th scope="row">手机导航与反馈</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>底栏有新建单据；受限账号隐藏新建；核对保存区位于导航上方；更多内反馈链接指向同一反馈页面。</td>
+<td>核心、品牌、扩展脚本</td>
+</tr>
+<tr>
+<td>3.A 桌面</td>
+<th scope="row">直接编辑与焦点</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>品名、数量、单位、单价直接输入；连续输入后焦点仍在同一节点；kg单位列宽充足，实际保存和读取一致。</td>
+<td>核心脚本</td>
+</tr>
+<tr>
+<td>3.A 金额</td>
+<th scope="row">重算与批次分支</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>普通行按原分币规则重算；确认抹零与撤销真实保存；批次修改数量仍保留原金额，逐行保存成功。</td>
+<td>核心、批次脚本、281测试</td>
+</tr>
+<tr>
+<td>3.A 问题</td>
+<th scope="row">定位与已核对</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>问题芯片跳到行并切换来源页；已核对跳下条问题；超合同价仍阻止普通通过。原图无行坐标，不伪造框选。</td>
+<td>核心、扩展脚本</td>
+</tr>
+<tr>
+<td>3.A 手机</td>
+<th scope="row">三页签与当前行</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>默认对照，可切换原图/全部明细；当前行六字段可编辑；已核对按钮滚动后不被dock遮挡。</td>
+<td>核心、扩展脚本</td>
+</tr>
+<tr>
+<td>3.A 手机</td>
+<th scope="row">末行与保存区</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>20行全部明细可滚到最后，末行实际修改保存成功；390×500缩放视口保存区仍在导航上方，dock为布局内静态元素。</td>
+<td>核心脚本</td>
+</tr>
+<tr>
+<td>3.A 原图</td>
+<th scope="row">翻页与缩放</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>原图上一页/下一页、放大/还原与关闭均可点击；问题芯片同步来源页。</td>
+<td>扩展脚本</td>
+</tr>
+<tr>
+<td>3.A 原有能力</td>
+<th scope="row">增行、删除行、重新比对</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>通过更多增行、直接编辑、删除新行、重新比对；实际保存后明细数量正确。</td>
+<td>扩展脚本</td>
+</tr>
+<tr>
+<td>3.A 原有能力</td>
+<th scope="row">单据信息、合计、依据</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>单据信息与供应商、单据金额与合计弹窗可打开关闭，处理依据与操作记录可查看。</td>
+<td>扩展脚本</td>
+</tr>
+<tr>
+<td>3.A 原有能力</td>
+<th scope="row">审核原因、撤回与删除</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>空原因不发送强制审核请求；填写原因后仅对合成单据强制通过、撤回并核对状态；合成草稿删除成功。</td>
+<td>扩展脚本</td>
+</tr>
+<tr>
+<td>3.A 原有能力</td>
+<th scope="row">恢复与识别重试</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>未提交输入刷新后恢复；合成识别失败单重试成功入隔离Redis队列，未运行付费OCR worker。</td>
+<td>核心、扩展脚本</td>
+</tr>
+<tr>
+<td>3.B</td>
+<th scope="row">核对入口与即时筛选</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>核对明细文字及图标名称统一；搜索、状态、项目、起止日期改动即发GET，不用点击搜索。</td>
+<td>核心、扩展脚本；公网文字复核</td>
+</tr>
+<tr>
+<td>3.C</td>
+<th scope="row">工作台、登录、新建、审核</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>各主入口页面双宽度打开无横向溢出；隔离员工号密码登录成功；10张选图按钮可达且不触发付费识别；审核队列异常优先排序。</td>
+<td>页面、扩展脚本、审核排序源码</td>
+</tr>
+<tr>
+<td>第2节 / 清单8</td>
+<th scope="row">空值与未授权</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>有权限时空输入为待补；formatMoney(null)空值分支由单元测试覆盖。受限账号单价/金额API返回null，页面不渲出测试数字。</td>
+<td>扩展脚本、item-editing与权限测试</td>
+</tr>
+<tr>
+<td>阶段4</td>
+<th scope="row">供应商与合同</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>新增/编辑/启停供应商，合同价新增/编辑/重载均通过真实浏览器与隔离数据库验证，输入操作在弹窗。</td>
+<td>维护脚本</td>
+</tr>
+<tr>
+<td>阶段4</td>
+<th scope="row">项目、账号、角色、Logo</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>项目新增/改名/启停，账号新增/停用/逻辑删除，角色新增/改权限，Logo上传均通过隔离真实保存。</td>
+<td>维护脚本</td>
+</tr>
+<tr>
+<td>阶段4</td>
+<th scope="row">原材料与其他页面</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>原材料列表、详情与新增弹窗、经营/分析/设置等页面可读可点，无页面横向溢出；核对组件分离与兼容样式保留。</td>
+<td>页面、维护脚本、源码</td>
+</tr>
+<tr>
+<td>硬性约束</td>
+<th scope="row">业务与构建</th>
+<td>
+<b class="pass">通过</b>
+</td>
+<td>281测试、类型检查、生产构建通过；补丁仅两个前端文件文案，无API、权限、模型、存储、OCR和迁移变更。</td>
+<td>测试日志、构建元数据、Git diff</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>验证边界</h2>
+<p>手机验收为浏览器390视口，另测500高视口布局，不等同安卓微信实体键盘验收。原图缺少行坐标时联动来源页和明细行，不伪造图中框选。本轮未重评OCR准确率与耗时，未做数据库恢复演练。</p>
+<p>完整机器证据与发布、备份、回退见<a href="../releases/2026-11-13-gork-audit.json">本轮发布记录</a>；方案实施说明见<a href="实施与验收.md">实施与验收</a>。截图只保存在本地私有目录，不上传业务原图。</p>
+<small>构建镜像 <code>sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4</code>
+</small>
+</main>
+<script>document.getElementById('filter').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll('tbody tr').forEach(row=>row.hidden=!row.textContent.toLowerCase().includes(q))})</script>
+</html>

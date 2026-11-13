@@ -391,7 +391,7 @@ export function SettingsClient() {
                       <tr><td>查询、导出</td><td>参与项目</td><td>负责项目</td><td>全公司</td><td>全公司</td></tr>
                       <tr><td>上传、手工录入</td><td>参与项目</td><td>负责项目</td><td>无</td><td>全部项目</td></tr>
                       <tr><td>修改、提交、删草稿</td><td>自己创建</td><td>自己创建</td><td>无</td><td>全部项目</td></tr>
-                      <tr><td>校正待审单、审核、退回</td><td>无</td><td>负责项目</td><td>无</td><td>全部项目</td></tr>
+                      <tr><td>核对待审单、审核、退回</td><td>无</td><td>负责项目</td><td>无</td><td>全部项目</td></tr>
                       <tr><td>撤回已通过单据</td><td>无</td><td>负责项目，填写原因</td><td>无</td><td>全部项目，填写原因</td></tr>
                       <tr><td>合同价、账号、项目管理</td><td>无</td><td>无</td><td>无</td><td>允许</td></tr>
                     </tbody>

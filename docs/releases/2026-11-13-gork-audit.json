@@ -1,0 +1,709 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-13T13:14:59.766527+00:00",
+  "baseSourceCommit": "1c3998070b0fd7f01d2f1db82927352ef3c9bf9b",
+  "previousPatchCommit": "a21d1ae",
+  "patchFiles": [
+    "src/app/login/LoginClient.tsx",
+    "src/app/(workspace)/settings/SettingsClient.tsx"
+  ],
+  "storageSha256": "467e2eb55d673d5e48d9f6f9f684aae2b2b36f0630b7a40068c3ab448c232b82",
+  "image": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+  "archiveSha256": "0c19b70ed47cac10c533d3a33961d5e48b541d81368332ea755ca7160129e7d9",
+  "backup": "/opt/delivery-audit/backups/20261113-211437",
+  "backupChecksums": {
+    "database.sql.gz": "2b22a32fb335845248558a974e16c68ffa67d49ba39ee32339afb5d6a3ba13f7",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "oss-manifest.private.json": "f2c8f9a33aa8b6a41ef22c8bfbd70c1361da64e4d555a4cf070e94aed8be6120"
+  },
+  "ossSnapshot": {
+    "objects": 11,
+    "bytes": 7341141,
+    "manifestSha256": "f2c8f9a33aa8b6a41ef22c8bfbd70c1361da64e4d555a4cf070e94aed8be6120"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 22,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 494,
+      "Contract": 150,
+      "Document": 69,
+      "Supplier": 19,
+      "BatchPhoto": 37,
+      "CustomRole": 0,
+      "Ingredient": 82,
+      "CheckResult": 564,
+      "ImportBatch": 0,
+      "UploadBatch": 7,
+      "DocumentItem": 545,
+      "DocumentPage": 6,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 10,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "88831168d355880d0904b4e3343b59d208d63bab9234b97664696ed1a6c9c668",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "migrations": 8,
+  "storage": "oss",
+  "restoreTested": false,
+  "releaseTag": "release/2026-11-13-gork-audit",
+  "sourcePatchCommit": "4078ee94cb385a7e6ba2513e725f76276bf1a874",
+  "previousImage": "sha256:fa99bfb0e2522615a8cb92406e4543cf7eb8047882502dad865f349e7ec28afc",
+  "deployedAtAsiaShanghai": "2026-11-13T21:14:59.766527+08:00",
+  "scope": "Full acceptance against Gork implementation plan and HTML prototype. Fixed two remaining review-wording instances in login and settings description; only two frontend source files patched onto actual deployed source. Business, API, auth, models, OCR, queue logic, object storage, and migrations unchanged. Local undeployed OCR experiments excluded.",
+  "validation": {
+    "fullAcceptance": {
+      "status": "PASS_DEPLOYED",
+      "checkedAt": "2026-11-13T13:14:03.501528+00:00",
+      "image": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+      "viewportWidths": [
+        1440,
+        390
+      ],
+      "extraViewport": {
+        "width": 390,
+        "height": 500
+      },
+      "unitTests": {
+        "files": 35,
+        "passed": 281
+      },
+      "typecheck": "PASS",
+      "serverProductionBuild": "PASS",
+      "reports": {
+        "core-browser.json": {
+          "checks": [
+            {
+              "width": 1440,
+              "brandAndLogo": true,
+              "navigationAndReviewReturn": true,
+              "directStableInputs": true,
+              "recalculation": true,
+              "actualSaveAndReload": true,
+              "mobileTabsAndLastRow": false,
+              "resizedViewportActions": false,
+              "contractBlockNotDismissed": true,
+              "forceReasonRequired": true,
+              "roundingConfirmAndUndo": true,
+              "draftRecovered": true,
+              "automaticFilters": true
+            },
+            {
+              "width": 390,
+              "brandAndLogo": true,
+              "navigationAndReviewReturn": true,
+              "directStableInputs": true,
+              "recalculation": true,
+              "actualSaveAndReload": true,
+              "mobileTabsAndLastRow": true,
+              "resizedViewportActions": true,
+              "contractBlockNotDismissed": true,
+              "forceReasonRequired": true,
+              "roundingConfirmAndUndo": true,
+              "draftRecovered": true,
+              "automaticFilters": true
+            }
+          ],
+          "errors": [],
+          "serverErrors": [],
+          "mode": "real candidate app + isolated PostgreSQL; actual UI saves and reloads; no mocked write responses",
+          "paidOcrCalls": 0,
+          "image": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+          "restrictedAmountsAndNavigation": true,
+          "status": "PASS"
+        },
+        "batch-browser.json": {
+          "checks": [
+            {
+              "width": 1440,
+              "directBatchEditing": true,
+              "originalAmountPreserved": true,
+              "actualRowSave": true,
+              "submitBarAboveNavigation": false
+            },
+            {
+              "width": 390,
+              "directBatchEditing": true,
+              "originalAmountPreserved": true,
+              "actualRowSave": true,
+              "submitBarAboveNavigation": true
+            }
+          ],
+          "errors": [],
+          "paidOcrCalls": 0,
+          "image": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+          "status": "PASS"
+        },
+        "pages-browser.json": {
+          "checks": [
+            {
+              "width": 1440,
+              "route": "/dashboard",
+              "noPageOverflow": true
+            },
+            {
+              "width": 1440,
+              "route": "/documents",
+              "noPageOverflow": true
+            },
+            {
+              "width": 1440,
+              "route": "/reviews",
+              "noPageOverflow": true
+            },
+            {
+              "width": 1440,
+              "route": "/business",
+              "noPageOverflow": true
+            },
+            {
+              "width": 1440,
+              "route": "/analytics",
+              "noPageOverflow": true
+            },
+            {
+              "width": 1440,
+              "route": "/ingredients",
+              "noPageOverflow": true
+            },
+            {
+              "width": 1440,
+              "route": "/master",
+              "noPageOverflow": true
+            },
+            {
+              "width": 1440,
+              "route": "/settings",
+              "noPageOverflow": true
+            },
+            {
+              "width": 1440,
+              "route": "/upload",
+              "selectedTenImages": true,
+              "mainActionVisible": true,
+              "ocrNotTriggered": true
+            },
+            {
+              "width": 390,
+              "route": "/dashboard",
+              "noPageOverflow": true
+            },
+            {
+              "width": 390,
+              "route": "/documents",
+              "noPageOverflow": true
+            },
+            {
+              "width": 390,
+              "route": "/reviews",
+              "noPageOverflow": true
+            },
+            {
+              "width": 390,
+              "route": "/business",
+              "noPageOverflow": true
+            },
+            {
+              "width": 390,
+              "route": "/analytics",
+              "noPageOverflow": true
+            },
+            {
+              "width": 390,
+              "route": "/ingredients",
+              "noPageOverflow": true
+            },
+            {
+              "width": 390,
+              "route": "/master",
+              "noPageOverflow": true
+            },
+            {
+              "width": 390,
+              "route": "/settings",
+              "noPageOverflow": true
+            },
+            {
+              "width": 390,
+              "route": "/upload",
+              "selectedTenImages": true,
+              "mainActionVisible": true,
+              "ocrNotTriggered": true
+            }
+          ],
+          "errors": [],
+          "paidOcrCalls": 0,
+          "status": "PASS"
+        },
+        "extended-browser.json": {
+          "checks": [
+            {
+              "width": 1440,
+              "problemChipAndSourcePage": true,
+              "nextIssueUncovered": true,
+              "sourcePagingZoom": true,
+              "informationTotalsEvidenceDialogs": true,
+              "addRemoveAndRecheckActualSave": true,
+              "emptyPriceIsPendingNotUnauthorized": true,
+              "overrideEmptyReasonBlocked": true,
+              "overrideAndWithdrawActualSynthetic": true,
+              "deleteSyntheticDraft": true,
+              "retryOnlyIsolatedQueue": true,
+              "projectAndDateFiltersImmediate": true
+            },
+            {
+              "width": 390,
+              "problemChipAndSourcePage": true,
+              "nextIssueUncovered": true,
+              "sourcePagingZoom": true,
+              "informationTotalsEvidenceDialogs": true,
+              "addRemoveAndRecheckActualSave": true,
+              "emptyPriceIsPendingNotUnauthorized": true,
+              "overrideEmptyReasonBlocked": true,
+              "overrideAndWithdrawActualSynthetic": true,
+              "deleteSyntheticDraft": true,
+              "retryOnlyIsolatedQueue": true,
+              "projectAndDateFiltersImmediate": true
+            },
+            {
+              "width": 1440,
+              "restrictedNavigationAllModules": true,
+              "restrictedApiValuesNull": true,
+              "noRestrictedAmountRendered": true
+            },
+            {
+              "width": 390,
+              "restrictedNavigationAllModules": true,
+              "restrictedApiValuesNull": true,
+              "noRestrictedAmountRendered": true
+            }
+          ],
+          "errors": [],
+          "serverErrors": [],
+          "mode": "Isolated synthetic data; real login, saves, review/withdraw, deletion and OCR enqueue. Separate DB/Redis/local storage; no worker and no paid OCR.",
+          "image": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+          "isolatedPasswordLogin": true,
+          "status": "PASS"
+        },
+        "brand-browser.json": {
+          "checks": [
+            {
+              "width": 1440,
+              "all19TokensExact": true,
+              "themeColor": true,
+              "loginGradient": true,
+              "uploadedLogoLoginAndShell": true,
+              "productNameRetained": true,
+              "compactSidebar": true,
+              "feedbackFound": true
+            },
+            {
+              "width": 390,
+              "all19TokensExact": true,
+              "themeColor": true,
+              "loginGradient": true,
+              "uploadedLogoLoginAndShell": true,
+              "productNameRetained": true,
+              "compactSidebar": false,
+              "feedbackFound": true
+            }
+          ],
+          "errors": [],
+          "status": "PASS"
+        },
+        "maintenance-browser.json": {
+          "checks": [
+            {
+              "width": 1440,
+              "supplierCreateEditDisableEnable": true,
+              "projectCreateRenameDisableEnable": true,
+              "contractCreateEditReload": true,
+              "roleCreateEditModal": true,
+              "employeeCreateDisableDeleteModal": true,
+              "brandUploadModal": true,
+              "ingredientRows": true,
+              "noInlineMaintenanceForms": true,
+              "noPageOverflow": true
+            },
+            {
+              "width": 390,
+              "supplierCreateEditDisableEnable": true,
+              "projectCreateRenameDisableEnable": true,
+              "contractCreateEditReload": true,
+              "roleCreateEditModal": true,
+              "employeeCreateDisableDeleteModal": true,
+              "brandUploadModal": true,
+              "ingredientRows": true,
+              "noInlineMaintenanceForms": true,
+              "noPageOverflow": true
+            }
+          ],
+          "errors": [],
+          "serverErrors": [],
+          "mode": "real candidate app, isolated PostgreSQL, actual browser saves, no API interception",
+          "paidOcrCalls": 0,
+          "status": "PASS"
+        }
+      },
+      "matrix": [
+        {
+          "reference": "1.1 / 阶段1",
+          "item": "色板与状态",
+          "result": "PASS",
+          "detail": "19个Token逐个按计算样式核对；主色#775740、金#D0A350、绿/黄/红保持区分，theme-color正确。",
+          "evidence": "品牌脚本、源码"
+        },
+        {
+          "reference": "1.2 / 阶段1",
+          "item": "官方与自定义Logo",
+          "result": "PASS",
+          "detail": "无上传时登录/侧栏回退官方favicon.svg；隔离上传后登录和品牌位使用上传图，产品名保留；侧栏不超过约120×36。",
+          "evidence": "核心与品牌脚本"
+        },
+        {
+          "reference": "1.3 / 阶段1",
+          "item": "唯一主题与登录",
+          "result": "PASS",
+          "detail": "正式应用无选型主题开关；登录左侧保留深棕渐变。HTML交互稿只作对照。",
+          "evidence": "品牌脚本、源码"
+        },
+        {
+          "reference": "阶段2.1",
+          "item": "统一用词",
+          "result": "PASS",
+          "detail": "工作台、新建单据、单据中心、核对明细、审核队列保持一致；登录“人工核对”和角色说明“核对待审单”补齐旧词。",
+          "evidence": "核心、扩展、全源码用词检索"
+        },
+        {
+          "reference": "阶段2.2",
+          "item": "来源与返回",
+          "result": "PASS",
+          "detail": "从审核队列进入核对后返回队列，桌面面包屑标明审核队列；工作台等来源保留独立返回。",
+          "evidence": "核心脚本、来源映射源码"
+        },
+        {
+          "reference": "阶段2.3",
+          "item": "权限导航",
+          "result": "PASS",
+          "detail": "桌面菜单、手机底栏和更多逐项验证受限用户看不到新建、审核及基础资料等未授权入口；经营与分析使用不同图标。",
+          "evidence": "扩展脚本、导航源码"
+        },
+        {
+          "reference": "阶段2.4–6",
+          "item": "手机导航与反馈",
+          "result": "PASS",
+          "detail": "底栏有新建单据；受限账号隐藏新建；核对保存区位于导航上方；更多内反馈链接指向同一反馈页面。",
+          "evidence": "核心、品牌、扩展脚本"
+        },
+        {
+          "reference": "3.A 桌面",
+          "item": "直接编辑与焦点",
+          "result": "PASS",
+          "detail": "品名、数量、单位、单价直接输入；连续输入后焦点仍在同一节点；kg单位列宽充足，实际保存和读取一致。",
+          "evidence": "核心脚本"
+        },
+        {
+          "reference": "3.A 金额",
+          "item": "重算与批次分支",
+          "result": "PASS",
+          "detail": "普通行按原分币规则重算；确认抹零与撤销真实保存；批次修改数量仍保留原金额，逐行保存成功。",
+          "evidence": "核心、批次脚本、281测试"
+        },
+        {
+          "reference": "3.A 问题",
+          "item": "定位与已核对",
+          "result": "PASS",
+          "detail": "问题芯片跳到行并切换来源页；已核对跳下条问题；超合同价仍阻止普通通过。原图无行坐标，不伪造框选。",
+          "evidence": "核心、扩展脚本"
+        },
+        {
+          "reference": "3.A 手机",
+          "item": "三页签与当前行",
+          "result": "PASS",
+          "detail": "默认对照，可切换原图/全部明细；当前行六字段可编辑；已核对按钮滚动后不被dock遮挡。",
+          "evidence": "核心、扩展脚本"
+        },
+        {
+          "reference": "3.A 手机",
+          "item": "末行与保存区",
+          "result": "PASS",
+          "detail": "20行全部明细可滚到最后，末行实际修改保存成功；390×500缩放视口保存区仍在导航上方，dock为布局内静态元素。",
+          "evidence": "核心脚本"
+        },
+        {
+          "reference": "3.A 原图",
+          "item": "翻页与缩放",
+          "result": "PASS",
+          "detail": "原图上一页/下一页、放大/还原与关闭均可点击；问题芯片同步来源页。",
+          "evidence": "扩展脚本"
+        },
+        {
+          "reference": "3.A 原有能力",
+          "item": "增行、删除行、重新比对",
+          "result": "PASS",
+          "detail": "通过更多增行、直接编辑、删除新行、重新比对；实际保存后明细数量正确。",
+          "evidence": "扩展脚本"
+        },
+        {
+          "reference": "3.A 原有能力",
+          "item": "单据信息、合计、依据",
+          "result": "PASS",
+          "detail": "单据信息与供应商、单据金额与合计弹窗可打开关闭，处理依据与操作记录可查看。",
+          "evidence": "扩展脚本"
+        },
+        {
+          "reference": "3.A 原有能力",
+          "item": "审核原因、撤回与删除",
+          "result": "PASS",
+          "detail": "空原因不发送强制审核请求；填写原因后仅对合成单据强制通过、撤回并核对状态；合成草稿删除成功。",
+          "evidence": "扩展脚本"
+        },
+        {
+          "reference": "3.A 原有能力",
+          "item": "恢复与识别重试",
+          "result": "PASS",
+          "detail": "未提交输入刷新后恢复；合成识别失败单重试成功入隔离Redis队列，未运行付费OCR worker。",
+          "evidence": "核心、扩展脚本"
+        },
+        {
+          "reference": "3.B",
+          "item": "核对入口与即时筛选",
+          "result": "PASS",
+          "detail": "核对明细文字及图标名称统一；搜索、状态、项目、起止日期改动即发GET，不用点击搜索。",
+          "evidence": "核心、扩展脚本；公网文字复核"
+        },
+        {
+          "reference": "3.C",
+          "item": "工作台、登录、新建、审核",
+          "result": "PASS",
+          "detail": "各主入口页面双宽度打开无横向溢出；隔离员工号密码登录成功；10张选图按钮可达且不触发付费识别；审核队列异常优先排序。",
+          "evidence": "页面、扩展脚本、审核排序源码"
+        },
+        {
+          "reference": "第2节 / 清单8",
+          "item": "空值与未授权",
+          "result": "PASS",
+          "detail": "有权限时空输入为待补；formatMoney(null)空值分支由单元测试覆盖。受限账号单价/金额API返回null，页面不渲出测试数字。",
+          "evidence": "扩展脚本、item-editing与权限测试"
+        },
+        {
+          "reference": "阶段4",
+          "item": "供应商与合同",
+          "result": "PASS",
+          "detail": "新增/编辑/启停供应商，合同价新增/编辑/重载均通过真实浏览器与隔离数据库验证，输入操作在弹窗。",
+          "evidence": "维护脚本"
+        },
+        {
+          "reference": "阶段4",
+          "item": "项目、账号、角色、Logo",
+          "result": "PASS",
+          "detail": "项目新增/改名/启停，账号新增/停用/逻辑删除，角色新增/改权限，Logo上传均通过隔离真实保存。",
+          "evidence": "维护脚本"
+        },
+        {
+          "reference": "阶段4",
+          "item": "原材料与其他页面",
+          "result": "PASS",
+          "detail": "原材料列表、详情与新增弹窗、经营/分析/设置等页面可读可点，无页面横向溢出；核对组件分离与兼容样式保留。",
+          "evidence": "页面、维护脚本、源码"
+        },
+        {
+          "reference": "硬性约束",
+          "item": "业务与构建",
+          "result": "PASS",
+          "detail": "281测试、类型检查、生产构建通过；补丁仅两个前端文件文案，无API、权限、模型、存储、OCR和迁移变更。",
+          "evidence": "测试日志、构建元数据、Git diff"
+        }
+      ],
+      "boundaries": [
+        "Browser viewports, not a physical Android/WeChat keyboard acceptance.",
+        "Production is read-only; all save/submit/approve/withdraw/delete/retry checks use isolated synthetic records.",
+        "No OCR accuracy/latency reevaluation and no paid OCR calls.",
+        "No original-image row coordinates; actual source-page and row navigation verified."
+      ]
+    },
+    "publicReadOnly": {
+      "core-public.json": {
+        "checks": [
+          {
+            "width": 1440,
+            "corePagesReadOnly": true,
+            "logoBrand": true,
+            "directReviewControls": true,
+            "mobileTabs": false,
+            "saveDockClear": false,
+            "reviewReturn": true
+          },
+          {
+            "width": 390,
+            "corePagesReadOnly": true,
+            "logoBrand": true,
+            "directReviewControls": true,
+            "mobileTabs": true,
+            "saveDockClear": true,
+            "reviewReturn": true
+          }
+        ],
+        "errors": [],
+        "unexpectedWrites": [],
+        "mode": "Public deployment read-only; no real documents edited",
+        "status": "PASS"
+      },
+      "public-browser.json": {
+        "checks": [
+          {
+            "width": 390,
+            "ingredientRowsAndEdit": true,
+            "supplierCreateEditModals": true,
+            "contractCreateEditModals": true,
+            "settingsAllFourNestedModals": true,
+            "noInlineMaintenanceForms": true,
+            "noPageOverflow": true
+          },
+          {
+            "width": 1440,
+            "ingredientRowsAndEdit": true,
+            "supplierCreateEditModals": true,
+            "contractCreateEditModals": true,
+            "settingsAllFourNestedModals": true,
+            "noInlineMaintenanceForms": true,
+            "noPageOverflow": true
+          }
+        ],
+        "errors": [],
+        "serverErrors": [],
+        "unexpectedWrites": [],
+        "mode": "Public production UI read-only; writes verified separately against identical image with isolated PostgreSQL",
+        "status": "PASS"
+      },
+      "browser.json": {
+        "checks": [
+          {
+            "width": 1440,
+            "reviewEntryLabel": true,
+            "iconAccessibleLabel": true,
+            "subtitle": true,
+            "entryDestinationPreserved": true,
+            "recoveryBannerLabel": true
+          },
+          {
+            "width": 390,
+            "reviewEntryLabel": true,
+            "iconAccessibleLabel": true,
+            "subtitle": true,
+            "entryDestinationPreserved": true,
+            "recoveryBannerLabel": true
+          }
+        ],
+        "errors": [],
+        "unexpectedWrites": [],
+        "mode": "Public read-only label/click checks; synthetic recovery record exists only in fresh browser IndexedDB",
+        "status": "PASS"
+      },
+      "copy-new-public.json": {
+        "checks": [
+          {
+            "width": 1440,
+            "newLoginCopy": true,
+            "newRoleDescription": true,
+            "existingUploadedLogoPreserved": true,
+            "noActualAccountCreated": true
+          },
+          {
+            "width": 390,
+            "newLoginCopy": true,
+            "newRoleDescription": true,
+            "existingUploadedLogoPreserved": true,
+            "noActualAccountCreated": true
+          }
+        ],
+        "errors": [],
+        "serverErrors": [],
+        "unexpectedWrites": [],
+        "mode": "Production GET-only; no edits to actual records",
+        "status": "PASS"
+      }
+    },
+    "afterPublicIntegrity": {
+      "status": "PASS",
+      "businessAndLocalImagesUnchangedAfterTestCleanup": true,
+      "oss": {
+        "objects": 11,
+        "bytes": 7341141,
+        "manifestSha256": "f2c8f9a33aa8b6a41ef22c8bfbd70c1361da64e4d555a4cf070e94aed8be6120"
+      },
+      "counts": {
+        "User": 2,
+        "Project": 7,
+        "AuditLog": 494,
+        "Contract": 150,
+        "Document": 69,
+        "Supplier": 19,
+        "BatchPhoto": 37,
+        "CustomRole": 0,
+        "Ingredient": 82,
+        "CheckResult": 564,
+        "ImportBatch": 0,
+        "UploadBatch": 7,
+        "DocumentItem": 545,
+        "DocumentPage": 6,
+        "Notification": 1,
+        "SupplierAlias": 0,
+        "SystemSetting": 1,
+        "WechatBinding": 0,
+        "ApprovalRecord": 68,
+        "IngredientAlias": 10,
+        "ProjectMembership": 1,
+        "ProjectDailyRevenue": 36
+      }
+    },
+    "entireAuditProductionFingerprintUnchanged": true,
+    "baselineAndDeployedSourceHashes": {
+      "src/app/login/LoginClient.tsx": {
+        "before": "b9e1cceb8c043fc05a668d64499a0bd75599e75dbec9536aa500f75ca736f4dc",
+        "current": "ecfb2d916fcf8eaf309549b97251c82bdcd150ca356d1de0e9e94b8a76efae43"
+      },
+      "src/app/(workspace)/settings/SettingsClient.tsx": {
+        "before": "ce4b527de48c4e47b52afd1758d428b068540d842afbbf0f081e5875842cf359",
+        "current": "d44e89672c536f1df6174a125df2120ca933d4432d19d16027b74c55e65699d7"
+      }
+    },
+    "health": {
+      "ok": true,
+      "database": "up",
+      "logging": {
+        "enabled": true,
+        "dropped": 0,
+        "writeFailures": 0,
+        "lastErrorCode": ""
+      },
+      "time": "2026-11-13T13:17:51.777Z"
+    },
+    "isolatedContainersAndCredentialsRemoved": true,
+    "realDocumentWrites": 0,
+    "paidOcrCalls": 0
+  },
+  "rollback": {
+    "image": "sha256:fa99bfb0e2522615a8cb92406e4543cf7eb8047882502dad865f349e7ec28afc",
+    "configurationBackup": "/opt/delivery-audit/backups/20261113-211437",
+    "sourceBeforeArchive": "/opt/delivery-audit/releases/gork-audit-20261113/source-before.tar.gz",
+    "steps": "Restore previous private runtime.env and compose, retag previous image as delivery-audit:trial and recreate app/worker, preserving log volume. Restore source-before archive before rebuilding old source. UI rollback never automatically restores database or overwrites subsequent business data.",
+    "databaseMigrationsAdded": 0,
+    "databaseRestoreRehearsal": false
+  },
+  "githubSync": {
+    "status": "PENDING",
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "method": "Independent sanitized snapshot, normal fast-forward; original local history, tags, business photos and private settings excluded"
+  }
+}
