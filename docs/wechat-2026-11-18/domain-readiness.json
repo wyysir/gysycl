@@ -69,5 +69,7 @@
     "credentialFindings": 0,
     "riskyHistoryPaths": 0,
     "note": "Readiness documentation snapshot verified; subsequent completion bookkeeping is synchronized normally. Query remote main for latest commit."
-  }
+  },
+  "supersededBy": "../releases/2026-11-18-domain.json",
+  "latestStatus": "Domain HTTPS is now live and verified; original NXDOMAIN snapshot retained as historical evidence. WeChat OAuth domain setting and private credentials pending."
 }

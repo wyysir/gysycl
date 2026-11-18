@@ -168,9 +168,18 @@
   },
   "deploymentNote": "Initial switch rolled back automatically when an immediate HTTPS probe encountered old nginx worker TLS configuration. Added a bounded verified-TLS readiness wait after reload; final switch and subsequent certificate checks passed without disabling certificate validation.",
   "githubSync": {
-    "status": "PENDING",
+    "status": "PASS",
     "repository": "https://github.com/wyysir/gysycl",
     "branch": "main",
-    "method": "Independent sanitized fast-forward snapshot; original history/tags and business photos/private configuration excluded"
+    "method": "Independent sanitized fast-forward snapshot; original history/tags and business photos/private configuration excluded",
+    "verifiedAt": "2026-11-18T15:33:27.996535+00:00",
+    "verifiedSourceCommit": "bc56e60ed84abcd9e9535356fcccf6d05b4bbcdc",
+    "verifiedRemoteCommit": "b9465c2ef8d680d138ec347e8dfbf619d92ee1b7",
+    "observedVisibility": "public",
+    "filesVerified": 561,
+    "credentialScanFindings": 0,
+    "riskyHistoryPaths": 0,
+    "blobsScanned": 659,
+    "note": "Verified deployed configuration and release snapshot. Completion bookkeeping is also synchronized normally; remote main is authoritative for latest commit. Original local release tag is immutable."
   }
 }
