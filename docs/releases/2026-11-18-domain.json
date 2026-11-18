@@ -1,0 +1,176 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-18T15:23:13.720227+00:00",
+  "domain": "www.dhcy.top",
+  "appUrl": "https://www.dhcy.top",
+  "image": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+  "applicationImageChanged": false,
+  "backup": "/opt/delivery-audit/backups/20261118-232238-domain",
+  "backupChecksums": {
+    "database.sql.gz": "2bdac51eaf29cf00eaeb6db37017321cecb5bff84cf4e400368903d573436c19",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "nginx-before.tar.gz": "ac57abd92a3b1393fa03f8eccde5b0e1a3b5dde71a614085093b3e99162e059c",
+    "runtime.env.private": "716386fc61066ebbc2da350526c2695163a053f89a51cbbe41a8f05982fc4050",
+    "oss-manifest.private.json": "90eba82cb11e82bb029325f68a2cc4f9acd6e05eee50dca0039b0ded79167a34"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 22,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 496,
+      "Contract": 150,
+      "Document": 70,
+      "Supplier": 19,
+      "BatchPhoto": 38,
+      "CustomRole": 0,
+      "Ingredient": 82,
+      "CheckResult": 570,
+      "ImportBatch": 0,
+      "UploadBatch": 8,
+      "DocumentItem": 547,
+      "DocumentPage": 7,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 10,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "a1277585d42d47f4374b6436cecd1ffa9289418760bac000e4b2b60d9d5c7b06",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "ossSnapshot": {
+    "objects": 12,
+    "bytes": 8241509,
+    "manifestSha256": "90eba82cb11e82bb029325f68a2cc4f9acd6e05eee50dca0039b0ded79167a34"
+  },
+  "migrationsAdded": 0,
+  "nginxCheck": "PASS",
+  "cors": {
+    "domainPreflight": {
+      "origin": "https://www.dhcy.top",
+      "status": 200,
+      "allowedOrigin": "https://www.dhcy.top",
+      "methods": "PUT",
+      "headers": "content-type"
+    },
+    "oldIpPreflightRetained": true,
+    "bucketAdminRead": "AccessDenied",
+    "changedByServer": false
+  },
+  "certificate": "subject=CN = www.dhcy.top\nissuer=C = US, O = Let's Encrypt, CN = YE2\nnotBefore=Nov 18 14:15:21 2026 GMT\nnotAfter=Feb 16 14:15:20 2027 GMT\nsha256 Fingerprint=27:17:FF:61:CA:7F:68:DC:1A:74:76:3B:7C:7E:2F:CD:31:8C:BB:6B:95:12:6A:03:D4:35:EB:FC:79:77:8E:4A",
+  "configSha256": "200d636a474147eb5d8a614f98aca2ab6b03b6eb24410b6f70cc883a9532db9e",
+  "sourceBundleSha256": "352a706ee1e9b02d86902292ed77e935d4a5e9d73cd28f8ed93fb6caa55fbd9e",
+  "health": {
+    "ok": true,
+    "database": "up",
+    "logging": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "time": "2026-11-18T15:23:06.664Z"
+  },
+  "renewalTimerActive": true,
+  "realWechatConfigured": false,
+  "paidOcrCalls": 0,
+  "restoreTested": false,
+  "releaseTag": "release/2026-11-18-domain",
+  "sourceConfigCommit": "30370c95d3152263e1d5c3293bf9920e0737e4d4",
+  "applicationBaseSourcePatch": "4078ee94cb385a7e6ba2513e725f76276bf1a874",
+  "deployedAtAsiaShanghai": "2026-11-18T23:23:13.720227+08:00",
+  "scope": "Domain/TLS/Nginx/APP_URL/RELEASE_ID configuration only. Existing application and worker image retained; no API, authentication logic, OCR, schema or business rules changed. User added DNS and additive domain OSS CORS rule; server bucket-admin reads were denied, no CORS overwrite attempted.",
+  "validation": {
+    "authoritativeAndPublicDns": "PASS",
+    "nginxCandidateAndLive": "PASS",
+    "certificateHostnameChainVerified": "PASS",
+    "certificateRenewalDryRun": "PASS",
+    "renewalTimerAndDeployHook": "Existing timer covers both certificates; nginx -t/reload hook retained.",
+    "browser": {
+      "checks": [
+        {
+          "width": 1440,
+          "normalDnsAndValidTls": true,
+          "loginForm": true,
+          "authorizedPagesAndBrand": true,
+          "existingImageReadable": true,
+          "reviewControlsAndMobileDock": true,
+          "originGuardAcceptsDomainRejectsUntrusted": true,
+          "actualBrowserOssPut": 200,
+          "syntheticImageSha256Matched": true,
+          "anonymousReadDenied": 403,
+          "temporaryObjectDeleted": true
+        },
+        {
+          "width": 390,
+          "normalDnsAndValidTls": true,
+          "loginForm": true,
+          "authorizedPagesAndBrand": true,
+          "existingImageReadable": true,
+          "reviewControlsAndMobileDock": true,
+          "originGuardAcceptsDomainRejectsUntrusted": true,
+          "actualBrowserOssPut": 200,
+          "syntheticImageSha256Matched": true,
+          "anonymousReadDenied": 403,
+          "temporaryObjectDeleted": true
+        }
+      ],
+      "errors": [],
+      "serverErrors": [],
+      "unexpectedWrites": [],
+      "uploadedObjectsCleaned": 2,
+      "mode": "Normal DNS, valid TLS, real domain browser requests. GET-only business records; only presign and standalone synthetic OSS objects are written. No document creation or OCR.",
+      "redirects": {
+        "httpToHttps": true,
+        "oldIpPathAndQueryPreserved": true,
+        "wechatUnconfiguredReturnsToDomain": true,
+        "verificationFileHttpAndHttps": true
+      },
+      "status": "PASS"
+    },
+    "postBrowserBusinessAndOssIntegrity": {
+      "status": "PASS",
+      "businessAndLocalImagesUnchanged": true,
+      "referencedOssUnchanged": {
+        "objects": 12,
+        "bytes": 8241509,
+        "manifestSha256": "90eba82cb11e82bb029325f68a2cc4f9acd6e05eee50dca0039b0ded79167a34"
+      },
+      "imagesMatch": true
+    },
+    "logging": "Health has dropped=0 and writeFailures=0. Expected untrusted-Origin probe returns403.",
+    "applicationTests": "No application source changed; no unrelated repeat of npm test/typecheck/build. Prior deployed application has 281 passing tests; current configuration has its own live nginx, certificate, origin, browser and OSS checks.",
+    "paidOcrCalls": 0,
+    "realDocumentMutations": 0
+  },
+  "rollback": {
+    "backup": "/opt/delivery-audit/backups/20261118-232238-domain",
+    "image": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+    "instructions": "Restore private runtime.env and shian-trial.conf from backup, remove only shian-www.conf enablement and the new shian-domain.conf if rolling back domain entry, nginx -t/reload and recreate app/worker with unchanged image. Keep log volume, original IP certificate and ACME challenge. Newly issued domain certificate and additive OSS rule may remain. Never automatically restore business database or pictures.",
+    "databaseRestoreRehearsal": false
+  },
+  "wechat": {
+    "status": "PENDING_REAL_ACCOUNT_SETUP",
+    "domainFileHttpAndHttps": "PASS",
+    "oauthDomainSaved": false,
+    "userReported": "Cannot find webpage authorization domain setting in mp.weixin.qq.com; need actual left-menu screenshot to locate it.",
+    "appIdAndSecretConfigured": false,
+    "startEndpoint": "Redirects to https://www.dhcy.top/login?wechat=unconfigured as designed",
+    "menuProvider": "客如云",
+    "existingMenusAndThirdPartyAuthorizationRetained": true,
+    "templateNotifications": "Cancelled, unchanged"
+  },
+  "deploymentNote": "Initial switch rolled back automatically when an immediate HTTPS probe encountered old nginx worker TLS configuration. Added a bounded verified-TLS readiness wait after reload; final switch and subsequent certificate checks passed without disabling certificate validation.",
+  "githubSync": {
+    "status": "PENDING",
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "method": "Independent sanitized fast-forward snapshot; original history/tags and business photos/private configuration excluded"
+  }
+}
