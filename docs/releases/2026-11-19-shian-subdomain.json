@@ -1,0 +1,237 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-18T15:55:45.599779+00:00",
+  "domain": "shian.dhcy.top",
+  "appUrl": "https://shian.dhcy.top",
+  "previousAppUrl": "https://www.dhcy.top",
+  "wwwRole": "Reserved company/project index; transitional302 redirect preserving path/query",
+  "image": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+  "applicationImageChanged": false,
+  "backup": "/opt/delivery-audit/backups/20261118-235510-shian",
+  "backupChecksums": {
+    "database.sql.gz": "33cc3b6120e079ae0e530532291477c46eb3b2318e06cb40c7fea3b8acf6f46b",
+    "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+    "nginx-before.tar.gz": "c0581707cf88f5584ecaeca5f11671dad39691977d83691d4965650007e78067",
+    "runtime.env.private": "ae59d0b28ac1bc8159561df27096706c62684047e39b746c6f77f2d14e29ba3c",
+    "oss-manifest.private.json": "90eba82cb11e82bb029325f68a2cc4f9acd6e05eee50dca0039b0ded79167a34"
+  },
+  "businessAndLocalImagesUnchanged": true,
+  "fingerprint": {
+    "tables": 22,
+    "counts": {
+      "User": 2,
+      "Project": 7,
+      "AuditLog": 496,
+      "Contract": 150,
+      "Document": 70,
+      "Supplier": 19,
+      "BatchPhoto": 38,
+      "CustomRole": 0,
+      "Ingredient": 82,
+      "CheckResult": 570,
+      "ImportBatch": 0,
+      "UploadBatch": 8,
+      "DocumentItem": 547,
+      "DocumentPage": 7,
+      "Notification": 1,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "WechatBinding": 0,
+      "ApprovalRecord": 68,
+      "IngredientAlias": 10,
+      "ProjectMembership": 1,
+      "ProjectDailyRevenue": 36
+    },
+    "databaseSha256": "a1277585d42d47f4374b6436cecd1ffa9289418760bac000e4b2b60d9d5c7b06",
+    "localFiles": 12,
+    "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24"
+  },
+  "ossSnapshot": {
+    "objects": 12,
+    "bytes": 8241509,
+    "manifestSha256": "90eba82cb11e82bb029325f68a2cc4f9acd6e05eee50dca0039b0ded79167a34"
+  },
+  "migrationsAdded": 0,
+  "nginxCheck": "PASS",
+  "corsPreflight": [
+    {
+      "origin": "https://shian.dhcy.top",
+      "status": 200,
+      "allowedOrigin": "https://shian.dhcy.top",
+      "methods": "PUT",
+      "headers": "content-type"
+    },
+    {
+      "origin": "https://www.dhcy.top",
+      "status": 200,
+      "allowedOrigin": "https://www.dhcy.top",
+      "methods": "PUT",
+      "headers": "content-type"
+    },
+    {
+      "origin": "https://42.121.106.105",
+      "status": 200,
+      "allowedOrigin": "https://42.121.106.105",
+      "methods": "PUT",
+      "headers": "content-type"
+    }
+  ],
+  "corsChangedByServer": false,
+  "certificate": "subject=CN = shian.dhcy.top\nissuer=C = US, O = Let's Encrypt, CN = YE1\nnotBefore=Nov 18 14:52:53 2026 GMT\nnotAfter=Feb 16 14:52:52 2027 GMT\nsha256 Fingerprint=89:5B:DC:BF:FA:18:D8:18:9B:DB:51:51:DF:AA:66:9D:76:3D:7B:E2:EE:72:F8:C5:92:7E:70:69:D7:4F:80:FA",
+  "configHashes": {
+    "nginx-shian.conf": "4bbac88b7605799e1c6ab48283c205e5ff501a21d8d06128696c5f6a6421d87b",
+    "nginx-dhcy.conf": "7664a569b9742573a656a5c55b4cc87f5593bac7b896d0e8712d1f3228cc1431"
+  },
+  "sourceBundleSha256": "37d4176e5684e3b2d2daa1c6eff8bac1fd7218ff67c7602a9a4ed9d40f445906",
+  "health": {
+    "ok": true,
+    "database": "up",
+    "logging": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "time": "2026-11-18T15:55:38.811Z"
+  },
+  "renewalTimerActive": true,
+  "realWechatConfigured": false,
+  "paidOcrCalls": 0,
+  "restoreTested": false,
+  "releaseTag": "release/2026-11-19-shian-subdomain",
+  "runtimeReleaseMarker": "release/2026-11-18-shian-subdomain",
+  "sourceConfigCommit": "11d9ec1ca7a0d8b50c24fa2ed4313667560fa28f",
+  "ipTlsCompatibilityCommit": "f4d5ee245a42411d8c874b8e191800e6c6f28f31",
+  "finalVerifiedAt": "2026-11-18T16:04:34.892217+00:00",
+  "deployedAtAsiaShanghai": "2026-11-18T23:55:45.599779+08:00",
+  "releaseTiming": "Application URL switched at 23:55 on Nov18; final IP TLS compatibility validation completed after midnight Nov19. Runtime marker follows initial switch; final verified tag uses Nov19.",
+  "finalConfigHashes": {
+    "nginx-shian.conf": "4bbac88b7605799e1c6ab48283c205e5ff501a21d8d06128696c5f6a6421d87b",
+    "nginx-dhcy.conf": "7664a569b9742573a656a5c55b4cc87f5593bac7b896d0e8712d1f3228cc1431",
+    "nginx-ip-redirect.conf": "a4705addf9e771a99c1b921555d148c1f4fe0941452b629fbfcd4cff7bba7ba2"
+  },
+  "finalConfigArchiveSha256": "2490f5ae48a75e55179d4b7f5448ac7216056f4911ac3f58263bcb6b19ccad29",
+  "finalConfigArchive": "/opt/delivery-audit/releases/shian-20261118/final-configs.tar.gz",
+  "scope": "Dedicated shian subdomain for this application. www reserved for future company/project index, transitional302. No other project deployed; existing app/worker image, business/API/permission logic and schema unchanged. New tests only use local isolated fixtures and mock provider response.",
+  "validation": {
+    "testFiles": 36,
+    "testsPassed": 292,
+    "wechatProtocolTests": 11,
+    "providerResponseMockedOnly": true,
+    "typecheck": "PASS",
+    "nginxCandidateAndLive": "PASS",
+    "certificateRenewalDryRun": "PASS",
+    "browser": {
+      "checks": [
+        {
+          "width": 1440,
+          "normalDnsAndValidTls": true,
+          "loginForm": true,
+          "authorizedPagesAndBrand": true,
+          "existingImageReadable": true,
+          "reviewControlsAndMobileDock": true,
+          "originGuardAcceptsDomainRejectsUntrusted": true,
+          "actualBrowserOssPut": 200,
+          "syntheticImageSha256Matched": true,
+          "anonymousReadDenied": 403,
+          "temporaryObjectDeleted": true
+        },
+        {
+          "width": 390,
+          "normalDnsAndValidTls": true,
+          "loginForm": true,
+          "authorizedPagesAndBrand": true,
+          "existingImageReadable": true,
+          "reviewControlsAndMobileDock": true,
+          "originGuardAcceptsDomainRejectsUntrusted": true,
+          "actualBrowserOssPut": 200,
+          "syntheticImageSha256Matched": true,
+          "anonymousReadDenied": 403,
+          "temporaryObjectDeleted": true
+        }
+      ],
+      "errors": [],
+      "serverErrors": [],
+      "unexpectedWrites": [],
+      "uploadedObjectsCleaned": 2,
+      "mode": "Normal DNS, valid TLS, real domain browser requests. GET-only business records; only presign and standalone synthetic OSS objects are written. No document creation or OCR.",
+      "status": "PASS",
+      "initialFailure": "Old IP certificate mismatch after adding earlier-sorted virtual host. Fixed explicit IP TLS default_server and retested TLS/redirects.",
+      "redirectRetest": {
+        "checks": [
+          {
+            "base": "http://shian.dhcy.top",
+            "status": 308,
+            "pathAndQueryPreserved": true,
+            "validTls": true
+          },
+          {
+            "base": "http://www.dhcy.top",
+            "status": 302,
+            "pathAndQueryPreserved": true,
+            "validTls": true
+          },
+          {
+            "base": "https://www.dhcy.top",
+            "status": 302,
+            "pathAndQueryPreserved": true,
+            "validTls": true
+          },
+          {
+            "base": "https://42.121.106.105",
+            "status": 308,
+            "pathAndQueryPreserved": true,
+            "validTls": true
+          }
+        ],
+        "certificateVerificationDisabled": false,
+        "status": "PASS",
+        "verificationFilesHttpAndHttps": true,
+        "wechatUnconfiguredReturnsToProjectDomain": true
+      }
+    },
+    "postBrowserIntegrity": {
+      "status": "PASS",
+      "businessAndLocalImagesUnchanged": true,
+      "referencedOssUnchanged": {
+        "objects": 12,
+        "bytes": 8241509,
+        "manifestSha256": "90eba82cb11e82bb029325f68a2cc4f9acd6e05eee50dca0039b0ded79167a34"
+      },
+      "imagesMatch": true
+    },
+    "paidOcrCalls": 0,
+    "realDocumentMutations": 0,
+    "syntheticOssObjectsDeleted": 2,
+    "ipTlsFix": "Explicit443default_server retains IP certificate for clients that send no SNI. Strict TLS/redirect checks passed; no certificate verification disabled.",
+    "applicationBuild": "Not repeated: application source/image unchanged; existing image retained."
+  },
+  "wechat": {
+    "wwwOauthDomainSaved": "Confirmed by user",
+    "shianOauthDomainSaved": false,
+    "latestUserScreenshot": {
+      "domain1": "saas.api.goliveplus.cn",
+      "domain2": "www.dhcy.top",
+      "onlyTwoSlotsVisible": true
+    },
+    "requiredAction": "Keep pre-existing saas.api.goliveplus.cn unchanged; replace only the newly added www entry with shian.dhcy.top. Do not attempt a third entry.",
+    "realCredentialsConfigured": false,
+    "credentialBlocker": "User can view AppID but existing AppSecret is unavailable; UI offers reset. No reset, secret change or third-party authorization change authorized/performed. Need existing secret safely or cooperation confirmation from Keruyun before any coordinated secret change.",
+    "menuOwner": "User will add menu personally in Keruyun; no create-menu API invoked",
+    "menuUrl": "https://shian.dhcy.top/api/auth/wechat/start",
+    "existingMenusAndAuthorizationRetained": true,
+    "status": "PENDING_REAL_CREDENTIALS_AND_PHONE_ACCEPTANCE"
+  },
+  "rollback": {
+    "backup": "/opt/delivery-audit/backups/20261118-235510-shian",
+    "image": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+    "steps": "Restore private.env, www-before.conf and ip-before.conf from backup, remove only shian-app.conf enablement/new site, nginx -t/reload, recreate app/worker with same image. Keep business volumes/logs and all certificates. Existing DNS/CORS rules remain. Do not automatically restore DB/images or change Keruyun menus/authorization.",
+    "databaseRestoreRehearsal": false
+  },
+  "githubSync": {
+    "status": "PENDING",
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "method": "Independent sanitized fast-forward snapshot; no original history/tags, real images, private env or credentials"
+  }
+}

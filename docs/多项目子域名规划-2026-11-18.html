@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>德亨餐饮 · 多项目子域名分配</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f6f5f1;color:#282b2d;font:16px/1.75 system-ui,'Microsoft YaHei',sans-serif}main{max-width:1000px;margin:auto;padding:30px 20px}h1,h2{color:#775740}h1{font-size:28px}h2{font-size:20px}p{margin:10px 0}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:25px 0}.card{padding:22px;border:1px solid #e5e0d7;border-radius:12px;background:#fffefa}.card.selected{border:2px solid #d0a350}.tag{font-size:13px;color:#775740;background:#f7eedb;padding:4px 9px;border-radius:8px}code{font-size:17px;overflow-wrap:anywhere}li{margin:8px 0}.note{padding:16px;background:#f4ede3;border-radius:10px}small{color:#6f685e}@media(max-width:600px){main{padding:20px 12px}h1{font-size:23px}.cards{grid-template-columns:1fr}}</style>
+<main>
+<h1>一个主域名，为多个项目分配独立入口</h1>
+<p>主域名 <b>dhcy.top</b> 统一管理；每个项目使用独立子域名和对应服务。后续项目无需占用食安链的地址。</p>
+<div class="cards">
+<article class="card"><span class="tag">预留：公司首页或项目总入口</span><h2><code>www.dhcy.top</code></h2><p>以后可展示公司网站，或各项目的导航入口。</p><p>过渡期使用临时跳转保留现有访问路径，便于将来独立启用首页。</p></article>
+<article class="card selected"><span class="tag">用户已选定：本项目</span><h2><code>shian.dhcy.top</code></h2><p><b>食安链 · 单据核验</b></p><p>现有采购单据、供应商、合同、权限及图片继续使用；只调整访问入口和相关配置。</p></article>
+<article class="card"><span class="tag">未来项目示例，尚未部署</span><h2><code>app-a.dhcy.top</code></h2><p>具体名称按项目确定，并分别配置自己的服务、证书和数据权限。</p></article>
+<article class="card"><span class="tag">未来项目示例，尚未部署</span><h2><code>app-b.dhcy.top</code></h2><p>新增入口不会要求修改食安链的固定地址。</p></article>
+</div>
+<section class="note"><b>本轮迁移内容</b><ol><li>新增shian的DNS A记录和OSS上传来源，保留已用来源。</li><li>为shian签发独立HTTPS证书；现有www证书继续保留。</li><li>将食安链APP_URL切到shian，旧www临时跳转至shian并保留路径和参数。</li><li>微信网页授权域名增加shian；菜单使用最终shian地址。</li><li>用合成图片验证上传和清理，核对业务与图片摘要，不修改真实单据。</li></ol></section>
+<h2>公众号菜单最终地址</h2>
+<p><code>https://shian.dhcy.top/api/auth/wechat/start</code></p>
+<p>菜单由用户在客如云原菜单中自行添加，保留原菜单与授权。微信自动登录仍需现有AppSecret或与客如云确认可用的协作方式，不能把域名迁移写成微信已接通。</p>
+<small>2026-11-19 · 食安链shian迁移已完成并验证，www为302过渡跳转。<a href="releases/2026-11-19-shian-subdomain.json">当前发布证据</a>。未来项目仅为分配方式示例，微信实号登录仍待密钥与后台配置。</small>
+</main></html>
