@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
 import { api } from "@/lib/client/api";
 import { BrandLogo } from "@/components/BrandProvider";
+import { SiteFooter } from "@/components/SiteFooter";
+import footerStyles from "@/components/SiteFooter.module.css";
 
 export function LoginClient({
   initialError,
@@ -48,6 +50,7 @@ export function LoginClient({
   }
 
   return (
+    <div className={footerStyles.loginLayout}>
     <div className="login-page">
       <section className="login-story">
         <div className="login-brand">
@@ -167,6 +170,8 @@ export function LoginClient({
           ) : null}
         </div>
       </section>
+    </div>
+    <SiteFooter />
     </div>
   );
 }

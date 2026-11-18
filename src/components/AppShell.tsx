@@ -25,6 +25,7 @@ import { api } from "@/lib/client/api";
 import { BrandLogo } from "./BrandProvider";
 import { useProtectedNavigation } from "./LeaveProtection";
 import { clearDrafts, draftTab, listDrafts } from "@/lib/client/draft-store";
+import { SiteFooter } from "./SiteFooter";
 
 const navItems = [
   { href: "/dashboard", label: "工作台", icon: LayoutDashboard },
@@ -214,6 +215,7 @@ export function AppShell({
           </div>
         </header>
         {children}
+        {pathname === "/dashboard" ? <SiteFooter /> : null}
       </main>
       {moreOpen ? (
         <div
