@@ -57,5 +57,17 @@
   "businessDataMutations": 0,
   "paidOcrCalls": 0,
   "nextStep": "Add www A record at actual authoritative DNS provider, verify public DNS and exact verification file, then configure domain TLS, APP_URL, OSS CORS and real WeChat OAuth without replacing Keruyun menus/authorization.",
-  "reference": "https://help.aliyun.com/zh/dns/getting-started-with-website-dns"
+  "reference": "https://help.aliyun.com/zh/dns/getting-started-with-website-dns",
+  "githubSync": {
+    "status": "PASS",
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "visibility": "public",
+    "verifiedSourceCommit": "6778223c0b65794b374cf502e0c84b0ece817337",
+    "verifiedRemoteCommit": "a44c5e428dd4eaee7a62a5153866f36ec896e0cf",
+    "filesVerified": 558,
+    "credentialFindings": 0,
+    "riskyHistoryPaths": 0,
+    "note": "Readiness documentation snapshot verified; subsequent completion bookkeeping is synchronized normally. Query remote main for latest commit."
+  }
 }
