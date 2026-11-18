@@ -1,0 +1,61 @@
+{
+  "appUrl": "https://42.121.106.105",
+  "wechatAppIdConfigured": false,
+  "wechatAppSecretConfigured": false,
+  "verificationFile": {
+    "name": "MP_verify_vXQUGqwSrP4cYhM5.txt",
+    "bytes": 16,
+    "sha256": "4a4c21d8f91b0a1777e5b571ab4dee335a866c6e8da534d5e8b4679bc49b0a72"
+  },
+  "dns": {
+    "dns11.hichina.com": {
+      "www.dhcy.top": ";; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 24394\n;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n;; WARNING: recursion requested but not available\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 1232\n;; AUTHORITY SECTION:\ndhcy.top.\t\t600\tIN\tSOA\tdns11.hichina.com. hostmaster.hichina.com. 2026102916 3600 1200 86400 600",
+      "dhcy.top": ";; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 14045\n;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n;; WARNING: recursion requested but not available\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 1232\n;; AUTHORITY SECTION:\ndhcy.top.\t\t600\tIN\tSOA\tdns11.hichina.com. hostmaster.hichina.com. 2026102916 3600 1200 86400 600"
+    },
+    "dns12.hichina.com": {
+      "www.dhcy.top": ";; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 46287\n;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n;; WARNING: recursion requested but not available\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 1232\n;; AUTHORITY SECTION:\ndhcy.top.\t\t600\tIN\tSOA\tdns11.hichina.com. hostmaster.hichina.com. 2026102916 3600 1200 86400 600",
+      "dhcy.top": ";; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5326\n;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n;; WARNING: recursion requested but not available\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 1232\n;; AUTHORITY SECTION:\ndhcy.top.\t\t600\tIN\tSOA\tdns11.hichina.com. hostmaster.hichina.com. 2026102916 3600 1200 86400 600"
+    }
+  },
+  "health": {
+    "ok": true,
+    "database": "up",
+    "logging": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "time": "2026-11-18T15:09:25.256Z"
+  },
+  "appImage": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+  "checkedAt": "2026-11-18T15:09:24.517373+00:00",
+  "status": "WAITING_FOR_DNS",
+  "icpFiling": {
+    "status": "COMPLETED_REPORTED_BY_USER",
+    "reportedOn": "2026-11-18",
+    "independentlyQueriedIcpRegistry": false
+  },
+  "externalVerificationWithDnsBypass": {
+    "status": 200,
+    "bytes": 16,
+    "sha256": "4a4c21d8f91b0a1777e5b571ab4dee335a866c6e8da534d5e8b4679bc49b0a72",
+    "dnsBypassedForTest": true
+  },
+  "normalDomainAccess": "Cannot resolve www.dhcy.top; both authoritative nameservers return NXDOMAIN. Apex A record also empty.",
+  "plannedARecord": {
+    "host": "www",
+    "type": "A",
+    "value": "42.121.106.105",
+    "line": "default",
+    "ttl": "default"
+  },
+  "domainHttpsConfigured": false,
+  "appUrlChanged": false,
+  "nginxChanged": false,
+  "appRestarted": false,
+  "businessDataMutations": 0,
+  "paidOcrCalls": 0,
+  "nextStep": "Add www A record at actual authoritative DNS provider, verify public DNS and exact verification file, then configure domain TLS, APP_URL, OSS CORS and real WeChat OAuth without replacing Keruyun menus/authorization.",
+  "reference": "https://help.aliyun.com/zh/dns/getting-started-with-website-dns"
+}
