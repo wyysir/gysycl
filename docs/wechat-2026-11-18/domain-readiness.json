@@ -70,6 +70,6 @@
     "riskyHistoryPaths": 0,
     "note": "Readiness documentation snapshot verified; subsequent completion bookkeeping is synchronized normally. Query remote main for latest commit."
   },
-  "supersededBy": "../releases/2026-11-18-domain.json",
-  "latestStatus": "Domain HTTPS is now live and verified; original NXDOMAIN snapshot retained as historical evidence. WeChat OAuth domain setting and private credentials pending."
+  "supersededBy": "../releases/2026-11-19-shian-subdomain.json",
+  "latestStatus": "Dedicated https://shian.dhcy.top live and verified; www reserved with temporary302. Existing OAuth domain1 retained, only new www item to be replaced by shian. Real WeChat credentials and phone acceptance still pending."
 }
