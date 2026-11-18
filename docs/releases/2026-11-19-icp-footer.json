@@ -1,0 +1,318 @@
+{
+  "status": "PASS",
+  "releaseTag": "release/2026-11-19-icp-footer",
+  "deployedAt": "2026-11-18T16:44:08.817457+00:00",
+  "timezone": "Asia/Shanghai",
+  "url": "https://shian.dhcy.top",
+  "filing": {
+    "number": "浙ICP备2026030630号-3",
+    "source": "User supplied on 2026-11-19; trailing backslash excluded",
+    "registryIndependentlyQueried": false,
+    "href": "https://beian.miit.gov.cn/",
+    "pages": [
+      "/login",
+      "/dashboard"
+    ],
+    "newWindow": true
+  },
+  "source": {
+    "patchCommit": "e13a58ba161fa9dff75424a5d05b84dfc02a03f2",
+    "files": [
+      "src/components/SiteFooter.tsx",
+      "src/components/SiteFooter.module.css",
+      "src/app/login/LoginClient.tsx",
+      "src/components/AppShell.tsx"
+    ],
+    "archiveSha256": "d081caed2962f812b27550b7c413e3e47168306d27211f0314fafea999f84aec",
+    "archive": "/opt/delivery-audit/releases/icp-footer-20261119.tar.gz",
+    "runtimeBaseSourceArchive": "/opt/delivery-audit/releases/icp-footer-20261119/runtime-base-source.tar.gz",
+    "runtimeBaseSourceArchiveSha256": "770e80821f11a75b6426ac296378e1150b8c7d5e622c8390129e61547689a3ea",
+    "baseImage": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+    "construction": "Copied only source/configuration from exact running container; no local unshipped OCR changes",
+    "wholeLocalMainDeployed": false
+  },
+  "deployment": {
+    "image": "sha256:786edf87b99d9abec1f234452ea6b1361b76a46d33be8c18c2b4f11586800638",
+    "appAndWorkerMatch": true,
+    "releaseId": "release/2026-11-19-icp-footer",
+    "serverEvidence": "/opt/delivery-audit/releases/icp-footer-20261119",
+    "health": {
+      "ok": true,
+      "database": "up",
+      "logging": {
+        "enabled": true,
+        "dropped": 0,
+        "writeFailures": 0,
+        "lastErrorCode": ""
+      },
+      "time": "2026-11-18T16:44:01.945Z"
+    },
+    "databaseMigrationsAdded": 0,
+    "migrationsExisting": 8,
+    "candidateContainerRemoved": true,
+    "candidatePrivateEnvironmentRemoved": true
+  },
+  "validation": {
+    "unitTests": {
+      "files": 36,
+      "passed": 292,
+      "status": "PASS"
+    },
+    "typecheck": "PASS",
+    "productionImageBuild": "PASS",
+    "candidateBrowser": {
+      "mode": "stage",
+      "status": "PASS",
+      "checks": [
+        {
+          "width": 1440,
+          "login": {
+            "viewport": 1440,
+            "pageWidth": 1440,
+            "footer": {
+              "x": 0,
+              "y": 848.8125,
+              "width": 1440,
+              "bottom": 900
+            },
+            "link": {
+              "x": 643.25,
+              "y": 860.8125,
+              "width": 153.5,
+              "bottom": 888
+            }
+          },
+          "dashboard": {
+            "viewport": 1440,
+            "pageWidth": 1440,
+            "footer": {
+              "x": 224,
+              "y": 849.046875,
+              "width": 1216,
+              "bottom": 900.234375
+            },
+            "link": {
+              "x": 755.25,
+              "y": 861.046875,
+              "width": 153.5,
+              "bottom": 888.234375
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "bottom": 0,
+              "visible": false
+            }
+          },
+          "miitLinkOpensNewTab": true,
+          "miitPageContentNotTested": true,
+          "documentsAndUploadUnchanged": true
+        },
+        {
+          "width": 390,
+          "login": {
+            "viewport": 390,
+            "pageWidth": 390,
+            "footer": {
+              "x": 0,
+              "y": 848.8125,
+              "width": 390,
+              "bottom": 900
+            },
+            "link": {
+              "x": 118.25,
+              "y": 860.8125,
+              "width": 153.5,
+              "bottom": 888
+            }
+          },
+          "dashboard": {
+            "viewport": 390,
+            "pageWidth": 390,
+            "footer": {
+              "x": 0,
+              "y": 779,
+              "width": 390,
+              "bottom": 830.1875
+            },
+            "link": {
+              "x": 118.25,
+              "y": 791,
+              "width": 153.5,
+              "bottom": 818.1875
+            },
+            "nav": {
+              "x": 0,
+              "y": 834,
+              "bottom": 900,
+              "visible": true
+            }
+          },
+          "miitLinkOpensNewTab": true,
+          "miitPageContentNotTested": true,
+          "documentsAndUploadUnchanged": true
+        }
+      ],
+      "pageErrors": [],
+      "serverErrors": [],
+      "unexpectedWrites": [],
+      "businessRequests": "GET-only, existing employee session signed in memory; no production account or document writes"
+    },
+    "publicBrowser": {
+      "mode": "live",
+      "status": "PASS",
+      "checks": [
+        {
+          "width": 1440,
+          "login": {
+            "viewport": 1440,
+            "pageWidth": 1440,
+            "footer": {
+              "x": 0,
+              "y": 848.8125,
+              "width": 1440,
+              "bottom": 900
+            },
+            "link": {
+              "x": 643.25,
+              "y": 860.8125,
+              "width": 153.5,
+              "bottom": 888
+            }
+          },
+          "dashboard": {
+            "viewport": 1440,
+            "pageWidth": 1440,
+            "footer": {
+              "x": 224,
+              "y": 849.046875,
+              "width": 1216,
+              "bottom": 900.234375
+            },
+            "link": {
+              "x": 755.25,
+              "y": 861.046875,
+              "width": 153.5,
+              "bottom": 888.234375
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "bottom": 0,
+              "visible": false
+            }
+          },
+          "miitLinkOpensNewTab": true,
+          "miitPageContentNotTested": true,
+          "documentsAndUploadUnchanged": true
+        },
+        {
+          "width": 390,
+          "login": {
+            "viewport": 390,
+            "pageWidth": 390,
+            "footer": {
+              "x": 0,
+              "y": 848.8125,
+              "width": 390,
+              "bottom": 900
+            },
+            "link": {
+              "x": 118.25,
+              "y": 860.8125,
+              "width": 153.5,
+              "bottom": 888
+            }
+          },
+          "dashboard": {
+            "viewport": 390,
+            "pageWidth": 390,
+            "footer": {
+              "x": 0,
+              "y": 779,
+              "width": 390,
+              "bottom": 830.1875
+            },
+            "link": {
+              "x": 118.25,
+              "y": 791,
+              "width": 153.5,
+              "bottom": 818.1875
+            },
+            "nav": {
+              "x": 0,
+              "y": 834,
+              "bottom": 900,
+              "visible": true
+            }
+          },
+          "miitLinkOpensNewTab": true,
+          "miitPageContentNotTested": true,
+          "documentsAndUploadUnchanged": true
+        }
+      ],
+      "pageErrors": [],
+      "serverErrors": [],
+      "unexpectedWrites": [],
+      "businessRequests": "GET-only, existing employee session signed in memory; no production account or document writes"
+    },
+    "businessIntegrity": {
+      "tables": 22,
+      "documents": 70,
+      "databaseSha256": "a1277585d42d47f4374b6436cecd1ffa9289418760bac000e4b2b60d9d5c7b06",
+      "localFiles": 12,
+      "localImagesSha256": "b39083c733cb7ae4363dc8535cf0f50d6e07bca65ab7c1a25af88a5ddcb28b24",
+      "oss": {
+        "objects": 12,
+        "bytes": 8241509,
+        "manifestSha256": "90eba82cb11e82bb029325f68a2cc4f9acd6e05eee50dca0039b0ded79167a34"
+      },
+      "unchangedAcrossDeploymentAndBrowser": true
+    },
+    "realBusinessWrites": false,
+    "paidOcrCalls": false,
+    "externalMiitContent": "New-window navigation target verified with intercepted destination; government website content availability not asserted"
+  },
+  "backup": {
+    "path": "/opt/delivery-audit/backups/20261119-004334-icp-footer",
+    "checksums": {
+      "database.sql.gz": "1d17502cc5417406cd83609cf63e6ec1019a6dffb02b206acffc3b0c8f4ed100",
+      "uploads.tar.gz": "c9b858160f64dbb67d5832bb4365a6c86df221efafba0fa2ab7a32b4320046e4",
+      "oss-manifest.private.json": "90eba82cb11e82bb029325f68a2cc4f9acd6e05eee50dca0039b0ded79167a34",
+      "source-before.tar.gz": "f24dba5a18d09e7194e0eec6501457b5bee9b57575879b7b8fe9e74cc0274cfb"
+    },
+    "databaseDumpDecompressedAndVerified": true,
+    "localImagesArchiveListed": true,
+    "referencedOssObjectsReadCopiedAndVerified": true
+  },
+  "rollback": {
+    "previousImage": "sha256:020aece0553d6d95c85e59b97615be834c268a387ed751549e844aa2131011e4",
+    "backup": "/opt/delivery-audit/backups/20261119-004334-icp-footer",
+    "steps": "Restore runtime.env.private and affected files from source-before.tar.gz; remove only the two newly added SiteFooter files if absent in backup; retag previous image to delivery-audit:trial and recreate app/worker with existing compose. Keep DNS, TLS and nginx configuration. Do not restore business DB/images automatically.",
+    "rehearsed": false
+  },
+  "wechat": {
+    "status": "DEFERRED_BY_USER",
+    "currentLogin": "Existing username and password",
+    "domainSavedConfirmedByUser": true,
+    "menuLinkAddedConfirmedByUser": true,
+    "credentialsConfigured": false,
+    "secretReset": false,
+    "keruyunMenusAndAuthorizationUnchanged": true,
+    "next": "User will inquire about safely obtaining the existing AppSecret; no reminder/automation requested"
+  },
+  "githubSync": {
+    "status": "PASS",
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "visibility": "public",
+    "verifiedCodeSourceCommit": "e13a58ba161fa9dff75424a5d05b84dfc02a03f2",
+    "verifiedCodeSnapshotCommit": "1ab358dc17c912a9b900a6b18c0b5e14693f1bc0",
+    "files": 569,
+    "historyBlobsScanned": 693,
+    "credentialFindings": 0,
+    "riskyPaths": 0,
+    "method": "Separate sanitized normal fast-forward snapshot, preserving local original history and release tags; completion records also synchronized normally. Latest remote main is authoritative."
+  },
+  "officialRequirementSource": "https://help.aliyun.com/zh/icp-filing/basic-icp-service/the-icp-record-post-processing-1"
+}
