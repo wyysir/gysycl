@@ -123,8 +123,19 @@
     "WeChat login deferred; public security filing still awaiting user submission confirmation"
   ],
   "github": {
-    "repository": "https://github.com/wyysir/gysycl",
-    "visibilityVerified": "public",
-    "status": "pending synchronization after release documentation commit"
-  }
+    "status": "PASS",
+    "url": "https://github.com/wyysir/gysycl",
+    "visibility": "public",
+    "branch": "main",
+    "remoteCommit": "681ef6f6f700a87fb4594c16a1a18f47b02ce2a1",
+    "sourceCommit": "4503641b56042ef5a1feca0f3b52a9bf271efe22",
+    "fileCount": 590,
+    "originalLocalHistoryPreserved": true,
+    "historyPhotosNotUploaded": true,
+    "historicalBlobsScanned": 781,
+    "credentialFindings": 0,
+    "riskyPaths": 0,
+    "receiptNote": "Verified release snapshot at this receipt. Receipt documentation is subsequently synchronized through the same normal fast-forward workflow; current remote main is authoritative."
+  },
+  "releaseTagCommit": "4503641b56042ef5a1feca0f3b52a9bf271efe22"
 }
