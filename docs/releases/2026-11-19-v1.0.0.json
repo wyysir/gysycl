@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "firstProductionRelease": true,
   "releaseTag": "release/2026-11-19-v1.0.0",
-  "status": "DEPLOYED_MANAGED_DATA_CLEANED",
+  "status": "PASS",
   "completedAt": "2026-11-19T15:11:31.640284+08:00",
   "timezone": "Asia/Shanghai",
   "url": "https://shian.dhcy.top",
@@ -125,9 +125,11 @@
     "rollback": "No new backup, no restore rehearsal, no recovery promise for deleted data.",
     "futureBackupTimer": "Existing shian-backup.timer unchanged; future backups will reflect current/new production data. User did not request disabling future backups.",
     "ecsCloudDiskSnapshots": {
-      "status": "PENDING_USER_CONFIRMATION",
+      "status": "NONE_REPORTED_BY_USER",
+      "checkedAt": "2026-11-19T15:18:53.193686+08:00",
+      "source": "User inspected ECS console and corrected earlier answer: no snapshots for the target instance.",
       "independentlyQueried": false,
-      "reason": "Server and OSS permissions do not expose ECS cloud disk snapshots; user asked to check the target instance in Hangzhou."
+      "snapshotDeletionPerformed": false
     },
     "scope": "Verified production PostgreSQL/Redis, production documents/ OSS namespace, server backups/private environment copies, local downloaded backups and historical isolated DB/image copies. No claim of account-wide forensic erasure or deletion of unknown external copies."
   },
@@ -180,12 +182,28 @@
     "branch": "main",
     "visibilityVerified": "public",
     "method": "Separate sanitized fast-forward snapshot; original local history and original release tags not pushed.",
-    "status": "Pending post-commit synchronization; verify final remote main."
+    "status": "PASS",
+    "verifiedReleaseSourceCommit": "e7749b9bf1b3c4f7de495f29799e95349c71289e",
+    "verifiedReleaseSnapshotCommit": "40a9ae4c00e9bee2e433e179340619cc3980cc4d",
+    "files": 573,
+    "historyBlobsScanned": 710,
+    "credentialFindings": 0,
+    "riskyPaths": 0,
+    "completionRecords": "Completion records are committed and synchronized afterward using the same fast-forward workflow; latest remote main is authoritative.",
+    "originalReleaseTag": "Retained only in original local repository; no original-history tag pushed."
   },
   "officialReferences": [
     "https://help.aliyun.com/zh/oss/developer-reference/delete-objects-15",
     "https://help.aliyun.com/zh/oss/developer-reference/listobjectversions",
     "https://help.aliyun.com/zh/ram/create-a-custom-policy",
     "https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describesnapshots"
-  ]
+  ],
+  "releaseCommit": "e7749b9bf1b3c4f7de495f29799e95349c71289e",
+  "cloudDiskSnapshots": {
+    "status": "NONE_REPORTED_BY_USER",
+    "checkedAt": "2026-11-19T15:18:53.193686+08:00",
+    "source": "User inspected ECS console and corrected earlier answer: no snapshots for the target instance.",
+    "independentlyQueried": false,
+    "snapshotDeletionPerformed": false
+  }
 }
