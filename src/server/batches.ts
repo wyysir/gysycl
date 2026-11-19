@@ -29,11 +29,14 @@ export async function createBatch(user: SessionUser, input: {requestId: string; 
   const docDate = parseDateOnly(input.docDate);
   if (!docDate) throw new ApiError(400, "请选择有效日期");
   const db = await getReadyDb();
-  if (!await db.project.findFirst({where: {id: input.projectId, active: true}})) throw new ApiError(400, "项目不存在或已停用");
-  const batch = await db.uploadBatch.upsert({where:{requestId: input.requestId}, update:{}, create:{
+  const batch = await db.$transaction(async tx => {
+    const projects = await tx.$queryRaw<Array<{ id: string }>>`SELECT id FROM "Project" WHERE id = ${input.projectId} AND active = true FOR KEY SHARE`;
+    if (!projects.length) throw new ApiError(400, "项目不存在或已停用");
+    return tx.uploadBatch.upsert({where:{requestId: input.requestId}, update:{}, create:{
     requestId: input.requestId, projectId: input.projectId, docDate, createdById: user.id,
     photos: {create: input.fileNames.map((fileName, index) => ({position: index + 1, fileName}))},
-  }, include:{photos:{orderBy:{position:"asc"}}}});
+    }, include:{photos:{orderBy:{position:"asc"}}}});
+  });
   if (batch.createdById !== user.id || batch.projectId !== input.projectId || dateOnly(batch.docDate) !== input.docDate
     || JSON.stringify(batch.photos.map(p => p.fileName)) !== JSON.stringify(input.fileNames)) throw new ApiError(409, "此上传请求已使用，请恢复原批次");
   return {id: batch.id};

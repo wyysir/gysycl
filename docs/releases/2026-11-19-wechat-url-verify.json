@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "releaseTag": "release/2026-11-19-wechat-url-verify",
+  "type": "Nginx static domain verification, app image unchanged",
+  "source": "Exact verification filename/content from user Tencent restoration screenshots on 2026-11-19",
+  "deployment": {
+    "status": "PASS",
+    "completedAt": "2026-11-19T21:23:46.386874+08:00",
+    "filename": "788c68f9771c83073299b4f955277af3.txt",
+    "bytes": 40,
+    "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995",
+    "configPath": "/etc/nginx/sites-available/shian-app.conf",
+    "configBeforeSha256": "4bbac88b7605799e1c6ab48283c205e5ff501a21d8d06128696c5f6a6421d87b",
+    "configAfterSha256": "34966c1902d7db899d1d93caf9987d1cefcbd6ba9f7c6c6851b2fda6a5ed7e43",
+    "nginxTest": "PASS",
+    "reloaded": true,
+    "existingWechatOAuthVerificationUnchanged": true,
+    "businessDataMutation": false,
+    "loginIntegrationChanged": false,
+    "backupCreated": false,
+    "publicChecks": [
+      {
+        "url": "http://shian.dhcy.top/788c68f9771c83073299b4f955277af3.txt",
+        "status": 200,
+        "bytes": 40,
+        "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995",
+        "noRedirect": true,
+        "contentType": "text/plain"
+      },
+      {
+        "url": "https://shian.dhcy.top/788c68f9771c83073299b4f955277af3.txt",
+        "status": 200,
+        "bytes": 40,
+        "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995",
+        "noRedirect": true,
+        "contentType": "text/plain"
+      }
+    ],
+    "submittedToTencent": false,
+    "restorationApproved": false
+  },
+  "governmentIcpEvidence": {
+    "source": "User-provided MIIT screenshot",
+    "domain": "dhcy.top",
+    "websiteFilingNumber": "浙ICP备2026030630号-3",
+    "approvalDate": "2026-11-16",
+    "independentlyQueried": false
+  },
+  "currentUserScreen": "Proof-material form: 10–200 character reason, optional feature URL and up to four optional images. User instructed to attach the MIIT screenshot.",
+  "appealSubmitted": false,
+  "restorationApproved": false,
+  "verificationPassed": "User advanced to proof-material form; no separate success receipt supplied.",
+  "assistantSubmittedAnyExternalFeedback": false,
+  "appLoginIntegrationChanged": false,
+  "publicSecurityFilingCompleted": false,
+  "evidence": "/opt/delivery-audit/releases/wechat-url-verify-20261119",
+  "maintenance": "Keep verification file accessible during user appeal/review; do not preemptively delete or change its content. No reminder or polling automation created.",
+  "officialGuide": "https://help.aliyun.com/zh/document_detail/3043832.html"
+}

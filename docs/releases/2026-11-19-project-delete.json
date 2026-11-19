@@ -1,0 +1,185 @@
+{
+  "status": "PASS",
+  "version": "1.0.1",
+  "releaseTag": "release/2026-11-19-project-delete",
+  "completedAt": "2026-11-19T21:22:22.770417+08:00",
+  "timezone": "Asia/Shanghai",
+  "url": "https://shian.dhcy.top",
+  "source": {
+    "patchCommit": "3acd0e2334c563ac8cd22c3713179206ac5e4cd4",
+    "files": [
+      "src/components/ProjectManager.tsx",
+      "src/app/api/projects/[id]/route.ts",
+      "src/server/batches.ts",
+      "src/app/(workspace)/settings/SettingsClient.tsx",
+      "package.json",
+      "package-lock.json",
+      "src/server/project-deletion.ts"
+    ],
+    "patchSha256": "8154e2b4fb7b4dd40cb2c0325573fb1c0207eed6f9fa133773e908a000b768e3",
+    "newServiceSha256": "218dd018b9cf24b8751d3122d58b5b4830b2401263a6f4a75d0660460a1485d4",
+    "sourceArchive": "/opt/delivery-audit/releases/project-delete-20261119/source-v1.0.1.tar.gz",
+    "sourceArchiveSha256": "107af56980e5aedcdc61dd7c59bf341e1b783b048cbaa0331c2c98ed661d9b67",
+    "construction": "Copied exact running image source; normalized line endings only for patch targets, applied the four modified source-file diffs plus new deletion service, changed only version properties in runtime package metadata. Preserved all other runtime source; did not copy full local files that differed from runtime.",
+    "wholeLocalMainDeployed": false
+  },
+  "deployment": {
+    "image": "sha256:1d2ee238fc50edf838cccb8aaabe34b09a0d5834cbcdf58455b4cf22a8c7a043",
+    "previousImage": "sha256:786edf87b99d9abec1f234452ea6b1361b76a46d33be8c18c2b4f11586800638",
+    "appAndWorkerSameImage": true,
+    "releaseId": "release/2026-11-19-project-delete",
+    "packageVersion": "1.0.1",
+    "serverVersion": "1.0.1",
+    "databaseMigrationsAdded": 0,
+    "existingMigrations": 8,
+    "businessUnchangedAcrossImageSwitch": true,
+    "candidateRemoved": true,
+    "temporaryPrivateEnvironmentRemoved": true
+  },
+  "behavior": {
+    "administratorOnly": true,
+    "originAndVersionValidated": true,
+    "usedProjects": "Refuse if any Document, Contract, ProjectDailyRevenue or UploadBatch exists; do not cascade-delete business data. Suggest disabling instead.",
+    "unusedProjects": "Delete Project and its memberships only; employees and other master data preserved; project.deleted audit written.",
+    "concurrentUploads": "Project FOR UPDATE while deleting; createBatch takes FOR KEY SHARE in the same transaction as its batch write, preventing stale-page orphan batches."
+  },
+  "authorizedCleanup": {
+    "allExistingProjectsExplicitlyRequestedByUser": true,
+    "deletedProjects": 7,
+    "removedMemberships": 1,
+    "remainingProjects": 0,
+    "remainingMemberships": 0,
+    "employeeAccounts": 2,
+    "ingredients": 82,
+    "suppliers": 19,
+    "allOther20TablesUnchanged": true,
+    "newProjectDeleteAuditRows": 7,
+    "otherBusinessDataDeleted": false,
+    "newBackupCreated": false,
+    "remainingTableCounts": {
+      "ApprovalRecord": 0,
+      "AuditLog": 76,
+      "BatchPhoto": 0,
+      "CheckResult": 0,
+      "Contract": 0,
+      "CustomRole": 0,
+      "Document": 0,
+      "DocumentItem": 0,
+      "DocumentPage": 0,
+      "ImportBatch": 0,
+      "Ingredient": 82,
+      "IngredientAlias": 10,
+      "Notification": 0,
+      "Project": 0,
+      "ProjectDailyRevenue": 0,
+      "ProjectMembership": 0,
+      "Supplier": 19,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "UploadBatch": 0,
+      "User": 2,
+      "WechatBinding": 0,
+      "_prisma_migrations": 8
+    }
+  },
+  "validation": {
+    "unitTests": {
+      "files": 37,
+      "passed": 300
+    },
+    "typecheck": "PASS",
+    "exactRuntimeBaseProductionBuild": "PASS",
+    "candidateBrowser": {
+      "mode": "stage",
+      "status": "PASS",
+      "checks": [
+        {
+          "width": 1440,
+          "deleteConfirmation": true,
+          "cancelPreservesProjects": true,
+          "emptyProjects": false,
+          "loginIcpFooter": true,
+          "dashboardIcpFooter": true,
+          "noHorizontalOverflow": true,
+          "uploadPageAccessible": true
+        },
+        {
+          "width": 390,
+          "deleteConfirmation": true,
+          "cancelPreservesProjects": true,
+          "emptyProjects": false,
+          "loginIcpFooter": true,
+          "dashboardIcpFooter": true,
+          "noHorizontalOverflow": true,
+          "uploadPageAccessible": true
+        }
+      ],
+      "errors": [],
+      "writes": []
+    },
+    "liveBrowser": {
+      "mode": "live",
+      "status": "PASS",
+      "checks": [
+        {
+          "width": 1440,
+          "deleteConfirmation": false,
+          "cancelPreservesProjects": false,
+          "emptyProjects": true,
+          "loginIcpFooter": true,
+          "dashboardIcpFooter": true,
+          "noHorizontalOverflow": true,
+          "uploadPageAccessible": true
+        },
+        {
+          "width": 390,
+          "deleteConfirmation": false,
+          "cancelPreservesProjects": false,
+          "emptyProjects": true,
+          "loginIcpFooter": true,
+          "dashboardIcpFooter": true,
+          "noHorizontalOverflow": true,
+          "uploadPageAccessible": true
+        }
+      ],
+      "errors": [],
+      "writes": []
+    },
+    "actualProductionDeleteCalls": 7,
+    "publicPostBrowserIntegrity": "PASS",
+    "health": {
+      "ok": true,
+      "database": "up",
+      "logging": {
+        "enabled": true,
+        "dropped": 0,
+        "writeFailures": 0,
+        "lastErrorCode": ""
+      },
+      "time": "2026-11-19T13:27:33.706Z"
+    },
+    "newTestDocuments": 0,
+    "paidOcrCalls": 0
+  },
+  "backupAndRecovery": {
+    "newDatabaseImageOrPrivateEnvBackup": false,
+    "basis": "User explicitly requested no rollback backup during this launch cleanup. No database/image restore performed; historical source/releases retained.",
+    "sourceArchive": "Application source only; no private environment, database dump, uploaded business images or node_modules.",
+    "firstProductionRelease": "v1.0.0 and its immutable tag retained; this is a patch release."
+  },
+  "wechat": {
+    "applicationLogin": "Still employee number/password; OAuth login remains deferred",
+    "urlVerificationRelease": "release/2026-11-19-wechat-url-verify",
+    "verificationDeployed": true,
+    "governmentQueryEvidence": "User-provided MIIT query screenshot: dhcy.top, 浙ICP备2026030630号-3, approved 2026-11-16; not independently queried through CAPTCHA.",
+    "appealStatus": "User screenshot now at proof-material form. No received confirmation of submission or restoration approval; assistant did not submit.",
+    "publicSecurityFiling": "Still separate and pending user submission/approval confirmation."
+  },
+  "evidence": "/opt/delivery-audit/releases/project-delete-20261119",
+  "github": {
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "method": "Separate sanitized fast-forward snapshot, original local history/tags not pushed",
+    "status": "Completion records synchronized after this commit; final remote verification is authoritative."
+  }
+}

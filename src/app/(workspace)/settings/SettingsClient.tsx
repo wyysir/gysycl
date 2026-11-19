@@ -11,7 +11,7 @@ import { ProjectManager } from "@/components/ProjectManager";
 import { EditorSheet } from "@/components/EditorSheet";
 
 const categories = [
-  { key: "projects", title: "项目点", description: "新增、改名、启停项目点", icon: Building2 },
+  { key: "projects", title: "项目点", description: "新增、改名、启停及删除项目点", icon: Building2 },
   { key: "users", title: "员工账号", description: "新增员工、分配角色、管理账号", icon: Users },
   { key: "roles", title: "角色权限", description: "设置各岗位的查看与操作权限", icon: ShieldCheck },
   { key: "brand", title: "企业品牌", description: "查看和更换企业Logo", icon: Palette },
