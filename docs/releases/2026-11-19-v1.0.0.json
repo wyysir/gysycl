@@ -1,0 +1,191 @@
+{
+  "version": "1.0.0",
+  "firstProductionRelease": true,
+  "releaseTag": "release/2026-11-19-v1.0.0",
+  "status": "DEPLOYED_MANAGED_DATA_CLEANED",
+  "completedAt": "2026-11-19T15:11:31.640284+08:00",
+  "timezone": "Asia/Shanghai",
+  "url": "https://shian.dhcy.top",
+  "authorization": {
+    "clearAllCurrentDocumentsAndOriginals": true,
+    "clearAllContractPricesAndRevenues": true,
+    "clearAllExistingDatabaseAndImageBackups": true,
+    "noRollbackRequired": true,
+    "newBackupCreated": false
+  },
+  "runtime": {
+    "image": "sha256:786edf87b99d9abec1f234452ea6b1361b76a46d33be8c18c2b4f11586800638",
+    "appAndWorkerSameImage": true,
+    "packageVersion": "1.0.0",
+    "releaseId": "release/2026-11-19-v1.0.0",
+    "serverVersionFile": "/opt/delivery-audit/VERSION",
+    "demoMode": false,
+    "codeChanged": false,
+    "rebuilt": false,
+    "databaseMigrationsAdded": 0,
+    "migrationsExisting": 8,
+    "sourceBasis": "Existing ICP-footer runtime image, patch e13a58ba161fa9dff75424a5d05b84dfc02a03f2 on its recorded exact runtime base. Local main includes unshipped OCR experiments and was not rebuilt or deployed.",
+    "sourceEvidence": "docs/releases/2026-11-19-icp-footer.json",
+    "newSourcePackage": "None: unchanged verified running image; this is a data cleanup and first-production-release designation."
+  },
+  "deleted": {
+    "documents": 70,
+    "items": 547,
+    "pages": 7,
+    "checks": 570,
+    "approvals": 68,
+    "notifications": 1,
+    "uploadBatches": 8,
+    "batchPhotos": 38,
+    "contracts": 150,
+    "revenues": 36,
+    "documentAndFinanceAuditLogs": 430,
+    "completedAndFailedOcrJobs": 42,
+    "serverBackupDirectories": 70,
+    "serverBackupFiles": 421,
+    "serverBackupBytes": 1017525751,
+    "serverLocalImageFiles": 12,
+    "serverLocalImageBytes": 8030846,
+    "oldRootEnvironmentBackup": true,
+    "historicalPrivateEnvironmentCopies": 14,
+    "localBackupAndIsolatedDataTargets": 48,
+    "localBackupAndIsolatedDataFiles": 35897,
+    "localBackupAndIsolatedDataBytes": 1928733500,
+    "ossObjectVersions": 20,
+    "ossDeleteMarkers": 8,
+    "ossUniqueKeys": 20,
+    "ossBytes": 11523059
+  },
+  "after": {
+    "tableCounts": {
+      "User": 2,
+      "WechatBinding": 0,
+      "Project": 7,
+      "ProjectMembership": 1,
+      "CustomRole": 0,
+      "Supplier": 19,
+      "SupplierAlias": 0,
+      "Ingredient": 82,
+      "IngredientAlias": 10,
+      "SystemSetting": 1,
+      "ImportBatch": 0,
+      "_prisma_migrations": 8,
+      "Document": 0,
+      "DocumentPage": 0,
+      "DocumentItem": 0,
+      "CheckResult": 0,
+      "ApprovalRecord": 0,
+      "Notification": 0,
+      "UploadBatch": 0,
+      "BatchPhoto": 0,
+      "Contract": 0,
+      "ProjectDailyRevenue": 0,
+      "AuditLog": 69
+    },
+    "serverBackups": 0,
+    "serverLocalImages": 0,
+    "ossDocumentObjects": 0,
+    "ossDocumentVersions": 0,
+    "localSelectedTargetsAbsent": true,
+    "ocrJobs": {
+      "active": 0,
+      "wait": 0,
+      "delayed": 0,
+      "prioritized": 0,
+      "waiting-children": 0,
+      "paused": 0,
+      "completed": 0,
+      "failed": 0
+    }
+  },
+  "preserved": {
+    "tablesUnchanged": [
+      "User",
+      "WechatBinding",
+      "Project",
+      "ProjectMembership",
+      "CustomRole",
+      "Supplier",
+      "SupplierAlias",
+      "Ingredient",
+      "IngredientAlias",
+      "SystemSetting",
+      "ImportBatch",
+      "_prisma_migrations"
+    ],
+    "passwordHashesAndAccountsUnchanged": true,
+    "currentLogoAndSettingsUnchanged": true,
+    "credentialsAndDomainsUnchangedExceptReleaseId": true,
+    "localSourceHistoryAndReleaseTagsPreserved": true,
+    "localPrimaryDevelopmentDatabaseAndOriginalOcrResearchFiles": "Preserved; separate from online records and deleted historical backup/isolation copies. Existing local research source images are not asserted to have been erased.",
+    "unrelatedUserChangelogEditsPreserved": true
+  },
+  "backupPolicy": {
+    "existingManagedBackups": "Deleted by explicit user request; old release records describe historical locations that are no longer restore points.",
+    "rollback": "No new backup, no restore rehearsal, no recovery promise for deleted data.",
+    "futureBackupTimer": "Existing shian-backup.timer unchanged; future backups will reflect current/new production data. User did not request disabling future backups.",
+    "ecsCloudDiskSnapshots": {
+      "status": "PENDING_USER_CONFIRMATION",
+      "independentlyQueried": false,
+      "reason": "Server and OSS permissions do not expose ECS cloud disk snapshots; user asked to check the target instance in Hangzhou."
+    },
+    "scope": "Verified production PostgreSQL/Redis, production documents/ OSS namespace, server backups/private environment copies, local downloaded backups and historical isolated DB/image copies. No claim of account-wide forensic erasure or deletion of unknown external copies."
+  },
+  "validation": {
+    "databaseTransactionAssertions": "PASS: scope tables empty; 12 protected tables including password hashes/settings unchanged",
+    "postCleanupTableAudit": "PASS",
+    "ocrQueue": "PASS: all target states zero",
+    "redisPersistence": "PASS: AOF rewritten and RDB saved after cleanup",
+    "health": {
+      "ok": true,
+      "database": "up",
+      "logging": {
+        "enabled": true,
+        "dropped": 0,
+        "writeFailures": 0,
+        "lastErrorCode": ""
+      },
+      "time": "2026-11-19T07:11:31.566Z"
+    },
+    "publicBrowser": {
+      "status": "PASS",
+      "widths": [
+        1440,
+        390
+      ],
+      "pages": 14,
+      "getEndpoints": 6,
+      "pageErrors": 0,
+      "unexpectedWrites": 0,
+      "testedEmptyDocumentList": true,
+      "zeroDashboardCounters": true,
+      "contractsEmpty": true,
+      "masterDataPresent": true,
+      "usernamePasswordForm": true,
+      "actualPasswordLoginAttempted": false,
+      "sessionMethod": "Temporary existing-admin session signed in memory, password hashes verified unchanged separately; no account changes or password login attempt"
+    },
+    "applicationUnitTestsAndBuild": "Not repeated: no application code changes or rebuild; prior image already verified. Maintenance used transaction assertions plus live APIs/browser and storage inventories.",
+    "paidOcrCalls": 0,
+    "ossReadback": "Both current objects and all versions/delete markers listed again; documents/ empty."
+  },
+  "login": {
+    "mode": "Existing username and password",
+    "wechat": "Deferred by user; no credential reset or menu change"
+  },
+  "publicSecurityFiling": "Still pending user submission/approval; ICP footer remains. No public security filing number invented.",
+  "evidence": "/opt/delivery-audit/releases/production-v1-20261119",
+  "githubSync": {
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "visibilityVerified": "public",
+    "method": "Separate sanitized fast-forward snapshot; original local history and original release tags not pushed.",
+    "status": "Pending post-commit synchronization; verify final remote main."
+  },
+  "officialReferences": [
+    "https://help.aliyun.com/zh/oss/developer-reference/delete-objects-15",
+    "https://help.aliyun.com/zh/oss/developer-reference/listobjectversions",
+    "https://help.aliyun.com/zh/ram/create-a-custom-policy",
+    "https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describesnapshots"
+  ]
+}
