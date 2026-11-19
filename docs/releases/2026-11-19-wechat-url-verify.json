@@ -55,5 +55,19 @@
   "publicSecurityFilingCompleted": false,
   "evidence": "/opt/delivery-audit/releases/wechat-url-verify-20261119",
   "maintenance": "Keep verification file accessible during user appeal/review; do not preemptively delete or change its content. No reminder or polling automation created.",
-  "officialGuide": "https://help.aliyun.com/zh/document_detail/3043832.html"
+  "officialGuide": "https://help.aliyun.com/zh/document_detail/3043832.html",
+  "releaseCommit": "dbde7ffd19081cfb000e57b75e132a1029faf6e6",
+  "githubSync": {
+    "status": "PASS",
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "visibility": "public",
+    "verifiedReleaseSourceCommit": "dbde7ffd19081cfb000e57b75e132a1029faf6e6",
+    "verifiedReleaseSnapshotCommit": "34643d0dbe5fc5a4b21f68d3969d43a4f2111e69",
+    "files": 578,
+    "historyBlobsScanned": 733,
+    "credentialFindings": 0,
+    "riskyPaths": 0,
+    "method": "Separate sanitized fast-forward snapshot, no original history or tags pushed. Completion receipts are committed and synchronized afterward; latest remote main is authoritative."
+  }
 }

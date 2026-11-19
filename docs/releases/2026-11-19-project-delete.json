@@ -176,10 +176,18 @@
     "publicSecurityFiling": "Still separate and pending user submission/approval confirmation."
   },
   "evidence": "/opt/delivery-audit/releases/project-delete-20261119",
-  "github": {
+  "releaseCommit": "dbde7ffd19081cfb000e57b75e132a1029faf6e6",
+  "githubSync": {
+    "status": "PASS",
     "repository": "https://github.com/wyysir/gysycl",
     "branch": "main",
-    "method": "Separate sanitized fast-forward snapshot, original local history/tags not pushed",
-    "status": "Completion records synchronized after this commit; final remote verification is authoritative."
+    "visibility": "public",
+    "verifiedReleaseSourceCommit": "dbde7ffd19081cfb000e57b75e132a1029faf6e6",
+    "verifiedReleaseSnapshotCommit": "34643d0dbe5fc5a4b21f68d3969d43a4f2111e69",
+    "files": 578,
+    "historyBlobsScanned": 733,
+    "credentialFindings": 0,
+    "riskyPaths": 0,
+    "method": "Separate sanitized fast-forward snapshot, no original history or tags pushed. Completion receipts are committed and synchronized afterward; latest remote main is authoritative."
   }
 }
