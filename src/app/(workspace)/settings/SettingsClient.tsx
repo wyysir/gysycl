@@ -416,7 +416,9 @@ export function SettingsClient() {
       {deleteUser && <EditorSheet title="删除员工账号" onClose={() => { if (!deleting) setDeleteUser(null); }}>
         <form onSubmit={confirmDeleteUser}>
           <p>确认删除 <strong>{deleteUser.name}（{deleteUser.employeeNo}）</strong>？</p>
-          <p>删除后立即无法登录，并从账号列表移除。历史单据、营业额及审核记录保留，原员工号不再复用。</p>
+          <p>删除后无法再登录，已登录会话在下一次请求时失效，并从账号列表移除。历史单据、营业额、审核记录及原人员归属保留，未完成业务不会自动转交。</p>
+          <p>项目授权记录保留但不再生效，原员工号不能复用；删除后不能在此重新启用。临时停职请改用停用，之后可重新启用。</p>
+          {deleteUser.wechatBound && <p>已有微信绑定会保留，不会自动解绑；以后将该微信绑定新员工号前，需要先处理旧绑定。</p>}
           <div className="page-actions mt-16"><button className="btn btn--outline" type="button" disabled={deleting} onClick={() => setDeleteUser(null)}>取消</button><button className="btn btn--danger" disabled={deleting}>{deleting ? "删除中…" : "确认删除账号"}</button></div>
         </form>
       </EditorSheet>}

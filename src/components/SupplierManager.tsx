@@ -10,6 +10,7 @@ export function SupplierManager({ canManage, canCreate, onChange, revision }: { 
   const { showToast } = useToast();
   const [rows, setRows] = useState<Supplier[]>([]), [query, setQuery] = useState(""), [status, setStatus] = useState("active");
   const [editing, setEditing] = useState<Supplier | "new" | null>(null), [form, setForm] = useState(blank);
+  const [deleting, setDeleting] = useState<Supplier | null>(null);
   const [busy, setBusy] = useState(false), [error, setError] = useState(""), [listError, setListError] = useState("");
   async function load() {
     try { setRows((await api.get<{ suppliers: Supplier[] }>(`/api/master-data/suppliers${canManage ? "?status=all" : ""}`)).suppliers); setListError(""); }
@@ -30,6 +31,15 @@ export function SupplierManager({ canManage, canCreate, onChange, revision }: { 
     } catch (e) { setError(e instanceof Error ? e.message : "保存失败"); }
     finally { setBusy(false); }
   }
+  async function remove(event: FormEvent) {
+    event.preventDefault(); if (!deleting || busy) return;
+    setBusy(true); setError("");
+    try {
+      await api.delete(`/api/master-data/suppliers/${deleting.id}`, { updatedAt: deleting.updatedAt });
+      setDeleting(null); showToast("供应商已删除"); await load(); await onChange();
+    } catch (e) { setError(e instanceof Error ? e.message : "删除失败"); }
+    finally { setBusy(false); }
+  }
   const visible = rows.filter(row => (!query || [row.name, row.contactName, row.contactPhone, ...row.aliases].some(value => value.includes(query))) && (status === "all" || row.active === (status === "active")));
   return <section className="card">
     <div className="card-head"><h2>供应商列表</h2>{canCreate && <button className="btn btn--primary" onClick={() => open("new")}>新增供应商</button>}</div>
@@ -39,7 +49,7 @@ export function SupplierManager({ canManage, canCreate, onChange, revision }: { 
     </div>
     {listError && <p role="alert">{listError}<button className="btn btn--outline" onClick={load}>重试</button></p>}
     <div className="table-wrap"><table className="data-table"><thead><tr><th>名称</th><th>联系人</th><th>电话</th><th>别名</th><th>状态</th>{canManage && <th>操作</th>}</tr></thead><tbody>
-      {visible.map(row => <tr key={row.id}><td>{row.name}</td><td>{row.contactName || "—"}</td><td>{row.contactPhone || "—"}</td><td>{row.aliases.join("、") || "—"}</td><td>{row.active ? "启用" : "停用"}</td>{canManage && <td><div className="page-actions"><button className="btn btn--outline btn--small" onClick={() => open(row)}>编辑</button><button className="btn btn--outline btn--small" onClick={() => open(row, true)}>{row.active ? "停用" : "启用"}</button></div></td>}</tr>)}
+      {visible.map(row => <tr key={row.id}><td>{row.name}</td><td>{row.contactName || "—"}</td><td>{row.contactPhone || "—"}</td><td>{row.aliases.join("、") || "—"}</td><td>{row.active ? "启用" : "停用"}</td>{canManage && <td><div className="page-actions"><button className="btn btn--outline btn--small" onClick={() => open(row)}>编辑</button><button className="btn btn--outline btn--small" onClick={() => open(row, true)}>{row.active ? "停用" : "启用"}</button><button className="btn btn--danger btn--small" onClick={() => { setError(""); setDeleting(row); }}>删除</button></div></td>}</tr>)}
       {!visible.length && <tr><td colSpan={canManage ? 6 : 5}>暂无符合条件的供应商</td></tr>}
     </tbody></table></div>
     {editing && <EditorSheet title={editing === "new" ? "新增供应商" : "编辑供应商"} onClose={() => { if (!busy) setEditing(null); }}><form onSubmit={save}>
@@ -48,6 +58,13 @@ export function SupplierManager({ canManage, canCreate, onChange, revision }: { 
       <label className="field">联系电话<input className="input" maxLength={30} disabled={busy} value={form.contactPhone} onChange={e => setForm({ ...form, contactPhone: e.target.value })} /></label>
       {editing !== "new" && <><label className="field">别名（用顿号分隔）<input className="input" disabled={busy} value={form.aliases} onChange={e => setForm({ ...form, aliases: e.target.value })} /></label><label><input type="checkbox" disabled={busy} checked={form.active} onChange={e => setForm({ ...form, active: e.target.checked })} />启用供应商</label><p>停用后保留历史记录，可在停用列表重新启用。</p></>}
       {error && <p role="alert">{error}</p>}<div className="modal-actions"><button type="button" className="btn btn--outline" disabled={busy} onClick={() => setEditing(null)}>取消</button><button className="btn btn--primary" disabled={busy}>保存供应商</button></div>
+    </form></EditorSheet>}
+    {deleting && <EditorSheet title="删除供应商" onClose={() => { if (!busy) setDeleting(null); }}><form onSubmit={remove}>
+      <p>确认删除 <strong>{deleting.name}</strong>？</p>
+      <p>删除供应商资料及其别名，后续选择和匹配中不再显示该供应商；项目点、员工账号和原材料保留。已有任何单据或合同价时无法删除，请改用停用。</p>
+      <p>删除操作保留审计记录。删除后不能直接恢复；重新新建会生成新的供应商资料。</p>
+      {error && <p role="alert">{error}</p>}
+      <div className="modal-actions"><button type="button" className="btn btn--outline" disabled={busy} onClick={() => setDeleting(null)}>取消</button><button className="btn btn--danger" disabled={busy}>{busy ? "删除中…" : "确认删除供应商"}</button></div>
     </form></EditorSheet>}
   </section>;
 }

@@ -1,0 +1,220 @@
+{
+  "status": "PASS",
+  "version": "1.0.2",
+  "releaseTag": "release/2026-11-19-supplier-delete",
+  "completedAt": "2026-11-19T21:52:24.071049+08:00",
+  "timezone": "Asia/Shanghai",
+  "url": "https://shian.dhcy.top",
+  "source": {
+    "patchCommit": "edcd81473b4236c63a8af518a6f78575261197db",
+    "files": [
+      "src/components/SupplierManager.tsx",
+      "src/app/api/master-data/suppliers/[id]/route.ts",
+      "src/components/ProjectManager.tsx",
+      "src/app/(workspace)/settings/SettingsClient.tsx",
+      "src/lib/permissions.ts",
+      "package.json",
+      "package-lock.json",
+      "src/server/supplier-deletion.ts"
+    ],
+    "patchSha256": "370357786e776fb923c1d078929e967bdc7af5a479827e86af340faf3d5d5122",
+    "newServiceSha256": "362b2a8242ddf41c2a4e839f7adafb68b61e97b8e7772e6296f3ec424a11a47d",
+    "archive": "/opt/delivery-audit/releases/supplier-delete-20261119/source-v1.0.2.tar.gz",
+    "archiveSha256": "9195f816176b86d0aca50dd202d7eacca9f2b36c44b2250d222a8090f217f9b2",
+    "construction": "Exact previously running image source plus only five modified source-file diffs, new supplier deletion service, and version-only changes in runtime package metadata; line endings normalized only in patch targets. Other local-main changes were not deployed.",
+    "wholeLocalMainDeployed": false
+  },
+  "deployment": {
+    "image": "sha256:855c067b5402c91018c5874147c55ac1f7724b2675cc56087fd337a27d58d49e",
+    "previousImage": "sha256:1d2ee238fc50edf838cccb8aaabe34b09a0d5834cbcdf58455b4cf22a8c7a043",
+    "appAndWorkerSameImage": true,
+    "releaseId": "release/2026-11-19-supplier-delete",
+    "packageAndServerVersion": "1.0.2",
+    "newMigrations": 0,
+    "existingMigrations": 8,
+    "newBusinessBackup": false,
+    "candidateRemoved": true,
+    "temporaryPrivateEnvironmentRemoved": true
+  },
+  "supplierDeletion": {
+    "permission": "master.manage, an existing global maintenance permission; label explicitly includes deletion of unused suppliers. Default staff/supervisor/finance excluded; administrator or explicitly delegated maintainer allowed.",
+    "validation": [
+      "session",
+      "origin",
+      "updatedAt",
+      "row lock",
+      "Document references",
+      "Contract references"
+    ],
+    "usedSuppliers": "Refused in full, including draft-document references; suggest disabling. No contract cascade or document supplier-link removal.",
+    "unusedSuppliers": "Remove supplier record and its aliases; leave other masters and business unchanged; audit original name/aliases, not extra contact-phone copies.",
+    "restore": "No direct UI restoration; recreating same name creates a new ID."
+  },
+  "projectImpact": "Behavior unchanged: only administrators can delete projects without documents/contracts/revenues/upload batches; memberships of deleted project removed, employee accounts and other project permissions retained. Recreated project needs new role assignments.",
+  "employeeImpact": {
+    "backendBehaviorChanged": false,
+    "type": "Logical deletion: active=false and deletedAt set; account omitted from list.",
+    "sessions": "Password login denied; previously issued session denied on next authenticated request. Already displayed content not remotely erased.",
+    "history": "Documents, revenues, approval records, actor attribution and audits retained; no automatic reassignment.",
+    "memberships": "Existing rows retained by employee deletion but ineffective while account deleted. Separate later project deletion may remove memberships of that project.",
+    "wechat": "Existing binding retained and not automatically unbound; later reuse requires handling old binding. OAuth integration still deferred.",
+    "employeeNumber": "Not reusable; deleted users cannot be reactivated through current PATCH UI/API.",
+    "selfDeletion": "Current login cannot be deleted. Temporary disabling can be re-enabled."
+  },
+  "validation": {
+    "unitTests": {
+      "files": 38,
+      "passed": 308,
+      "newSupplierTests": 8,
+      "employeeHistoryChecksExpanded": true
+    },
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "candidateBrowser": {
+      "mode": "stage",
+      "status": "PASS",
+      "checks": [
+        {
+          "width": 1440,
+          "supplierDeleteEntry": true,
+          "versionSent": true,
+          "mockedConflictVisible": true,
+          "cancelPreservesRows": true,
+          "projectImpactVisible": true,
+          "employeeImpactAndWechatVisible": true,
+          "noHorizontalOverflow": true
+        },
+        {
+          "width": 390,
+          "supplierDeleteEntry": true,
+          "versionSent": true,
+          "mockedConflictVisible": true,
+          "cancelPreservesRows": true,
+          "projectImpactVisible": true,
+          "employeeImpactAndWechatVisible": true,
+          "noHorizontalOverflow": true
+        }
+      ],
+      "errors": [],
+      "unexpectedWrites": [],
+      "mockedDeleteRejections": [
+        {
+          "width": 1440,
+          "method": "DELETE",
+          "versionProvided": true
+        },
+        {
+          "width": 390,
+          "method": "DELETE",
+          "versionProvided": true
+        }
+      ],
+      "fixtureScope": "Project and employee rows exist only in intercepted browser GET responses; no production fixtures or actual deletion. Supplier DELETE deliberately intercepted with 409 to check error/cancel UI."
+    },
+    "publicBrowser": {
+      "mode": "live",
+      "status": "PASS",
+      "checks": [
+        {
+          "width": 1440,
+          "supplierDeleteEntry": true,
+          "versionSent": true,
+          "mockedConflictVisible": true,
+          "cancelPreservesRows": true,
+          "projectImpactVisible": true,
+          "employeeImpactAndWechatVisible": true,
+          "noHorizontalOverflow": true
+        },
+        {
+          "width": 390,
+          "supplierDeleteEntry": true,
+          "versionSent": true,
+          "mockedConflictVisible": true,
+          "cancelPreservesRows": true,
+          "projectImpactVisible": true,
+          "employeeImpactAndWechatVisible": true,
+          "noHorizontalOverflow": true
+        }
+      ],
+      "errors": [],
+      "unexpectedWrites": [],
+      "mockedDeleteRejections": [
+        {
+          "width": 1440,
+          "method": "DELETE",
+          "versionProvided": true
+        },
+        {
+          "width": 390,
+          "method": "DELETE",
+          "versionProvided": true
+        }
+      ],
+      "fixtureScope": "Project and employee rows exist only in intercepted browser GET responses; no production fixtures or actual deletion. Supplier DELETE deliberately intercepted with 409 to check error/cancel UI."
+    },
+    "dataIntegrity": {
+      "all23TablesUnchangedAcrossDeploymentAndBrowser": true,
+      "countsAtFinalAudit": {
+        "ApprovalRecord": 0,
+        "AuditLog": 78,
+        "BatchPhoto": 0,
+        "CheckResult": 0,
+        "Contract": 0,
+        "CustomRole": 0,
+        "Document": 0,
+        "DocumentItem": 0,
+        "DocumentPage": 0,
+        "ImportBatch": 0,
+        "Ingredient": 82,
+        "IngredientAlias": 10,
+        "Notification": 0,
+        "Project": 1,
+        "ProjectDailyRevenue": 0,
+        "ProjectMembership": 1,
+        "Supplier": 19,
+        "SupplierAlias": 0,
+        "SystemSetting": 1,
+        "UploadBatch": 0,
+        "User": 3,
+        "WechatBinding": 0,
+        "_prisma_migrations": 8
+      }
+    },
+    "health": {
+      "ok": true,
+      "database": "up",
+      "logging": {
+        "enabled": true,
+        "dropped": 0,
+        "writeFailures": 0,
+        "lastErrorCode": ""
+      },
+      "time": "2026-11-19T13:53:17.344Z"
+    },
+    "paidOcrCalls": 0,
+    "productionDeletes": 0,
+    "productionTestRecordsCreated": 0,
+    "testBoundaries": "Real SQL/service/route deletion and refusal tested in independent local test DB. Browser project/employee rows and supplier 409 responses intercepted only in browser. No actual production supplier or employee deletion attempted."
+  },
+  "wechatUrlVerification": {
+    "unchanged": true,
+    "httpsCheck": {
+      "status": 200,
+      "bytes": 40,
+      "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995"
+    },
+    "appealApproval": "No new user confirmation received; previous proof-material stage remains last known state."
+  },
+  "backupAndRecovery": {
+    "newBusinessRollbackBackup": false,
+    "policy": "Continued user-requested launch-cleanup context with no new DB/image/private-env rollback backups. No DB/image restore. Prior application image and immutable tags retained.",
+    "sourceArchive": "Source/build inputs only, no credentials, DB dumps or business uploads."
+  },
+  "evidence": "/opt/delivery-audit/releases/supplier-delete-20261119",
+  "githubSync": {
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "method": "Separate sanitized fast-forward snapshot; original local history and original release tags not pushed.",
+    "status": "Records synchronized after commit; final verified remote main authoritative."
+  }
+}

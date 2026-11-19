@@ -22,12 +22,16 @@ describe("employee account deletion preserves business history", () => {
     projectId = (await db.project.create({ data: { code: marker, name: marker } })).id;
     await db.projectMembership.create({ data: { projectId, userId: employeeId, role: "SUBMITTER" } });
     documentId = (await db.document.create({ data: { projectId, createdById: employeeId, docNo: marker, docDate: new Date(), status: "APPROVED" } })).id;
+    await db.approvalRecord.create({ data: { documentId, reviewerId: employeeId, action: "APPROVE", note: "删除归属回归" } });
+    await db.projectDailyRevenue.create({ data: { projectId, date: new Date("2026-11-19"), amount: 10, createdById: employeeId, updatedById: employeeId, reviewedById: employeeId } });
+    await db.wechatBinding.create({ data: { userId: employeeId, openid: marker } });
     adminToken = await createSessionToken(adminId); employeeToken = await createSessionToken(employeeId);
   });
   afterAll(async () => {
     const db = await getReadyDb();
     await db.auditLog.deleteMany({ where: { entityType: "user", entityId: employeeId } });
     if (documentId) await db.document.delete({ where: { id: documentId } });
+    if (projectId) await db.projectDailyRevenue.deleteMany({ where: { projectId } });
     if (employeeId) await db.user.delete({ where: { id: employeeId } });
     if (projectId) await db.project.delete({ where: { id: projectId } });
   });
@@ -40,11 +44,13 @@ describe("employee account deletion preserves business history", () => {
   });
   it("removes login/list access, keeps attribution and audit, rejects reactivation and employee number reuse", async () => {
     const db = await getReadyDb(); const before = await db.document.findUniqueOrThrow({ where: { id: documentId } });
+    const history = await Promise.all([db.projectMembership.findMany({ where: { userId: employeeId } }), db.approvalRecord.findMany({ where: { reviewerId: employeeId } }), db.projectDailyRevenue.findMany({ where: { projectId } }), db.wechatBinding.findUnique({ where: { userId: employeeId } })]);
     expect(await authenticate(marker, "fixture-password")).not.toBeNull();
     expect((await DELETE(request(adminToken), context(employeeId))).status).toBe(200);
     const account = await db.user.findUniqueOrThrow({ where: { id: employeeId } });
     expect(account.active).toBe(false); expect(account.deletedAt).not.toBeNull();
     expect(await db.document.findUniqueOrThrow({ where: { id: documentId } })).toEqual(before);
+    expect(await Promise.all([db.projectMembership.findMany({ where: { userId: employeeId } }), db.approvalRecord.findMany({ where: { reviewerId: employeeId } }), db.projectDailyRevenue.findMany({ where: { projectId } }), db.wechatBinding.findUnique({ where: { userId: employeeId } })])).toEqual(history);
     expect(await getSessionUser(request(employeeToken, "GET"))).toBeNull();
     expect(await authenticate(marker, "fixture-password")).toBeNull();
     const listing = await (await GET(request(adminToken, "GET"))).json();

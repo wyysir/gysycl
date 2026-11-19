@@ -56,6 +56,7 @@ export function ProjectManager({ onChange }: { onChange: () => Promise<void> }) 
     {deleting && <EditorSheet title="删除项目点" onClose={() => { if (!busy) setDeleting(null); }}><form onSubmit={remove}>
       <p>确认删除 <strong>{deleting.name}（{deleting.code}）</strong>？</p>
       <p>无业务记录的项目点可删除，关联项目授权会移除，员工账号保留。已有单据、合同价、营业额或上传批次时无法删除，请改用停用。</p>
+      <p>员工其他项目权限不受影响。删除后不能直接恢复；重新新建属于新项目，需要重新分配员工角色。删除操作保留审计记录。</p>
       {error && <p role="alert">{error}</p>}
       <div className="modal-actions"><button className="btn btn--outline" type="button" disabled={busy} onClick={() => setDeleting(null)}>取消</button><button className="btn btn--danger" disabled={busy}>{busy ? "删除中…" : "确认删除项目点"}</button></div>
     </form></EditorSheet>}
