@@ -38,6 +38,7 @@ export async function GET(request: NextRequest) {
         name: item.name,
         globalRole: item.globalRole,
         active: item.active,
+        updatedAt: item.updatedAt.toISOString(),
         wechatBound: Boolean(item.wechatBinding),
         memberships: item.memberships.map((membership) => ({
           projectId: membership.projectId,

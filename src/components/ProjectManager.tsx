@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, type FormEvent } from "react";
 import { api } from "@/lib/client/api";
+import { BulkActions } from "./BulkActions";
 import { EditorSheet } from "./EditorSheet";
 import { useToast } from "./ToastProvider";
 type Project = { id: string; code: string; name: string; region: string; active: boolean; updatedAt: string };
@@ -8,6 +9,8 @@ const blank = { code: "", name: "", region: "", active: true };
 export function ProjectManager({ onChange }: { onChange: () => Promise<void> }) {
   const { showToast } = useToast();
   const [rows, setRows] = useState<Project[]>([]), [editing, setEditing] = useState<Project | "new" | null>(null);
+  const [checked, setChecked] = useState<string[]>([]);
+  const [toggling, setToggling] = useState(false);
   const [deleting, setDeleting] = useState<Project | null>(null);
   const [form, setForm] = useState(blank), [status, setStatus] = useState("all");
   const [busy, setBusy] = useState(false), [error, setError] = useState(""), [listError, setListError] = useState("");
@@ -17,7 +20,7 @@ export function ProjectManager({ onChange }: { onChange: () => Promise<void> }) 
   }
   useEffect(() => { void load(); }, []);
   function open(row: Project | "new", toggle = false) {
-    setEditing(row); setError(""); setForm(row === "new" ? blank : { ...row, active: toggle ? !row.active : row.active });
+    setEditing(row); setToggling(toggle); setError(""); setForm(row === "new" ? blank : { ...row, active: toggle ? !row.active : row.active });
   }
   async function save(event: FormEvent) {
     event.preventDefault(); if (!editing || busy) return;
@@ -42,16 +45,18 @@ export function ProjectManager({ onChange }: { onChange: () => Promise<void> }) 
   return <section className="card"><div className="card-head"><h2>项目点列表</h2><button className="btn btn--primary" onClick={() => open("new")}>新增项目点</button></div>
     <label className="field card-body">状态<select className="select" value={status} onChange={e => setStatus(e.target.value)}><option value="all">全部</option><option value="active">启用</option><option value="inactive">停用</option></select></label>
     {listError && <p role="alert">{listError}<button className="btn btn--outline" onClick={load}>重试</button></p>}
-    <div className="table-wrap"><table className="data-table"><thead><tr><th>编码</th><th>项目点</th><th>区域</th><th>状态</th><th>操作</th></tr></thead><tbody>
-      {visible.map(row => <tr key={row.id}><td>{row.code}</td><td>{row.name}</td><td>{row.region || "—"}</td><td>{row.active ? "启用" : "停用"}</td><td><div className="page-actions"><button className="btn btn--outline btn--small" onClick={() => open(row)}>编辑</button><button className="btn btn--outline btn--small" onClick={() => open(row, true)}>{row.active ? "停用" : "启用"}</button><button className="btn btn--danger btn--small" onClick={() => { setError(""); setDeleting(row); }}>删除</button></div></td></tr>)}
-      {!visible.length && <tr><td colSpan={5}>暂无项目点</td></tr>}
+    <BulkActions rows={visible} selected={checked} onSelect={setChecked} kind="project" endpoint="/api/projects/bulk" onChange={async () => { await load(); await onChange(); }} />
+    <p className="card-body">停用资料可在“全部”或“停用”列表重新启用。</p>
+    <div className="table-wrap"><table className="data-table"><thead><tr><th>选择</th><th>编码</th><th>项目点</th><th>区域</th><th>状态</th><th>操作</th></tr></thead><tbody>
+      {visible.map(row => <tr key={row.id}><td><input type="checkbox" aria-label={`选择${row.name}`} checked={checked.includes(row.id)} onChange={e => setChecked(ids => e.target.checked ? [...ids, row.id] : ids.filter(id => id !== row.id))} /></td><td>{row.code}</td><td>{row.name}</td><td>{row.region || "—"}</td><td>{row.active ? "启用" : "停用"}</td><td><div className="page-actions"><button className="btn btn--outline btn--small" onClick={() => open(row)}>编辑</button><button className="btn btn--outline btn--small" onClick={() => open(row, true)}>{row.active ? "停用" : "启用"}</button><button className="btn btn--danger btn--small" onClick={() => { setError(""); setDeleting(row); }}>删除</button></div></td></tr>)}
+      {!visible.length && <tr><td colSpan={6}>暂无项目点</td></tr>}
     </tbody></table></div>
-    {editing && <EditorSheet title={editing === "new" ? "新增项目点" : "编辑项目点"} onClose={() => { if (!busy) setEditing(null); }}><form onSubmit={save}>
+    {editing && <EditorSheet title={editing === "new" ? "新增项目点" : toggling ? `${form.active ? "启用" : "停用"}项目点` : "编辑项目点"} onClose={() => { if (!busy) setEditing(null); }}><form onSubmit={save}>
       <label className="field">项目点编码<input className="input" value={form.code} required minLength={2} maxLength={30} pattern="[A-Za-z0-9_-]+" disabled={busy || editing !== "new"} onChange={e => setForm({ ...form, code: e.target.value })} /></label>
       <label className="field">项目点名称<input className="input" value={form.name} required minLength={2} maxLength={80} disabled={busy} onChange={e => setForm({ ...form, name: e.target.value })} /></label>
       <label className="field">区域<input className="input" value={form.region} maxLength={50} disabled={busy} onChange={e => setForm({ ...form, region: e.target.value })} /></label>
       {editing !== "new" && <><label><input type="checkbox" disabled={busy} checked={form.active} onChange={e => setForm({ ...form, active: e.target.checked })} />启用项目点</label><p>停用后退出新业务选择列表，历史业务和成员归属保留；重新启用后恢复使用。</p></>}
-      {error && <p role="alert">{error}</p>}<div className="modal-actions"><button className="btn btn--outline" type="button" disabled={busy} onClick={() => setEditing(null)}>取消</button><button className="btn btn--primary" disabled={busy}>保存项目点</button></div>
+      {error && <p role="alert">{error}</p>}<div className="modal-actions"><button className="btn btn--outline" type="button" disabled={busy} onClick={() => setEditing(null)}>取消</button><button className="btn btn--primary" disabled={busy}>{toggling ? `确认${form.active ? "启用" : "停用"}` : "保存项目点"}</button></div>
     </form></EditorSheet>}
     {deleting && <EditorSheet title="删除项目点" onClose={() => { if (!busy) setDeleting(null); }}><form onSubmit={remove}>
       <p>确认删除 <strong>{deleting.name}（{deleting.code}）</strong>？</p>

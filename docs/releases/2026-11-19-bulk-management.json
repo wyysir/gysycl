@@ -1,0 +1,130 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-19T22:37:08.433378+08:00",
+  "releaseTag": "release/2026-11-19-bulk-management",
+  "version": "1.0.3",
+  "image": "sha256:97e7587aeace374554eb0a63ccda1c7ee48074c7188def1d42347187c1e9e168",
+  "previousImage": "sha256:855c067b5402c91018c5874147c55ac1f7724b2675cc56087fd337a27d58d49e",
+  "sourceArchiveSha256": "04487297737cb644f1ee522b59543c92ee1a11bd1a5d9336e5eb311bbd361337",
+  "patchSha256": "0ddfbbd6eff13e0820c64ab533f5bb6870621f884218c1769ca2e96467c09ae4",
+  "files": [
+    "src/components/SupplierManager.tsx",
+    "src/components/ProjectManager.tsx",
+    "src/components/BulkActions.tsx",
+    "src/app/(workspace)/settings/SettingsClient.tsx",
+    "src/app/(workspace)/ingredients/page.tsx",
+    "src/app/api/users/route.ts",
+    "src/app/api/users/bulk/route.ts",
+    "src/app/api/projects/bulk/route.ts",
+    "src/app/api/master-data/suppliers/bulk/route.ts",
+    "src/app/api/master-data/ingredients/bulk/route.ts",
+    "src/server/bulk-maintenance.ts",
+    "src/lib/permissions.ts",
+    "package.json",
+    "package-lock.json"
+  ],
+  "newMigrations": 0,
+  "backupCreated": false,
+  "businessUnchangedAcrossDeployment": true,
+  "health": {
+    "ok": true,
+    "database": "up",
+    "logging": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "time": "2026-11-19T14:37:05.916Z"
+  },
+  "productionBusinessWrites": false,
+  "implementationCommit": "ccf749c1aee5996075e42646488c8d4b9fb03eeb",
+  "runtimeSourceBase": "Actual running v1.0.2 image source plus only listed bulk maintenance patch",
+  "wholeLocalMainDeployed": false,
+  "verification": {
+    "typecheck": "PASS",
+    "fullSuite": {
+      "files": 39,
+      "tests": 331,
+      "status": "PASS"
+    },
+    "additionalCases": 3,
+    "focusedBulkSuite": {
+      "tests": 26,
+      "status": "PASS"
+    },
+    "distinctPassingTests": 334,
+    "browserCandidate": {
+      "status": "PASS",
+      "viewports": [
+        1440,
+        390
+      ],
+      "entityFlows": 8,
+      "readOnlyPages": 10
+    },
+    "browserPublic": {
+      "status": "PASS",
+      "viewports": [
+        1440,
+        390
+      ],
+      "entityFlows": 8,
+      "readOnlyPages": 10,
+      "currentLoginProtected": true
+    },
+    "database": {
+      "ApprovalRecord": 0,
+      "AuditLog": 90,
+      "BatchPhoto": 0,
+      "CheckResult": 0,
+      "Contract": 0,
+      "CustomRole": 0,
+      "Document": 0,
+      "DocumentItem": 0,
+      "DocumentPage": 0,
+      "ImportBatch": 0,
+      "Ingredient": 82,
+      "IngredientAlias": 10,
+      "Notification": 0,
+      "Project": 1,
+      "ProjectDailyRevenue": 0,
+      "ProjectMembership": 1,
+      "Supplier": 10,
+      "SupplierAlias": 0,
+      "SystemSetting": 1,
+      "UploadBatch": 0,
+      "User": 3,
+      "WechatBinding": 0,
+      "_prisma_migrations": 8
+    },
+    "all23TablesUnchangedAcrossDeploymentAndAcceptance": true,
+    "logging": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "wechatVerification": {
+      "status": 200,
+      "bytes": 40,
+      "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995"
+    }
+  },
+  "backupAndRecovery": {
+    "databaseImageOrPrivateEnvironmentBackupCreated": false,
+    "databaseRestorePerformed": false,
+    "priorImmutableReleaseTagsPreserved": true,
+    "sourceOnlyArchive": "/opt/delivery-audit/releases/bulk-management-20261119/source-v1.0.3.tar.gz"
+  },
+  "scopeLimits": [
+    "Browser write requests intercepted using browser-only fixtures; actual mutation behavior tested in isolated database",
+    "No paid cloud OCR or live OCR accuracy/performance claim",
+    "WeChat login deferred; public security filing still awaiting user submission confirmation"
+  ],
+  "github": {
+    "repository": "https://github.com/wyysir/gysycl",
+    "visibilityVerified": "public",
+    "status": "pending synchronization after release documentation commit"
+  }
+}

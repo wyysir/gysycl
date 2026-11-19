@@ -26,7 +26,7 @@ export const PERMISSION_OPTIONS = [
   {key:"contract.manage", group:"基础资料", label:"新增、删除本项目合同价"},
   {key:"master.create", group:"基础资料", label:"新建供应商、从单据新建材料（全公司共享）"},
   {key:"master.create_global", group:"基础资料", label:"直接从材料库新建原材料（全公司共享）"},
-  {key:"master.manage", group:"基础资料", label:"修改、启停、合并基础资料及删除未使用供应商（全公司共享）"},
+  {key:"master.manage", group:"基础资料", label:"修改、启停、合并基础资料及删除未使用供应商和原材料（全公司共享）"},
   {key:"master.import", group:"基础资料", label:"导入基础资料（全公司供应商、材料；仅授权项目合同）"},
 ] as const;
 

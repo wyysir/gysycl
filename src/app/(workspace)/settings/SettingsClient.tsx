@@ -7,6 +7,7 @@ import { ErrorState, PageLoading } from "@/components/ui";
 import { useToast } from "@/components/ToastProvider";
 import { RoleSettings, type CustomRoleDto } from "@/components/RoleSettings";
 import { BrandSettings } from "@/components/BrandSettings";
+import { BulkActions } from "@/components/BulkActions";
 import { ProjectManager } from "@/components/ProjectManager";
 import { EditorSheet } from "@/components/EditorSheet";
 
@@ -22,6 +23,7 @@ type AdminUser = {
   name: string;
   globalRole: "ADMIN" | "FINANCE" | "STAFF";
   active: boolean;
+  updatedAt: string;
   wechatBound: boolean;
   memberships: Array<{
     projectId: string;
@@ -71,6 +73,8 @@ export function SettingsClient() {
     [loading, setLoading] = useState(true);
   const [managementProjects, setManagementProjects] = useState<Bootstrap["projects"]>([]);
   const [customRoles, setCustomRoles] = useState<CustomRoleDto[]>([]);
+  const [checkedUsers, setCheckedUsers] = useState<string[]>([]);
+  const [userStatus, setUserStatus] = useState("all");
   const [adminUsers, setAdminUsers] = useState<AdminUser[]>([]);
   const [userForm, setUserForm] = useState({
     employeeNo: "",
@@ -233,11 +237,13 @@ export function SettingsClient() {
                   <button type="button" className="btn btn--outline" disabled={savingRoles} onClick={() => setEditingUser(null)}>取消</button>
                 </div>
               </form></EditorSheet> : null}
+              <label className="field">员工状态<select className="select" value={userStatus} onChange={e => { setUserStatus(e.target.value); setCheckedUsers([]); }}><option value="all">全部</option><option value="active">启用</option><option value="inactive">停用</option></select></label>
+              <BulkActions rows={adminUsers.filter(user => userStatus === "all" || user.active === (userStatus === "active"))} selected={checkedUsers} onSelect={setCheckedUsers} kind="user" endpoint="/api/users/bulk" currentUserId={bootstrap.user.id} onChange={load} />
               <div className="table-wrap">
                 <table className="data-table">
                   <thead>
                     <tr>
-                      <th>员工号 / 姓名</th>
+                      <th>选择</th><th>员工号 / 姓名</th>
                       <th>系统角色</th>
                       <th>项目权限</th>
                       <th>微信</th>
@@ -246,8 +252,9 @@ export function SettingsClient() {
                     </tr>
                   </thead>
                   <tbody>
-                    {adminUsers.map((user) => (
+                    {adminUsers.filter(user => userStatus === "all" || user.active === (userStatus === "active")).map((user) => (
                       <tr key={user.id}>
+                        <td><input type="checkbox" aria-label={`选择${user.name}`} disabled={user.id === bootstrap.user.id} checked={checkedUsers.includes(user.id)} onChange={e => setCheckedUsers(ids => e.target.checked ? [...ids, user.id] : ids.filter(id => id !== user.id))} /></td>
                         <td>
                           <div className="cell-stack">
                             <strong>{user.name}</strong>
@@ -280,7 +287,7 @@ export function SettingsClient() {
                           </span>
                         </td>
                         <td>
-                          <div style={{ display: "flex", gap: 6 }}>
+                          <div className="page-actions">
                             {user.globalRole === "STAFF" ? <button className="btn btn--outline btn--small" type="button" disabled={savingRoles}
                               onClick={() => {
                                 const roles: ProjectRoles = {};
@@ -301,6 +308,7 @@ export function SettingsClient() {
                                 user.active ? "btn--danger" : "btn--soft"
                               }`}
                               type="button"
+                              disabled={user.id === bootstrap.user.id || loading}
                               onClick={() => setActiveUser(user)}
                             >
                               {user.active ? "停用" : "启用"}

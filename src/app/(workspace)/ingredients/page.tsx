@@ -59,7 +59,7 @@ export default function IngredientsPage() {
   const [q, setQ] = usePageMemory("ingredients-query", ""),
     [category, setCategory] = usePageMemory("ingredients-category", ""),
     [unit, setUnit] = usePageMemory("ingredients-unit", ""),
-    [status, setStatus] = usePageMemory("ingredients-status", "active"),
+    [status, setStatus] = usePageMemory("ingredients-status", "all"),
     [page, setPage] = usePageMemory("ingredients-page", 1);
   const [selected, setSelected] = usePageMemory<string | null>("ingredients-selection", null),
     [detail, setDetail] = useState<IngredientDetail | null>(null),
@@ -76,7 +76,7 @@ export default function IngredientsPage() {
     [mergeTarget, setMergeTarget] = useState("");
   const [categories, setCategories] = useState<CategoryList>({categories: [], version: ""});
   const [checked, setChecked] = useState<IngredientRecord[]>([]);
-  const [batchAction, setBatchAction] = useState<"disable" | "enable" | "category" | null>(null);
+  const [batchAction, setBatchAction] = useState<"disable" | "enable" | "delete" | "category" | null>(null);
   const [batchCategory, setBatchCategory] = useState("");
   const [batchTargets, setBatchTargets] = useState<IngredientRecord[]>([]);
   const [batchBusy, setBatchBusy] = useState(false);
@@ -86,17 +86,18 @@ export default function IngredientsPage() {
   }
   useEffect(() => { reloadCategories(); }, [refresh]);
   useEffect(() => { setChecked([]); }, [q, category, unit, status, page, refresh]);
-  function prepareBatch(action: "disable" | "enable" | "category", targets = checked) {
+  function prepareBatch(action: "disable" | "enable" | "delete" | "category", targets = checked) {
     setBatchTargets(targets); setBatchAction(action); setBatchCategory(""); setBatchError("");
   }
   async function saveBatch() {
     setBatchBusy(true); setBatchError("");
     try {
-      await api.patch("/api/master-data/ingredients/bulk", {
+      if (batchAction === "delete") await api.post("/api/master-data/ingredients/bulk", { action: "delete", items: batchTargets.map(item => ({ id: item.id, version: item.version })) });
+      else await api.patch("/api/master-data/ingredients/bulk", {
         items: batchTargets.map(item => ({id: item.id, version: item.version})),
         ...(batchAction === "category" ? {category: batchCategory} : {active: batchAction === "enable"}),
       });
-      showToast(`已更新${batchTargets.length}条原材料`); setBatchAction(null); setRefresh(value => value + 1);
+      showToast(`已${batchAction === "delete" ? "删除" : "更新"}${batchTargets.length}条原材料`); if (batchAction === "delete" && batchTargets.some(item => item.id === selected)) setSelected(null); setBatchAction(null); setRefresh(value => value + 1);
     } catch (e) { setBatchError(e instanceof Error ? e.message : "保存失败"); }
     finally { setBatchBusy(false); }
   }
@@ -396,6 +397,7 @@ export default function IngredientsPage() {
             <button className="btn btn--outline" disabled={!checked.length} onClick={() => prepareBatch("disable")}>批量停用</button>
             <button className="btn btn--outline" disabled={!checked.length} onClick={() => prepareBatch("enable")}>批量启用</button>
             <button className="btn btn--outline" disabled={!checked.length} onClick={() => prepareBatch("category")}>调整分类</button>
+            <button className="btn btn--danger" disabled={!checked.length} onClick={() => prepareBatch("delete")}>批量删除</button>
           </div>}
           <div className="table-wrap" aria-label="原材料逐行列表">
             <table className="data-table ingredients-table"><thead><tr>
@@ -405,7 +407,7 @@ export default function IngredientsPage() {
                 {admin && <td><input type="checkbox" aria-label={`选择${item.name}（${item.unit}）`} checked={checked.some(row => row.id === item.id)} onChange={e => setChecked(rows => e.target.checked ? [...rows, item] : rows.filter(row => row.id !== item.id))} /></td>}
                 <td><strong>{item.name}</strong></td><td>{item.unit}</td><td>{item.category || "未分类"}</td><td>{item.spec || "—"}</td><td>{item.active ? "启用" : "停用"}</td>
                 <td><div className="page-actions"><button className="btn btn--outline btn--small" onClick={() => open(item.id)}>{admin ? "编辑" : "查看详情"}</button>
-                {admin && <button className="btn btn--outline btn--small" onClick={() => prepareBatch(item.active ? "disable" : "enable", [item])}>{item.active ? "停用" : "启用"}</button>}</div></td>
+                {admin && <><button className="btn btn--outline btn--small" onClick={() => prepareBatch(item.active ? "disable" : "enable", [item])}>{item.active ? "停用" : "启用"}</button><button className="btn btn--danger btn--small" onClick={() => prepareBatch("delete", [item])}>删除</button></>}</div></td>
               </tr>)}
             </tbody></table>
           </div>
@@ -433,11 +435,11 @@ export default function IngredientsPage() {
           </div>
         </>
       )}
-      {batchAction && <div className="modal-backdrop"><section className="modal-card" role="dialog" aria-modal="true" aria-label="批量维护原材料"><div className="modal-head"><h2>{batchAction === "category" ? "调整分类" : batchAction === "disable" ? "停用原材料" : "启用原材料"}</h2></div><div className="card-body">
-        <p>本次操作{batchTargets.length}条材料，历史单据及合同记录继续保留。</p>
+      {batchAction && <div className="modal-backdrop"><section className="modal-card" role="dialog" aria-modal="true" aria-label="批量维护原材料"><div className="modal-head"><h2>{batchAction === "category" ? "调整分类" : batchAction === "disable" ? "停用原材料" : batchAction === "delete" ? "删除原材料" : "启用原材料"}</h2></div><div className="card-body">
+        <p>本次操作{batchTargets.length}条材料。{batchAction === "delete" ? "删除材料及别名；有单据明细或合同价关联时禁止删除，请改用停用。删除不能直接恢复。" : "历史单据及合同记录继续保留；停用后可在全部或停用列表重新启用。"}任一条不满足条件或已被修改，整批不执行。</p>
         <ul>{batchTargets.map(item => <li key={item.id}>{item.name} · {item.spec || "无规格"} · {item.unit}</li>)}</ul>
         {batchAction === "category" && <label className="field">目标分类<select className="select" value={batchCategory} onChange={e => setBatchCategory(e.target.value)}><option value="">未分类</option>{categories.categories.filter(item => item.active).map(item => <option key={item.name}>{item.name}</option>)}</select></label>}
-        {batchError && <p role="alert">{batchError}</p>}<div className="modal-actions"><button className="btn btn--outline" disabled={batchBusy} onClick={() => setBatchAction(null)}>取消</button><button className="btn btn--primary" disabled={batchBusy} onClick={saveBatch}>确认{batchAction === "disable" ? "停用" : batchAction === "enable" ? "启用" : "调整"}</button></div>
+        {batchError && <p role="alert">{batchError}</p>}<div className="modal-actions"><button className="btn btn--outline" disabled={batchBusy} onClick={() => setBatchAction(null)}>取消</button><button className={`btn ${batchAction === "delete" ? "btn--danger" : "btn--primary"}`} disabled={batchBusy} onClick={saveBatch}>确认{batchAction === "disable" ? "停用" : batchAction === "enable" ? "启用" : batchAction === "delete" ? "删除" : "调整"}</button></div>
       </div></section></div>}
       {selected ? (
         <div

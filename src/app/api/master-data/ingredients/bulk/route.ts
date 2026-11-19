@@ -9,3 +9,10 @@ export async function PATCH(request: NextRequest) {
   try { return NextResponse.json(await bulkMaintainIngredients(await requireUser(request), await parseJson(request, schema))); }
   catch (error) { return handleApiError(error); }
 }
+
+export async function POST(request: NextRequest) {
+  try {
+    const { bulkMaintain, bulkSchema } = await import("@/server/bulk-maintenance");
+    return NextResponse.json(await bulkMaintain(await requireUser(request), "ingredient", await parseJson(request, bulkSchema)));
+  } catch (error) { return handleApiError(error); }
+}
