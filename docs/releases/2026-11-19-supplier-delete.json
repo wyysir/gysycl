@@ -212,9 +212,17 @@
   },
   "evidence": "/opt/delivery-audit/releases/supplier-delete-20261119",
   "githubSync": {
+    "status": "PASS",
     "repository": "https://github.com/wyysir/gysycl",
     "branch": "main",
-    "method": "Separate sanitized fast-forward snapshot; original local history and original release tags not pushed.",
-    "status": "Records synchronized after commit; final verified remote main authoritative."
-  }
+    "visibility": "public",
+    "verifiedReleaseSourceCommit": "87dc7b2cccef1b97bed360b1053d556a17906721",
+    "verifiedReleaseSnapshotCommit": "343cbc5f5c9af46e5c5acb98381309e2c17653f5",
+    "files": 582,
+    "historyBlobsScanned": 755,
+    "credentialFindings": 0,
+    "riskyPaths": 0,
+    "method": "Separate sanitized fast-forward snapshot; original local history and original release tags not pushed. Completion receipts committed/synchronized afterward; latest remote main authoritative."
+  },
+  "releaseCommit": "87dc7b2cccef1b97bed360b1053d556a17906721"
 }
