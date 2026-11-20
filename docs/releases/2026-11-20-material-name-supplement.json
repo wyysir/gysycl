@@ -52,6 +52,13 @@
   "github": {
     "repository": "https://github.com/wyysir/gysycl",
     "method": "safe source snapshot; local business workbooks excluded",
-    "status": "Pending local documentation commit and verified snapshot push"
-  }
+    "status": "PASS; remote commit and complete file set verified",
+    "snapshotCommit": "f1804dae7bcb404c33b7d5563f4e5b269b4162b7",
+    "files": 612,
+    "blobsScanned": 857,
+    "credentialFindings": 0,
+    "riskyHistoryPaths": 0,
+    "note": "Following receipt-only documentation commits are synchronized by the same safe-snapshot flow."
+  },
+  "documentationCommit": "83118baeb393493dcc00e8ce56156c3c5b8d644e"
 }
