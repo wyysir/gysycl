@@ -163,7 +163,9 @@
     "sourceArchiveSha256": "4bae76fa4edff5ba313bbadd5c1d0ae364d9197c144a48f1608164917a1f26d5",
     "patchSha256": "88269a1e734701f85b92b8fa31c2d4082599e3f988b929cf197f13df01dfcf46",
     "wholeLocalMainDeployed": false,
-    "undeployedLocalOcrExperimentsPreserved": true
+    "undeployedLocalOcrExperimentsPreserved": true,
+    "featureCommit": "a22f7ec2d867167bc61f0e818f8d3705faacdf0f",
+    "tagCommit": "a22f7ec2d867167bc61f0e818f8d3705faacdf0f"
   },
   "rollback": {
     "previousCompatibleImage": "sha256:70356cf1a3dbb995491eb2bb44f650996c58dd4113d6f6bf546515e721743bc4",
@@ -180,10 +182,18 @@
     "localSyntheticTokensRemoved": true
   },
   "gitHub": {
-    "status": "PENDING_LOCAL_COMMIT_AND_SAFE_SYNC",
+    "status": "PASS",
     "repository": "https://github.com/wyysir/gysycl",
     "branch": "main",
-    "originalHistoryAndTagsNotUploaded": true
+    "visibilityAtVerification": "public",
+    "firstVerifiedSnapshotCommit": "26423b4ad0116fbc78df7fe17df9e5c115bdfad1",
+    "firstSnapshotSourceCommit": "a22f7ec2d867167bc61f0e818f8d3705faacdf0f",
+    "verifiedFiles": 661,
+    "snapshotHistoryObjectsScanned": 1055,
+    "credentialRuleFindings": 0,
+    "sensitivePathFindings": 0,
+    "originalHistoryAndTagsNotUploaded": true,
+    "receiptPublication": "This verified receipt is committed and fast-forward synced as documentation; the publisher rereads final remote head and full file set."
   },
   "relatedRelease": "2026-11-21-supplier-business.json",
   "limits": [
