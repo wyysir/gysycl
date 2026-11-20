@@ -195,10 +195,22 @@
     "sourceArchive": "/opt/delivery-audit/releases/supplier-business-20261121/source-v1.2.0.tar.gz",
     "sourceArchiveSha256": "9d22f1b18750727b2def97c64a355d438b285051b7536b3a760b4aaf1bbc5522",
     "patchSha256": "01dd7f7ba2ea9970ca2c8c95ba6f608e5926c0b76a556384f78628af66609fbe",
-    "wholeLocalMainDeployed": false
+    "wholeLocalMainDeployed": false,
+    "featureCommit": "b467e40af2bdde1943d30bf26a575cdd73dd652a",
+    "tagCommit": "b467e40af2bdde1943d30bf26a575cdd73dd652a"
   },
   "gitHub": {
+    "status": "PASS",
     "repository": "https://github.com/wyysir/gysycl",
-    "status": "PENDING_LOCAL_COMMIT_AND_SAFE_SNAPSHOT_SYNC"
+    "branch": "main",
+    "visibilityAtVerification": "public",
+    "firstVerifiedSnapshotCommit": "74afbb89ba50116fe1b7ad7d3413d09513a7454a",
+    "firstSnapshotSourceCommit": "b467e40af2bdde1943d30bf26a575cdd73dd652a",
+    "verifiedFiles": 658,
+    "credentialRuleFindings": 0,
+    "sensitivePathFindings": 0,
+    "snapshotHistoryObjectsScanned": 1038,
+    "originalHistoryAndTagsNotUploaded": true,
+    "receiptPublication": "This verified receipt is subsequently committed and fast-forward synced as documentation; latest remote SHA is recorded by the local publish verifier."
   }
 }
