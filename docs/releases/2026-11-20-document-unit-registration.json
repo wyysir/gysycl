@@ -91,6 +91,15 @@
     "commitResolution": "git rev-parse release/2026-11-20-document-unit-registration^{}",
     "githubRepository": "https://github.com/wyysir/gysycl",
     "githubBranch": "main",
-    "githubSync": "pending local commit and verified snapshot push"
+    "githubSync": "PASS",
+    "releaseCommit": "9bd8193ae98636c6faa4b3fb6314dc6ac8e0ba43",
+    "githubVisibility": "public",
+    "githubSnapshotCommit": "625b389dea867480d4de90b686260b403bd082df",
+    "githubFileCount": 624,
+    "credentialRuleScan": {
+      "blobs": 911,
+      "findings": 0,
+      "riskyPaths": 0
+    }
   }
 }
