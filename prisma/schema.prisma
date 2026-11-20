@@ -72,6 +72,11 @@ enum ImportStatus {
 }
 
 model User {
+  supplierAdjustments SupplierAdjustment[]
+  supplierStatements SupplierStatement[]
+  supplierInvoices SupplierInvoice[]
+  supplierPayments SupplierPayment[]
+  supplierFiles SupplierFile[]
   id              String              @id @default(cuid())
   employeeNo      String              @unique
   passwordHash    String
@@ -79,6 +84,8 @@ model User {
   globalRole      GlobalRole          @default(STAFF)
   active          Boolean             @default(true)
   deletedAt       DateTime?
+  accessGrants    Json?
+  authorizationVersion Int @default(1)
   wechatBinding   WechatBinding?
   memberships     ProjectMembership[]
   createdDocuments Document[]         @relation("DocumentCreator")
@@ -102,6 +109,11 @@ model WechatBinding {
 }
 
 model Project {
+  supplierAdjustments SupplierAdjustment[]
+  supplierStatements SupplierStatement[]
+  supplierInvoices SupplierInvoice[]
+  supplierPayments SupplierPayment[]
+  supplierFiles SupplierFile[]
   id           String              @id @default(cuid())
   code         String              @unique
   name         String
@@ -163,6 +175,11 @@ model CustomRole {
 }
 
 model Supplier {
+  adjustments SupplierAdjustment[]
+  statements SupplierStatement[]
+  invoices SupplierInvoice[]
+  payments SupplierPayment[]
+  files SupplierFile[]
   id               String          @id @default(cuid())
   name             String          @unique
   normalizedName   String
@@ -223,6 +240,7 @@ model ProductSpecification {
 }
 
 model Ingredient {
+  supplierAdjustments SupplierAdjustment[]
   id               String            @id @default(cuid())
   name             String
   normalizedName   String
@@ -283,6 +301,8 @@ model Contract {
 }
 
 model Document {
+  supplierAdjustments SupplierAdjustment[]
+  supplierStatementLines SupplierStatementLine[]
   batchId             String?
   batchPosition       Int?
   checkedVersion      Int?
@@ -380,6 +400,7 @@ model DocumentPage {
 }
 
 model DocumentItem {
+  supplierAdjustments SupplierAdjustment[]
   id            String     @id @default(cuid())
   documentId    String
   lineNo        Int
@@ -489,4 +510,163 @@ model SystemSetting {
   key       String   @id
   value     Json
   updatedAt DateTime @updatedAt
+}
+
+model SupplierAdjustment {
+  id String @id @default(cuid())
+  requestKey String @unique
+  requestHash String
+  projectId String
+  supplierId String
+  kind String
+  status String @default("DRAFT")
+  date DateTime @db.Date
+  sourceDocumentId String?
+  sourceItemId String?
+  ingredientId String?
+  name String @default("")
+  spec String @default("")
+  unit String @default("")
+  quantity Decimal @default(0) @db.Decimal(18,4)
+  equivalentQuantity Decimal @default(0) @db.Decimal(18,4)
+  sourceUnit String @default("")
+  unitPrice Decimal @default(0) @db.Decimal(18,6)
+  amount Decimal @db.Decimal(14,2)
+  reason String @default("")
+  conversionSnapshot Json @default("{}")
+  createdById String
+  reviewedById String?
+  reviewedAt DateTime?
+  reviewNote String @default("")
+  version Int @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  project Project @relation(fields:[projectId],references:[id],onDelete:Restrict)
+  supplier Supplier @relation(fields:[supplierId],references:[id],onDelete:Restrict)
+  sourceDocument Document? @relation(fields:[sourceDocumentId],references:[id],onDelete:Restrict)
+  sourceItem DocumentItem? @relation(fields:[sourceItemId],references:[id],onDelete:Restrict)
+  ingredient Ingredient? @relation(fields:[ingredientId],references:[id],onDelete:Restrict)
+  createdBy User @relation(fields:[createdById],references:[id],onDelete:Restrict)
+  lines SupplierStatementLine[]
+  files SupplierFile[]
+  @@index([projectId,supplierId,date])
+  @@index([sourceItemId,status])
+}
+model SupplierStatement {
+  id String @id @default(cuid())
+  requestKey String @unique
+  requestHash String
+  projectId String
+  supplierId String
+  from DateTime @db.Date
+  to DateTime @db.Date
+  status String @default("OPEN")
+  gross Decimal @db.Decimal(14,2)
+  returns Decimal @db.Decimal(14,2)
+  deductions Decimal @db.Decimal(14,2)
+  payable Decimal @db.Decimal(14,2)
+  createdById String
+  version Int @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  project Project @relation(fields:[projectId],references:[id],onDelete:Restrict)
+  supplier Supplier @relation(fields:[supplierId],references:[id],onDelete:Restrict)
+  createdBy User @relation(fields:[createdById],references:[id],onDelete:Restrict)
+  lines SupplierStatementLine[]
+  invoices SupplierInvoiceAllocation[]
+  payments SupplierPaymentAllocation[]
+  @@index([projectId,supplierId,from,to])
+}
+model SupplierStatementLine {
+  id String @id @default(cuid())
+  statementId String
+  documentId String? @unique
+  adjustmentId String?
+  kind String
+  amount Decimal @db.Decimal(14,2)
+  sourceDate DateTime @db.Date
+  snapshot Json
+  statement SupplierStatement @relation(fields:[statementId],references:[id],onDelete:Restrict)
+  document Document? @relation(fields:[documentId],references:[id],onDelete:Restrict)
+  adjustment SupplierAdjustment? @relation(fields:[adjustmentId],references:[id],onDelete:Restrict)
+  @@unique([statementId,adjustmentId])
+  @@index([adjustmentId])
+}
+model SupplierInvoice {
+  id String @id @default(cuid())
+  requestKey String @unique
+  requestHash String
+  projectId String
+  supplierId String
+  number String @unique
+  seller String
+  buyer String
+  amount Decimal @db.Decimal(14,2)
+  recognized Json @default("{}")
+  createdById String
+  version Int @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  project Project @relation(fields:[projectId],references:[id],onDelete:Restrict)
+  supplier Supplier @relation(fields:[supplierId],references:[id],onDelete:Restrict)
+  createdBy User @relation(fields:[createdById],references:[id],onDelete:Restrict)
+  allocations SupplierInvoiceAllocation[]
+  files SupplierFile[]
+  @@index([projectId,supplierId])
+}
+model SupplierInvoiceAllocation {
+  id String @id @default(cuid())
+  invoiceId String
+  statementId String
+  amount Decimal @db.Decimal(14,2)
+  invoice SupplierInvoice @relation(fields:[invoiceId],references:[id],onDelete:Restrict)
+  statement SupplierStatement @relation(fields:[statementId],references:[id],onDelete:Restrict)
+  @@unique([invoiceId,statementId])
+  @@index([statementId])
+}
+model SupplierPayment {
+  id String @id @default(cuid())
+  requestKey String @unique
+  requestHash String
+  projectId String
+  supplierId String
+  amount Decimal @db.Decimal(14,2)
+  createdById String
+  createdAt DateTime @default(now())
+  project Project @relation(fields:[projectId],references:[id],onDelete:Restrict)
+  supplier Supplier @relation(fields:[supplierId],references:[id],onDelete:Restrict)
+  createdBy User @relation(fields:[createdById],references:[id],onDelete:Restrict)
+  allocations SupplierPaymentAllocation[]
+  @@index([projectId,supplierId,createdAt])
+}
+model SupplierPaymentAllocation {
+  id String @id @default(cuid())
+  paymentId String
+  statementId String
+  amount Decimal @db.Decimal(14,2)
+  payment SupplierPayment @relation(fields:[paymentId],references:[id],onDelete:Restrict)
+  statement SupplierStatement @relation(fields:[statementId],references:[id],onDelete:Restrict)
+  @@unique([paymentId,statementId])
+  @@index([statementId])
+}
+model SupplierFile {
+  id String @id @default(cuid())
+  projectId String
+  supplierId String
+  kind String
+  createdById String
+  adjustmentId String?
+  invoiceId String?
+  objectKey String @unique
+  mime String
+  fileName String
+  sha256 String
+  recognized Json?
+  createdAt DateTime @default(now())
+  project Project @relation(fields:[projectId],references:[id],onDelete:Restrict)
+  supplier Supplier @relation(fields:[supplierId],references:[id],onDelete:Restrict)
+  createdBy User @relation(fields:[createdById],references:[id],onDelete:Restrict)
+  adjustment SupplierAdjustment? @relation(fields:[adjustmentId],references:[id],onDelete:Restrict)
+  invoice SupplierInvoice? @relation(fields:[invoiceId],references:[id],onDelete:Restrict)
+  @@index([projectId,supplierId,kind])
 }

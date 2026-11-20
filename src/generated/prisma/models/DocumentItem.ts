@@ -336,6 +336,7 @@ export type DocumentItemWhereInput = {
   measurementSnapshot?: Prisma.JsonNullableFilter<"DocumentItem">
   createdAt?: Prisma.DateTimeFilter<"DocumentItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"DocumentItem"> | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentListRelationFilter
   document?: Prisma.XOR<Prisma.DocumentScalarRelationFilter, Prisma.DocumentWhereInput>
   ingredient?: Prisma.XOR<Prisma.IngredientNullableScalarRelationFilter, Prisma.IngredientWhereInput> | null
 }
@@ -360,6 +361,7 @@ export type DocumentItemOrderByWithRelationInput = {
   measurementSnapshot?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  supplierAdjustments?: Prisma.SupplierAdjustmentOrderByRelationAggregateInput
   document?: Prisma.DocumentOrderByWithRelationInput
   ingredient?: Prisma.IngredientOrderByWithRelationInput
 }
@@ -388,6 +390,7 @@ export type DocumentItemWhereUniqueInput = Prisma.AtLeast<{
   measurementSnapshot?: Prisma.JsonNullableFilter<"DocumentItem">
   createdAt?: Prisma.DateTimeFilter<"DocumentItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"DocumentItem"> | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentListRelationFilter
   document?: Prisma.XOR<Prisma.DocumentScalarRelationFilter, Prisma.DocumentWhereInput>
   ingredient?: Prisma.XOR<Prisma.IngredientNullableScalarRelationFilter, Prisma.IngredientWhereInput> | null
 }, "id" | "documentId_lineNo">
@@ -462,6 +465,7 @@ export type DocumentItemCreateInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentCreateNestedManyWithoutSourceItemInput
   document: Prisma.DocumentCreateNestedOneWithoutItemsInput
   ingredient?: Prisma.IngredientCreateNestedOneWithoutItemsInput
 }
@@ -486,6 +490,7 @@ export type DocumentItemUncheckedCreateInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedCreateNestedManyWithoutSourceItemInput
 }
 
 export type DocumentItemUpdateInput = {
@@ -506,6 +511,7 @@ export type DocumentItemUpdateInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUpdateManyWithoutSourceItemNestedInput
   document?: Prisma.DocumentUpdateOneRequiredWithoutItemsNestedInput
   ingredient?: Prisma.IngredientUpdateOneWithoutItemsNestedInput
 }
@@ -530,6 +536,7 @@ export type DocumentItemUncheckedUpdateInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedUpdateManyWithoutSourceItemNestedInput
 }
 
 export type DocumentItemCreateManyInput = {
@@ -689,6 +696,11 @@ export type DocumentItemSumOrderByAggregateInput = {
   matchScore?: Prisma.SortOrder
 }
 
+export type DocumentItemNullableScalarRelationFilter = {
+  is?: Prisma.DocumentItemWhereInput | null
+  isNot?: Prisma.DocumentItemWhereInput | null
+}
+
 export type DocumentItemCreateNestedManyWithoutIngredientInput = {
   create?: Prisma.XOR<Prisma.DocumentItemCreateWithoutIngredientInput, Prisma.DocumentItemUncheckedCreateWithoutIngredientInput> | Prisma.DocumentItemCreateWithoutIngredientInput[] | Prisma.DocumentItemUncheckedCreateWithoutIngredientInput[]
   connectOrCreate?: Prisma.DocumentItemCreateOrConnectWithoutIngredientInput | Prisma.DocumentItemCreateOrConnectWithoutIngredientInput[]
@@ -781,6 +793,22 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type DocumentItemCreateNestedOneWithoutSupplierAdjustmentsInput = {
+  create?: Prisma.XOR<Prisma.DocumentItemCreateWithoutSupplierAdjustmentsInput, Prisma.DocumentItemUncheckedCreateWithoutSupplierAdjustmentsInput>
+  connectOrCreate?: Prisma.DocumentItemCreateOrConnectWithoutSupplierAdjustmentsInput
+  connect?: Prisma.DocumentItemWhereUniqueInput
+}
+
+export type DocumentItemUpdateOneWithoutSupplierAdjustmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.DocumentItemCreateWithoutSupplierAdjustmentsInput, Prisma.DocumentItemUncheckedCreateWithoutSupplierAdjustmentsInput>
+  connectOrCreate?: Prisma.DocumentItemCreateOrConnectWithoutSupplierAdjustmentsInput
+  upsert?: Prisma.DocumentItemUpsertWithoutSupplierAdjustmentsInput
+  disconnect?: Prisma.DocumentItemWhereInput | boolean
+  delete?: Prisma.DocumentItemWhereInput | boolean
+  connect?: Prisma.DocumentItemWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DocumentItemUpdateToOneWithWhereWithoutSupplierAdjustmentsInput, Prisma.DocumentItemUpdateWithoutSupplierAdjustmentsInput>, Prisma.DocumentItemUncheckedUpdateWithoutSupplierAdjustmentsInput>
+}
+
 export type DocumentItemCreateWithoutIngredientInput = {
   id?: string
   lineNo: number
@@ -799,6 +827,7 @@ export type DocumentItemCreateWithoutIngredientInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentCreateNestedManyWithoutSourceItemInput
   document: Prisma.DocumentCreateNestedOneWithoutItemsInput
 }
 
@@ -821,6 +850,7 @@ export type DocumentItemUncheckedCreateWithoutIngredientInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedCreateNestedManyWithoutSourceItemInput
 }
 
 export type DocumentItemCreateOrConnectWithoutIngredientInput = {
@@ -892,6 +922,7 @@ export type DocumentItemCreateWithoutDocumentInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentCreateNestedManyWithoutSourceItemInput
   ingredient?: Prisma.IngredientCreateNestedOneWithoutItemsInput
 }
 
@@ -914,6 +945,7 @@ export type DocumentItemUncheckedCreateWithoutDocumentInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedCreateNestedManyWithoutSourceItemInput
 }
 
 export type DocumentItemCreateOrConnectWithoutDocumentInput = {
@@ -940,6 +972,110 @@ export type DocumentItemUpdateWithWhereUniqueWithoutDocumentInput = {
 export type DocumentItemUpdateManyWithWhereWithoutDocumentInput = {
   where: Prisma.DocumentItemScalarWhereInput
   data: Prisma.XOR<Prisma.DocumentItemUpdateManyMutationInput, Prisma.DocumentItemUncheckedUpdateManyWithoutDocumentInput>
+}
+
+export type DocumentItemCreateWithoutSupplierAdjustmentsInput = {
+  id?: string
+  lineNo: number
+  rawName?: string
+  name: string
+  spec?: string
+  unit?: string
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  amount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  confidence?: number
+  matchStatus?: $Enums.MatchStatus
+  matchScore?: number | null
+  rawOcr?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  roundingAdjustment?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  document: Prisma.DocumentCreateNestedOneWithoutItemsInput
+  ingredient?: Prisma.IngredientCreateNestedOneWithoutItemsInput
+}
+
+export type DocumentItemUncheckedCreateWithoutSupplierAdjustmentsInput = {
+  id?: string
+  documentId: string
+  lineNo: number
+  rawName?: string
+  name: string
+  spec?: string
+  unit?: string
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  amount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  confidence?: number
+  ingredientId?: string | null
+  matchStatus?: $Enums.MatchStatus
+  matchScore?: number | null
+  rawOcr?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  roundingAdjustment?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type DocumentItemCreateOrConnectWithoutSupplierAdjustmentsInput = {
+  where: Prisma.DocumentItemWhereUniqueInput
+  create: Prisma.XOR<Prisma.DocumentItemCreateWithoutSupplierAdjustmentsInput, Prisma.DocumentItemUncheckedCreateWithoutSupplierAdjustmentsInput>
+}
+
+export type DocumentItemUpsertWithoutSupplierAdjustmentsInput = {
+  update: Prisma.XOR<Prisma.DocumentItemUpdateWithoutSupplierAdjustmentsInput, Prisma.DocumentItemUncheckedUpdateWithoutSupplierAdjustmentsInput>
+  create: Prisma.XOR<Prisma.DocumentItemCreateWithoutSupplierAdjustmentsInput, Prisma.DocumentItemUncheckedCreateWithoutSupplierAdjustmentsInput>
+  where?: Prisma.DocumentItemWhereInput
+}
+
+export type DocumentItemUpdateToOneWithWhereWithoutSupplierAdjustmentsInput = {
+  where?: Prisma.DocumentItemWhereInput
+  data: Prisma.XOR<Prisma.DocumentItemUpdateWithoutSupplierAdjustmentsInput, Prisma.DocumentItemUncheckedUpdateWithoutSupplierAdjustmentsInput>
+}
+
+export type DocumentItemUpdateWithoutSupplierAdjustmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  lineNo?: Prisma.IntFieldUpdateOperationsInput | number
+  rawName?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  spec?: Prisma.StringFieldUpdateOperationsInput | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unitPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  confidence?: Prisma.FloatFieldUpdateOperationsInput | number
+  matchStatus?: Prisma.EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
+  matchScore?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rawOcr?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  roundingAdjustment?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  document?: Prisma.DocumentUpdateOneRequiredWithoutItemsNestedInput
+  ingredient?: Prisma.IngredientUpdateOneWithoutItemsNestedInput
+}
+
+export type DocumentItemUncheckedUpdateWithoutSupplierAdjustmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  documentId?: Prisma.StringFieldUpdateOperationsInput | string
+  lineNo?: Prisma.IntFieldUpdateOperationsInput | number
+  rawName?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  spec?: Prisma.StringFieldUpdateOperationsInput | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unitPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  confidence?: Prisma.FloatFieldUpdateOperationsInput | number
+  ingredientId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  matchStatus?: Prisma.EnumMatchStatusFieldUpdateOperationsInput | $Enums.MatchStatus
+  matchScore?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rawOcr?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  roundingAdjustment?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type DocumentItemCreateManyIngredientInput = {
@@ -981,6 +1117,7 @@ export type DocumentItemUpdateWithoutIngredientInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUpdateManyWithoutSourceItemNestedInput
   document?: Prisma.DocumentUpdateOneRequiredWithoutItemsNestedInput
 }
 
@@ -1003,6 +1140,7 @@ export type DocumentItemUncheckedUpdateWithoutIngredientInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedUpdateManyWithoutSourceItemNestedInput
 }
 
 export type DocumentItemUncheckedUpdateManyWithoutIngredientInput = {
@@ -1065,6 +1203,7 @@ export type DocumentItemUpdateWithoutDocumentInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUpdateManyWithoutSourceItemNestedInput
   ingredient?: Prisma.IngredientUpdateOneWithoutItemsNestedInput
 }
 
@@ -1087,6 +1226,7 @@ export type DocumentItemUncheckedUpdateWithoutDocumentInput = {
   measurementSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedUpdateManyWithoutSourceItemNestedInput
 }
 
 export type DocumentItemUncheckedUpdateManyWithoutDocumentInput = {
@@ -1111,6 +1251,35 @@ export type DocumentItemUncheckedUpdateManyWithoutDocumentInput = {
 }
 
 
+/**
+ * Count Type DocumentItemCountOutputType
+ */
+
+export type DocumentItemCountOutputType = {
+  supplierAdjustments: number
+}
+
+export type DocumentItemCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  supplierAdjustments?: boolean | DocumentItemCountOutputTypeCountSupplierAdjustmentsArgs
+}
+
+/**
+ * DocumentItemCountOutputType without action
+ */
+export type DocumentItemCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DocumentItemCountOutputType
+   */
+  select?: Prisma.DocumentItemCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * DocumentItemCountOutputType without action
+ */
+export type DocumentItemCountOutputTypeCountSupplierAdjustmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupplierAdjustmentWhereInput
+}
+
 
 export type DocumentItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1132,8 +1301,10 @@ export type DocumentItemSelect<ExtArgs extends runtime.Types.Extensions.Internal
   measurementSnapshot?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  supplierAdjustments?: boolean | Prisma.DocumentItem$supplierAdjustmentsArgs<ExtArgs>
   document?: boolean | Prisma.DocumentDefaultArgs<ExtArgs>
   ingredient?: boolean | Prisma.DocumentItem$ingredientArgs<ExtArgs>
+  _count?: boolean | Prisma.DocumentItemCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["documentItem"]>
 
 export type DocumentItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1208,8 +1379,10 @@ export type DocumentItemSelectScalar = {
 
 export type DocumentItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "documentId" | "lineNo" | "rawName" | "name" | "spec" | "unit" | "quantity" | "unitPrice" | "amount" | "confidence" | "ingredientId" | "matchStatus" | "matchScore" | "rawOcr" | "roundingAdjustment" | "measurementSnapshot" | "createdAt" | "updatedAt", ExtArgs["result"]["documentItem"]>
 export type DocumentItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  supplierAdjustments?: boolean | Prisma.DocumentItem$supplierAdjustmentsArgs<ExtArgs>
   document?: boolean | Prisma.DocumentDefaultArgs<ExtArgs>
   ingredient?: boolean | Prisma.DocumentItem$ingredientArgs<ExtArgs>
+  _count?: boolean | Prisma.DocumentItemCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type DocumentItemIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   document?: boolean | Prisma.DocumentDefaultArgs<ExtArgs>
@@ -1223,6 +1396,7 @@ export type DocumentItemIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types
 export type $DocumentItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "DocumentItem"
   objects: {
+    supplierAdjustments: Prisma.$SupplierAdjustmentPayload<ExtArgs>[]
     document: Prisma.$DocumentPayload<ExtArgs>
     ingredient: Prisma.$IngredientPayload<ExtArgs> | null
   }
@@ -1640,6 +1814,7 @@ readonly fields: DocumentItemFieldRefs;
  */
 export interface Prisma__DocumentItemClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  supplierAdjustments<T extends Prisma.DocumentItem$supplierAdjustmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DocumentItem$supplierAdjustmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierAdjustmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   document<T extends Prisma.DocumentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DocumentDefaultArgs<ExtArgs>>): Prisma.Prisma__DocumentClient<runtime.Types.Result.GetResult<Prisma.$DocumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   ingredient<T extends Prisma.DocumentItem$ingredientArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DocumentItem$ingredientArgs<ExtArgs>>): Prisma.Prisma__IngredientClient<runtime.Types.Result.GetResult<Prisma.$IngredientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
@@ -2088,6 +2263,30 @@ export type DocumentItemDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Limit how many DocumentItems to delete.
    */
   limit?: number
+}
+
+/**
+ * DocumentItem.supplierAdjustments
+ */
+export type DocumentItem$supplierAdjustmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupplierAdjustment
+   */
+  select?: Prisma.SupplierAdjustmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupplierAdjustment
+   */
+  omit?: Prisma.SupplierAdjustmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupplierAdjustmentInclude<ExtArgs> | null
+  where?: Prisma.SupplierAdjustmentWhereInput
+  orderBy?: Prisma.SupplierAdjustmentOrderByWithRelationInput | Prisma.SupplierAdjustmentOrderByWithRelationInput[]
+  cursor?: Prisma.SupplierAdjustmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupplierAdjustmentScalarFieldEnum | Prisma.SupplierAdjustmentScalarFieldEnum[]
 }
 
 /**

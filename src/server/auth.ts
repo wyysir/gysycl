@@ -1,4 +1,4 @@
-import { builtinPermissions, canViewRecord, hasPermission, canEditRecord, canReviewRecord, type Permission } from "@/lib/permissions";
+import { builtinPermissions, canViewRecord, hasPermission, canEditRecord, canReviewRecord, effectiveGrants, companyPermission, PERMISSION_KEYS, type PermissionGrant, type Permission } from "@/lib/permissions";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
 import { SignJWT, jwtVerify } from "jose";
@@ -24,6 +24,8 @@ export type Membership = {
 };
 
 export type SessionUser = {
+  grants?: PermissionGrant[] | null;
+  authorizationVersion?: number;
   id: string;
   employeeNo: string;
   name: string;
@@ -31,7 +33,7 @@ export type SessionUser = {
   memberships: Membership[];
 };
 
-function userInclude() {
+export function userInclude() {
   return {
     memberships: {
       include: {
@@ -42,7 +44,9 @@ function userInclude() {
   } as const;
 }
 
-async function toSessionUser(user: {
+export async function toSessionUser(user: {
+  accessGrants?: unknown;
+  authorizationVersion?: number;
   id: string;
   employeeNo: string;
   name: string;
@@ -79,6 +83,8 @@ async function toSessionUser(user: {
     }
   }
   return {
+    grants: Array.isArray(user.accessGrants) ? user.accessGrants.filter((g):g is PermissionGrant=>Boolean(g&&typeof g==="object"&&"key" in g&&PERMISSION_KEYS.includes(g.key as Permission)&&"scope" in g&&typeof g.scope==="string")) : null,
+    authorizationVersion:user.authorizationVersion,
     id: user.id,
     employeeNo: user.employeeNo,
     name: user.name,
@@ -199,11 +205,12 @@ export async function authenticate(
 }
 
 export function isGlobalReader(user: SessionUser): boolean {
+  if(user.grants!=null)return effectiveGrants(user).some(g=>!companyPermission(g.key)&&g.scope==="*");
   return user.globalRole === "ADMIN" || user.globalRole === "FINANCE";
 }
 
 export function isAdmin(user: SessionUser): boolean {
-  return user.globalRole === "ADMIN";
+  return hasPermission(user,"settings.manage");
 }
 
 export function canSubmitProject(user: SessionUser, projectId: string): boolean {
@@ -218,6 +225,7 @@ export function canAccessProject(
   user: SessionUser,
   projectId: string,
 ): boolean {
+  if(user.grants!=null)return effectiveGrants(user).some(g=>!companyPermission(g.key)&&(g.scope==="*"||g.scope===projectId));
   return (
     isGlobalReader(user) ||
     user.memberships.some((membership) => membership.projectId === projectId)
@@ -225,6 +233,7 @@ export function canAccessProject(
 }
 
 export function allowedProjectIds(user: SessionUser): string[] | null {
+  if(user.grants!=null){const grants=effectiveGrants(user).filter(g=>!companyPermission(g.key));return grants.some(g=>g.scope==="*")?null:[...new Set(grants.map(g=>g.scope))];}
   if (isGlobalReader(user)) return null;
   return Array.from(
     new Set(user.memberships.map((membership) => membership.projectId)),

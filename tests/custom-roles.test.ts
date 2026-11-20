@@ -1,3 +1,4 @@
+import { saveAuthorization } from "@/server/authorizations";
 import { randomUUID } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import { NextRequest } from "next/server";
@@ -41,7 +42,7 @@ describe("administrator-defined project roles",()=>{
     expect(permissionProjectIds(user,"document.create")).toEqual(["b"]);
   });
 
-  it("creates, assigns and edits roles, enforces service permissions and immediately revokes existing sessions",async()=>{
+  it("copies role templates independently and revokes saved grants through authorization management",async()=>{
     const db=await getReadyDb();
     const admin=await db.user.findFirstOrThrow({where:{active:true,globalRole:"ADMIN"}});
     const adminToken=await createSessionToken(admin.id);
@@ -85,18 +86,22 @@ describe("administrator-defined project roles",()=>{
       const updated=await patch(patchData);expect(updated.status).toBe(200);role=(await updated.json()).role;
       expect((await patch(patchData)).status).toBe(409);
       user=await readUser();
+      expect(canSubmitProject(user,projects[0].id)).toBe(true);
+      const manager=(await getSessionUser(request("/api/bootstrap",adminToken,undefined,"GET")))!;
+      await saveAuthorization(manager,{userId:memberId,version:user.authorizationVersion!,grants:[{key:"document.view",scope:projects[0].id},{key:"document.view",scope:projects[1].id}]});
+      user=await readUser();
       expect(canSubmitProject(user,projects[0].id)).toBe(false);
       expect((await presign(request("/api/uploads/presign",token,{mime:"image/jpeg",fileName:"test.jpg",size:100}))).status).toBe(403);
       await expect(getAnalytics(user,{})).rejects.toMatchObject({status:403});
       await expect(buildDocumentsWorkbook(user,{})).rejects.toMatchObject({status:403});
       const stopped=await patch({...patchData,version:role.version,active:false});expect(stopped.status).toBe(200);
       user=await readUser();
-      expect(canAccessProject(user,projects[0].id)).toBe(false);
+      expect(canAccessProject(user,projects[0].id)).toBe(true);
       expect(canAccessProject(user,projects[1].id)).toBe(true);
       expect(await db.auditLog.count({where:{entityType:"role",entityId:role.id,action:"role.updated"}})).toBe(2);
     } finally {
       if(documentId)await db.document.delete({where:{id:documentId}});
-      if(memberId){await db.auditLog.deleteMany({where:{entityType:"user",entityId:memberId}});await db.user.delete({where:{id:memberId}});}
+      if(memberId){await db.auditLog.deleteMany({where:{entityId:memberId}});await db.user.delete({where:{id:memberId}});}
       await db.auditLog.deleteMany({where:{entityType:"role",entityId:{in:[role.id,readonlyRole.id]}}});
       await db.customRole.deleteMany({where:{id:{in:[role.id,readonlyRole.id]}}});
     }

@@ -1,3 +1,4 @@
+import { requireMasterReader } from "@/server/master-reader";
 import { getReadyDb } from "@/lib/bootstrap";
 import { hasPermission } from "@/lib/permissions";
 import { ApiError } from "@/server/auth";
@@ -35,7 +36,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    const user = await requireUser(request);
+    const user = await requireMasterReader(request);
     const all = request.nextUrl.searchParams.get("status") === "all";
     if (all && !hasPermission(user, "master.manage")) throw new ApiError(403, "没有供应商维护权限");
     const db = await getReadyDb();

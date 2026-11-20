@@ -10,9 +10,9 @@ export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
   try {
     const user = await requireUser(request);
-    if (user.globalRole === "FINANCE") {
+    if (!hasPermission(user,"document.approve") && !hasPermission(user,"document.return")) {
       return NextResponse.json(
-        { error: "财务账号只读，不能审核" },
+        { error: "没有采购审核权限" },
         { status: 403 },
       );
     }

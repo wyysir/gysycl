@@ -511,7 +511,7 @@ export default function IngredientsPage() {
                 ) : null}
                 {tab === "basic" ? (
                   <>
-                    {admin && selected !== "new" && detail && <IngredientMeasurementEditor ingredient={detail.ingredient} isAdmin={bootstrap?.user.globalRole === "ADMIN"} onSaved={async () => { const result = await api.get<IngredientDetail>(`/api/master-data/ingredients/${detail.ingredient.id}`); setDetail(result); setForm(values(result.ingredient)); setRefresh(v => v + 1); }} />}
+                    {admin && selected !== "new" && detail && <IngredientMeasurementEditor ingredient={detail.ingredient} isAdmin={Boolean(bootstrap && hasPermission(bootstrap.user,"measurement.history"))} onSaved={async () => { const result = await api.get<IngredientDetail>(`/api/master-data/ingredients/${detail.ingredient.id}`); setDetail(result); setForm(values(result.ingredient)); setRefresh(v => v + 1); }} />}
                     <form onSubmit={save}>
                       <div className="catalog-form">
                         <label className="field">

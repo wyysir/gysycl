@@ -22,7 +22,7 @@ import {
 } from "./auth";
 import { recomputeDocumentChecks, recomputeDocumentChecksInTransaction } from "./checks";
 import { documentDto } from "./documents";
-import { documentReadScope, visibleDocument, canViewCheckDetails } from "./read-scope";
+import { sensitiveReadScope, documentReadScope, visibleDocument, canViewCheckDetails } from "./read-scope";
 import { claimDocumentVersion } from "./document-lock";
 
 const detailInclude = {
@@ -92,8 +92,7 @@ export async function listDocuments(
       ] } } },
       { AND: [
         { notes: { contains: q, mode: "insensitive" } },
-        ...(user.globalRole === "STAFF" ? [{ projectId: { in: user.memberships
-          .filter(row=>documentVisibility(user,row.projectId).sensitiveDetails).map(row=>row.projectId) } }] : []),
+        sensitiveReadScope(user),
       ] },
     ];
   }
@@ -618,9 +617,6 @@ export async function withdrawApproval(
     include: { project: true, supplier: true },
   });
   if (!document) throw new ApiError(404, "单据不存在");
-  if (user.globalRole === "FINANCE") {
-    throw new ApiError(403, "财务账号只读，不能撤回审核");
-  }
   if (!canAccessDocument(user,document) || !hasPermission(user,"document.withdraw",document.projectId)) {
     throw new ApiError(403, "只有项目主管或管理员可以撤回审核");
   }
@@ -630,6 +626,8 @@ export async function withdrawApproval(
   const note = String(input.note || "").trim();
   if (!note) throw new ApiError(400, "撤回审核必须填写原因");
   const updated = await db.$transaction(async (tx) => {
+    await tx.$queryRaw`SELECT id FROM "Document" WHERE id=${documentId} FOR UPDATE`;
+    if(await tx.supplierStatementLine.count({where:{documentId}})||await tx.supplierAdjustment.count({where:{sourceDocumentId:documentId}}))throw new ApiError(409,"采购单已有关联对账或退货扣款，不能撤回；请保留原业务归属");
     const result = await tx.document.updateMany({
       where: { id: documentId, status: "APPROVED", version: document.version },
       data: {

@@ -308,6 +308,7 @@ export type IngredientWhereInput = {
   quantityPerProductUnit?: Prisma.DecimalNullableFilter<"Ingredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFilter<"Ingredient"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Ingredient"> | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentListRelationFilter
   productSpecification?: Prisma.XOR<Prisma.ProductSpecificationNullableScalarRelationFilter, Prisma.ProductSpecificationWhereInput> | null
   aliases?: Prisma.IngredientAliasListRelationFilter
   contracts?: Prisma.ContractListRelationFilter
@@ -331,6 +332,7 @@ export type IngredientOrderByWithRelationInput = {
   quantityPerProductUnit?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  supplierAdjustments?: Prisma.SupplierAdjustmentOrderByRelationAggregateInput
   productSpecification?: Prisma.ProductSpecificationOrderByWithRelationInput
   aliases?: Prisma.IngredientAliasOrderByRelationAggregateInput
   contracts?: Prisma.ContractOrderByRelationAggregateInput
@@ -358,6 +360,7 @@ export type IngredientWhereUniqueInput = Prisma.AtLeast<{
   quantityPerProductUnit?: Prisma.DecimalNullableFilter<"Ingredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFilter<"Ingredient"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Ingredient"> | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentListRelationFilter
   productSpecification?: Prisma.XOR<Prisma.ProductSpecificationNullableScalarRelationFilter, Prisma.ProductSpecificationWhereInput> | null
   aliases?: Prisma.IngredientAliasListRelationFilter
   contracts?: Prisma.ContractListRelationFilter
@@ -426,6 +429,7 @@ export type IngredientCreateInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentCreateNestedManyWithoutIngredientInput
   productSpecification?: Prisma.ProductSpecificationCreateNestedOneWithoutIngredientsInput
   aliases?: Prisma.IngredientAliasCreateNestedManyWithoutIngredientInput
   contracts?: Prisma.ContractCreateNestedManyWithoutIngredientInput
@@ -449,6 +453,7 @@ export type IngredientUncheckedCreateInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedCreateNestedManyWithoutIngredientInput
   aliases?: Prisma.IngredientAliasUncheckedCreateNestedManyWithoutIngredientInput
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutIngredientInput
   items?: Prisma.DocumentItemUncheckedCreateNestedManyWithoutIngredientInput
@@ -470,6 +475,7 @@ export type IngredientUpdateInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUpdateManyWithoutIngredientNestedInput
   productSpecification?: Prisma.ProductSpecificationUpdateOneWithoutIngredientsNestedInput
   aliases?: Prisma.IngredientAliasUpdateManyWithoutIngredientNestedInput
   contracts?: Prisma.ContractUpdateManyWithoutIngredientNestedInput
@@ -493,6 +499,7 @@ export type IngredientUncheckedUpdateInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedUpdateManyWithoutIngredientNestedInput
   aliases?: Prisma.IngredientAliasUncheckedUpdateManyWithoutIngredientNestedInput
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutIngredientNestedInput
   items?: Prisma.DocumentItemUncheckedUpdateManyWithoutIngredientNestedInput
@@ -733,6 +740,22 @@ export type IngredientUpdateOneWithoutItemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.IngredientUpdateToOneWithWhereWithoutItemsInput, Prisma.IngredientUpdateWithoutItemsInput>, Prisma.IngredientUncheckedUpdateWithoutItemsInput>
 }
 
+export type IngredientCreateNestedOneWithoutSupplierAdjustmentsInput = {
+  create?: Prisma.XOR<Prisma.IngredientCreateWithoutSupplierAdjustmentsInput, Prisma.IngredientUncheckedCreateWithoutSupplierAdjustmentsInput>
+  connectOrCreate?: Prisma.IngredientCreateOrConnectWithoutSupplierAdjustmentsInput
+  connect?: Prisma.IngredientWhereUniqueInput
+}
+
+export type IngredientUpdateOneWithoutSupplierAdjustmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.IngredientCreateWithoutSupplierAdjustmentsInput, Prisma.IngredientUncheckedCreateWithoutSupplierAdjustmentsInput>
+  connectOrCreate?: Prisma.IngredientCreateOrConnectWithoutSupplierAdjustmentsInput
+  upsert?: Prisma.IngredientUpsertWithoutSupplierAdjustmentsInput
+  disconnect?: Prisma.IngredientWhereInput | boolean
+  delete?: Prisma.IngredientWhereInput | boolean
+  connect?: Prisma.IngredientWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.IngredientUpdateToOneWithWhereWithoutSupplierAdjustmentsInput, Prisma.IngredientUpdateWithoutSupplierAdjustmentsInput>, Prisma.IngredientUncheckedUpdateWithoutSupplierAdjustmentsInput>
+}
+
 export type IngredientCreateWithoutProductSpecificationInput = {
   id?: string
   name: string
@@ -749,6 +772,7 @@ export type IngredientCreateWithoutProductSpecificationInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentCreateNestedManyWithoutIngredientInput
   aliases?: Prisma.IngredientAliasCreateNestedManyWithoutIngredientInput
   contracts?: Prisma.ContractCreateNestedManyWithoutIngredientInput
   items?: Prisma.DocumentItemCreateNestedManyWithoutIngredientInput
@@ -770,6 +794,7 @@ export type IngredientUncheckedCreateWithoutProductSpecificationInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedCreateNestedManyWithoutIngredientInput
   aliases?: Prisma.IngredientAliasUncheckedCreateNestedManyWithoutIngredientInput
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutIngredientInput
   items?: Prisma.DocumentItemUncheckedCreateNestedManyWithoutIngredientInput
@@ -839,6 +864,7 @@ export type IngredientCreateWithoutAliasesInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentCreateNestedManyWithoutIngredientInput
   productSpecification?: Prisma.ProductSpecificationCreateNestedOneWithoutIngredientsInput
   contracts?: Prisma.ContractCreateNestedManyWithoutIngredientInput
   items?: Prisma.DocumentItemCreateNestedManyWithoutIngredientInput
@@ -861,6 +887,7 @@ export type IngredientUncheckedCreateWithoutAliasesInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedCreateNestedManyWithoutIngredientInput
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutIngredientInput
   items?: Prisma.DocumentItemUncheckedCreateNestedManyWithoutIngredientInput
 }
@@ -897,6 +924,7 @@ export type IngredientUpdateWithoutAliasesInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUpdateManyWithoutIngredientNestedInput
   productSpecification?: Prisma.ProductSpecificationUpdateOneWithoutIngredientsNestedInput
   contracts?: Prisma.ContractUpdateManyWithoutIngredientNestedInput
   items?: Prisma.DocumentItemUpdateManyWithoutIngredientNestedInput
@@ -919,6 +947,7 @@ export type IngredientUncheckedUpdateWithoutAliasesInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedUpdateManyWithoutIngredientNestedInput
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutIngredientNestedInput
   items?: Prisma.DocumentItemUncheckedUpdateManyWithoutIngredientNestedInput
 }
@@ -939,6 +968,7 @@ export type IngredientCreateWithoutContractsInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentCreateNestedManyWithoutIngredientInput
   productSpecification?: Prisma.ProductSpecificationCreateNestedOneWithoutIngredientsInput
   aliases?: Prisma.IngredientAliasCreateNestedManyWithoutIngredientInput
   items?: Prisma.DocumentItemCreateNestedManyWithoutIngredientInput
@@ -961,6 +991,7 @@ export type IngredientUncheckedCreateWithoutContractsInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedCreateNestedManyWithoutIngredientInput
   aliases?: Prisma.IngredientAliasUncheckedCreateNestedManyWithoutIngredientInput
   items?: Prisma.DocumentItemUncheckedCreateNestedManyWithoutIngredientInput
 }
@@ -997,6 +1028,7 @@ export type IngredientUpdateWithoutContractsInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUpdateManyWithoutIngredientNestedInput
   productSpecification?: Prisma.ProductSpecificationUpdateOneWithoutIngredientsNestedInput
   aliases?: Prisma.IngredientAliasUpdateManyWithoutIngredientNestedInput
   items?: Prisma.DocumentItemUpdateManyWithoutIngredientNestedInput
@@ -1019,6 +1051,7 @@ export type IngredientUncheckedUpdateWithoutContractsInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedUpdateManyWithoutIngredientNestedInput
   aliases?: Prisma.IngredientAliasUncheckedUpdateManyWithoutIngredientNestedInput
   items?: Prisma.DocumentItemUncheckedUpdateManyWithoutIngredientNestedInput
 }
@@ -1039,6 +1072,7 @@ export type IngredientCreateWithoutItemsInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentCreateNestedManyWithoutIngredientInput
   productSpecification?: Prisma.ProductSpecificationCreateNestedOneWithoutIngredientsInput
   aliases?: Prisma.IngredientAliasCreateNestedManyWithoutIngredientInput
   contracts?: Prisma.ContractCreateNestedManyWithoutIngredientInput
@@ -1061,6 +1095,7 @@ export type IngredientUncheckedCreateWithoutItemsInput = {
   quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedCreateNestedManyWithoutIngredientInput
   aliases?: Prisma.IngredientAliasUncheckedCreateNestedManyWithoutIngredientInput
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutIngredientInput
 }
@@ -1097,6 +1132,7 @@ export type IngredientUpdateWithoutItemsInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUpdateManyWithoutIngredientNestedInput
   productSpecification?: Prisma.ProductSpecificationUpdateOneWithoutIngredientsNestedInput
   aliases?: Prisma.IngredientAliasUpdateManyWithoutIngredientNestedInput
   contracts?: Prisma.ContractUpdateManyWithoutIngredientNestedInput
@@ -1119,8 +1155,113 @@ export type IngredientUncheckedUpdateWithoutItemsInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedUpdateManyWithoutIngredientNestedInput
   aliases?: Prisma.IngredientAliasUncheckedUpdateManyWithoutIngredientNestedInput
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutIngredientNestedInput
+}
+
+export type IngredientCreateWithoutSupplierAdjustmentsInput = {
+  id?: string
+  name: string
+  normalizedName: string
+  spec?: string
+  normalizedSpec?: string
+  unit: string
+  category?: string
+  notes?: string
+  version?: number
+  active?: boolean
+  sourceDocumentId?: string | null
+  createdById?: string | null
+  quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  productSpecification?: Prisma.ProductSpecificationCreateNestedOneWithoutIngredientsInput
+  aliases?: Prisma.IngredientAliasCreateNestedManyWithoutIngredientInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutIngredientInput
+  items?: Prisma.DocumentItemCreateNestedManyWithoutIngredientInput
+}
+
+export type IngredientUncheckedCreateWithoutSupplierAdjustmentsInput = {
+  id?: string
+  name: string
+  normalizedName: string
+  spec?: string
+  normalizedSpec?: string
+  unit: string
+  category?: string
+  notes?: string
+  version?: number
+  active?: boolean
+  sourceDocumentId?: string | null
+  createdById?: string | null
+  productSpecificationId?: string | null
+  quantityPerProductUnit?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  aliases?: Prisma.IngredientAliasUncheckedCreateNestedManyWithoutIngredientInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutIngredientInput
+  items?: Prisma.DocumentItemUncheckedCreateNestedManyWithoutIngredientInput
+}
+
+export type IngredientCreateOrConnectWithoutSupplierAdjustmentsInput = {
+  where: Prisma.IngredientWhereUniqueInput
+  create: Prisma.XOR<Prisma.IngredientCreateWithoutSupplierAdjustmentsInput, Prisma.IngredientUncheckedCreateWithoutSupplierAdjustmentsInput>
+}
+
+export type IngredientUpsertWithoutSupplierAdjustmentsInput = {
+  update: Prisma.XOR<Prisma.IngredientUpdateWithoutSupplierAdjustmentsInput, Prisma.IngredientUncheckedUpdateWithoutSupplierAdjustmentsInput>
+  create: Prisma.XOR<Prisma.IngredientCreateWithoutSupplierAdjustmentsInput, Prisma.IngredientUncheckedCreateWithoutSupplierAdjustmentsInput>
+  where?: Prisma.IngredientWhereInput
+}
+
+export type IngredientUpdateToOneWithWhereWithoutSupplierAdjustmentsInput = {
+  where?: Prisma.IngredientWhereInput
+  data: Prisma.XOR<Prisma.IngredientUpdateWithoutSupplierAdjustmentsInput, Prisma.IngredientUncheckedUpdateWithoutSupplierAdjustmentsInput>
+}
+
+export type IngredientUpdateWithoutSupplierAdjustmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  normalizedName?: Prisma.StringFieldUpdateOperationsInput | string
+  spec?: Prisma.StringFieldUpdateOperationsInput | string
+  normalizedSpec?: Prisma.StringFieldUpdateOperationsInput | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  notes?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sourceDocumentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  productSpecification?: Prisma.ProductSpecificationUpdateOneWithoutIngredientsNestedInput
+  aliases?: Prisma.IngredientAliasUpdateManyWithoutIngredientNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutIngredientNestedInput
+  items?: Prisma.DocumentItemUpdateManyWithoutIngredientNestedInput
+}
+
+export type IngredientUncheckedUpdateWithoutSupplierAdjustmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  normalizedName?: Prisma.StringFieldUpdateOperationsInput | string
+  spec?: Prisma.StringFieldUpdateOperationsInput | string
+  normalizedSpec?: Prisma.StringFieldUpdateOperationsInput | string
+  unit?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  notes?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sourceDocumentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  productSpecificationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  aliases?: Prisma.IngredientAliasUncheckedUpdateManyWithoutIngredientNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutIngredientNestedInput
+  items?: Prisma.DocumentItemUncheckedUpdateManyWithoutIngredientNestedInput
 }
 
 export type IngredientCreateManyProductSpecificationInput = {
@@ -1157,6 +1298,7 @@ export type IngredientUpdateWithoutProductSpecificationInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUpdateManyWithoutIngredientNestedInput
   aliases?: Prisma.IngredientAliasUpdateManyWithoutIngredientNestedInput
   contracts?: Prisma.ContractUpdateManyWithoutIngredientNestedInput
   items?: Prisma.DocumentItemUpdateManyWithoutIngredientNestedInput
@@ -1178,6 +1320,7 @@ export type IngredientUncheckedUpdateWithoutProductSpecificationInput = {
   quantityPerProductUnit?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  supplierAdjustments?: Prisma.SupplierAdjustmentUncheckedUpdateManyWithoutIngredientNestedInput
   aliases?: Prisma.IngredientAliasUncheckedUpdateManyWithoutIngredientNestedInput
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutIngredientNestedInput
   items?: Prisma.DocumentItemUncheckedUpdateManyWithoutIngredientNestedInput
@@ -1207,12 +1350,14 @@ export type IngredientUncheckedUpdateManyWithoutProductSpecificationInput = {
  */
 
 export type IngredientCountOutputType = {
+  supplierAdjustments: number
   aliases: number
   contracts: number
   items: number
 }
 
 export type IngredientCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  supplierAdjustments?: boolean | IngredientCountOutputTypeCountSupplierAdjustmentsArgs
   aliases?: boolean | IngredientCountOutputTypeCountAliasesArgs
   contracts?: boolean | IngredientCountOutputTypeCountContractsArgs
   items?: boolean | IngredientCountOutputTypeCountItemsArgs
@@ -1226,6 +1371,13 @@ export type IngredientCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.E
    * Select specific fields to fetch from the IngredientCountOutputType
    */
   select?: Prisma.IngredientCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * IngredientCountOutputType without action
+ */
+export type IngredientCountOutputTypeCountSupplierAdjustmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupplierAdjustmentWhereInput
 }
 
 /**
@@ -1267,6 +1419,7 @@ export type IngredientSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   quantityPerProductUnit?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  supplierAdjustments?: boolean | Prisma.Ingredient$supplierAdjustmentsArgs<ExtArgs>
   productSpecification?: boolean | Prisma.Ingredient$productSpecificationArgs<ExtArgs>
   aliases?: boolean | Prisma.Ingredient$aliasesArgs<ExtArgs>
   contracts?: boolean | Prisma.Ingredient$contractsArgs<ExtArgs>
@@ -1335,6 +1488,7 @@ export type IngredientSelectScalar = {
 
 export type IngredientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "normalizedName" | "spec" | "normalizedSpec" | "unit" | "category" | "notes" | "version" | "active" | "sourceDocumentId" | "createdById" | "productSpecificationId" | "quantityPerProductUnit" | "createdAt" | "updatedAt", ExtArgs["result"]["ingredient"]>
 export type IngredientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  supplierAdjustments?: boolean | Prisma.Ingredient$supplierAdjustmentsArgs<ExtArgs>
   productSpecification?: boolean | Prisma.Ingredient$productSpecificationArgs<ExtArgs>
   aliases?: boolean | Prisma.Ingredient$aliasesArgs<ExtArgs>
   contracts?: boolean | Prisma.Ingredient$contractsArgs<ExtArgs>
@@ -1351,6 +1505,7 @@ export type IngredientIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 export type $IngredientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Ingredient"
   objects: {
+    supplierAdjustments: Prisma.$SupplierAdjustmentPayload<ExtArgs>[]
     productSpecification: Prisma.$ProductSpecificationPayload<ExtArgs> | null
     aliases: Prisma.$IngredientAliasPayload<ExtArgs>[]
     contracts: Prisma.$ContractPayload<ExtArgs>[]
@@ -1767,6 +1922,7 @@ readonly fields: IngredientFieldRefs;
  */
 export interface Prisma__IngredientClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  supplierAdjustments<T extends Prisma.Ingredient$supplierAdjustmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Ingredient$supplierAdjustmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupplierAdjustmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   productSpecification<T extends Prisma.Ingredient$productSpecificationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Ingredient$productSpecificationArgs<ExtArgs>>): Prisma.Prisma__ProductSpecificationClient<runtime.Types.Result.GetResult<Prisma.$ProductSpecificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   aliases<T extends Prisma.Ingredient$aliasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Ingredient$aliasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$IngredientAliasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   contracts<T extends Prisma.Ingredient$contractsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Ingredient$contractsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContractPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2214,6 +2370,30 @@ export type IngredientDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Limit how many Ingredients to delete.
    */
   limit?: number
+}
+
+/**
+ * Ingredient.supplierAdjustments
+ */
+export type Ingredient$supplierAdjustmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupplierAdjustment
+   */
+  select?: Prisma.SupplierAdjustmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupplierAdjustment
+   */
+  omit?: Prisma.SupplierAdjustmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupplierAdjustmentInclude<ExtArgs> | null
+  where?: Prisma.SupplierAdjustmentWhereInput
+  orderBy?: Prisma.SupplierAdjustmentOrderByWithRelationInput | Prisma.SupplierAdjustmentOrderByWithRelationInput[]
+  cursor?: Prisma.SupplierAdjustmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupplierAdjustmentScalarFieldEnum | Prisma.SupplierAdjustmentScalarFieldEnum[]
 }
 
 /**

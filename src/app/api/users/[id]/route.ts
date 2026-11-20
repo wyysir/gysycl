@@ -1,3 +1,5 @@
+import { authorizationLock, assertCurrentAuthorization, assertGrantManagerRemains } from "@/server/authorizations";
+import { hasPermission } from "@/lib/permissions";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { getReadyDb } from "@/lib/bootstrap";
@@ -21,7 +23,7 @@ export async function PATCH(
   try {
     const user = await requireUser(request);
     requireOrigin(request);
-    if (!isAdmin(user)) throw new ApiError(403, "只有管理员可以修改员工");
+    if (!hasPermission(user,"user.manage")) throw new ApiError(403, "只有管理员可以修改员工");
     const { id } = await context.params;
     const body = await parseJson(request, schema);
     if (id === user.id && body.active === false) {
@@ -29,12 +31,13 @@ export async function PATCH(
     }
     const db = await getReadyDb();
     const updated = await db.$transaction(async tx => {
-      await tx.$queryRaw`SELECT id FROM "User" WHERE "globalRole" = 'ADMIN' ORDER BY id FOR UPDATE`;
+      await authorizationLock(tx);
       const currentActor = await tx.user.findUnique({ where: { id: user.id } });
-      if (!currentActor?.active || currentActor.deletedAt || currentActor.globalRole !== "ADMIN") throw new ApiError(403, "当前账号已失去管理权限");
+      await assertCurrentAuthorization(tx,user.id,"user.manage");
       await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${id} FOR UPDATE`;
       const target = await tx.user.findUnique({ where: { id }, include: { memberships: true } });
       if (!target || target.deletedAt) throw new ApiError(404, "员工不存在或已删除");
+      if (body.memberships !== undefined && target.accessGrants !== null) throw new ApiError(400,"请在人员授权中修改权限；角色模板不连带改变已保存授权");
       if (body.memberships !== undefined) await validateMemberships(tx, target.globalRole, body.memberships, target.memberships);
       const account = await tx.user.update({
       where: { id },
@@ -60,6 +63,7 @@ export async function PATCH(
         },
       },
     });
+    await assertGrantManagerRemains(tx);
     return account;
     });
     return NextResponse.json({ id: updated.id, active: updated.active });
@@ -73,19 +77,20 @@ export async function DELETE(request: NextRequest, context: { params: Promise<{ 
   try {
     const actor = await requireUser(request);
     requireOrigin(request);
-    if (!isAdmin(actor)) throw new ApiError(403, "只有管理员可以删除员工账号");
+    if (!hasPermission(actor,"user.manage")) throw new ApiError(403, "只有管理员可以删除员工账号");
     const { id } = await context.params;
     if (id === actor.id) throw new ApiError(400, "不能删除当前登录账号");
     const db = await getReadyDb();
     await db.$transaction(async tx => {
       // Serialize account deletion and recheck the actor after acquiring locks.
-      await tx.$queryRaw`SELECT id FROM "User" WHERE "globalRole" = 'ADMIN' ORDER BY id FOR UPDATE`;
+      await authorizationLock(tx);
       const currentActor = await tx.user.findUnique({ where: { id: actor.id } });
-      if (!currentActor?.active || currentActor.deletedAt || currentActor.globalRole !== "ADMIN") throw new ApiError(403, "当前账号已失去管理权限");
+      await assertCurrentAuthorization(tx,actor.id,"user.manage");
       const target = await tx.user.findUnique({ where: { id } });
       if (!target || target.deletedAt) throw new ApiError(404, "员工不存在或已删除");
       const deletedAt = new Date();
       await tx.user.update({ where: { id }, data: { active: false, deletedAt } });
+      await assertGrantManagerRemains(tx);
       await tx.auditLog.create({ data: {
         entityType: "user", entityId: id, userId: actor.id, action: "user.deleted",
         beforeValue: { employeeNo: target.employeeNo, name: target.name, globalRole: target.globalRole, active: target.active },

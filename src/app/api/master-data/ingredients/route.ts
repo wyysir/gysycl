@@ -1,3 +1,4 @@
+import { requireMasterReader } from "@/server/master-reader";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { requireUser, requireOrigin } from "@/server/auth";
@@ -27,7 +28,7 @@ const schema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const user = await requireUser(request),
+    const user = await requireMasterReader(request),
       p = request.nextUrl.searchParams;
     return NextResponse.json(
       await listIngredients(user, {

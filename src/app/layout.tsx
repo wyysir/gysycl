@@ -7,6 +7,7 @@ import "./compact-review.css";
 import "./business.css";
 import "./batches.css";
 import "./review-workspace.css";
+import "./supplier-business.css";
 import { ToastProvider } from "@/components/ToastProvider";
 import { BrandProvider } from "@/components/BrandProvider";
 import { getBrand } from "@/server/brand";

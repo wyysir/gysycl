@@ -74,7 +74,15 @@ export const ModelName = {
   AuditLog: 'AuditLog',
   Notification: 'Notification',
   ImportBatch: 'ImportBatch',
-  SystemSetting: 'SystemSetting'
+  SystemSetting: 'SystemSetting',
+  SupplierAdjustment: 'SupplierAdjustment',
+  SupplierStatement: 'SupplierStatement',
+  SupplierStatementLine: 'SupplierStatementLine',
+  SupplierInvoice: 'SupplierInvoice',
+  SupplierInvoiceAllocation: 'SupplierInvoiceAllocation',
+  SupplierPayment: 'SupplierPayment',
+  SupplierPaymentAllocation: 'SupplierPaymentAllocation',
+  SupplierFile: 'SupplierFile'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -101,6 +109,8 @@ export const UserScalarFieldEnum = {
   globalRole: 'globalRole',
   active: 'active',
   deletedAt: 'deletedAt',
+  accessGrants: 'accessGrants',
+  authorizationVersion: 'authorizationVersion',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -479,19 +489,155 @@ export const SystemSettingScalarFieldEnum = {
 export type SystemSettingScalarFieldEnum = (typeof SystemSettingScalarFieldEnum)[keyof typeof SystemSettingScalarFieldEnum]
 
 
+export const SupplierAdjustmentScalarFieldEnum = {
+  id: 'id',
+  requestKey: 'requestKey',
+  requestHash: 'requestHash',
+  projectId: 'projectId',
+  supplierId: 'supplierId',
+  kind: 'kind',
+  status: 'status',
+  date: 'date',
+  sourceDocumentId: 'sourceDocumentId',
+  sourceItemId: 'sourceItemId',
+  ingredientId: 'ingredientId',
+  name: 'name',
+  spec: 'spec',
+  unit: 'unit',
+  quantity: 'quantity',
+  equivalentQuantity: 'equivalentQuantity',
+  sourceUnit: 'sourceUnit',
+  unitPrice: 'unitPrice',
+  amount: 'amount',
+  reason: 'reason',
+  conversionSnapshot: 'conversionSnapshot',
+  createdById: 'createdById',
+  reviewedById: 'reviewedById',
+  reviewedAt: 'reviewedAt',
+  reviewNote: 'reviewNote',
+  version: 'version',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SupplierAdjustmentScalarFieldEnum = (typeof SupplierAdjustmentScalarFieldEnum)[keyof typeof SupplierAdjustmentScalarFieldEnum]
+
+
+export const SupplierStatementScalarFieldEnum = {
+  id: 'id',
+  requestKey: 'requestKey',
+  requestHash: 'requestHash',
+  projectId: 'projectId',
+  supplierId: 'supplierId',
+  from: 'from',
+  to: 'to',
+  status: 'status',
+  gross: 'gross',
+  returns: 'returns',
+  deductions: 'deductions',
+  payable: 'payable',
+  createdById: 'createdById',
+  version: 'version',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SupplierStatementScalarFieldEnum = (typeof SupplierStatementScalarFieldEnum)[keyof typeof SupplierStatementScalarFieldEnum]
+
+
+export const SupplierStatementLineScalarFieldEnum = {
+  id: 'id',
+  statementId: 'statementId',
+  documentId: 'documentId',
+  adjustmentId: 'adjustmentId',
+  kind: 'kind',
+  amount: 'amount',
+  sourceDate: 'sourceDate',
+  snapshot: 'snapshot'
+} as const
+
+export type SupplierStatementLineScalarFieldEnum = (typeof SupplierStatementLineScalarFieldEnum)[keyof typeof SupplierStatementLineScalarFieldEnum]
+
+
+export const SupplierInvoiceScalarFieldEnum = {
+  id: 'id',
+  requestKey: 'requestKey',
+  requestHash: 'requestHash',
+  projectId: 'projectId',
+  supplierId: 'supplierId',
+  number: 'number',
+  seller: 'seller',
+  buyer: 'buyer',
+  amount: 'amount',
+  recognized: 'recognized',
+  createdById: 'createdById',
+  version: 'version',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SupplierInvoiceScalarFieldEnum = (typeof SupplierInvoiceScalarFieldEnum)[keyof typeof SupplierInvoiceScalarFieldEnum]
+
+
+export const SupplierInvoiceAllocationScalarFieldEnum = {
+  id: 'id',
+  invoiceId: 'invoiceId',
+  statementId: 'statementId',
+  amount: 'amount'
+} as const
+
+export type SupplierInvoiceAllocationScalarFieldEnum = (typeof SupplierInvoiceAllocationScalarFieldEnum)[keyof typeof SupplierInvoiceAllocationScalarFieldEnum]
+
+
+export const SupplierPaymentScalarFieldEnum = {
+  id: 'id',
+  requestKey: 'requestKey',
+  requestHash: 'requestHash',
+  projectId: 'projectId',
+  supplierId: 'supplierId',
+  amount: 'amount',
+  createdById: 'createdById',
+  createdAt: 'createdAt'
+} as const
+
+export type SupplierPaymentScalarFieldEnum = (typeof SupplierPaymentScalarFieldEnum)[keyof typeof SupplierPaymentScalarFieldEnum]
+
+
+export const SupplierPaymentAllocationScalarFieldEnum = {
+  id: 'id',
+  paymentId: 'paymentId',
+  statementId: 'statementId',
+  amount: 'amount'
+} as const
+
+export type SupplierPaymentAllocationScalarFieldEnum = (typeof SupplierPaymentAllocationScalarFieldEnum)[keyof typeof SupplierPaymentAllocationScalarFieldEnum]
+
+
+export const SupplierFileScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  supplierId: 'supplierId',
+  kind: 'kind',
+  createdById: 'createdById',
+  adjustmentId: 'adjustmentId',
+  invoiceId: 'invoiceId',
+  objectKey: 'objectKey',
+  mime: 'mime',
+  fileName: 'fileName',
+  sha256: 'sha256',
+  recognized: 'recognized',
+  createdAt: 'createdAt'
+} as const
+
+export type SupplierFileScalarFieldEnum = (typeof SupplierFileScalarFieldEnum)[keyof typeof SupplierFileScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
-
-
-export const JsonNullValueInput = {
-  JsonNull: JsonNull
-} as const
-
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const NullableJsonNullValueInput = {
@@ -502,20 +648,19 @@ export const NullableJsonNullValueInput = {
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 export const JsonNullValueFilter = {
@@ -525,4 +670,12 @@ export const JsonNullValueFilter = {
 } as const
 
 export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

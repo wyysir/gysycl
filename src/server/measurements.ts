@@ -59,7 +59,7 @@ export async function listMeasurements(user: SessionUser) {
 
 export async function configureMeasurementInTransaction(tx: Prisma.TransactionClient, user: SessionUser, id: string, input: MeasurementInput) {
   if (!hasPermission(user, "master.manage")) throw new ApiError(403, "没有基础资料维护权限");
-  if (input.applyToHistory && user.globalRole !== "ADMIN") throw new ApiError(403, "只有管理员可以确认历史单据的归属和换算");
+  if (input.applyToHistory && !hasPermission(user,"measurement.history")) throw new ApiError(403, "只有管理员可以确认历史单据的归属和换算");
   await tx.$queryRaw`SELECT id FROM "Ingredient" WHERE id = ${id} FOR UPDATE`;
   const current = await tx.ingredient.findUnique({ where: { id }, include: measurementInclude });
   if (!current) throw new ApiError(404, "采购资料不存在");

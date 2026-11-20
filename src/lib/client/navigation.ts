@@ -7,9 +7,11 @@ export function canOpenNavigation(user: PermissionUser, href: string) {
     case "/reviews": return any("document.approve", "document.return");
     case "/business": return any("revenue.view");
     case "/analytics": return any("analytics.view");
-    case "/ingredients": return any("master.manage", "master.create", "master.create_global", "master.import");
+    case "/ingredients": return any("master.view","master.manage", "master.create", "master.create_global", "master.import");
     case "/master": return any("master.manage", "master.create", "master.create_global", "master.import", "contract.view_price", "contract.manage");
-    case "/settings": return user.globalRole === "ADMIN";
+    case "/settings": return any("settings.manage","user.manage","project.manage","template.manage");
+    case "/permissions": return any("grant.manage");
+    case "/suppliers": return any("statement.view","return.view","return.create","deduction.view","deduction.create","invoice.view","payment.view");
     default: return href === "/dashboard" || href === "/documents";
   }
 }

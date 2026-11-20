@@ -1,4 +1,33 @@
 export const PERMISSION_OPTIONS = [
+  {key:"master.view", group:"基础资料", label:"查看公司共享供应商和材料目录"},
+  {key:"document.view", group:"查看范围", label:"查看采购单据（基础项目范围）"},
+  {key:"document.images", group:"查看范围", label:"查看采购原图（同时需要单价和金额查看）"},
+  {key:"project.manage", group:"公司管理", label:"维护项目点（公司级）"},
+  {key:"user.manage", group:"公司管理", label:"维护员工账号（公司级）"},
+  {key:"grant.manage", group:"公司管理", label:"管理人员独立授权（公司级）"},
+  {key:"template.manage", group:"公司管理", label:"维护权限模板（公司级）"},
+  {key:"settings.manage", group:"公司管理", label:"维护系统设置及Logo（公司级）"},
+  {key:"feedback.view_all", group:"公司管理", label:"查看全部反馈（公司级）"},
+  {key:"measurement.history", group:"公司管理", label:"确认历史单位与换算（公司级）"},
+  {key:"statement.view", group:"供应商对账", label:"查看供应商对账"},
+  {key:"statement.generate", group:"供应商对账", label:"生成对账单"},
+  {key:"statement.edit", group:"供应商对账", label:"更新未开票对账"},
+  {key:"statement.export", group:"供应商对账", label:"导出供应商对账Excel"},
+  {key:"return.view", group:"供应商退货", label:"查看退货"},
+  {key:"return.create", group:"供应商退货", label:"登记退货草稿"},
+  {key:"return.edit", group:"供应商退货", label:"修改未审核退货"},
+  {key:"return.submit", group:"供应商退货", label:"提交退货审核"},
+  {key:"return.approve", group:"供应商退货", label:"审核退货"},
+  {key:"deduction.view", group:"供应商扣款", label:"查看扣款"},
+  {key:"deduction.create", group:"供应商扣款", label:"登记生效扣款"},
+  {key:"deduction.edit", group:"供应商扣款", label:"修改未结算扣款"},
+  {key:"invoice.view", group:"供应商发票", label:"查看发票信息"},
+  {key:"invoice.upload", group:"供应商发票", label:"上传发票原件"},
+  {key:"invoice.recognize", group:"供应商发票", label:"识别发票"},
+  {key:"invoice.edit", group:"供应商发票", label:"核对保存发票"},
+  {key:"invoice.file", group:"供应商发票", label:"查看下载发票原件（含票面金额）"},
+  {key:"payment.view", group:"供应商付款", label:"查看已付未付"},
+  {key:"payment.execute", group:"供应商付款", label:"登记实际付款"},
   {key:"revenue.view", group:"项目经营", label:"查看项目每日营业额"},
   {key:"revenue.edit_today", group:"项目经营", label:"录入、修改本项目今日营业额"},
   {key:"revenue.edit_history", group:"项目经营", label:"补录、修改历史营业额（须填原因）"},
@@ -42,26 +71,47 @@ const FINANCE_PERMISSIONS: Permission[] = [...READ_PERMISSIONS,"revenue.view","d
 export type PermissionUser = {
   id?: string;
   globalRole: "ADMIN" | "FINANCE" | "STAFF";
+  grants?: PermissionGrant[] | null;
   memberships: Array<{projectId: string; roles: readonly string[]; permissions?: readonly string[]; roleNames?: string[]}>;
 };
+
+export type PermissionGrant = {key: Permission; scope: string};
+export const COMPANY_PERMISSIONS: readonly Permission[] = ["master.view","project.manage","user.manage","grant.manage","template.manage","settings.manage","feedback.view_all","measurement.history","master.create","master.create_global","master.manage","master.import"];
+export function companyPermission(key: Permission) { return COMPANY_PERMISSIONS.includes(key); }
+
+/** Only used to preserve pre-migration capabilities. Saved grants never inherit role changes. */
+export function legacyGrants(user: PermissionUser): PermissionGrant[] {
+  const oldKeys = PERMISSION_KEYS.filter(key=>!key.startsWith("statement.")&&!key.startsWith("return.")&&!key.startsWith("deduction.")&&!key.startsWith("invoice.")&&!key.startsWith("payment."));
+  if(user.globalRole === "ADMIN") return oldKeys.map(key=>({key,scope:"*"}));
+  if(user.globalRole === "FINANCE") return [...FINANCE_PERMISSIONS,"document.view","document.images","master.view" as Permission].map(key=>({key:key as Permission,scope:"*"}));
+  const grants:PermissionGrant[] = user.memberships.flatMap(m=>[...new Set([...(m.permissions??builtinPermissions(m.roles)),"document.view"])].filter((key):key is Permission=>PERMISSION_KEYS.includes(key as Permission)).map(key=>({key,scope:companyPermission(key)?"*":m.projectId})));
+  for(const m of user.memberships) if((m.permissions??builtinPermissions(m.roles)).includes("document.view_amount")&&(m.permissions??builtinPermissions(m.roles)).includes("document.view_unit_price")) grants.push({key:"document.images",scope:m.projectId});
+  grants.push({key:"master.view",scope:"*"});
+  return [...new Map(grants.map(g=>[g.key+":"+g.scope,g])).values()];
+}
+
+export function effectiveGrants(user: PermissionUser): PermissionGrant[] { return user.grants ?? legacyGrants(user); }
 
 export function builtinPermissions(roles: readonly string[]): Permission[] {
   return [...new Set(roles.flatMap(role=>role === "SUPERVISOR" ? SUPERVISOR_PERMISSIONS : role === "SUBMITTER" ? EMPLOYEE_PERMISSIONS : []))];
 }
 export function hasPermission(user: PermissionUser, permission: Permission, projectId?: string): boolean {
+  if(user.grants != null) return user.grants.some(g=>g.key===permission && (companyPermission(permission)?g.scope==="*":!projectId||g.scope==="*"||g.scope===projectId));
+  if(permission==="master.view")return true;
   if (user.globalRole === "ADMIN") return true;
   if (user.globalRole === "FINANCE") return FINANCE_PERMISSIONS.includes(permission);
   return user.memberships.some(membership => (!projectId || membership.projectId === projectId)
     && (membership.permissions ?? builtinPermissions(membership.roles)).includes(permission));
 }
 export function permissionProjectIds(user: PermissionUser, permission: Permission): string[] | null {
+  if(user.grants != null) { const grants=user.grants.filter(g=>g.key===permission);return grants.some(g=>g.scope==="*")?null:[...new Set(grants.map(g=>g.scope))]; }
   if (user.globalRole === "ADMIN" || user.globalRole === "FINANCE" && hasPermission(user, permission)) return null;
   return user.memberships.filter(membership=>hasPermission(user, permission, membership.projectId)).map(row=>row.projectId);
 }
 
 type PermissionDocument = {projectId: string; createdById: string; status: string};
 export function canViewRecord(user: PermissionUser, document: {projectId:string;createdById:string}): boolean {
-  const access = user.globalRole !== "STAFF" || user.memberships.some(row=>row.projectId === document.projectId);
+  const access = user.grants != null ? hasPermission(user,"document.view",document.projectId) : user.globalRole !== "STAFF" || user.memberships.some(row=>row.projectId === document.projectId);
   return access && (document.createdById === user.id || hasPermission(user,"document.view_others",document.projectId));
 }
 export function documentVisibility(user: PermissionUser, projectId:string) {
@@ -69,7 +119,7 @@ export function documentVisibility(user: PermissionUser, projectId:string) {
   const amount=hasPermission(user,"document.view_amount",projectId);
   const contractPrice=hasPermission(user,"contract.view_price",projectId);
   const others=hasPermission(user,"document.view_others",projectId);
-  return {unitPrice,amount,contractPrice,others,sourceImages:unitPrice && amount,
+  return {unitPrice,amount,contractPrice,others,sourceImages:unitPrice && amount && (user.grants==null||hasPermission(user,"document.images",projectId)),
     sensitiveDetails:unitPrice && amount && contractPrice && others};
 }
 export function canEditRecord(user: PermissionUser, document: PermissionDocument): boolean {

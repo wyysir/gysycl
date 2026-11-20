@@ -1,3 +1,4 @@
+import { requireMasterReader } from "@/server/master-reader";
 import { NextResponse, type NextRequest } from "next/server";
 import { getReadyDb } from "@/lib/bootstrap";
 import { requireUser } from "@/server/auth";
@@ -8,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   try {
-    await requireUser(request);
+    await requireMasterReader(request);
     const type = request.nextUrl.searchParams.get("type");
     const q = request.nextUrl.searchParams.get("q")?.trim() || "";
     if (!q) return NextResponse.json({ suggestions: [] });

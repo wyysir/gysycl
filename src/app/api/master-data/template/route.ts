@@ -1,3 +1,4 @@
+import { requireMasterReader } from "@/server/master-reader";
 import { z } from "zod";
 import { importTypes } from "@/lib/master-import";
 import { hasPermission } from "@/lib/permissions";
@@ -10,7 +11,7 @@ export const runtime = "nodejs";
 
 export async function GET(request: NextRequest) {
   try {
-    const user = await requireUser(request);
+    const user = await requireMasterReader(request);
     if (!hasPermission(user,"master.import")) {
       return NextResponse.json({ error: "当前角色没有下载导入模板权限" }, { status: 403 });
     }

@@ -137,3 +137,43 @@ export type ImportBatch = Prisma.ImportBatchModel
  *
  */
 export type SystemSetting = Prisma.SystemSettingModel
+/**
+ * Model SupplierAdjustment
+ *
+ */
+export type SupplierAdjustment = Prisma.SupplierAdjustmentModel
+/**
+ * Model SupplierStatement
+ *
+ */
+export type SupplierStatement = Prisma.SupplierStatementModel
+/**
+ * Model SupplierStatementLine
+ *
+ */
+export type SupplierStatementLine = Prisma.SupplierStatementLineModel
+/**
+ * Model SupplierInvoice
+ *
+ */
+export type SupplierInvoice = Prisma.SupplierInvoiceModel
+/**
+ * Model SupplierInvoiceAllocation
+ *
+ */
+export type SupplierInvoiceAllocation = Prisma.SupplierInvoiceAllocationModel
+/**
+ * Model SupplierPayment
+ *
+ */
+export type SupplierPayment = Prisma.SupplierPaymentModel
+/**
+ * Model SupplierPaymentAllocation
+ *
+ */
+export type SupplierPaymentAllocation = Prisma.SupplierPaymentAllocationModel
+/**
+ * Model SupplierFile
+ *
+ */
+export type SupplierFile = Prisma.SupplierFileModel

@@ -1,5 +1,6 @@
 import { getDb } from "../src/lib/prisma";
 import { hashPassword } from "../src/lib/passwords";
+import { legacyGrants } from "../src/lib/permissions";
 
 const employeeNo = process.env.ADMIN_EMPLOYEE_NO?.trim();
 const password = process.env.ADMIN_PASSWORD;
@@ -24,6 +25,7 @@ await db.user.create({
     name,
     passwordHash: hashPassword(password),
     globalRole: "ADMIN",
+    accessGrants:legacyGrants({globalRole:"ADMIN",memberships:[]}),
   },
 });
 console.log(`管理员 ${employeeNo} 已创建。首次登录后请立即维护项目点与员工账号。`);

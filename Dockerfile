@@ -4,7 +4,7 @@ ARG APT_MIRROR=
 WORKDIR /app
 RUN if [ -n "$APT_MIRROR" ]; then sed -i "s|http://deb.debian.org|$APT_MIRROR|g" /etc/apt/sources.list.d/debian.sources; fi \
   && apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 update \
-  && apt-get install -y --no-install-recommends ca-certificates openssl \
+  && apt-get install -y --no-install-recommends ca-certificates openssl poppler-utils \
   && rm -rf /var/lib/apt/lists/*
 
 FROM base AS deps

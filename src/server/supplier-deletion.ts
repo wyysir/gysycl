@@ -15,7 +15,7 @@ export async function deleteSupplier(user: SessionUser, id: string, updatedAt: s
       tx.document.count({ where: { supplierId: id } }),
       tx.contract.count({ where: { supplierId: id } }),
     ]);
-    if (documents || contracts) {
+    if (documents || contracts || await tx.supplierAdjustment.count({where:{supplierId:id}}) || await tx.supplierStatement.count({where:{supplierId:id}}) || await tx.supplierFile.count({where:{supplierId:id}})) {
       throw new ApiError(409, "供应商已有关联单据或合同价，请停用供应商以保留业务记录", { documents, contracts });
     }
     await tx.supplier.delete({ where: { id } });

@@ -1,4 +1,5 @@
 "use client";
+import { hasPermission } from "@/lib/permissions";
 import { useEffect, useState, type FormEvent } from "react";
 import { Plus, Building2, Users, ShieldCheck, Palette, ChevronRight, Trash2 } from "lucide-react";
 import { api } from "@/lib/client/api";
@@ -90,16 +91,16 @@ export function SettingsClient() {
   const [editingUser, setEditingUser] = useState<AdminUser | null>(null);
   const [editingRoles, setEditingRoles] = useState<ProjectRoles>({});
   const [savingRoles, setSavingRoles] = useState(false);
-  const isAdmin = bootstrap?.user.globalRole === "ADMIN";
+  const isAdmin = Boolean(bootstrap && ["settings.manage","user.manage","project.manage","template.manage"].some(key=>hasPermission(bootstrap.user,key as import("@/lib/permissions").Permission)));
   async function load() {
     setError("");
     setLoading(true);
     try {
-      const [data, users, roleData, projectData] = await Promise.all([
-        api.get<Bootstrap>("/api/bootstrap?scope=context"),
-        api.get<{ users: AdminUser[] }>("/api/users"),
-        api.get<{roles: CustomRoleDto[]}>("/api/roles"),
-        api.get<{projects: Bootstrap["projects"]}>("/api/projects"),
+      const data=await api.get<Bootstrap>("/api/bootstrap?scope=context");
+      const [users, roleData, projectData] = await Promise.all([
+        hasPermission(data.user,"user.manage")?api.get<{users:AdminUser[]}>("/api/users"):Promise.resolve({users:[]}),
+        hasPermission(data.user,"template.manage")?api.get<{roles:CustomRoleDto[]}>("/api/roles"):Promise.resolve({roles:[]}),
+        hasPermission(data.user,"project.manage")?api.get<{projects:Bootstrap["projects"]}>("/api/projects"):Promise.resolve({projects:[]}),
       ]);
       setBootstrap(data);
       setAdminUsers(users.users);
@@ -191,7 +192,7 @@ export function SettingsClient() {
         </div>
       </div>
       <div className="settings-category-grid" aria-label="设置分类">
-        {categories.map(({ key, title, description, icon: Icon }) => <button key={key} type="button" className="card settings-category" aria-haspopup="dialog" onClick={() => setTab(key)}>
+        {categories.filter(c=>hasPermission(bootstrap.user,({projects:"project.manage",users:"user.manage",roles:"template.manage",brand:"settings.manage"} as const)[c.key])).map(({ key, title, description, icon: Icon }) => <button key={key} type="button" className="card settings-category" aria-haspopup="dialog" onClick={() => setTab(key)}>
           <Icon size={24} /><span><strong>{title}</strong><small>{description}</small></span><ChevronRight size={18} />
         </button>)}
       </div>
@@ -265,7 +266,7 @@ export function SettingsClient() {
                           {user.globalRole === "ADMIN"
                             ? "管理员"
                             : user.globalRole === "FINANCE"
-                              ? "财务只读"
+                              ? "财务模板"
                               : "项目员工"}
                         </td>
                         <td>
@@ -276,7 +277,7 @@ export function SettingsClient() {
                                     `${membership.projectName}(${membership.roleName || (membership.role === "SUPERVISOR" ? "主管" : "员工")})`,
                                 )
                                 .join("、")
-                            : user.globalRole === "STAFF" ? "未分配" : "全公司"}
+                            : "查看人员授权"}
                         </td>
                         <td>{user.wechatBound ? "已绑定" : "未绑定"}</td>
                         <td>
@@ -288,14 +289,7 @@ export function SettingsClient() {
                         </td>
                         <td>
                           <div className="page-actions">
-                            {user.globalRole === "STAFF" ? <button className="btn btn--outline btn--small" type="button" disabled={savingRoles}
-                              onClick={() => {
-                                const roles: ProjectRoles = {};
-                                for (const membership of user.memberships) {
-                                  if (roles[membership.projectId] !== "SUPERVISOR") roles[membership.projectId] = membership.customRoleId ? `custom:${membership.customRoleId}` : membership.role;
-                                }
-                                setEditingRoles(roles); setEditingUser(user);
-                              }}>设置项目角色</button> : null}
+                            {hasPermission(bootstrap.user,"grant.manage")&&<a className="btn btn--outline btn--small" href="/permissions">独立授权</a>}
                             <button
                               className="btn btn--outline btn--small"
                               type="button"
@@ -386,7 +380,7 @@ export function SettingsClient() {
                       }
                     >
                       <option value="STAFF">项目员工</option>
-                      <option value="FINANCE">财务只读</option>
+                      <option value="FINANCE">财务模板</option>
                       <option value="ADMIN">管理员</option>
                     </select>
                   </div>

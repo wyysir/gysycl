@@ -1,6 +1,6 @@
 "use client";
 
-import { hasPermission } from "@/lib/permissions";
+import { hasPermission,permissionProjectIds } from "@/lib/permissions";
 import { canOpenNavigation, documentOrigin, mobileNavigation } from "@/lib/client/navigation";
 
 import Link from "next/link";
@@ -36,6 +36,8 @@ const navItems = [
   { href: "/analytics", label: "价格分析", icon: BarChart3 },
   { href: "/ingredients", label: "原材料", icon: Package },
   { href: "/master", label: "供应商与合同", icon: Database },
+  { href: "/suppliers", label: "供应商账款", icon: Building2 },
+  { href: "/permissions", label: "人员授权", icon: Settings },
   { href: "/settings", label: "系统设置", icon: Settings },
 ];
 
@@ -51,11 +53,13 @@ const pageTitles: Record<string, string> = {
   master: "供应商与合同",
   ingredients: "原材料",
   settings: "系统设置",
+  suppliers: "供应商账款",
+  permissions: "人员授权",
 };
 
 function roleLabel(user: User) {
   if (user.globalRole === "ADMIN") return "系统管理员";
-  if (user.globalRole === "FINANCE") return "财务只读";
+  if (user.globalRole === "FINANCE") return "财务";
   if (
     user.memberships.some((membership) =>
       membership.roles.includes("SUPERVISOR"),
@@ -139,9 +143,9 @@ export function AppShell({
         <div className="sidebar-project">
           <span>当前数据范围</span>
           <strong>
-            {user.globalRole === "ADMIN" || user.globalRole === "FINANCE"
+            {permissionProjectIds(user,"document.view")===null
               ? "全公司项目点"
-              : user.memberships.map((item) => item.projectName).join("、")}
+              : user.grants!=null?"按逐项授权项目":user.memberships.map((item) => item.projectName).join("、")}
           </strong>
         </div>
         <nav className="nav">{nav().map((item, index) => <span className="nav-entry" key={item.key}>{index === visibleItems.findIndex(row => ["/ingredients", "/master", "/settings"].includes(row.href)) && <span className="nav-section-label">基础资料</span>}{item}</span>)}</nav>

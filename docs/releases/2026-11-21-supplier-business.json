@@ -1,0 +1,204 @@
+{
+  "status": "PASS",
+  "releaseTag": "release/2026-11-21-supplier-business",
+  "version": "1.2.0",
+  "deployment": {
+    "status": "PASS",
+    "version": "1.2.0",
+    "image": "sha256:70356cf1a3dbb995491eb2bb44f650996c58dd4113d6f6bf546515e721743bc4",
+    "previousImage": "sha256:58590d4bff6e05c16e8adca21f0b472ce39f6aa6cfec3c8b45dee6f519852b0c",
+    "sourceArchiveSha256": "9d22f1b18750727b2def97c64a355d438b285051b7536b3a760b4aaf1bbc5522",
+    "patchSha256": "01dd7f7ba2ea9970ca2c8c95ba6f608e5926c0b76a556384f78628af66609fbe",
+    "dockerfileSha256": "c748f35a15f2c3d07720a9b0ecb754e723498704108f9ac3d5f7bdba98e5f272",
+    "wholeLocalMainDeployed": false,
+    "releaseTag": "release/2026-11-21-supplier-business",
+    "completedAt": "2026-11-21T00:52:35.632402+08:00",
+    "migration": "0010_supplier_accounts",
+    "originalBusinessUnchangedAcrossSwitch": true,
+    "health": {
+      "ok": true,
+      "database": "up",
+      "logging": {
+        "enabled": true,
+        "dropped": 0,
+        "writeFailures": 0,
+        "lastErrorCode": ""
+      },
+      "time": "2026-11-20T16:52:31.973Z"
+    },
+    "backupCreated": false,
+    "productionTestRecordsCreated": false,
+    "manualEmployeeGrantChanges": false
+  },
+  "database": {
+    "status": "PASS",
+    "migration": "0010_supplier_accounts",
+    "oldTablesCompared": 24,
+    "oldColumnsUnchanged": true,
+    "newTables": [
+      "SupplierAdjustment",
+      "SupplierFile",
+      "SupplierInvoice",
+      "SupplierInvoiceAllocation",
+      "SupplierPayment",
+      "SupplierPaymentAllocation",
+      "SupplierStatement",
+      "SupplierStatementLine"
+    ],
+    "authorizationMigration": {
+      "status": "PASS",
+      "migrated": 3,
+      "oldBusinessPermissionsPreserved": true,
+      "newSupplierOperationsGranted": false,
+      "oldColumnsUnchanged": true
+    },
+    "backupCreated": false
+  },
+  "authorizationReadback": {
+    "users": 3,
+    "oldCapabilitySnapshotsMatch": true,
+    "newSupplierOperationGrants": 0,
+    "nullAuthorizationRows": 0
+  },
+  "newBusinessTableCounts": {
+    "SupplierAdjustment": 0,
+    "SupplierFile": 0,
+    "SupplierInvoice": 0,
+    "SupplierInvoiceAllocation": 0,
+    "SupplierPayment": 0,
+    "SupplierPaymentAllocation": 0,
+    "SupplierStatement": 0,
+    "SupplierStatementLine": 0
+  },
+  "validation": {
+    "localFull": {
+      "files": 45,
+      "passed": 397,
+      "result": ".tmp/supplier-business-resume-20261120/final-all-tests.log"
+    },
+    "finalFocused": {
+      "passed": 26,
+      "result": ".tmp/supplier-business-resume-20261120/final-focused-tests.log"
+    },
+    "runningBasePostgres": {
+      "files": 44,
+      "fullSuitePassed": 368,
+      "fullSuiteSkipped": 7,
+      "applicableUniquePassedWithFollowup": 369,
+      "ocrFollowup": {
+        "passed": 58,
+        "skippedExperiments": 6,
+        "reason": "Parameterized duplicate names separated by quantity; one applicable zero-quantity case revalidated with network disabled"
+      },
+      "skippedUndeployedExperiments": 6,
+      "excludedExperimentToolCases": 24,
+      "excludedSuite": "tests/ocr-review-guard.test.ts",
+      "fullSuiteImage": "sha256:f8e36309b801a6030b42094952821ffd8bf610ae86a85dfa8c1e5639c00d2276",
+      "finalImage": "sha256:70356cf1a3dbb995491eb2bb44f650996c58dd4113d6f6bf546515e721743bc4",
+      "backendSourceSha256": "220c5a10ebe15ee5d6c61761a3e727d58a0ea8015267b81343177f9900f1d373",
+      "backendSourceUnchangedAfterFullSuite": true,
+      "finalImageFocusedPassed": 26,
+      "productionDatabaseUsed": false,
+      "productionDatabaseCloned": false
+    },
+    "typecheck": "PASS: next typegen and tsc --noEmit",
+    "runtimeBuild": "PASS: actual v1.1.2 container source plus current changes; Prisma regenerated; Poppler installed",
+    "syntheticBrowser": {
+      "status": "PASS",
+      "widths": [
+        1440,
+        1024,
+        390,
+        320
+      ],
+      "writesIntercepted": true
+    },
+    "liveCandidateBrowser": {
+      "status": "PASS",
+      "widths": [
+        1440,
+        390,
+        320
+      ],
+      "checks": [
+        {
+          "canonicalAdminWithoutGrantsDenied": true,
+          "liveSourceBuiltPages": true,
+          "officialLogo": true,
+          "noBrowserWrites": true,
+          "lastManagerGrantRemovalBlocked": true,
+          "lastManagerDisableDeleteAndBulkBlocked": true,
+          "rejectedTransactionsRolledBack": true
+        }
+      ],
+      "errors": []
+    },
+    "invoiceRecognition": "PDF rasterization and response mapping verified with generated files and mocked model responses; no claim of real supplier invoice accuracy"
+  },
+  "publicChecks": [
+    {
+      "url": "https://shian.dhcy.top/api/health",
+      "status": 200,
+      "bytes": 137,
+      "contentType": "application/json"
+    },
+    {
+      "url": "https://shian.dhcy.top/login",
+      "status": 200,
+      "bytes": 10668,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://shian.dhcy.top/api/authorizations",
+      "status": 401,
+      "bytes": 39,
+      "contentType": "application/json"
+    },
+    {
+      "url": "https://shian.dhcy.top/api/supplier-business",
+      "status": 401,
+      "bytes": 39,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://shian.dhcy.top/788c68f9771c83073299b4f955277af3.txt",
+      "status": 200,
+      "bytes": 40,
+      "contentType": "text/plain",
+      "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995"
+    },
+    {
+      "url": "https://shian.dhcy.top/788c68f9771c83073299b4f955277af3.txt",
+      "status": 200,
+      "bytes": 40,
+      "contentType": "text/plain",
+      "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995"
+    }
+  ],
+  "cleanup": {
+    "candidateRemoved": true,
+    "isolatedValidationDatabaseDropped": true,
+    "temporaryServerEnvironmentsRemoved": true,
+    "localTunnelRemoved": true,
+    "syntheticTokenFileRemoved": true
+  },
+  "dataPolicy": {
+    "businessBackupCreated": false,
+    "productionTestBusinessCreated": false,
+    "manualEmployeeGrantChanges": false,
+    "existingBusinessColumnsPreserved": true,
+    "existingMigrationRecordsPreserved": true,
+    "originalLocalHistoryNotPublished": true
+  },
+  "source": {
+    "basisImage": "sha256:58590d4bff6e05c16e8adca21f0b472ce39f6aa6cfec3c8b45dee6f519852b0c",
+    "sourceArchive": "/opt/delivery-audit/releases/supplier-business-20261121/source-v1.2.0.tar.gz",
+    "sourceArchiveSha256": "9d22f1b18750727b2def97c64a355d438b285051b7536b3a760b4aaf1bbc5522",
+    "patchSha256": "01dd7f7ba2ea9970ca2c8c95ba6f608e5926c0b76a556384f78628af66609fbe",
+    "wholeLocalMainDeployed": false
+  },
+  "gitHub": {
+    "repository": "https://github.com/wyysir/gysycl",
+    "status": "PENDING_LOCAL_COMMIT_AND_SAFE_SNAPSHOT_SYNC"
+  }
+}

@@ -1,3 +1,4 @@
+import { hasPermission } from "@/lib/permissions";
 import { randomUUID } from "node:crypto";
 import { getReadyDb } from "@/lib/bootstrap";
 import type { SessionUser } from "./auth";
@@ -9,7 +10,7 @@ export async function submitFeedback(user: SessionUser, input: { content: string
 }
 export async function listFeedback(user: SessionUser) {
   const db = await getReadyDb();
-  const canViewAll = user.globalRole === "ADMIN";
+  const canViewAll = hasPermission(user,"feedback.view_all");
   const rows = await db.auditLog.findMany({ where: { entityType: "feedback", action: "feedback.submitted", ...(canViewAll ? {} : { userId: user.id }) }, orderBy: { createdAt: "desc" }, take: 50, include: { user: { select: { name: true } } } });
   return { canViewAll, items: rows.map(row => ({ id: row.id, createdAt: row.createdAt.toISOString(), author: row.user?.name || "", ...(row.afterValue as { content: string; contact: string }) })) };
 }

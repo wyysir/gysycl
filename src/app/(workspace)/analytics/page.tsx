@@ -42,7 +42,7 @@ export default function AnalyticsPage() {
     } catch (e) { if (sequence === querySequence.current) setError(e instanceof Error ? e.message : "加载失败"); }
     finally { if (sequence === querySequence.current) setLoading(false); }
   }
-  useEffect(() => { load(); api.get<{ user: { globalRole: string } }>("/api/bootstrap?scope=context").then(b => setFinance(b.user.globalRole === "FINANCE")).catch(() => {}); }, []);
+  useEffect(() => { load(); api.get<{ user: { globalRole: string } }>("/api/bootstrap?scope=context").then(b => setFinance(false)).catch(() => {}); }, []);
   useScrollMemory("analytics", !loading && !!data);
   useEffect(() => {
     if (!selected) { setHistory(null); return; }

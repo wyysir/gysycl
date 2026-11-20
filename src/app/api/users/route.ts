@@ -1,3 +1,6 @@
+import { effectiveGrants } from "@/lib/permissions";
+import { toSessionUser, userInclude } from "@/server/auth";
+import { hasPermission } from "@/lib/permissions";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { getReadyDb } from "@/lib/bootstrap";
@@ -21,7 +24,7 @@ const schema = z.object({
 export async function GET(request: NextRequest) {
   try {
     const user = await requireUser(request);
-    if (!isAdmin(user)) throw new ApiError(403, "只有管理员可以查看员工账号");
+    if (!hasPermission(user,"user.manage")) throw new ApiError(403, "只有管理员可以查看员工账号");
     const db = await getReadyDb();
     const users = await db.user.findMany({
       where: { deletedAt: null },
@@ -59,7 +62,7 @@ export async function POST(request: NextRequest) {
   try {
     const user = await requireUser(request);
     requireOrigin(request);
-    if (!isAdmin(user)) throw new ApiError(403, "只有管理员可以新增员工");
+    if (!hasPermission(user,"user.manage")) throw new ApiError(403, "只有管理员可以新增员工");
     const body = await parseJson(request, schema);
     const db = await getReadyDb();
     if (await db.user.findUnique({ where: { employeeNo: body.employeeNo } })) {
@@ -78,6 +81,8 @@ export async function POST(request: NextRequest) {
           },
         },
       });
+      const full = await tx.user.findUniqueOrThrow({where:{id:account.id},include:userInclude()});
+      await tx.user.update({where:{id:account.id},data:{accessGrants:hasPermission(user,"grant.manage")?effectiveGrants(await toSessionUser(full)):[]}});
       await tx.auditLog.create({
         data: {
           entityType: "user",

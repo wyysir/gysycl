@@ -1,3 +1,4 @@
+import { hasPermission } from "@/lib/permissions";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { getReadyDb } from "@/lib/bootstrap";
@@ -16,7 +17,7 @@ export async function POST(request: NextRequest) {
   try {
     const user = await requireUser(request);
     requireOrigin(request);
-    if (!isAdmin(user)) throw new ApiError(403, "只有管理员可以新增项目点");
+    if (!hasPermission(user,"project.manage")) throw new ApiError(403, "只有管理员可以新增项目点");
     const body = await parseJson(request, schema);
     const db = await getReadyDb();
     const existing = await db.project.findFirst({
@@ -55,7 +56,7 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const user = await requireUser(request);
-    if (!isAdmin(user)) throw new ApiError(403, "只有管理员可以维护项目点");
+    if (!hasPermission(user,"project.manage")) throw new ApiError(403, "只有管理员可以维护项目点");
     const db = await getReadyDb();
     return NextResponse.json({projects: await db.project.findMany({orderBy: {code: "asc"}})});
   } catch (error) { const { handleApiError } = await import("@/server/http"); return handleApiError(error); }

@@ -1,3 +1,4 @@
+import { hasPermission } from "@/lib/permissions";
 import { NextResponse, type NextRequest } from "next/server";
 import { getBrand, maxLogoBytes, saveBrand } from "@/server/brand";
 import { requireOrigin, requireUser } from "@/server/auth";
@@ -14,7 +15,7 @@ export async function POST(request: NextRequest) {
   try {
     requireOrigin(request);
     const user = await requireUser(request);
-    if (user.globalRole !== "ADMIN") throw new ApiError(403, "只有管理员可以修改企业Logo");
+    if (!hasPermission(user,"settings.manage")) throw new ApiError(403, "只有管理员可以修改企业Logo");
     if (Number(request.headers.get("content-length")) > maxLogoBytes + 65536) throw new ApiError(413, "Logo不能超过2MB");
     const form = await request.formData();
     captureFormData(form);

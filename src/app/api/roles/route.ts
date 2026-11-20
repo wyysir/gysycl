@@ -1,3 +1,4 @@
+import { hasPermission } from "@/lib/permissions";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { getReadyDb } from "@/lib/bootstrap";
@@ -9,7 +10,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
   try {
-    if (!isAdmin(await requireUser(request))) throw new ApiError(403,"只有管理员可以管理角色");
+    if (!hasPermission(await requireUser(request),"template.manage")) throw new ApiError(403,"只有管理员可以管理角色");
     const db=await getReadyDb();
     const roles=await db.customRole.findMany({orderBy:[{active:"desc"},{name:"asc"}],include:{_count:{select:{memberships:true}}}});
     return NextResponse.json({roles});
@@ -18,7 +19,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const user=await requireUser(request); requireOrigin(request);
-    if (!isAdmin(user)) throw new ApiError(403,"只有管理员可以管理角色");
+    if (!hasPermission(user,"template.manage")) throw new ApiError(403,"只有管理员可以管理角色");
     const body=await parseJson(request,z.object(roleFields));
     const db=await getReadyDb();
     const role=await db.$transaction(async tx=>{

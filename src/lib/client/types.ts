@@ -2,6 +2,8 @@ import type { MaterialChoice } from "@/lib/material-choice";
 import type { Permission } from "@/lib/permissions";
 import type { RoundingAdjustment } from "@/domain/rounding";
 export type User = {
+  grants?: import("@/lib/permissions").PermissionGrant[] | null;
+  authorizationVersion?: number;
   id: string;
   employeeNo: string;
   name: string;

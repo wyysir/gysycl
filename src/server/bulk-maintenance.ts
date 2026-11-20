@@ -1,3 +1,4 @@
+import { authorizationLock, assertCurrentAuthorization, assertGrantManagerRemains } from "@/server/authorizations";
 import { z } from "zod";
 import { getReadyDb } from "@/lib/bootstrap";
 import { hasPermission } from "@/lib/permissions";
@@ -14,7 +15,7 @@ const labels = { supplier: "供应商", project: "项目点", user: "员工", in
 export async function bulkMaintain(user: SessionUser, kind: BulkKind, input: z.infer<typeof bulkSchema>) {
   input = bulkSchema.parse(input);
   if (kind === "user" || kind === "project") {
-    if (user.globalRole !== "ADMIN") throw new ApiError(403, "只有管理员可以维护员工和项目点");
+    if (!hasPermission(user, kind === "user" ? "user.manage" : "project.manage")) throw new ApiError(403, "只有管理员可以维护员工和项目点");
   } else if (!hasPermission(user, "master.manage")) throw new ApiError(403, "没有基础资料维护权限");
   if (new Set(input.items.map(item => item.id)).size !== input.items.length) throw new ApiError(400, "不能重复选择，整批未保存");
   if (input.items.some(item => kind === "ingredient" ? item.version === undefined : !item.updatedAt)) throw new ApiError(400, "缺少资料版本，请刷新后重试");
@@ -23,9 +24,9 @@ export async function bulkMaintain(user: SessionUser, kind: BulkKind, input: z.i
   return db.$transaction(async tx => {
     if (kind === "user") {
       // Same lock order as individual account changes, including actor revalidation.
-      await tx.$queryRaw`SELECT id FROM "User" WHERE "globalRole" = 'ADMIN' ORDER BY id FOR UPDATE`;
+      await authorizationLock(tx);
       const actor = await tx.user.findUnique({ where: { id: user.id } });
-      if (!actor?.active || actor.deletedAt || actor.globalRole !== "ADMIN") throw new ApiError(403, "当前账号已失去管理权限");
+      await assertCurrentAuthorization(tx,user.id,"user.manage");
     }
     for (const item of [...input.items].sort((a, b) => a.id.localeCompare(b.id))) {
       const id = item.id;
@@ -42,7 +43,8 @@ export async function bulkMaintain(user: SessionUser, kind: BulkKind, input: z.i
         const used = kind === "supplier" ? await tx.document.count({ where: { supplierId: id } }) + await tx.contract.count({ where: { supplierId: id } })
           : kind === "project" ? await tx.document.count({ where: { projectId: id } }) + await tx.contract.count({ where: { projectId: id } }) + await tx.projectDailyRevenue.count({ where: { projectId: id } }) + await tx.uploadBatch.count({ where: { projectId: id } })
           : kind === "ingredient" ? await tx.documentItem.count({ where: { ingredientId: id } }) + await tx.contract.count({ where: { ingredientId: id } }) : 0;
-        if (used) throw new ApiError(409, `${row.name}已有业务关联，请改用停用，整批未删除`);
+        const supplierUsed=kind==="supplier"?await tx.supplierAdjustment.count({where:{supplierId:id}})+await tx.supplierStatement.count({where:{supplierId:id}})+await tx.supplierFile.count({where:{supplierId:id}}):kind==="project"?await tx.supplierAdjustment.count({where:{projectId:id}})+await tx.supplierStatement.count({where:{projectId:id}})+await tx.supplierFile.count({where:{projectId:id}}):kind==="ingredient"?await tx.supplierAdjustment.count({where:{ingredientId:id}}):0;
+        if (used || supplierUsed) throw new ApiError(409, `${row.name}已有业务关联，请改用停用，整批未删除`);
         if (kind === "supplier") await tx.supplier.delete({ where: { id } });
         else if (kind === "project") await tx.project.delete({ where: { id } });
         else if (kind === "ingredient") await tx.ingredient.delete({ where: { id } });
@@ -56,6 +58,7 @@ export async function bulkMaintain(user: SessionUser, kind: BulkKind, input: z.i
       }
       await tx.auditLog.create({ data: { userId: user.id, entityType: kind, entityId: id, action: `${kind}.bulk${deleting ? "Deleted" : active ? "Enabled" : "Disabled"}`, beforeValue: { name: row.name, active: row.active }, afterValue: deleting ? { deleted: true, historicalRecordsRetained: kind === "user" } : { active } } });
     }
+    if(kind === "user")await assertGrantManagerRemains(tx);
     return { processed: input.items.length };
   }, { timeout: 30000 });
 }

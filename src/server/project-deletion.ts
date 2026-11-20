@@ -1,8 +1,9 @@
+import { hasPermission } from "@/lib/permissions";
 import { getReadyDb } from "@/lib/bootstrap";
 import { ApiError, type SessionUser } from "./auth";
 
 export async function deleteProject(user: SessionUser, id: string, updatedAt: string) {
-  if (user.globalRole !== "ADMIN") throw new ApiError(403, "只有管理员可以删除项目点");
+  if (!hasPermission(user,"project.manage")) throw new ApiError(403, "只有管理员可以删除项目点");
   const db = await getReadyDb();
   return db.$transaction(async tx => {
     // Batch creation holds a shared parent lock through its write, because
@@ -18,7 +19,7 @@ export async function deleteProject(user: SessionUser, id: string, updatedAt: st
       tx.uploadBatch.count({ where: { projectId: id } }),
       tx.projectMembership.count({ where: { projectId: id } }),
     ]);
-    if (documents || contracts || revenues || batches) {
+    if (documents || contracts || revenues || batches || await tx.supplierAdjustment.count({where:{projectId:id}}) || await tx.supplierStatement.count({where:{projectId:id}}) || await tx.supplierFile.count({where:{projectId:id}})) {
       throw new ApiError(409, "项目点已有单据、合同价、营业额或上传批次，请停用项目点以保留业务记录", { documents, contracts, revenues, batches });
     }
     await tx.project.delete({ where: { id } });

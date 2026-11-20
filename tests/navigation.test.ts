@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { canOpenNavigation, documentOrigin, mobileNavigation } from "@/lib/client/navigation";
-import type { PermissionUser } from "@/lib/permissions";
+import type { PermissionUser,Permission } from "@/lib/permissions";
 
-const staff = (permissions: string[]): PermissionUser => ({ globalRole: "STAFF", memberships: [{ projectId: "p", roles: [], permissions }] });
+const staff = (permissions: string[]): PermissionUser => ({ globalRole: "STAFF", grants:permissions.map(key=>({key:key as Permission,scope:"p"})), memberships: [{ projectId: "p", roles: [], permissions }] });
 describe("navigation uses existing permissions", () => {
   it("hides privileged entries for a minimal custom role", () => {
     const user = staff([]);
@@ -14,10 +14,11 @@ describe("navigation uses existing permissions", () => {
     expect(mobileNavigation(user, ["/dashboard", "/upload", "/documents", "/analytics"])).toEqual(["/dashboard", "/documents", "/upload", "/analytics"]);
     expect(canOpenNavigation(user, "/settings")).toBe(false);
   });
-  it("keeps finance read-only and review entries for reviewers", () => {
+  it("preserves legacy finance defaults and allows explicit finance grants", () => {
     const finance: PermissionUser = { globalRole: "FINANCE", memberships: [] };
     expect(canOpenNavigation(finance, "/upload")).toBe(false);
     expect(canOpenNavigation(finance, "/master")).toBe(true);
+    expect(canOpenNavigation({...finance,grants:[{key:"document.create",scope:"p"}]},"/upload")).toBe(true);
     expect(mobileNavigation(staff(["document.return", "document.create"]), ["/reviews", "/upload"])).toContain("/reviews");
   });
   it("uses the actual source for breadcrumbs and rejects arbitrary destinations", () => {

@@ -1,3 +1,4 @@
+import { requireMasterReader } from "@/server/master-reader";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { requireUser } from "@/server/auth";
@@ -22,7 +23,7 @@ export async function GET(
   try {
     return NextResponse.json(
       await getIngredient(
-        await requireUser(request),
+        await requireMasterReader(request),
         (await context.params).id,
       ),
     );

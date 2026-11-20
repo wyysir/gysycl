@@ -141,7 +141,7 @@ describe('offline OCR failure injection (no real cloud accuracy claim)', () => {
     {name:'塑料水桶',unit:'桶',quantity:2,expected:'塑料水桶',changed:false},
     {name:'大桶',unit:'大桶',quantity:1,expected:'大桶',changed:false},
     {name:'大桶装水',unit:'大桶',quantity:1,expected:'大桶装水',changed:false},
-  ])('separates only an already extracted compound package unit: $name / $unit',async({name,unit,quantity,expected,changed})=>{
+  ])('separates only an already extracted compound package unit: $name / $unit / $quantity',async({name,unit,quantity,expected,changed})=>{
     const item={...vlm().items[0],rawName:name,unit,spec:unit,quantity};
     stubVision(channel.fetch.mockResolvedValue(new Response(JSON.stringify({choices:[{message:{content:JSON.stringify({...vlm(),items:[item]})}}]}))));
     const result=await extractDocuments([await image()]);

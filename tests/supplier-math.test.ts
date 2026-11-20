@@ -1,0 +1,8 @@
+import { expect,it } from "vitest";
+import { supplierSuggestedAmount,supplierPaymentTotal } from "@/lib/supplier-math";
+import { canViewCheckDetails } from "@/server/read-scope";
+import type { SessionUser } from "@/server/auth";
+import type { Permission } from "@/lib/permissions";
+it("rounds original-price suggestions by exact decimal cents",()=>{expect(supplierSuggestedAmount("0.1","3")).toBe("0.30");expect(supplierSuggestedAmount("1.005","1")).toBe("1.01");expect(supplierSuggestedAmount("3.3333","2")).toBe("6.67");expect(supplierSuggestedAmount("15","0.0001")).toBe("0.00");expect(supplierSuggestedAmount("1e3","1")).toBe("");});
+it("never silently drops negative or sub-cent payment inputs",()=>{expect(supplierPaymentTotal(["0.1","0.2",""])).toBe("0.30");expect(supplierPaymentTotal(["10","-5"])).toBeNull();expect(supplierPaymentTotal(["10","1.001"])).toBeNull();expect(supplierPaymentTotal(["10","1e2"])).toBeNull();});
+it("does not expose company-wide check details through global field grants with a restricted base scope",()=>{const keys:Permission[]=["document.view_others","document.view_unit_price","document.view_amount","contract.view_price"];const user:SessionUser={id:"test",employeeNo:"test",name:"test",globalRole:"ADMIN",memberships:[],grants:[{key:"document.view",scope:"p"},...keys.map(key=>({key,scope:"*"}))]};expect(canViewCheckDetails(user,"p","duplicate_document")).toBe(false);expect(canViewCheckDetails(user,"p","line_amount")).toBe(true);expect(canViewCheckDetails({...user,grants:[{key:"document.view",scope:"*"},...keys.map(key=>({key,scope:"*"}))]},"p","duplicate_document")).toBe(true);});

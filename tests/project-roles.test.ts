@@ -1,3 +1,5 @@
+import { saveAuthorization } from "@/server/authorizations";
+import { SUPERVISOR_PERMISSIONS } from "@/lib/permissions";
 import { randomUUID } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import { NextRequest } from "next/server";
@@ -60,17 +62,19 @@ describe("project-specific employee and supervisor permissions", () => {
       expect((await patch({memberships:[memberships[0],memberships[0]]})).status).toBe(400);
       expect((await patch({memberships:[{projectId:"missing",role:"SUPERVISOR"}]})).status).toBe(400);
       const next=[{projectId:projects[1].id,role:"SUPERVISOR"}];
-      expect((await patch({memberships:next})).status).toBe(200);
+      expect((await patch({memberships:next})).status).toBe(400);
+      const manager=(await getSessionUser(request("/api/bootstrap",adminToken,undefined,"GET")))!;
+      await saveAuthorization(manager,{userId:id,version:user!.authorizationVersion!,grants:[...SUPERVISOR_PERMISSIONS,"document.view" as const,"document.images" as const].map(key=>({key,scope:key.startsWith("master.")?"*":projects[1].id}))});
       user=await getSessionUser(request("/api/bootstrap",memberToken,undefined,"GET"));
       expect(canSubmitProject(user!,projects[0].id)).toBe(false);
       expect(canSuperviseProject(user!,projects[1].id)).toBe(true);
       // A password/active-only patch must preserve project assignments.
       expect((await patch({active:true})).status).toBe(200);
-      expect(await db.projectMembership.count({where:{userId:id}})).toBe(1);
+      expect(await db.projectMembership.count({where:{userId:id}})).toBe(2);
       const audit=await db.auditLog.findFirstOrThrow({where:{entityType:"user",entityId:id,action:"user.updated"},orderBy:{createdAt:"asc"}});
       expect(JSON.stringify(audit)).not.toContain("test-pass-123");
     } finally {
-      await db.auditLog.deleteMany({where:{entityType:"user",entityId:id}});
+      await db.auditLog.deleteMany({where:{entityId:id}});
       await db.user.delete({where:{id}});
     }
   });

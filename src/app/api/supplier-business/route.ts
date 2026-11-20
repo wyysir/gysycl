@@ -1,0 +1,13 @@
+import { NextRequest,NextResponse } from "next/server";
+import { z } from "zod";
+import { getReadyDb } from "@/lib/bootstrap";
+import { hasPermission } from "@/lib/permissions";
+import { requireUser,requireOrigin,ApiError } from "@/server/auth";
+import { handleApiError } from "@/server/http";
+import { supplierBusinessData,createAdjustment,changeAdjustment,createStatement,updateStatement,createInvoice,updateInvoice,createPayment } from "@/server/supplier-business";
+export const runtime="nodejs";
+export async function GET(request:NextRequest){try{const user=await requireUser(request),q=request.nextUrl.searchParams;if(q.get("context")==="1"){const db=await getReadyDb();const projects=(await db.project.findMany({orderBy:{code:"asc"}})).filter(p=>["statement.view","return.view","return.create","deduction.view","deduction.create","invoice.view","payment.view"].some(key=>hasPermission(user,key as import("@/lib/permissions").Permission,p.id)));const suppliers=projects.length&&hasPermission(user,"master.view")?await db.supplier.findMany({orderBy:{name:"asc"},select:{id:true,name:true,active:true,contactName:true,contactPhone:true}}):[];return NextResponse.json({projects,suppliers});}return NextResponse.json(await supplierBusinessData(user,q.get("projectId")||"",q.get("supplierId")||"",q.get("from")||"",q.get("to")||""));}catch(e){return handleApiError(e);}}
+export async function POST(request:NextRequest){try{const user=await requireUser(request);requireOrigin(request);let body:Record<string,unknown>;try{body=await request.json();}catch{throw new ApiError(400,"JSON格式不合法");}const {operation:action,...input}=body;let result;
+ switch(action){case "adjustment.create":result=await createAdjustment(user,input);break;case "adjustment.change":result=await changeAdjustment(user,z.object({id:z.string().min(1),version:z.number().int().positive(),action:z.enum(["submit","approve","return","edit"]),reason:z.string().max(500).optional(),amount:z.string().optional(),quantity:z.string().optional(),unit:z.string().optional(),equivalentQuantity:z.string().optional()}).parse(input));break;case "statement.create":result=await createStatement(user,input);break;case "statement.update":result=await updateStatement(user,input);break;case "invoice.create":result=await createInvoice(user,input);break;case "invoice.update":result=await updateInvoice(user,input);break;case "payment.create":result=await createPayment(user,input);break;default:throw new ApiError(400,"未知业务操作");}
+ return NextResponse.json({id:result.id,version:"version" in result?result.version:undefined});
+ }catch(e){if(e instanceof z.ZodError)return NextResponse.json({error:"业务参数不合法",details:e.flatten()},{status:400});return handleApiError(e);}}

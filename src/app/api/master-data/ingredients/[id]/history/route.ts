@@ -1,3 +1,4 @@
+import { requireMasterReader } from "@/server/master-reader";
 import { NextResponse, type NextRequest } from "next/server";
 import { requireUser } from "@/server/auth";
 import { handleApiError } from "@/server/http";
@@ -9,7 +10,7 @@ export async function GET(
   context: { params: Promise<{ id: string }> },
 ) {
   try {
-    const user = await requireUser(request),
+    const user = await requireMasterReader(request),
       params = request.nextUrl.searchParams;
     return NextResponse.json(
       await ingredientHistory(user, (await context.params).id, {

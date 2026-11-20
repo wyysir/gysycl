@@ -48,7 +48,7 @@ export async function updateSupplier(user: SessionUser, id: string, input: Suppl
 }
 
 export async function updateProject(user: SessionUser, id: string, input: { updatedAt: string; name: string; region: string; active: boolean }) {
-  if (user.globalRole !== "ADMIN") throw new ApiError(403, "只有管理员可以维护项目点");
+  if (!hasPermission(user,"project.manage")) throw new ApiError(403, "只有管理员可以维护项目点");
   const db = await getReadyDb();
   return db.$transaction(async tx => {
     const existing = await tx.project.findUnique({ where: { id } });

@@ -47,6 +47,8 @@ async function createPrismaClient() {
   for (const statement of readFileSync(path.join(process.cwd(), "prisma/migrations/0009_material_measurements/migration.sql"), "utf8").split(";").filter(sql=>sql.trim())) {
     await client.$executeRawUnsafe(statement);
   }
+  const tables=await client.$queryRaw<Array<{name:string|null}>>`SELECT to_regclass('"SupplierAdjustment"')::text AS name`;
+  if(!tables[0]?.name)for(const statement of readFileSync(path.join(process.cwd(),"prisma/migrations/0010_supplier_accounts/migration.sql"),"utf8").split(";").filter(sql=>sql.trim()))await client.$executeRawUnsafe(statement);
   await upgradeSpecificationKeys(client);
   return client;
 }

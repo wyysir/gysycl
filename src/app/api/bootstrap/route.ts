@@ -1,8 +1,8 @@
-import { permissionProjectIds } from "@/lib/permissions";
+import { hasPermission,permissionProjectIds } from "@/lib/permissions";
 import { NextResponse, type NextRequest } from "next/server";
 import { getReadyDb } from "@/lib/bootstrap";
 import { env, isWechatConfigured } from "@/lib/config";
-import { requireUser } from "@/server/auth";
+import { requireUser, allowedProjectIds } from "@/server/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -11,20 +11,20 @@ export async function GET(request: NextRequest) {
   try {
     const user = await requireUser(request);
     const db = await getReadyDb();
-    const projectIds = user.memberships.map((membership) => membership.projectId);
+    const projectIds = allowedProjectIds(user);
     const isGlobal =
-      user.globalRole === "ADMIN" || user.globalRole === "FINANCE";
+      projectIds === null;
     const contextOnly = request.nextUrl.searchParams.get("scope") === "context";
     const [projects, suppliers, ingredients, contracts] = await Promise.all([
       db.project.findMany({
         where: {
           active: true,
-          ...(isGlobal ? {} : { id: { in: projectIds } }),
+          ...(isGlobal ? {} : { id: { in: projectIds || [] } }),
         },
         orderBy: { code: "asc" },
       }),
-      contextOnly ? Promise.resolve([]) : db.supplier.findMany({ where: { active: true }, orderBy: { name: "asc" } }),
-      contextOnly ? Promise.resolve([]) : db.ingredient.findMany({
+      contextOnly || !hasPermission(user,"master.view") ? Promise.resolve([]) : db.supplier.findMany({ where: { active: true }, orderBy: { name: "asc" } }),
+      contextOnly || !hasPermission(user,"master.view") ? Promise.resolve([]) : db.ingredient.findMany({
         where: { active: true },
         orderBy: [{ category: "asc" }, { name: "asc" }],
       }),

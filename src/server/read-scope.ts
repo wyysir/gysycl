@@ -1,10 +1,16 @@
 import type { Prisma } from "@/generated/prisma/client";
-import { hasPermission, documentVisibility } from "@/lib/permissions";
+import { hasPermission, documentVisibility,permissionProjectIds,type Permission } from "@/lib/permissions";
 import type { SessionUser } from "./auth";
 import type { DocumentDto } from "./documents";
 
 // AND this with all caller filters; never replace its ownership OR with search OR.
 export function documentReadScope(user:SessionUser):Prisma.DocumentWhereInput {
+  if(user.grants!=null){
+    const own=permissionProjectIds(user,"document.view"),other=permissionProjectIds(user,"document.view_others");
+    if(own===null&&other===null)return {};
+    const shared=own===null?other||[]:other===null?own:own.filter(id=>other.includes(id));
+    return {OR:[{...(own===null?{}:{projectId:{in:own}}),createdById:user.id},...(shared.length?[{projectId:{in:shared}}]:[])]};
+  }
   if(user.globalRole !== "STAFF") return {};
   return {OR:user.memberships.map(row=>({projectId:row.projectId,
     ...(hasPermission(user,"document.view_others",row.projectId)?{}:{createdById:user.id})}))};
@@ -12,8 +18,12 @@ export function documentReadScope(user:SessionUser):Prisma.DocumentWhereInput {
 
 // These rules use company-wide records that may belong to inaccessible projects.
 export function canViewCheckDetails(user:SessionUser, projectId:string, type:string) {
-  return documentVisibility(user,projectId).sensitiveDetails && (user.globalRole !== "STAFF"
+  return documentVisibility(user,projectId).sensitiveDetails && ((user.grants!=null?["document.view","document.view_others","document.view_unit_price","document.view_amount","contract.view_price"].every(key=>permissionProjectIds(user,key as Permission)===null):user.globalRole !== "STAFF")
     || !["duplicate_document","duplicate_image","cross_supplier_price","benchmark_insufficient"].includes(type));
+}
+
+export function sensitiveReadScope(user:SessionUser):Prisma.DocumentWhereInput {
+  return {AND:(["document.view_others","document.view_unit_price","document.view_amount","contract.view_price"] as Permission[]).map(key=>{const ids=permissionProjectIds(user,key);return ids===null?{}:{projectId:{in:ids}};})};
 }
 
 export function visibleDocument(user:SessionUser, dto:DocumentDto) {

@@ -1,3 +1,4 @@
+import { requireMasterReader } from "@/server/master-reader";
 import { productSpecification } from "@/lib/text";
 import { NextResponse, type NextRequest } from "next/server";
 import { getReadyDb } from "@/lib/bootstrap";
@@ -8,7 +9,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
   try {
-    await requireUser(request);
+    await requireMasterReader(request);
     const ingredientId = request.nextUrl.searchParams.get("ingredientId");
     const q = request.nextUrl.searchParams.get("q")?.trim() || "", key = request.nextUrl.searchParams.get("key");
     if ((ingredientId?.length || 0) > 100 || q.length > 100 || (key?.length || 0) > 500) return NextResponse.json({ error: "检索条件过长" }, { status: 400 });

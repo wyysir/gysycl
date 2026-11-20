@@ -1,3 +1,4 @@
+import { hasPermission } from "@/lib/permissions";
 import crypto from "node:crypto";
 import sharp from "sharp";
 import { getReadyDb } from "@/lib/bootstrap";
@@ -55,7 +56,7 @@ export async function inspectLogo(bytes: Buffer) {
 }
 
 export async function saveBrand(user: SessionUser, bytes: Buffer | null, version: number) {
-  if (user.globalRole !== "ADMIN") throw new ApiError(403, "只有管理员可以修改企业Logo");
+  if (!hasPermission(user,"settings.manage")) throw new ApiError(403, "只有管理员可以修改企业Logo");
   if (!Number.isSafeInteger(version) || version < 0) throw new ApiError(400, "Logo版本无效，请刷新后重试");
   const image = bytes ? await inspectLogo(bytes) : null;
   const db = await getReadyDb();

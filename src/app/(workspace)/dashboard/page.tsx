@@ -38,7 +38,7 @@ export default function DashboardPage() {
     });
   }
   return <div className="page workbench">
-    <div className="page-head"><div><h1 className="page-title">工作台</h1><p className="page-subtitle">{new Intl.DateTimeFormat("zh-CN", { timeZone: "Asia/Shanghai", dateStyle: "full" }).format(new Date())} · {user.globalRole === "FINANCE" ? "全公司只读" : "当前授权项目范围"}</p></div>
+    <div className="page-head"><div><h1 className="page-title">工作台</h1><p className="page-subtitle">{new Intl.DateTimeFormat("zh-CN", { timeZone: "Asia/Shanghai", dateStyle: "full" }).format(new Date())} · {"当前授权项目范围"}</p></div>
       <div className="page-actions">{hasPermission(user,"revenue.view") && <Link className="btn btn--outline" href="/business">今日营业额 / 项目经营</Link>}{canSubmit ? <Link className="btn btn--primary" href="/upload?from=dashboard"><Plus size={18} />新建单据</Link> : <Link className="btn btn--primary" href={hasPermission(user,"analytics.view") ? "/analytics" : "/documents"}>{hasPermission(user,"analytics.view") ? "价格分析" : "查看单据"}</Link>}</div></div>
     <section className="work-stats" aria-label="工作概览">
       {[{ label: "草稿", count: counters.draft, icon: FileText, href: "/documents?status=DRAFT" }, { label: "待审核", count: counters.pendingReview, icon: Clock3, href: canReview ? "/reviews" : "/documents?status=PENDING_REVIEW" }, { label: "退回补充", count: counters.needsRevision, icon: RotateCcw, href: "/documents?status=NEEDS_REVISION" }].map(item => <Link className="work-stat card" href={item.href} key={item.label}><item.icon size={24} /><div><span>{item.label}</span><strong>{item.count}</strong></div><ArrowRight size={16} /></Link>)}
