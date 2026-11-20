@@ -112,6 +112,15 @@
     "commitResolution": "git rev-parse release/2026-11-20-name-unit-lookup^{}",
     "githubRepository": "https://github.com/wyysir/gysycl",
     "githubBranch": "main",
-    "githubSync": "pending receipt after local commit"
+    "githubSync": "PASS",
+    "releaseCommit": "7ccbc26946f74ec44eca0d4ce9907f3fd0e5814f",
+    "githubVisibility": "public",
+    "githubSnapshotCommit": "cd5163c566a1eb743741fe32064c733b65cc5a4a",
+    "githubFileCount": 620,
+    "credentialRuleScan": {
+      "blobs": 887,
+      "findings": 0,
+      "riskyPaths": 0
+    }
   }
 }
