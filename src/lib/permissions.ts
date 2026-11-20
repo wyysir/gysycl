@@ -1,5 +1,6 @@
 export const PERMISSION_OPTIONS = [
   {key:"master.view", group:"基础资料", label:"查看公司共享供应商和材料目录"},
+  {key:"contract.import", group:"基础资料", label:"导入本项目合同价（另需资料导入权限）"},
   {key:"document.view", group:"查看范围", label:"查看采购单据（基础项目范围）"},
   {key:"document.images", group:"查看范围", label:"查看采购原图（同时需要单价和金额查看）"},
   {key:"project.manage", group:"公司管理", label:"维护项目点（公司级）"},
@@ -56,7 +57,7 @@ export const PERMISSION_OPTIONS = [
   {key:"master.create", group:"基础资料", label:"新建供应商、从单据新建材料（全公司共享）"},
   {key:"master.create_global", group:"基础资料", label:"直接从材料库新建原材料（全公司共享）"},
   {key:"master.manage", group:"基础资料", label:"修改、启停、合并基础资料及删除未使用供应商和原材料（全公司共享）"},
-  {key:"master.import", group:"基础资料", label:"导入基础资料（全公司供应商、材料；仅授权项目合同）"},
+  {key:"master.import", group:"基础资料", label:"导入共享基础资料（合同另需项目导入权限）"},
 ] as const;
 
 export type Permission = typeof PERMISSION_OPTIONS[number]["key"];
@@ -86,6 +87,7 @@ export function legacyGrants(user: PermissionUser): PermissionGrant[] {
   if(user.globalRole === "FINANCE") return [...FINANCE_PERMISSIONS,"document.view","document.images","master.view" as Permission].map(key=>({key:key as Permission,scope:"*"}));
   const grants:PermissionGrant[] = user.memberships.flatMap(m=>[...new Set([...(m.permissions??builtinPermissions(m.roles)),"document.view"])].filter((key):key is Permission=>PERMISSION_KEYS.includes(key as Permission)).map(key=>({key,scope:companyPermission(key)?"*":m.projectId})));
   for(const m of user.memberships) if((m.permissions??builtinPermissions(m.roles)).includes("document.view_amount")&&(m.permissions??builtinPermissions(m.roles)).includes("document.view_unit_price")) grants.push({key:"document.images",scope:m.projectId});
+  for(const m of user.memberships) if((m.permissions??builtinPermissions(m.roles)).includes("master.import")) grants.push({key:"contract.import",scope:m.projectId});
   grants.push({key:"master.view",scope:"*"});
   return [...new Map(grants.map(g=>[g.key+":"+g.scope,g])).values()];
 }
@@ -100,6 +102,7 @@ export function hasPermission(user: PermissionUser, permission: Permission, proj
   if(permission==="master.view")return true;
   if (user.globalRole === "ADMIN") return true;
   if (user.globalRole === "FINANCE") return FINANCE_PERMISSIONS.includes(permission);
+  if(permission==="contract.import")return user.memberships.some(m=>(!projectId||m.projectId===projectId)&&(m.permissions??builtinPermissions(m.roles)).includes("master.import"));
   return user.memberships.some(membership => (!projectId || membership.projectId === projectId)
     && (membership.permissions ?? builtinPermissions(membership.roles)).includes(permission));
 }

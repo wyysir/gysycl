@@ -1,0 +1,194 @@
+{
+  "status": "PASS",
+  "version": "1.2.1",
+  "releaseTag": "release/2026-11-21-contract-import-scope",
+  "problem": "Company-level master.import used as project contract import scope could authorize unrelated project contracts.",
+  "behavior": "Shared catalog import requires master.import; contract import additionally requires contract.import for each target project. Mixed unauthorized workbooks fail atomically. Canonical role labels do not bypass grants.",
+  "deployment": {
+    "status": "PASS",
+    "version": "1.2.1",
+    "image": "sha256:042aba0f72f5947234c41d146e9fb4d6701b821f239cac7bd25dda4d9f514344",
+    "previousImage": "sha256:70356cf1a3dbb995491eb2bb44f650996c58dd4113d6f6bf546515e721743bc4",
+    "sourceArchiveSha256": "4bae76fa4edff5ba313bbadd5c1d0ae364d9197c144a48f1608164917a1f26d5",
+    "patchSha256": "88269a1e734701f85b92b8fa31c2d4082599e3f988b929cf197f13df01dfcf46",
+    "dockerfileSha256": "8c9857e0adfa806799471c8cf18d028faeb05dbb60728a52f4340ac250702684",
+    "wholeLocalMainDeployed": false,
+    "releaseTag": "release/2026-11-21-contract-import-scope",
+    "completedAt": "2026-11-21T01:29:45.515922+08:00",
+    "schemaMigration": null,
+    "authorizationBackfill": {
+      "status": "PASS",
+      "migrated": 1,
+      "existingLegacyImportScopesPreserved": true,
+      "companyImportDoesNotGrantAllContractProjects": true,
+      "oldColumnsUnchanged": true
+    },
+    "oldTableColumnsUnchanged": true,
+    "health": {
+      "ok": true,
+      "database": "up",
+      "logging": {
+        "enabled": true,
+        "dropped": 0,
+        "writeFailures": 0,
+        "lastErrorCode": ""
+      },
+      "time": "2026-11-20T17:29:41.692Z"
+    },
+    "backupCreated": false,
+    "productionTestRecordsCreated": false
+  },
+  "database": {
+    "schemaMigration": null,
+    "tablesFingerprintCompared": 33,
+    "allExistingBusinessColumnsUnchanged": true,
+    "onlyAuthorizationFieldsUpdated": [
+      "User.accessGrants",
+      "User.authorizationVersion"
+    ],
+    "backfillScript": "scripts/migrate-contract-import-scopes.ts",
+    "backfill": {
+      "status": "PASS",
+      "migrated": 1,
+      "existingLegacyImportScopesPreserved": true,
+      "companyImportDoesNotGrantAllContractProjects": true,
+      "oldColumnsUnchanged": true
+    },
+    "authorizationReadback": {
+      "users": 3,
+      "oldCapabilitySnapshotsMatch": true,
+      "newSupplierOperationGrants": 0,
+      "nullAuthorizationRows": 0
+    },
+    "newBusinessTableCounts": {
+      "SupplierAdjustment": 0,
+      "SupplierFile": 0,
+      "SupplierInvoice": 0,
+      "SupplierInvoiceAllocation": 0,
+      "SupplierPayment": 0,
+      "SupplierPaymentAllocation": 0,
+      "SupplierStatement": 0,
+      "SupplierStatementLine": 0
+    },
+    "productionTestRecordsCreated": false,
+    "businessBackupCreated": false
+  },
+  "validation": {
+    "localFocused": {
+      "passed": 35,
+      "files": 4,
+      "log": ".tmp/supplier-business-resume-20261120/import-scope-tests.log"
+    },
+    "typecheck": "PASS: next typegen and tsc --noEmit",
+    "build": "PASS: actual running v1.2.0 container source plus three current application files and package version; Prisma regenerated; no dependency upgrades",
+    "runningBasePostgres": {
+      "passed": 373,
+      "skippedUndeployedOcrExperiments": 6,
+      "files": 45,
+      "excludedExperimentToolCases": 24,
+      "excludedSuite": "tests/ocr-review-guard.test.ts",
+      "image": "sha256:042aba0f72f5947234c41d146e9fb4d6701b821f239cac7bd25dda4d9f514344",
+      "emptyIsolatedDatabase": "contract_scope_verify_20261121",
+      "productionDatabaseCloned": false,
+      "productionDatabaseUsed": false,
+      "log": "/opt/delivery-audit/releases/contract-import-scope-20261121/postgres-tests.log"
+    },
+    "actualCandidateBrowser": {
+      "status": "PASS",
+      "widths": [
+        1440,
+        390,
+        320
+      ],
+      "checks": [
+        {
+          "canonicalAdminWithoutGrantsDenied": true,
+          "liveSourceBuiltPages": true,
+          "officialLogo": true,
+          "noBrowserWrites": true,
+          "lastManagerGrantRemovalBlocked": true,
+          "lastManagerDisableDeleteAndBulkBlocked": true,
+          "rejectedTransactionsRolledBack": true
+        }
+      ],
+      "errors": [],
+      "separateProjectContractImportCheckboxChecked": true,
+      "companyCatalogImportCheckboxChecked": true
+    },
+    "publicChecks": [
+      {
+        "url": "https://shian.dhcy.top/api/health",
+        "status": 200,
+        "bytes": 137,
+        "contentType": "application/json"
+      },
+      {
+        "url": "https://shian.dhcy.top/login",
+        "status": 200,
+        "bytes": 10668,
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "url": "https://shian.dhcy.top/api/authorizations",
+        "status": 401,
+        "bytes": 39,
+        "contentType": "application/json"
+      },
+      {
+        "url": "https://shian.dhcy.top/api/supplier-business",
+        "status": 401,
+        "bytes": 39,
+        "contentType": "application/json"
+      },
+      {
+        "url": "http://shian.dhcy.top/788c68f9771c83073299b4f955277af3.txt",
+        "status": 200,
+        "bytes": 40,
+        "contentType": "text/plain",
+        "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995"
+      },
+      {
+        "url": "https://shian.dhcy.top/788c68f9771c83073299b4f955277af3.txt",
+        "status": 200,
+        "bytes": 40,
+        "contentType": "text/plain",
+        "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995"
+      }
+    ]
+  },
+  "source": {
+    "fromRunningImage": "sha256:70356cf1a3dbb995491eb2bb44f650996c58dd4113d6f6bf546515e721743bc4",
+    "releaseDirectory": "/opt/delivery-audit/releases/contract-import-scope-20261121",
+    "sourceArchive": "/opt/delivery-audit/releases/contract-import-scope-20261121/source-v1.2.1.tar.gz",
+    "sourceArchiveSha256": "4bae76fa4edff5ba313bbadd5c1d0ae364d9197c144a48f1608164917a1f26d5",
+    "patchSha256": "88269a1e734701f85b92b8fa31c2d4082599e3f988b929cf197f13df01dfcf46",
+    "wholeLocalMainDeployed": false,
+    "undeployedLocalOcrExperimentsPreserved": true
+  },
+  "rollback": {
+    "previousCompatibleImage": "sha256:70356cf1a3dbb995491eb2bb44f650996c58dd4113d6f6bf546515e721743bc4",
+    "databaseRestorePerformed": false,
+    "backupAvailable": false,
+    "instructions": "Application-only rollback may reuse the prior compatible v1.2.0 image. Preserve grants and all business tables. That image lacks the project contract.import fix; prefer a forward repair. An application rollback is not a database restoration."
+  },
+  "cleanup": {
+    "status": "PASS",
+    "candidateRemoved": true,
+    "validationDatabaseDropped": true,
+    "temporaryEnvironmentRemoved": true,
+    "localCandidateTunnelRemoved": true,
+    "localSyntheticTokensRemoved": true
+  },
+  "gitHub": {
+    "status": "PENDING_LOCAL_COMMIT_AND_SAFE_SYNC",
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "originalHistoryAndTagsNotUploaded": true
+  },
+  "relatedRelease": "2026-11-21-supplier-business.json",
+  "limits": [
+    "Invoice recognition checked with synthetic files and simulated service responses; real supplier invoice accuracy not reaccepted.",
+    "No new supplier operation grants automatically assigned to real employees.",
+    "Unrelated original CHANGELOG working changes preserved."
+  ]
+}

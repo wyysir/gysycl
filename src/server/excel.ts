@@ -189,7 +189,7 @@ export async function importMasterWorkbook(
   const db = await getReadyDb();
   const measurementImports = await compileMeasurementImports(db, user, ingredients.rows);
   errors.push(...measurementImports.errors);
-  const importProjects = permissionProjectIds(user,"master.import");
+  const importProjects = permissionProjectIds(user,"contract.import");
   const projects = await db.project.findMany({where:{active:true,...(importProjects ? {id:{in:importProjects}} : {})}});
   const projectByCode = new Map(projects.map((project) => [project.code, project]));
   const declaredIngredients: IngredientCandidate[] = [];

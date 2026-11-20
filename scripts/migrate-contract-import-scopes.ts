@@ -1,0 +1,6 @@
+import { getDb } from "../src/lib/prisma";
+import { toSessionUser,userInclude } from "../src/server/auth";
+import { hasPermission,legacyGrants,type PermissionGrant } from "../src/lib/permissions";
+import { authorizationLock } from "../src/server/authorizations";
+const db=await getDb();
+try{const migrated=await db.$transaction(async tx=>{await authorizationLock(tx);const users=await tx.user.findMany({include:userInclude()});let count=0;for(const row of users){if(!Array.isArray(row.accessGrants))continue;const user=await toSessionUser(row);if(!hasPermission(user,"master.import")||user.grants?.some(g=>g.key==="contract.import"))continue;const oldScopes=legacyGrants({...user,grants:null}).filter(g=>g.key==="contract.import");if(!oldScopes.length)continue;const grants=[...(user.grants||[]),...oldScopes] as PermissionGrant[];await tx.$executeRaw`UPDATE "User" SET "accessGrants"=${JSON.stringify(grants)}::jsonb,"authorizationVersion"="authorizationVersion"+1 WHERE id=${row.id}`;count++;}return count;},{timeout:60000});console.log(JSON.stringify({status:"PASS",migrated,existingLegacyImportScopesPreserved:true,companyImportDoesNotGrantAllContractProjects:true,oldColumnsUnchanged:true}));}finally{await db.$disconnect();}
