@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "kind": "authorized master-data supplement; no application release",
+  "completedAt": "2026-11-20T07:41:04.863Z",
+  "applicationVersion": "1.1.0",
+  "applicationCodeChanged": false,
+  "imageDeployed": false,
+  "migrations": [],
+  "newBackups": false,
+  "sourceWorkbookUnchanged": true,
+  "sourceSha256": "5bb0bb226fa113cc28699167c6dcea261525df4112a09fde8b41247409c0823d",
+  "allSheets": 35,
+  "classifiedCells": 306163,
+  "oldHeaderOccurrences": 2296,
+  "additionalNameOccurrences": 1215,
+  "totalNameOccurrences": 3511,
+  "importedNamesAndUnits": 1275,
+  "existingNameUnitGroups": 317,
+  "notImportedRed": 12,
+  "newDefaultJin": 1113,
+  "totalIngredients": 1645,
+  "existingIngredientRowsRetained": 370,
+  "nonTargetTablesUnchanged": 22,
+  "newSpecificationFields": "empty; source specifications retained in local review",
+  "newMeasurementMappings": 0,
+  "financialRecordsImported": 0,
+  "productionDryRunDatabaseUnchanged": true,
+  "importBatchId": "cmwoo6vj501xu23t7ism1beoa",
+  "files": {
+    "原材料全表复核与未导入红色清单.xlsx": {
+      "bytes": 101350,
+      "sha256": "aeae24119d4394071a28b5677ecae277c50692a784cd868d5e860dc7e345b85b"
+    },
+    "原材料补充导入表.xlsx": {
+      "bytes": 52314,
+      "sha256": "b45511015b70967eb7c420f6e25e1442b4d1849c3c1bff1501ac2681ebf5e8e5"
+    }
+  },
+  "health": {
+    "ok": true,
+    "database": "up",
+    "logging": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "time": "2026-11-20T07:41:04.861Z"
+  },
+  "futureTodo": "Unit, product specification and quantity conversion design only; name supplement is complete.",
+  "todoInboxId": "kb-01e75c9e2b75400f929ecdcc7c47405a",
+  "github": {
+    "repository": "https://github.com/wyysir/gysycl",
+    "method": "safe source snapshot; local business workbooks excluded",
+    "status": "Pending local documentation commit and verified snapshot push"
+  }
+}
