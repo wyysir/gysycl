@@ -1,9 +1,10 @@
+import { freezeDocumentMeasurements } from "./measurements";
 import { canSubmitRecord, documentVisibility, hasPermission } from "@/lib/permissions";
 import { canConfirmRounding, validRounding, type RoundingItem } from "@/domain/rounding";
 import { Prisma } from "@/generated/prisma/client";
 import { DocumentStatus } from "@/generated/prisma/enums";
 import { getReadyDb } from "@/lib/bootstrap";
-import { dateOnly, normalizeUnit, parseDateOnly, roundMoney } from "@/lib/text";
+import { dateOnly, normalizeSpecification, productSpecification, normalizeUnit, parseDateOnly, roundMoney } from "@/lib/text";
 import {
   allowedProjectIds,
   ApiError,
@@ -318,13 +319,17 @@ export async function saveDocument(
       lineNo: index + 1,
       rawName: String(item.rawName || item.name || "").trim(),
       name: String(item.name || "").trim(),
-      spec: String(item.spec || "").trim() === String(item.unit || "").trim()
-        ? normalizeUnit(item.unit || "") : String(item.spec || "").trim(),
+      spec: productSpecification(String(item.spec || ""), item.unit || ""),
       unit: normalizeUnit(item.unit || ""),
       quantity: Number(item.quantity) || 0,
       unitPrice: Number(item.unitPrice) || 0,
       amount: Number(item.amount) || 0,
       roundingAdjustment: resolveRounding(item),
+      measurementSnapshot: (() => {
+        const previous = existing.items.find(row => row.id === item.id);
+        return previous?.measurementSnapshot && previous.ingredientId === (item.ingredientId || null) && normalizeSpecification(productSpecification(previous.spec, previous.unit)) === normalizeSpecification(productSpecification(String(item.spec || ""), item.unit || "")) && previous.unit === normalizeUnit(item.unit || "")
+          ? previous.measurementSnapshot as Prisma.InputJsonValue : Prisma.DbNull;
+      })(),
       confidence:
         item.confidence === undefined ? 1 : Math.max(0, Math.min(1, item.confidence)),
       ingredientId: item.ingredientId || null,
@@ -577,6 +582,7 @@ export async function reviewDocument(
       },
     });
     if (input.action === "approve") {
+      await freezeDocumentMeasurements(tx, documentId);
       await tx.checkResult.updateMany({
         where: { documentId, status: "OPEN" },
         data: { status: "RESOLVED" },

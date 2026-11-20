@@ -92,10 +92,10 @@ const VLM_PROMPT = `你是餐饮供应链送货单录入专家。请读取图片
 }
 字段规则：
 1. quantity 只填实际数量数值，unit 只填计量单位。例如“5斤”拆为 quantity=5、unit="斤"。
-2. 按本系统业务要求，spec 必须与 unit 相同。例如“5斤”填 spec="斤"；“5包 x 4 = 20”填 quantity=5、unit="包"、spec="包"，不能将数量、单价或算式写入规格。
-3. 没有识别到单位时，unit 和 spec 留空，不要猜测或把数量当作单位。
+2. spec只填写商品实际规格，如500ml、1L、5kg、尺寸或型号；unit只填写采购计量单位，如瓶、箱、斤。两者独立。没有明确商品规格则spec留空，不能将本次采购数量、单位、单价或算式填入规格。
+3. 没有识别到采购单位时unit留空，不从500ml等商品规格推测采购单位；明确识别的商品规格照实保留。
 4. 手写内容可能横跨印刷表格的多个列，也可能全部写在“品名”栏。必须从整行“品名 数量单位 × 单价 = 金额”提取字段，不要因为印刷的单位栏为空就漏掉行内单位。
-   例如“干香菇1斤×38=38”→quantity=1,unit="斤",spec="斤",unitPrice=38,amount=38；“小圆子5包×4=20”→quantity=5,unit="包",spec="包"；“梅干菜5斤×12=60”→quantity=5,unit="斤",spec="斤",unitPrice=12,amount=60，不要把单价12填成数量。
+   例如“干香菇1斤×38=38”→quantity=1,unit="斤",spec="",unitPrice=38,amount=38；“小圆子5包×4=20”→quantity=5,unit="包",spec=""；“梅干菜5斤×12=60”→quantity=5,unit="斤",spec="",unitPrice=12,amount=60，不要把单价12填成数量。
 5. 单位以该行数量格定位，沿同一个上下边框读取紧邻单位格。折痕使格线弯曲时沿真实格线追踪，不按品名的水平高度配单位，不按商品惯用单位猜。
 6. 手写品名按笔画逐字读取，勿替换成更熟悉的商品；看不清的字用?，降低nameConfidence。品名不要包含数量单位或算式，单位保留明确写出的“大桶”等。
 7. docDateText只抄纸上送货/开单日期，忽略相机水印及手机时间。年月日明确齐全才填docDate与高dateConfidence；两位年份按20xx。只有月日或年份空白则docDate留空，不用当前年份补全；区分“3日”与“31”。
@@ -173,7 +173,7 @@ function normalizeItem(value: unknown, index: number): ExtractedItem {
   const suffix = rawName.normalize("NFKC").match(/^(.*?)\s*(\d+(?:\.\d+)?)\s*(大桶|公斤|千克|kg|斤|克|g|两|吨|包|袋|代|箱|件|盒|桶|瓶|罐|个|支|捆|把|板|盘|份|套)(?:\s*[x×*＝=].*)?[.,，。]?$/i);
   const matchingSuffix = suffix && suffix[1].trim() && parseMoney(suffix[2]) === parseMoney(quantityWithUnit?.[1] ?? item.quantity);
   if (matchingSuffix) rawName = suffix[1].trim();
-  const unit = normalizeUnit(String(item.unit || quantityWithUnit?.[2] || specWithUnit?.[1] || (matchingSuffix ? suffix[3] : "")).trim());
+  const unit = normalizeUnit(String(item.unit || quantityWithUnit?.[2] || (/[=＝]/.test(String(item.spec || "")) ? specWithUnit?.[1] : "") || (matchingSuffix ? suffix[3] : "")).trim());
   const quantity = parseMoney(quantityWithUnit?.[1] ?? item.quantity);
   // A multi-character package unit can leak into the name even when quantity
   // and unit were already extracted. Keep the model's original text for review.
@@ -181,10 +181,14 @@ function normalizeItem(value: unknown, index: number): ExtractedItem {
   const duplicatedPackage = quantity > 0 && /^[大小][桶袋包箱盒瓶罐]$/u.test(unit)
     && rawName.endsWith(unit) && rawName.slice(0, -unit.length).trim().length > 0;
   if (duplicatedPackage) rawName = rawName.slice(0, -unit.length).trim();
+  const rawSpec = String(item.spec || "").normalize("NFKC").trim();
+  const quantityExpression = /[=＝]/.test(rawSpec) && Boolean(specWithUnit);
+  const unitOrCountOnly = /^(?:\d+(?:\.\d+)?\s*)?(包|袋|箱|件|盒|桶|瓶|罐|个|支|捆|把|板|盘|份|套)$/.test(rawSpec);
+  const spec = quantityExpression || unitOrCountOnly || /^\d+(?:\.\d+)?$/.test(rawSpec) || normalizeUnit(rawSpec) === unit ? "" : rawSpec;
   return {
     lineNo: Number(item.lineNo) || index + 1,
     rawName,
-    spec: unit,
+    spec,
     unit,
     quantity,
     unitPrice: parseMoney(item.unitPrice),

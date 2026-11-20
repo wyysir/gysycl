@@ -5,6 +5,7 @@ import { createPgliteAdapter } from "prisma-pglite";
 import { PrismaClient } from "@/generated/prisma/client";
 import { env, isLocalDatabase } from "./config";
 import { observeDatabase } from "../server/observability/database";
+import { upgradeSpecificationKeys } from "./specification-keys";
 
 type PrismaGlobal = typeof globalThis & {
   __deliveryAuditPrisma?: PrismaClient;
@@ -43,6 +44,10 @@ async function createPrismaClient() {
   for (const statement of readFileSync(path.join(process.cwd(), "prisma/migrations/0008_upload_batches/migration.sql"), "utf8").split(";").filter(sql=>sql.trim())) {
     await client.$executeRawUnsafe(statement);
   }
+  for (const statement of readFileSync(path.join(process.cwd(), "prisma/migrations/0009_material_measurements/migration.sql"), "utf8").split(";").filter(sql=>sql.trim())) {
+    await client.$executeRawUnsafe(statement);
+  }
+  await upgradeSpecificationKeys(client);
   return client;
 }
 

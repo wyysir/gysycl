@@ -1,5 +1,5 @@
 import type { Db } from "@/lib/prisma";
-import { createNameScorer, matchLabel, scoreName } from "@/lib/text";
+import { createNameScorer, matchLabel, scoreName, productSpecification } from "@/lib/text";
 
 export type SupplierSuggestion = {
   id: string;
@@ -24,6 +24,7 @@ export type IngredientSuggestion = {
   matchStatus: "MATCHED" | "SIMILAR" | "NEW";
   exact: boolean;
   matchedAlias?: string;
+  configured?: boolean;
 };
 
 export async function suggestSuppliers(
@@ -102,7 +103,8 @@ export async function createIngredientMatcher(db: Db) {
       return {
         id: ingredient.id,
         name: ingredient.name,
-        spec: ingredient.spec,
+        spec: productSpecification(ingredient.spec, ingredient.unit),
+        configured: Boolean(ingredient.productSpecificationId),
         unit: ingredient.unit,
         category: ingredient.category,
         score: best?.score || 0,

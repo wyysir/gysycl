@@ -13,6 +13,7 @@ export async function GET(
       params = request.nextUrl.searchParams;
     return NextResponse.json(
       await ingredientHistory(user, (await context.params).id, {
+        analyticsScope: request.nextUrl.searchParams.get("scope") === "analytics",
         page: params.get("page") || 1,
         from: params.get("from") || "",
         to: params.get("to") || "",

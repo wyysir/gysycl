@@ -1,7 +1,7 @@
 import crypto from "node:crypto";
 import type { Db } from "@/lib/prisma";
 import { hashPassword } from "@/lib/passwords";
-import { normalizeName, normalizeUnit, roundMoney } from "@/lib/text";
+import { normalizeName, normalizeSpecification, productSpecification, normalizeUnit, roundMoney } from "@/lib/text";
 import { recomputeDocumentChecks } from "./checks";
 
 const projectRows = [
@@ -240,7 +240,7 @@ export async function seedDatabase(db: Db): Promise<boolean> {
           name,
           normalizedName: normalizeName(name),
           spec,
-          normalizedSpec: normalizeName(spec),
+          normalizedSpec: normalizeSpecification(productSpecification(spec, unit)),
           unit,
           category,
           aliases: {

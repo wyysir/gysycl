@@ -1,8 +1,9 @@
+import { Prisma } from "@/generated/prisma/client";
 import { assertCategoryActive } from "./ingredient-maintenance";
 import { recordError } from "./observability/logger";
 import { hasPermission } from "@/lib/permissions";
 import { getReadyDb } from "@/lib/bootstrap";
-import { normalizeName, normalizeUnit } from "@/lib/text";
+import { normalizeName, normalizeSpecification, productSpecification, normalizeUnit } from "@/lib/text";
 import { ApiError, canEditDocument, isAdmin, type SessionUser } from "./auth";
 import { recomputeDocumentChecks, recomputeDocumentChecksInTransaction } from "./checks";
 import { claimDocumentVersion } from "./document-lock";
@@ -139,12 +140,12 @@ export async function createIngredientFromDocument(
   }
   const name = input.name.trim();
   const unit = normalizeUnit(input.unit);
-  const spec = !input.spec || input.spec.trim() === input.unit.trim() ? unit : input.spec.trim();
+  const spec = productSpecification(input.spec?.trim() || "", unit);
   if (!name) throw new ApiError(400, "品名不能为空");
   if (!unit) throw new ApiError(400, "新建原材料必须填写单位");
   const db = await getReadyDb();
   const normalizedName = normalizeName(name);
-  const normalizedSpec = normalizeName(spec);
+  const normalizedSpec = normalizeSpecification(productSpecification(spec, unit));
   const existing = await db.ingredient.findFirst({
     where: {
       OR: [
@@ -395,6 +396,7 @@ export async function mergeMasterData(
       data: {
         ingredientId: target.id,
         name: target.name,
+        measurementSnapshot: Prisma.DbNull,
         spec: target.spec,
         unit: target.unit,
         matchStatus: "MATCHED",

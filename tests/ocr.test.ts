@@ -38,24 +38,28 @@ describe('offline OCR failure injection (no real cloud accuracy claim)', () => {
       .toBe(`data:image/jpeg;base64,${prepared.buffer.toString('base64')}`);
   });
   it.each([
-    {quantity:5,unit:'斤',spec:'5斤',expectedQuantity:5,expectedUnit:'斤'},
-    {quantity:0.5,unit:'斤',spec:'0.5斤 x 25 = 12.5',expectedQuantity:0.5,expectedUnit:'斤'},
-    {quantity:5,unit:'包',spec:'5包 x 4 = 20',expectedQuantity:5,expectedUnit:'包'},
-    {quantity:2,unit:'瓶',spec:'1瓶',expectedQuantity:2,expectedUnit:'瓶'},
-    {quantity:12,unit:'斤',spec:'5斤',expectedQuantity:12,expectedUnit:'斤'},
-    {quantity:'5斤',unit:'',spec:'5斤',expectedQuantity:5,expectedUnit:'斤'},
-    {quantity:'０.５斤',unit:'',spec:'0.5斤',expectedQuantity:0.5,expectedUnit:'斤'},
-    {quantity:5,unit:'公斤',spec:'散装',expectedQuantity:5,expectedUnit:'kg'},
-    {quantity:5,unit:'',spec:'5',expectedQuantity:5,expectedUnit:''},
-    {quantity:1,unit:'',spec:'1斤 x 38 = 38',expectedQuantity:1,expectedUnit:'斤'},
-    {quantity:5,unit:'',spec:'5包×4=20',expectedQuantity:5,expectedUnit:'包'},
-    {quantity:2,unit:'',spec:'1瓶',expectedQuantity:2,expectedUnit:'瓶'},
-    {quantity:5,unit:'',spec:'5斤/袋',expectedQuantity:5,expectedUnit:''},
-  ])('uses the unit as specification for $quantity / $unit / $spec',async(input)=>{
+    {quantity:5,unit:'斤',spec:'5斤',expectedQuantity:5,expectedUnit:'斤',expectedSpec:'5斤'},
+    {quantity:0.5,unit:'斤',spec:'0.5斤 x 25 = 12.5',expectedQuantity:0.5,expectedUnit:'斤',expectedSpec:''},
+    {quantity:5,unit:'包',spec:'5包 x 4 = 20',expectedQuantity:5,expectedUnit:'包',expectedSpec:''},
+    {quantity:2,unit:'瓶',spec:'1瓶',expectedQuantity:2,expectedUnit:'瓶',expectedSpec:''},
+    {quantity:12,unit:'斤',spec:'5斤',expectedQuantity:12,expectedUnit:'斤',expectedSpec:'5斤'},
+    {quantity:'5斤',unit:'',spec:'5斤',expectedQuantity:5,expectedUnit:'斤',expectedSpec:'5斤'},
+    {quantity:'０.５斤',unit:'',spec:'0.5斤',expectedQuantity:0.5,expectedUnit:'斤',expectedSpec:'0.5斤'},
+    {quantity:5,unit:'公斤',spec:'散装',expectedQuantity:5,expectedUnit:'kg',expectedSpec:'散装'},
+    {quantity:5,unit:'',spec:'5',expectedQuantity:5,expectedUnit:'',expectedSpec:''},
+    {quantity:1,unit:'',spec:'1斤 x 38 = 38',expectedQuantity:1,expectedUnit:'斤',expectedSpec:''},
+    {quantity:5,unit:'',spec:'5包×4=20',expectedQuantity:5,expectedUnit:'包',expectedSpec:''},
+    {quantity:2,unit:'',spec:'1瓶',expectedQuantity:2,expectedUnit:'',expectedSpec:''},
+    {quantity:5,unit:'',spec:'5斤/袋',expectedQuantity:5,expectedUnit:'',expectedSpec:'5斤/袋'},
+    {quantity:1,unit:'瓶',spec:'500ml',expectedQuantity:1,expectedUnit:'瓶',expectedSpec:'500ml'},
+    {quantity:1,unit:'箱',spec:'500ml',expectedQuantity:1,expectedUnit:'箱',expectedSpec:'500ml'},
+    {quantity:1,unit:'',spec:'500ml',expectedQuantity:1,expectedUnit:'',expectedSpec:'500ml'},
+    {quantity:1,unit:'箱',spec:'500ml×12瓶/箱',expectedQuantity:1,expectedUnit:'箱',expectedSpec:'500ml×12瓶/箱'},
+  ])('keeps specification independent from quantity and unit for $quantity / $unit / $spec',async(input)=>{
     const output={...vlm(),items:[{...vlm().items[0],quantity:input.quantity,unit:input.unit,spec:input.spec}]};
     stubVision(channel.fetch.mockResolvedValue(new Response(JSON.stringify({choices:[{message:{content:JSON.stringify(output)}}]}))));
     const result=await extractDocuments([await image()]);
-    expect(result.items[0]).toMatchObject({quantity:input.expectedQuantity,unit:input.expectedUnit,spec:input.expectedUnit});
+    expect(result.items[0]).toMatchObject({quantity:input.expectedQuantity,unit:input.expectedUnit,spec:input.expectedSpec});
     expect(result.items[0].rawOcr.spec).toBe(input.spec);
     expect(result.items[0].amount).toBe(42);
   });
@@ -142,7 +146,7 @@ describe('offline OCR failure injection (no real cloud accuracy claim)', () => {
     stubVision(channel.fetch.mockResolvedValue(new Response(JSON.stringify({choices:[{message:{content:JSON.stringify({...vlm(),items:[item]})}}]}))));
     const result=await extractDocuments([await image()]);
     expect(channel.fetch).toHaveBeenCalledTimes(1);
-    expect(result.items[0]).toMatchObject({rawName:expected,unit,spec:unit,quantity,unitPrice:4.2,amount:42,rawOcr:{rawName:name}});
+    expect(result.items[0]).toMatchObject({rawName:expected,unit,spec:"",quantity,unitPrice:4.2,amount:42,rawOcr:{rawName:name}});
     expect(result.warnings.some(x=>x.includes('包装单位已分离'))).toBe(changed);
     if(changed)expect(result.items[0].confidence).toBeLessThan(0.9);
   });

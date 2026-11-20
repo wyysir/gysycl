@@ -39,6 +39,17 @@ export function normalizeUnit(input: string): string {
   return unitMap[value] || value;
 }
 
+/** Decimal points distinguish capacities: 1.9L must never collapse into 19L. */
+export function normalizeSpecification(input: string): string {
+  return normalizeName(String(input ?? "").normalize("NFKC").replace(/(?<=\d)\.(?=\d)/g, "\uE000")).replaceAll("\uE000", ".");
+}
+
+/** Old releases used a bare purchase-unit word as a placeholder specification. */
+export function productSpecification(spec: string, unit: string): string {
+  const value = String(spec ?? "").trim();
+  return value && normalizeUnit(value) === normalizeUnit(unit) ? "" : value;
+}
+
 function ngrams(value: string, size = 2): Map<string, number> {
   const chars = Array.from(value);
   const result = new Map<string, number>();

@@ -5,7 +5,7 @@ import type { Prisma } from "@/generated/prisma/client";
 import { ApiError } from "./errors";
 import { logContext, recordError } from "./observability/logger";
 import { getReadyDb } from "@/lib/bootstrap";
-import { dateOnly, normalizeName, normalizeUnit } from "@/lib/text";
+import { dateOnly, normalizeName, normalizeUnit, normalizeSpecification, productSpecification } from "@/lib/text";
 import { createIngredientMatcher, bestSupplierMatch } from "./master-data";
 import { extractDocuments, preprocessImage, type PreprocessedImage } from "./ocr";
 import { recomputeDocumentChecksInTransaction } from "./checks";
@@ -181,12 +181,15 @@ export async function processDocumentOcr(documentId: string, expectedVersion?: n
     const ingredientMatcher = await createIngredientMatcher(db);
     const items = await Promise.all(
       extracted.items.map(async (item) => {
-        const candidates = ingredientMatcher(item.rawName, document.batchId ? 10 : 1);
-        const match = (document.batchId ? candidates.find(candidate=>normalizeUnit(candidate.unit)===normalizeUnit(item.unit)) : undefined) || candidates[0] || null;
-        const exact = !!match && (match.exact || match.score >= 0.98) && (!document.batchId || !!item.unit && normalizeUnit(match.unit)===normalizeUnit(item.unit));
-        const unit = normalizeUnit(item.unit || (!document.batchId && exact ? match?.unit || "" : ""));
-        // 用户确认：识别后的规格按单位填写，不回填主数据中的数量或旧规格。
-        const spec = unit;
+        const candidates = ingredientMatcher(item.rawName, 50);
+        const unit = normalizeUnit(item.unit || "");
+        const spec = productSpecification(item.spec || "", unit);
+        let eligible = candidates.filter(candidate => (candidate.exact || candidate.score >= 0.98) && unit && normalizeUnit(candidate.unit) === unit && normalizeSpecification(candidate.spec) === normalizeSpecification(spec));
+        if (new Set(eligible.map(candidate => normalizeName(candidate.name))).size === 1 && eligible.some(candidate => candidate.configured)) eligible = eligible.filter(candidate => candidate.configured);
+        const truncated = candidates.length === 50 && (candidates.at(-1)?.score || 0) >= 0.98;
+        const exact = !truncated && eligible.length === 1;
+        const match = exact ? eligible[0] : eligible[0] || candidates[0] || null;
+        // Product attributes and purchase quantities are independent; ambiguity stays for review.
         return {
           lineNo: item.lineNo,
           rawName: item.rawName,

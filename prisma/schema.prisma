@@ -192,6 +192,36 @@ model SupplierAlias {
   @@index([normalizedAlias])
 }
 
+// Statistical identity is independent of product specification and purchase unit.
+model MaterialIdentity {
+  id String @id @default(cuid())
+  name String
+  normalizedName String @unique
+  baseUnit String
+  version Int @default(1)
+  products ProductSpecification[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductSpecification {
+  id String @id @default(cuid())
+  materialId String
+  material MaterialIdentity @relation(fields: [materialId], references: [id], onDelete: Restrict)
+  name String
+  normalizedName String
+  spec String @default("")
+  normalizedSpec String @default("")
+  baseUnit String
+  // One product-base unit expressed in the material's statistical unit.
+  baseQuantity Decimal? @db.Decimal(20, 8)
+  version Int @default(1)
+  ingredients Ingredient[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([materialId, normalizedName, normalizedSpec])
+}
+
 model Ingredient {
   id               String            @id @default(cuid())
   name             String
@@ -205,6 +235,10 @@ model Ingredient {
   active           Boolean           @default(true)
   sourceDocumentId String?
   createdById      String?
+  productSpecificationId String?
+  productSpecification ProductSpecification? @relation(fields: [productSpecificationId], references: [id], onDelete: Restrict)
+  // Purchase-unit quantity expressed in the product's base unit; null = unconfirmed.
+  quantityPerProductUnit Decimal? @db.Decimal(20, 8)
   aliases          IngredientAlias[]
   contracts        Contract[]
   items            DocumentItem[]
@@ -213,6 +247,7 @@ model Ingredient {
 
   @@unique([normalizedName, normalizedSpec, unit])
   @@index([normalizedName])
+  @@index([productSpecificationId])
 }
 
 model IngredientAlias {
@@ -361,6 +396,8 @@ model DocumentItem {
   matchScore    Float?
   rawOcr        Json?
   roundingAdjustment Json?
+  // Server-owned conversion/identity captured at approval, never recalculated from current settings.
+  measurementSnapshot Json?
   document      Document   @relation(fields: [documentId], references: [id], onDelete: Cascade)
   ingredient    Ingredient? @relation(fields: [ingredientId], references: [id])
   createdAt     DateTime   @default(now())

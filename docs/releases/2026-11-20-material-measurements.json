@@ -1,0 +1,159 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-20T15:02:00.265555+08:00",
+  "releaseTag": "release/2026-11-20-material-measurements",
+  "version": "1.1.0",
+  "image": "sha256:5c0e7b8d842646d514a2c308fb14ca382f1ff50d4ef0ff246dce8b6d71abd5fb",
+  "previousImage": "sha256:97e7587aeace374554eb0a63ccda1c7ee48074c7188def1d42347187c1e9e168",
+  "sourceArchiveSha256": "f50350a697bb4c59c1f3731127571aab3d24bce64c8d34286600845d0b999876",
+  "patchSha256": "a9aed6d1c977a65feda52327d33b4e48032e5a5110034f0a034c4b45328b92c8",
+  "newMigrations": [
+    "0009_material_measurements"
+  ],
+  "backupCreated": false,
+  "originalBusinessUnchangedAcrossDeployment": true,
+  "sourceCommit": "Resolve the immutable annotated releaseTag in local Git; original history is not pushed to GitHub.",
+  "runtimeSource": "Actual v1.0.3 runtime source plus this feature patch; other local OCR experiments excluded.",
+  "sourceArchive": "/opt/delivery-audit/releases/material-measurements-20261120/source-v1.1.0.tar.gz",
+  "metadataKeyUpgrade": {
+    "records": 79,
+    "rawSpecificationUnitQuantityPriceAmountRetained": true,
+    "ambiguousKeysNotMerged": true
+  },
+  "validation": {
+    "testFiles": 41,
+    "testsPassed": 354,
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "browserStage": {
+      "mode": "stage",
+      "errors": [],
+      "unexpectedWrites": [],
+      "checks": [
+        {
+          "width": 1440,
+          "editorFits": true,
+          "explicitFactorsSavedInBrowserOnly": true,
+          "historyNotSilentlyChanged": true,
+          "summaryAcrossUnits": true,
+          "unknownFactorPending": true,
+          "sourceScope": "analytics"
+        },
+        {
+          "width": 390,
+          "editorFits": true,
+          "explicitFactorsSavedInBrowserOnly": true,
+          "historyNotSilentlyChanged": true,
+          "summaryAcrossUnits": true,
+          "unknownFactorPending": true,
+          "sourceScope": "analytics"
+        }
+      ],
+      "status": "PASS"
+    },
+    "browserLive": {
+      "mode": "live",
+      "errors": [],
+      "unexpectedWrites": [],
+      "checks": [
+        {
+          "width": 1440,
+          "editorFits": true,
+          "explicitFactorsSavedInBrowserOnly": true,
+          "historyNotSilentlyChanged": true,
+          "summaryAcrossUnits": true,
+          "unknownFactorPending": true,
+          "sourceScope": "analytics"
+        },
+        {
+          "width": 390,
+          "editorFits": true,
+          "explicitFactorsSavedInBrowserOnly": true,
+          "historyNotSilentlyChanged": true,
+          "summaryAcrossUnits": true,
+          "unknownFactorPending": true,
+          "sourceScope": "analytics"
+        }
+      ],
+      "status": "PASS"
+    },
+    "actualWorkbookIsolatedImportAndRepeat": "PASS; dedicated local PGlite; no production fixtures",
+    "xlsxReadBackAndRendering": "PASS",
+    "sourceSheets": 35,
+    "sourceColumns": 2296,
+    "candidateTemporaryEnvironmentRemoved": true
+  },
+  "authorizedProductionImport": {
+    "status": "PASS",
+    "completedAt": "2026-11-20T07:02:41.664Z",
+    "actualImportPerformed": true,
+    "records": {
+      "purchaseEntries": 288,
+      "newIngredients": 286,
+      "reusedIngredients": 2,
+      "totalIngredients": 370,
+      "newSuppliers": 26,
+      "totalSuppliers": 26,
+      "statisticalMaterials": 279,
+      "productSpecifications": 279,
+      "confirmedConversions": 266,
+      "pendingConversions": 22
+    },
+    "financialRecordsImported": 0,
+    "unrelatedTablesUnchanged": 17,
+    "existingIngredientIdentityFieldsRetained": true,
+    "sourceQuantityNotAvailable": true
+  },
+  "importBatches": [
+    "cmwomtfb4001623t7xf352i24",
+    "cmwomti7500wn23t7qw14dime"
+  ],
+  "workbookHashes": {
+    "供应商导入表-新版.xlsx": {
+      "bytes": 5280,
+      "sha256": "e1ac545a01faa81543f8b0dec4cb486e7136bc2926ddfffe98c4ded66799040c"
+    },
+    "原材料与供应商核对总表-新版.xlsx": {
+      "bytes": 219030,
+      "sha256": "a7a40c1ce9eace44b51ae25d17ec05bc0ecfd29ca793a33d662f3717fab12511"
+    },
+    "原材料导入表-新版.xlsx": {
+      "bytes": 21305,
+      "sha256": "1933e2e4b775e567580b0e60a251689fad3adfc6d43db768a96efc7bb763a0a0"
+    }
+  },
+  "finalCounts": {
+    "ingredients": 370,
+    "suppliers": 26,
+    "documents": 0,
+    "items": 0,
+    "contracts": 0,
+    "revenues": 0,
+    "users": 3,
+    "materials": 279,
+    "products": 279
+  },
+  "health": {
+    "ok": true,
+    "database": "up",
+    "logging": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "time": "2026-11-20T07:03:22.459Z"
+  },
+  "wechatVerificationPreserved": [
+    "http",
+    "https"
+  ],
+  "historicalBoundary": "Already confirmed conversion snapshots retained. Explicit administrator action required for unconfirmed history. No business snapshot restoration requested or performed.",
+  "github": {
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "visibilityVerified": "public",
+    "method": "independent safe source snapshot; original history, business images, workbooks and private data excluded",
+    "status": "Publish after local commit; record verified receipt in handoff"
+  }
+}

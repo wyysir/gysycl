@@ -1,5 +1,5 @@
 import { validRounding } from "./rounding";
-import { normalizeName, roundMoney } from "@/lib/text";
+import { normalizeName, normalizeSpecification, productSpecification, roundMoney } from "@/lib/text";
 
 export type Severity = "ERROR" | "WARNING" | "INFO";
 
@@ -100,7 +100,7 @@ function activeContract(
         contract.ingredientId === item.ingredientId &&
         contract.startsOn <= context.document.docDate &&
         (!contract.endsOn || contract.endsOn >= context.document.docDate) &&
-        normalizeName(contract.spec) === normalizeName(item.spec) &&
+        normalizeSpecification(productSpecification(contract.spec, contract.unit)) === normalizeSpecification(productSpecification(item.spec, item.unit)) &&
         normalizeName(contract.unit) === normalizeName(item.unit),
     )
     .sort((a, b) => b.startsOn.getTime() - a.startsOn.getTime())[0];
@@ -213,7 +213,7 @@ export function evaluateDocumentChecks(context: CheckContext): CheckDraft[] {
     const comparable = context.benchmark.filter(
       (sample) =>
         sample.ingredientId === item.ingredientId &&
-        normalizeName(sample.spec) === normalizeName(item.spec) &&
+        normalizeSpecification(productSpecification(sample.spec, sample.unit)) === normalizeSpecification(productSpecification(item.spec, item.unit)) &&
         normalizeName(sample.unit) === normalizeName(item.unit) &&
         sample.unitPrice > 0,
     );
@@ -251,7 +251,7 @@ export function evaluateDocumentChecks(context: CheckContext): CheckDraft[] {
         sample.ingredientId === item.ingredientId &&
         sample.supplierId === context.document.supplierId &&
         sample.projectId === context.document.projectId &&
-        normalizeName(sample.spec) === normalizeName(item.spec) &&
+        normalizeSpecification(productSpecification(sample.spec, sample.unit)) === normalizeSpecification(productSpecification(item.spec, item.unit)) &&
         normalizeName(sample.unit) === normalizeName(item.unit),
     );
     if (previous.length) {

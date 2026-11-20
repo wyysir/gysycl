@@ -1,3 +1,4 @@
+import type { MeasurementDto } from "@/lib/measurement-units";
 export type IngredientRecord = {
   id: string;
   name: string;
@@ -10,6 +11,8 @@ export type IngredientRecord = {
   aliases: string[];
   referenced: boolean;
   legacySpec: boolean;
+  measurement: MeasurementDto | null;
+  specificationKey?: string;
   createdAt: string;
   updatedAt: string;
 };

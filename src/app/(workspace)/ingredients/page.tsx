@@ -2,6 +2,7 @@
 import { hasPermission } from "@/lib/permissions";
 
 import Link from "next/link";
+import { IngredientMeasurementEditor } from "@/components/IngredientMeasurementEditor";
 import { MasterImport } from "@/components/MasterImport";
 import { IngredientCategories, type CategoryList } from "@/components/IngredientCategories";
 import { useEffect, useRef, useState, type FormEvent } from "react";
@@ -401,11 +402,11 @@ export default function IngredientsPage() {
           </div>}
           <div className="table-wrap" aria-label="原材料逐行列表">
             <table className="data-table ingredients-table"><thead><tr>
-              {admin && <th>选择</th>}<th>品名</th><th>单位</th><th>分类</th><th>规格</th><th>状态</th><th>操作</th>
+              {admin && <th>选择</th>}<th>品名／统计原材料</th><th>采购单位</th><th>分类</th><th>商品规格</th><th>状态</th><th>操作</th>
             </tr></thead><tbody>
               {list?.items.map(item => <tr key={item.id}>
                 {admin && <td><input type="checkbox" aria-label={`选择${item.name}（${item.unit}）`} checked={checked.some(row => row.id === item.id)} onChange={e => setChecked(rows => e.target.checked ? [...rows, item] : rows.filter(row => row.id !== item.id))} /></td>}
-                <td><strong>{item.name}</strong></td><td>{item.unit}</td><td>{item.category || "未分类"}</td><td>{item.spec || "—"}</td><td>{item.active ? "启用" : "停用"}</td>
+                <td><strong>{item.name}</strong><small className="ledger-meta">{item.measurement ? `归属：${item.measurement.materialName}` : "待确认归属"}</small></td><td>{item.unit}</td><td>{item.category || "未分类"}</td><td>{item.spec || "—"}</td><td>{item.active ? "启用" : "停用"}</td>
                 <td><div className="page-actions"><button className="btn btn--outline btn--small" onClick={() => open(item.id)}>{admin ? "编辑" : "查看详情"}</button>
                 {admin && <><button className="btn btn--outline btn--small" onClick={() => prepareBatch(item.active ? "disable" : "enable", [item])}>{item.active ? "停用" : "启用"}</button><button className="btn btn--danger btn--small" onClick={() => prepareBatch("delete", [item])}>删除</button></>}</div></td>
               </tr>)}
@@ -505,6 +506,7 @@ export default function IngredientsPage() {
                 ) : null}
                 {tab === "basic" ? (
                   <>
+                    {admin && selected !== "new" && detail && <IngredientMeasurementEditor ingredient={detail.ingredient} isAdmin={bootstrap?.user.globalRole === "ADMIN"} onSaved={async () => { const result = await api.get<IngredientDetail>(`/api/master-data/ingredients/${detail.ingredient.id}`); setDetail(result); setForm(values(result.ingredient)); setRefresh(v => v + 1); }} />}
                     <form onSubmit={save}>
                       <div className="catalog-form">
                         <label className="field">
@@ -532,9 +534,6 @@ export default function IngredientsPage() {
                               setForm({
                                 ...form,
                                 unit: e.target.value,
-                                spec: !form.spec.trim() || form.spec === form.unit
-                                  ? e.target.value
-                                  : form.spec,
                               })
                             }
                           />
@@ -545,7 +544,7 @@ export default function IngredientsPage() {
                             className="input"
                             maxLength={100}
                             disabled={!formEditable || saving}
-                            placeholder="留空时按计量单位填写"
+                            placeholder="如500ml、5kg；未注明可留空"
                             value={form.spec}
                             onChange={(e) =>
                               setForm({ ...form, spec: e.target.value })

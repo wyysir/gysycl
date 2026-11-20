@@ -53,7 +53,7 @@ export function BatchDocumentCard({document:doc,bootstrap,dirty,conflict,onChang
   async function createMaterial(){if(!newItem)return;await run(async()=>{
     try {
       const created=await api.post<{id:string;name:string;unit:string;spec:string;documentVersion:number|null}>("/api/master-data/ingredients",{
-        name:newItem.name,rawName:doc.items[newItem.index].rawName,unit:newItem.unit,spec:newItem.unit,category:newItem.category,
+        name:newItem.name,rawName:doc.items[newItem.index].rawName,unit:newItem.unit,spec:doc.items[newItem.index].spec || "",category:newItem.category,
         sourceDocumentId:doc.id,sourceItemId:doc.items[newItem.index].id.startsWith("new-")?undefined:doc.items[newItem.index].id,confirmNew:true,
       });
       onChange({...doc,version:created.documentVersion??doc.version,checkedVersion:null,items:doc.items.map((i,n)=>n===newItem.index?{...i,ingredientId:created.id,name:created.name,unit:created.unit,spec:created.spec,matchStatus:"MATCHED",matchScore:1}:i)});

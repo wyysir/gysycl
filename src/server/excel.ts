@@ -1,3 +1,5 @@
+import { compileMeasurementImports, importHeader, measurementImportHeaders } from "./measurement-import";
+import { configureMeasurementInTransaction } from "./measurements";
 import { assertCategoryActive } from "./ingredient-maintenance";
 import { importSheets, type MasterImportType } from "@/lib/master-import";
 import { hasPermission, permissionProjectIds, documentVisibility } from "@/lib/permissions";
@@ -6,7 +8,7 @@ import ExcelJS from "exceljs";
 import path from "node:path";
 import { DocumentStatus } from "@/generated/prisma/enums";
 import { getReadyDb } from "@/lib/bootstrap";
-import { dateOnly, normalizeName, normalizeUnit, parseDateOnly, roundMoney } from "@/lib/text";
+import { dateOnly, normalizeName, normalizeSpecification, productSpecification, normalizeUnit, parseDateOnly, roundMoney } from "@/lib/text";
 import { allowedProjectIds, ApiError, isAdmin, type SessionUser } from "./auth";
 
 type ImportError = { sheet: string; row: number; message: string };
@@ -32,7 +34,7 @@ function readSheet(workbook: ExcelJS.Workbook, name: string) {
   if (!sheet) return { rows: [] as Record<string, string>[], missing: true };
   const headers: string[] = [];
   sheet.getRow(1).eachCell((cell, column) => {
-    headers[column] = cellText(cell.value);
+    headers[column] = importHeader(cellText(cell.value));
   });
   const rows: Record<string, string>[] = [];
   sheet.eachRow((row, rowNumber) => {
@@ -132,8 +134,8 @@ export async function buildMasterTemplate(type: MasterImportType = "all"): Promi
   );
   addSheet(
     "原材料",
-    ["品名", "规格", "单位", "分类", "别名", "备注"],
-    [20, 18, 10, 16, 38, 40],
+    measurementImportHeaders,
+    [28, 24, 14, 16, 34, 38, 28, 14, 18, 26, 18, 16],
   );
   addSheet(
     "项目合同价",
@@ -167,7 +169,7 @@ export async function importMasterWorkbook(
     if (!sheet) { errors.push({sheet: name, row: 1, message: `请选择${name}模板，缺少“${name}”工作表`}); continue; }
     const headers = sheet.getRow(1).values as ExcelJS.CellValue[];
     for (const header of requiredHeaders[name]) {
-      if (!headers.some(value => cellText(value) === header)) errors.push({sheet: name, row: 1, message: `缺少“${header}”列，请下载对应模板`});
+      if (!headers.some(value => importHeader(cellText(value)) === header)) errors.push({sheet: name, row: 1, message: `缺少“${header}”列，请下载对应模板`});
     }
   }
   if (type !== "all") {
@@ -185,6 +187,8 @@ export async function importMasterWorkbook(
   if (errors.length) return {dryRun, errors, summary: null};
 
   const db = await getReadyDb();
+  const measurementImports = await compileMeasurementImports(db, user, ingredients.rows);
+  errors.push(...measurementImports.errors);
   const importProjects = permissionProjectIds(user,"master.import");
   const projects = await db.project.findMany({where:{active:true,...(importProjects ? {id:{in:importProjects}} : {})}});
   const projectByCode = new Map(projects.map((project) => [project.code, project]));
@@ -211,17 +215,30 @@ export async function importMasterWorkbook(
       continue;
     }
     if (disabledCategories.includes(row["分类"]?.trim() || "")) errors.push({sheet: "原材料", row: Number(row.__row || index + 2), message: "分类已停用，请使用启用的分类"});
-    const spec = row["规格"]?.trim() || "";
+    const spec = productSpecification(row["规格"]?.trim() || "", unit);
     const aliases = (row["别名"] || "")
       .split(/[|、,，]/)
       .map((value) => value.trim())
       .filter(Boolean);
     declaredIngredients.push({
       normalizedName: normalizeName(name),
-      normalizedSpec: normalizeName(spec),
+      normalizedSpec: normalizeSpecification(productSpecification(spec, unit)),
       unit,
       normalizedAliases: aliases.map((alias) => normalizeName(alias)),
     });
+  }
+
+  const incomingNames = [...new Set(ingredients.rows.map(row => normalizeName(row["品名"] || "")))];
+  const existingPurchases = await db.ingredient.findMany({ where: { normalizedName: { in: incomingNames } }, select: { normalizedName: true, normalizedSpec: true, spec: true, unit: true, active: true } });
+  const incomingKeys = new Set<string>();
+  for (const row of ingredients.rows) {
+    const name = normalizeName(row["品名"] || ""), unit = normalizeUnit(row["单位"] || ""), spec = normalizeSpecification(productSpecification(row["规格"] || "", unit));
+    const key = JSON.stringify([name, spec, unit]);
+    if (incomingKeys.has(key)) errors.push({ sheet: "原材料", row: Number(row.__row), message: "本文件中存在重复的商品、规格和采购单位，请合并为一行" });
+    incomingKeys.add(key);
+    const matches = existingPurchases.filter(item => item.normalizedName === name && item.unit === unit && normalizeSpecification(productSpecification(item.spec, item.unit)) === spec);
+    if (matches.length > 1 || matches.some(item => item.normalizedSpec !== spec)) errors.push({ sheet: "原材料", row: Number(row.__row), message: "系统存在相同商品规格单位的旧资料冲突，请先核对后再导入" });
+    else if (matches.some(item => !item.active)) errors.push({ sheet: "原材料", row: Number(row.__row), message: "对应采购资料已停用，请先核对是否启用或使用合并后的资料" });
   }
 
   const contractIngredientNames = Array.from(
@@ -249,7 +266,7 @@ export async function importMasterWorkbook(
     ...declaredIngredients,
     ...existingIngredients.map((ingredient) => ({
       normalizedName: ingredient.normalizedName,
-      normalizedSpec: ingredient.normalizedSpec,
+      normalizedSpec: normalizeSpecification(productSpecification(ingredient.spec, ingredient.unit)),
       unit: ingredient.unit,
       normalizedAliases: ingredient.aliases.map(
         (alias) => alias.normalizedAlias,
@@ -279,7 +296,7 @@ export async function importMasterWorkbook(
       const resolution = resolveIngredientCandidate(
         ingredientCandidates,
         normalizeName(ingredientName),
-        normalizeName(row["规格"] || ""),
+        normalizeSpecification(productSpecification(row["规格"] || "", row["单位"] || "")),
         unit,
       );
       if (resolution.ok) {
@@ -384,10 +401,10 @@ export async function importMasterWorkbook(
     for (const row of ingredients.rows) {
       await assertCategoryActive(tx, row["分类"]?.trim() || "");
       const name = row["品名"].trim();
-      const spec = row["规格"]?.trim() || "";
       const unit = normalizeUnit(row["单位"]);
+      const spec = productSpecification(row["规格"]?.trim() || "", unit);
       const normalizedName = normalizeName(name);
-      const normalizedSpec = normalizeName(spec);
+      const normalizedSpec = normalizeSpecification(productSpecification(spec, unit));
       const existing = await tx.ingredient.findUnique({
         where: {
           normalizedName_normalizedSpec_unit: {
@@ -437,6 +454,8 @@ export async function importMasterWorkbook(
           },
         });
       }
+      const measurement = measurementImports.configs.get(Number(row.__row));
+      if (measurement) await configureMeasurementInTransaction(tx, user, ingredient.id, { ...measurement, version: ingredient.version });
     }
 
     for (const [index, row] of contracts.rows.entries()) {
@@ -521,7 +540,7 @@ export async function importMasterWorkbook(
       },
     });
     importBatchId = batch.id;
-  });
+  }, { timeout: 60000 });
 
   return {
     dryRun,

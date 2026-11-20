@@ -63,7 +63,7 @@ async function material(unit = "斤", extra: Record<string, unknown> = {}) {
       normalizedName: normalizeName(name),
       unit,
       spec: unit,
-      normalizedSpec: normalizeName(unit),
+      normalizedSpec: "",
       ...extra,
     },
   });
@@ -217,10 +217,10 @@ describe("ingredient maintenance and history safety", () => {
     const changed = (await updateIngredient(admin, item.id, { ...edited, unit: "袋" })).ingredient;
     expect(changed).toMatchObject({ spec: "散装大号", unit: "袋", version: 3 });
   });
-  it.each(["", "公斤"])("defaults or normalizes spec %j to the unit", async (spec) => {
+  it.each(["", "公斤"])("does not treat a bare purchase-unit word %j as a product attribute", async (spec) => {
     const item = await material();
     expect((await updateIngredient(admin, item.id, { ...item, unit: "公斤", spec })).ingredient)
-      .toMatchObject({ unit: "kg", spec: "kg" });
+      .toMatchObject({ unit: "kg", spec: "" });
   });
   it("rejects duplicate spec/unit edits without changing metadata, aliases or version", async () => {
     const item = await material();
@@ -230,12 +230,12 @@ describe("ingredient maintenance and history safety", () => {
     expect((await getIngredient(admin, item.id)).ingredient).toMatchObject({ unit: "斤", spec: "斤", version: 1, aliases: [] });
     expect(await (await getReadyDb()).auditLog.count({ where: { entityId: item.id } })).toBe(0);
   });
-  it("changes an unreferenced unit and fills the corresponding spec", async () => {
+  it("removes a legacy unit placeholder rather than generating a product specification from the new unit", async () => {
     const item = await material();
     expect(
       (await updateIngredient(admin, item.id, { ...item, unit: "袋", spec: undefined }))
         .ingredient,
-    ).toMatchObject({ unit: "袋", spec: "袋" });
+    ).toMatchObject({ unit: "袋", spec: "" });
   });
   it("creates another unit record without changing the original or its purchases", async () => {
     const item = await material();
@@ -248,7 +248,7 @@ describe("ingredient maintenance and history safety", () => {
       notes: "另一单位",
     });
     ingredientIds.push(created.id);
-    expect(created).toMatchObject({ unit: "kg", spec: "kg" });
+    expect(created).toMatchObject({ unit: "kg", spec: "" });
     expect(created.id).not.toBe(item.id);
     expect((await getIngredient(admin, item.id)).ingredient.unit).toBe("斤");
     expect(

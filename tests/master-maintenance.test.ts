@@ -28,7 +28,7 @@ describe("基础资料维护操作", () => {
   it("独立原材料模板含单位，填一张表即可导入并保留单位", async () => {
     const w = await workbook();
     expect(w.worksheets.map(sheet => sheet.name)).toEqual(["原材料"]);
-    expect(w.worksheets[0].getRow(1).values).toContain("单位");
+    expect(w.worksheets[0].getRow(1).values).toContain("采购单位");
     w.worksheets[0].addRow([prefix, "袋装", "斤", "", "", "单位回归"]);
     expect((await importMasterWorkbook(admin, await bytes(w), true, "ingredients")).errors).toEqual([]);
     expect((await importMasterWorkbook(admin, await bytes(w), false, "ingredients")).errors).toEqual([]);

@@ -1,3 +1,4 @@
+import { aggregateMaterialPurchases } from "./measurement-analysis";
 import { hasPermission, permissionProjectIds } from "@/lib/permissions";
 import { documentReadScope } from "./read-scope";
 import type { Prisma } from "@/generated/prisma/client";
@@ -333,6 +334,7 @@ export async function getAnalytics(
     visibility:{unitPrice:hasPermission(user,"document.view_unit_price",filters.projectId),amount:hasPermission(user,"document.view_amount",filters.projectId)},
     range: { from: dateOnly(start), to: dateOnly(end) },
     projects: projects.map((project) => ({ id: project.id, name: project.name, unitPrice: hasPermission(user,"document.view_unit_price",project.id) })),
+    materials: aggregateMaterialPurchases(user, documents),
     priceMatrix,
     products,
     dimensions: Array.from(dimensionMap.values()).sort(

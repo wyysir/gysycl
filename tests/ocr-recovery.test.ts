@@ -135,7 +135,7 @@ describe('OCR persisted failure recovery and audit',()=>{
     expect(await db.auditLog.count({where:{documentId:doc.id,action:'ocr.failed'}})).toBe(1);
     injected.fail=false;await processDocumentOcr(doc.id);
     const retried=await db.document.findUniqueOrThrow({where:{id:doc.id},include:{items:true}});expect(retried.ocrError).toBe('');expect(retried.items).toHaveLength(1);expect(retried.status).toBe('DRAFT');
-    expect(retried.items[0].spec).toBe(retried.items[0].unit);
+    expect(retried.items[0].spec).toBe("散装");
     expect(doc.docNo).toMatch(/^SHD-\d{8}-[A-F0-9]{32}$/);
     expect(retried.docNo).toBe(doc.docNo); // OCR headers must never overwrite system numbering.
   });

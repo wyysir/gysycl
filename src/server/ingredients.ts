@@ -1,10 +1,11 @@
+import { measurementDto, measurementInclude } from "./measurements";
 import { assertCategoryActive } from "./ingredient-maintenance";
 import { hasPermission, permissionProjectIds } from "@/lib/permissions";
 import type { Prisma } from "@/generated/prisma/client";
 import { documentReadScope } from "./read-scope";
 import { getReadyDb } from "@/lib/bootstrap";
 import {
-  normalizeName,
+  normalizeName, normalizeSpecification, productSpecification,
   normalizeUnit,
   dateOnly,
   parseDateOnly,
@@ -15,12 +16,15 @@ export function ingredientDto(
   item: Prisma.IngredientGetPayload<{
     include: {
       aliases: true;
+      productSpecification: { include: { material: true } };
       _count: { select: { items: true; contracts: true } };
     };
   }>,
 ) {
   return {
     id: item.id,
+    measurement: measurementDto(item),
+    specificationKey: normalizeSpecification(productSpecification(item.spec, item.unit)),
     name: item.name,
     spec: item.spec,
     unit: item.unit,
@@ -30,12 +34,13 @@ export function ingredientDto(
     version: item.version,
     aliases: item.aliases.map((alias) => alias.alias),
     referenced: item._count.items > 0 || item._count.contracts > 0,
-    legacySpec: normalizeName(item.spec) !== normalizeName(item.unit),
+    legacySpec: normalizeSpecification(item.spec) !== normalizeName(item.unit),
     createdAt: item.createdAt.toISOString(),
     updatedAt: item.updatedAt.toISOString(),
   };
 }
 const include = {
+  ...measurementInclude,
   aliases: true,
   _count: { select: { items: true, contracts: true } },
 } as const;
@@ -143,6 +148,7 @@ export async function ingredientHistory(
     to?: string;
     projectId?: string;
     supplierId?: string;
+    analyticsScope?: boolean;
     unit?: string;
     spec?: string;
   },
@@ -153,7 +159,10 @@ export async function ingredientHistory(
     !(await db.ingredient.findUnique({ where: { id }, select: { id: true } }))
   )
     throw new ApiError(404, "原材料不存在");
-  const projects = allowedProjectIds(user);
+  const readableProjects = allowedProjectIds(user);
+  if (filters.analyticsScope && !hasPermission(user,"analytics.view")) throw new ApiError(403,"没有分析权限");
+  const analysisProjects = filters.analyticsScope ? permissionProjectIds(user,"analytics.view") : null;
+  const projects = readableProjects && analysisProjects ? readableProjects.filter(id => analysisProjects.includes(id)) : analysisProjects || readableProjects;
   if (filters.projectId && projects && !projects.includes(filters.projectId))
     throw new ApiError(403, "无权查看该项目点");
   const from = filters.from ? parseDateOnly(filters.from) : null,
@@ -256,15 +265,14 @@ export async function updateIngredient(
     // Only change the material's current metadata. Contracts and document
     // items retain their own spec/unit/price snapshots, even when referenced.
     const rawSpec = input.spec?.trim();
-    const spec = rawSpec === undefined
-      ? (unit === existing.unit ? existing.spec : unit)
-      : (!rawSpec || normalizeUnit(rawSpec) === unit ? unit : rawSpec);
+    const spec = rawSpec === undefined ? productSpecification(existing.spec, existing.unit) : productSpecification(rawSpec, unit);
+    const identityChanged = normalizeSpecification(spec) !== normalizeSpecification(productSpecification(existing.spec, existing.unit)) || normalizedName !== existing.normalizedName;
     const duplicate = await tx.ingredient.findFirst({
       where: {
         id: { not: id },
         normalizedName,
         unit,
-        normalizedSpec: normalizeName(spec),
+        normalizedSpec: normalizeSpecification(productSpecification(spec, unit)),
       },
     });
     if (duplicate)
@@ -277,7 +285,8 @@ export async function updateIngredient(
         normalizedName,
         unit,
         spec,
-        normalizedSpec: normalizeName(spec),
+        normalizedSpec: normalizeSpecification(productSpecification(spec, unit)),
+        ...(identityChanged ? { productSpecificationId: null, quantityPerProductUnit: null } : unit !== existing.unit ? { quantityPerProductUnit: null } : {}),
         category: input.category.trim(),
         notes: input.notes.trim(),
         active: input.active,
