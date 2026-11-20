@@ -12,7 +12,7 @@
   ],
   "backupCreated": false,
   "originalBusinessUnchangedAcrossDeployment": true,
-  "sourceCommit": "Resolve the immutable annotated releaseTag in local Git; original history is not pushed to GitHub.",
+  "sourceCommit": "554abaea1c01f9b4c1db620cd75ecdd4daf39e12",
   "runtimeSource": "Actual v1.0.3 runtime source plus this feature patch; other local OCR experiments excluded.",
   "sourceArchive": "/opt/delivery-audit/releases/material-measurements-20261120/source-v1.1.0.tar.gz",
   "metadataKeyUpgrade": {
@@ -154,6 +154,13 @@
     "branch": "main",
     "visibilityVerified": "public",
     "method": "independent safe source snapshot; original history, business images, workbooks and private data excluded",
-    "status": "Publish after local commit; record verified receipt in handoff"
+    "status": "PASS; source snapshot pushed and remote commit/file set verified",
+    "sourceSnapshotCommit": "4488ea106b99c062c63cb6c03bd2cd676bdad619",
+    "sourceCommit": "554abaea1c01f9b4c1db620cd75ecdd4daf39e12",
+    "files": 610,
+    "blobsScanned": 844,
+    "credentialFindings": 0,
+    "riskyHistoryPaths": 0,
+    "publicationNote": "This verified source publication is followed by documentation-only receipt commits; use remote main for the latest documentation."
   }
 }
