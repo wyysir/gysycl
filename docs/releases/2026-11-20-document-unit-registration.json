@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-20T17:32:16.161304+08:00",
+  "releaseTag": "release/2026-11-20-document-unit-registration",
+  "version": "1.1.2",
+  "image": "sha256:58590d4bff6e05c16e8adca21f0b472ce39f6aa6cfec3c8b45dee6f519852b0c",
+  "previousImage": "sha256:48c7759bd4074834acf0c135090056833c234f7f537508c0232236c363caacd2",
+  "sourceArchiveSha256": "c746a5441051aa6ed1e6e0f0fdbbe4776080c14ccf2ef22b706bc1631c64cb95",
+  "patchSha256": "960822ee91b2c95641327ed84be4ab0373994dd7ea766cfd5c2335997b8e5b9f",
+  "files": [
+    "src/app/(workspace)/documents/[id]/page.tsx",
+    "src/app/(workspace)/ingredients/page.tsx",
+    "src/app/api/master-data/ingredients/route.ts",
+    "src/app/globals.css",
+    "src/components/DocumentItemsEditor.tsx",
+    "src/components/IngredientMeasurementEditor.tsx",
+    "src/components/MaterialLookupFields.tsx",
+    "src/domain/checks.ts",
+    "src/server/checks.ts",
+    "src/server/document-service.ts",
+    "src/server/ingredients.ts",
+    "src/server/document-unit-registration.ts",
+    "package.json",
+    "package-lock.json"
+  ],
+  "newMigrations": [],
+  "backupCreated": false,
+  "originalBusinessUnchangedAcrossDeployment": true,
+  "health": {
+    "ok": true,
+    "database": "up",
+    "logging": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "time": "2026-11-20T09:32:13.331Z"
+  },
+  "features": [
+    "单据确认原单位后保存时新增同品名同规格的采购单位",
+    "并发和多行去重、权限及停用保护、整单事务",
+    "同一商品归属、未知换算待设置、不复制旧单位换算或价格",
+    "后台多单位与多单位待换算筛选、手工比例与明确历史确认"
+  ],
+  "validation": {
+    "typecheck": "PASS",
+    "testFiles": 43,
+    "fullTests": 373,
+    "finalFocusedFiles": 2,
+    "finalFocusedTests": 19,
+    "exactRuntimeBaseBuild": "PASS",
+    "candidateBrowserWidths": [
+      1440,
+      390,
+      320
+    ],
+    "publicBrowserWidths": [
+      1440,
+      390,
+      320
+    ],
+    "browserCoverage": [
+      "原单位确认后保存新增",
+      "重复保存复用",
+      "批量核对直接输入",
+      "原始数字保持",
+      "多单位维护筛选",
+      "手动比例保存与历史选项"
+    ],
+    "businessTablesCompared": 25,
+    "allBusinessFingerprintsEqual": true,
+    "countsAtDeployment": {
+      "Document": 5,
+      "DocumentItem": 57,
+      "Ingredient": 1645
+    },
+    "productionMutationsDuringBrowserTests": "none; synthetic write requests intercepted",
+    "wechatProofHttpAndHttps": "PASS"
+  },
+  "deploymentSourceBoundary": {
+    "baseImage": "sha256:48c7759bd4074834acf0c135090056833c234f7f537508c0232236c363caacd2",
+    "wholeLocalMainDeployed": false,
+    "ocrEngineChanged": false
+  },
+  "databaseMigrations": [],
+  "candidateAndTemporaryEnvironmentRemoved": true,
+  "rollbackBasis": "No business backups or restoration. Previous compatible image retained; original Git history and tags retained.",
+  "git": {
+    "releaseTag": "release/2026-11-20-document-unit-registration",
+    "commitResolution": "git rev-parse release/2026-11-20-document-unit-registration^{}",
+    "githubRepository": "https://github.com/wyysir/gysycl",
+    "githubBranch": "main",
+    "githubSync": "pending local commit and verified snapshot push"
+  }
+}

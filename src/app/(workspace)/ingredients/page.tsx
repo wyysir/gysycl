@@ -60,6 +60,7 @@ export default function IngredientsPage() {
   const [q, setQ] = usePageMemory("ingredients-query", ""),
     [category, setCategory] = usePageMemory("ingredients-category", ""),
     [unit, setUnit] = usePageMemory("ingredients-unit", ""),
+    [unitScope, setUnitScope] = usePageMemory("ingredients-unit-scope", "all"),
     [status, setStatus] = usePageMemory("ingredients-status", "all"),
     [page, setPage] = usePageMemory("ingredients-page", 1);
   const [selected, setSelected] = usePageMemory<string | null>("ingredients-selection", null),
@@ -86,7 +87,7 @@ export default function IngredientsPage() {
     api.get<CategoryList>("/api/master-data/ingredient-categories").then(setCategories).catch(e => showToast(e.message, "error"));
   }
   useEffect(() => { reloadCategories(); }, [refresh]);
-  useEffect(() => { setChecked([]); }, [q, category, unit, status, page, refresh]);
+  useEffect(() => { setChecked([]); }, [q, category, unit, unitScope, status, page, refresh]);
   function prepareBatch(action: "disable" | "enable" | "delete" | "category", targets = checked) {
     setBatchTargets(targets); setBatchAction(action); setBatchCategory(""); setBatchError("");
   }
@@ -126,6 +127,7 @@ export default function IngredientsPage() {
                 q,
                 category,
                 unit,
+                unitScope,
                 status,
                 page: String(page),
               }),
@@ -145,7 +147,7 @@ export default function IngredientsPage() {
       current = false;
       clearTimeout(timer);
     };
-  }, [q, category, unit, status, page, refresh]);
+  }, [q, category, unit, unitScope, status, page, refresh]);
   useEffect(() => {
     if (!selected || selected === "new") return;
     const sequence = ++detailSequence.current;
@@ -367,6 +369,9 @@ export default function IngredientsPage() {
               ))}
             </select>
           </label>
+          <label className="field">单位维护<select className="select" aria-label="单位维护" value={unitScope} onChange={e => { setUnitScope(e.target.value); setPage(1); }}>
+            <option value="all">全部资料</option><option value="multi">同品名同规格多单位</option><option value="multi_pending">多单位待换算</option>
+          </select></label>
           {admin ? (
             <label className="field">
               状态

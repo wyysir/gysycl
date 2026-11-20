@@ -248,7 +248,7 @@ export default function DocumentPage() {
   const canApprove = Boolean(document && bootstrap && hasPermission(bootstrap.user,"document.approve",document.projectId));
   const canReturn = Boolean(document && bootstrap && hasPermission(bootstrap.user,"document.return",document.projectId));
   const canOverride = Boolean(canApprove && document && bootstrap && hasPermission(bootstrap.user,"document.override",document.projectId));
-  const canCreateMaster = Boolean(bootstrap && hasPermission(bootstrap.user,"master.create"));
+  const canCreateMaster = Boolean(document && bootstrap && hasPermission(bootstrap.user,"master.create",document.projectId));
   const canOcr = Boolean(document && bootstrap && editPermission && hasPermission(bootstrap.user,"document.ocr",document.projectId));
 
   useLayoutEffect(() => {

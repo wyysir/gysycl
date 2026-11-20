@@ -65,7 +65,7 @@ export function MaterialNameField({ item, editable, label, onChange }: Props) {
   </>;
 }
 
-export function MaterialUnitField({ item, editable, label, onChange }: Props) {
+export function MaterialUnitField({ item, editable, label, onChange, canCreateUnit = false }: Props & { canCreateUnit?: boolean }) {
   const [group, setGroup] = useState<MaterialGroup | null>(null), [error, setError] = useState(""), [manual, setManual] = useState(false), [pending, setPending] = useState<string | null>(null);
   const key = item.materialChoice?.key, record = item.ingredientId;
   const params = key ? "key=" + encodeURIComponent(key) : record ? "ingredientId=" + encodeURIComponent(record) : "";
@@ -91,6 +91,8 @@ export function MaterialUnitField({ item, editable, label, onChange }: Props) {
   }
   const units = group ? [...new Set(group.options.map(o => o.unit))] : [], current = choiceUnit(item.unit);
   const needsConfirmation = item.materialChoice && item.ingredientId && item.materialChoice.confirmedUnit !== current && ["master", "unknown"].includes(item.materialChoice.source);
+  const newUnit = !!group && !item.ingredientId && !!item.materialChoice && !!current && !group.options.some(o => choiceUnit(o.unit) === current);
+  const confirmedNewUnit = newUnit && item.materialChoice?.source === "manual" && item.materialChoice.confirmedUnit === current;
   return <div className="material-unit-field">
     {group && !manual ? <select className="select" aria-label={label} disabled={!editable} value={item.unit} onChange={event => {
       if (event.target.value === "__manual") setManual(true); else request(event.target.value);
@@ -103,9 +105,12 @@ export function MaterialUnitField({ item, editable, label, onChange }: Props) {
       const unit = event.target.value;
       // A manual input is an explicit correction. It never changes numeric fields.
       apply(unit);
-    }} />}
+    }} maxLength={30} />}
     {manual && group && <button className="link-button" type="button" onClick={() => setManual(false)}>选择已有单位</button>}
     {error && <small role="alert" className="text-danger">{error}</small>}
+    {newUnit && editable && <div className="material-unit-registration">
+      {canCreateUnit ? confirmedNewUnit ? <small>保存时为此品名、规格新增“{item.unit}”采购单位；换算比例稍后在后台设置。</small> : <><small>此单位尚未登记；按原单确认后，保存时新增。</small><button className="link-button" type="button" onClick={() => apply(item.unit)}>确认原单为{item.unit}，保存时新增</button></> : <small>此单位尚未登记，请由有新建基础资料权限的人员添加。</small>}
+    </div>}
     {item.materialChoice?.source === "master" && <small className="material-unit-origin">资料带入{item.materialChoice.provisional ? " · 暂用单位" : ""}</small>}
     {needsConfirmation && editable && <button className="link-button material-unit-confirm" type="button" onClick={() => onChange({ materialChoice: { ...item.materialChoice!, source: "manual", confirmedUnit: current } })}>对照原单后确认单位</button>}
     {pending !== null && <div className="material-unit-question" role="alert">

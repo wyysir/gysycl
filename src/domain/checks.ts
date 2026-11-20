@@ -18,6 +18,7 @@ export type ItemForCheck = {
   confidence: number;
   matchStatus?: string;
   ingredientUnit?: string | null;
+  unitConversionPending?: boolean;
   materialChoice?: MaterialChoice | null;
   materialGroupAvailable?: boolean;
   materialUnits?: string[];
@@ -189,6 +190,10 @@ export function evaluateDocumentChecks(context: CheckContext): CheckDraft[] {
       });
     }
 
+    if (item.ingredientId && item.unitConversionPending) {
+      add({ itemId: item.id, dimension: "单位核对", type: "unit_conversion_pending", severity: "WARNING",
+        title: `${label} 换算比例待设置`, detail: "采购单位已登记，原始数量、单价和金额保留，可继续按其他校验办理单据。请在原材料后台设置多单位换算；未确认前报表保留金额，统一数量和均价显示待换算。" });
+    }
     const currentUnit = choiceUnit(item.unit);
     if (currentUnit && ((item.ingredientId && item.ingredientUnit && choiceUnit(item.ingredientUnit) !== currentUnit) ||
       (!item.ingredientId && selectedName))) {

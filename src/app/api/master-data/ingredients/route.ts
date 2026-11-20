@@ -33,6 +33,7 @@ export async function GET(request: NextRequest) {
       await listIngredients(user, {
         q: p.get("q") || "",
         unit: p.get("unit") || "",
+        unitScope: p.get("unitScope") || "all",
         category: p.get("category") || "",
         status: p.get("status") || "active",
         page: p.get("page") || 1,

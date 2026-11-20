@@ -1,4 +1,6 @@
 import { measurementDto, measurementInclude } from "./measurements";
+import { createMaterialCatalogue } from "./material-catalogue";
+import { choiceUnit } from "@/lib/material-choice";
 import { assertCategoryActive } from "./ingredient-maintenance";
 import { hasPermission, permissionProjectIds } from "@/lib/permissions";
 import type { Prisma } from "@/generated/prisma/client";
@@ -55,6 +57,7 @@ export async function listIngredients(
   filters: {
     q?: string;
     unit?: string;
+    unitScope?: string;
     category?: string;
     status?: string;
     page?: unknown;
@@ -68,7 +71,16 @@ export async function listIngredients(
   if (filters.status && filters.status !== "active" && !hasPermission(user,"master.manage"))
     throw new ApiError(403, "只有管理员可以查看停用材料");
   const normalized = normalizeName(q);
+  if (filters.unitScope && !["all", "multi", "multi_pending"].includes(filters.unitScope)) throw new ApiError(400, "单位维护筛选无效");
+  let multipleIds: string[] | null = null;
+  if (filters.unitScope && filters.unitScope !== "all") {
+    const catalogue = await createMaterialCatalogue(db);
+    multipleIds = [...catalogue.groups.values()].filter(g => new Set(g.options.map(o => choiceUnit(o.unit))).size > 1).flatMap(g => g.options.map(o => o.id));
+  }
   const where: Prisma.IngredientWhereInput = {
+    ...(multipleIds ? { id: { in: multipleIds } } : {}),
+    ...(filters.unitScope === "multi_pending" ? { AND: [{ OR: [{ productSpecificationId: null }, { quantityPerProductUnit: null },
+      { productSpecification: { is: { OR: [{ baseUnit: "" }, { baseQuantity: null }, { material: { baseUnit: "" } }] } } }] }] } : {}),
     ...(filters.status === "all"
       ? {}
       : { active: filters.status !== "inactive" }),

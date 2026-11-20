@@ -53,7 +53,8 @@ export function IngredientMeasurementEditor({ ingredient, isAdmin, onSaved }: { 
     <button type="button" className="btn btn--outline" disabled={busy} onClick={show}>配置原材料归并与换算</button>
   </div>{open && <EditorSheet title="原材料归并与单位换算" onClose={() => { if (!busy) setOpen(false); }}><form onSubmit={save}>
     <p><strong>{ingredient.name}</strong> · 商品规格：{ingredient.spec || "未注明"} · 本采购单位：{ingredient.unit}</p>
-    <label className="field">归属于哪一种原材料<select className="select" disabled={busy} value={selection} onChange={e => choose(e.target.value)}><option value="new">新增统计原材料</option>{materials.map(m => <option key={m.id} value={m.id}>{m.name}（{m.baseUnit}）</option>)}</select></label>
+    {target && <p>同款采购单位：{[...new Set(target.units.map(u => u.unit))].join("、")}。请分别为各采购单位确认比例。</p>}
+    <label className="field">归属于哪一种原材料<select className="select" disabled={busy} value={selection} onChange={e => choose(e.target.value)}><option value="new">新增统计原材料</option>{materials.map(m => <option key={m.id} value={m.id}>{m.name}（{m.baseUnit || "统计单位待设置"}）</option>)}</select></label>
     <label className="field">统一原材料名称<input className="input" required maxLength={100} disabled={busy || !!selected} value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} /></label>
     <label className="field">商品规范名称<input className="input" required maxLength={100} disabled={busy} value={form.productName} onChange={e => setForm({ ...form, productName: e.target.value })} /></label>
     <label className="field">报表统一统计单位<input className="input" maxLength={30} disabled={busy || !!selected?.baseUnit} value={form.unit} placeholder="如kg、斤、l；跨容量比较可用l" onChange={e => setForm({ ...form, unit: e.target.value })} /></label>

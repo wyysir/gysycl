@@ -24,7 +24,8 @@ export async function recomputeDocumentChecksInTransaction(
 ): Promise<GraphCheck[]> {
   const document = await db.document.findUnique({
     where: { id: documentId },
-    include: { items: { orderBy: { lineNo: "asc" }, include: { ingredient: { select: { unit: true } } } }, pages: true },
+    include: { items: { orderBy: { lineNo: "asc" }, include: { ingredient: { select: { unit: true, quantityPerProductUnit: true,
+      productSpecification: { select: { baseUnit: true, baseQuantity: true, material: { select: { baseUnit: true } } } } } } } }, pages: true },
   });
   if (!document) return [];
   // Approval closes these results. A delayed recheck must not reopen history.
@@ -110,6 +111,8 @@ export async function recomputeDocumentChecksInTransaction(
       lineNo: item.lineNo,
       ingredientId: item.ingredientId,
       ingredientUnit: item.ingredient?.unit,
+      unitConversionPending: !!item.ingredient?.productSpecification && (item.ingredient.quantityPerProductUnit === null ||
+        !item.ingredient.productSpecification.baseUnit || item.ingredient.productSpecification.baseQuantity === null || !item.ingredient.productSpecification.material.baseUnit),
       materialChoice: readMaterialChoice((item.rawOcr as { materialChoice?: unknown } | null)?.materialChoice),
       materialGroupAvailable: catalogue.groups.has(readMaterialChoice((item.rawOcr as { materialChoice?: unknown } | null)?.materialChoice)?.key || ""),
       materialUnits: catalogue.groups.get(readMaterialChoice((item.rawOcr as { materialChoice?: unknown } | null)?.materialChoice)?.key || "")?.options.map(o => o.unit),

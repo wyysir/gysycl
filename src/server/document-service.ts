@@ -1,9 +1,10 @@
 import { createMaterialCatalogue } from "./material-catalogue";
+import { registerDocumentUnits } from "./document-unit-registration";
 import { resolveMaterialLink, refreshDraftMaterialLinks } from "./material-linking";
-import type { MaterialChoice } from "@/lib/material-choice";
+import { choiceUnit, type MaterialChoice } from "@/lib/material-choice";
 import { freezeDocumentMeasurements } from "./measurements";
 import { canSubmitRecord, documentVisibility, hasPermission } from "@/lib/permissions";
-import { canConfirmRounding, validRounding, type RoundingItem } from "@/domain/rounding";
+import { canConfirmRounding, readRoundingAdjustment, validRounding, type RoundingItem } from "@/domain/rounding";
 import { Prisma } from "@/generated/prisma/client";
 import { DocumentStatus } from "@/generated/prisma/enums";
 import { getReadyDb } from "@/lib/bootstrap";
@@ -327,7 +328,7 @@ export async function saveDocument(
       rawName: String(item.rawName || item.name || "").trim(),
       name: String(item.name || "").trim(),
       spec: productSpecification(String(item.spec || ""), item.unit || ""),
-      unit: normalizeUnit(item.unit || ""),
+      unit: item.materialChoice?.source === "manual" && !item.ingredientId ? choiceUnit(item.unit || "") : normalizeUnit(item.unit || ""),
       quantity: Number(item.quantity) || 0,
       unitPrice: Number(item.unitPrice) || 0,
       amount: Number(item.amount) || 0,
@@ -370,6 +371,13 @@ export async function saveDocument(
 
   const updated = await db.$transaction(async (tx) => {
     await claimDocumentVersion(tx, existing);
+    await registerDocumentUnits(tx, user, existing, cleanItems);
+    for (const item of cleanItems) {
+      const adjustment = readRoundingAdjustment(item.roundingAdjustment);
+      if (item.ingredientId && adjustment && !adjustment.ingredientId && validRounding({ ...item, ingredientId: null }, adjustment)) {
+        item.roundingAdjustment = { ...adjustment, ingredientId: item.ingredientId };
+      }
+    }
     await tx.documentItem.deleteMany({ where: { documentId } });
     await tx.document.update({
       where: { id: documentId },
@@ -435,7 +443,7 @@ export async function saveDocument(
       where: { id: documentId },
       include: detailInclude,
     });
-  });
+  }, { timeout: 30000 });
   const refreshed = await db.document.findUniqueOrThrow({
     where: { id: documentId },
     include: detailInclude,
