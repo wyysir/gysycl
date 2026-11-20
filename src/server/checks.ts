@@ -1,3 +1,5 @@
+import { readMaterialChoice } from "@/lib/material-choice";
+import { createMaterialCatalogue } from "./material-catalogue";
 import type { CheckSeverity, Prisma } from "@/generated/prisma/client";
 import type { Db } from "@/lib/prisma";
 import { dateOnly, normalizeName } from "@/lib/text";
@@ -22,7 +24,7 @@ export async function recomputeDocumentChecksInTransaction(
 ): Promise<GraphCheck[]> {
   const document = await db.document.findUnique({
     where: { id: documentId },
-    include: { items: { orderBy: { lineNo: "asc" } }, pages: true },
+    include: { items: { orderBy: { lineNo: "asc" }, include: { ingredient: { select: { unit: true } } } }, pages: true },
   });
   if (!document) return [];
   // Approval closes these results. A delayed recheck must not reopen history.
@@ -94,6 +96,7 @@ export async function recomputeDocumentChecksInTransaction(
       unitPrice: decimal(item.unitPrice),
     }));
 
+  const catalogue = await createMaterialCatalogue(db);
   const drafts = evaluateDocumentChecks({
     document: {
       projectId: document.projectId,
@@ -106,6 +109,10 @@ export async function recomputeDocumentChecksInTransaction(
       id: item.id,
       lineNo: item.lineNo,
       ingredientId: item.ingredientId,
+      ingredientUnit: item.ingredient?.unit,
+      materialChoice: readMaterialChoice((item.rawOcr as { materialChoice?: unknown } | null)?.materialChoice),
+      materialGroupAvailable: catalogue.groups.has(readMaterialChoice((item.rawOcr as { materialChoice?: unknown } | null)?.materialChoice)?.key || ""),
+      materialUnits: catalogue.groups.get(readMaterialChoice((item.rawOcr as { materialChoice?: unknown } | null)?.materialChoice)?.key || "")?.options.map(o => o.unit),
       name: item.name,
       spec: item.spec,
       unit: item.unit,

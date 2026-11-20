@@ -25,7 +25,9 @@ export async function GET(
   }
 }
 
+const materialChoiceSchema = z.object({ v: z.literal(1), key: z.string().max(500), name: z.string().max(100), spec: z.string().max(100), source: z.enum(["ocr", "master", "manual", "unknown"]), confirmedUnit: z.string().max(30).nullable(), recordVersion: z.number().int().positive().optional(), provisional: z.boolean() });
 const itemSchema = z.object({
+  materialChoice: materialChoiceSchema.nullable().optional(),
   id: z.string().optional(),
   lineNo: z.number().optional(),
   name: z.string().max(100),

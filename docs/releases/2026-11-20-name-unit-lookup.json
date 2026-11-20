@@ -1,0 +1,117 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-11-20T16:44:58.610191+08:00",
+  "releaseTag": "release/2026-11-20-name-unit-lookup",
+  "version": "1.1.1",
+  "image": "sha256:48c7759bd4074834acf0c135090056833c234f7f537508c0232236c363caacd2",
+  "previousImage": "sha256:5c0e7b8d842646d514a2c308fb14ca382f1ff50d4ef0ff246dce8b6d71abd5fb",
+  "sourceArchiveSha256": "0c11ba7ae74f5f2dd9e187075b4adeb0764ebd81a55c9b34be3ac89ad82a7e2e",
+  "patchSha256": "11107dd068e1ba3908fbea8ab3819bb957d6424a8c137353886414a603956cd5",
+  "files": [
+    "src/app/(workspace)/documents/[id]/page.tsx",
+    "src/app/api/documents/[id]/route.ts",
+    "src/app/globals.css",
+    "src/components/BatchDocumentCard.tsx",
+    "src/components/DocumentItemsEditor.tsx",
+    "src/domain/checks.ts",
+    "src/lib/client/item-checks.ts",
+    "src/lib/client/item-editing.ts",
+    "src/lib/client/types.ts",
+    "src/server/checks.ts",
+    "src/server/document-service.ts",
+    "src/server/documents.ts",
+    "src/server/master-commands.ts",
+    "src/app/api/master-data/material-lookup/route.ts",
+    "src/components/MaterialLookupFields.tsx",
+    "src/lib/material-choice.ts",
+    "src/server/material-catalogue.ts",
+    "src/server/material-linking.ts",
+    "package.json",
+    "package-lock.json"
+  ],
+  "newMigrations": [],
+  "backupCreated": false,
+  "originalBusinessUnchangedAcrossDeployment": true,
+  "health": {
+    "ok": true,
+    "database": "up",
+    "logging": {
+      "enabled": true,
+      "dropped": 0,
+      "writeFailures": 0,
+      "lastErrorCode": ""
+    },
+    "time": "2026-11-20T08:44:55.718Z"
+  },
+  "features": [
+    "品名输入检索，按品名与规格分组，完整采购单位选项",
+    "品名选择与单位独立确认，原始数字和OCR来源保留",
+    "旧草稿显式重新比对，不重新OCR，不改已关联和已审核记录"
+  ],
+  "validation": {
+    "typecheck": "PASS",
+    "testFiles": 42,
+    "tests": 362,
+    "exactRuntimeBaseBuild": "PASS",
+    "candidateBrowserWidths": [
+      1440,
+      390,
+      320
+    ],
+    "publicBrowserWidths": [
+      1440,
+      390,
+      320
+    ],
+    "publicAdditionalChecks": [
+      "未确认自动单位随改名清除",
+      "多单位空白等候选择",
+      "已审核只读",
+      "真实材料目录只读查询"
+    ],
+    "businessTablesCompared": 25,
+    "allBusinessFingerprintsEqual": true,
+    "documentsUnchanged": 5,
+    "documentItemsUnchanged": 57,
+    "ingredientsUnchanged": 1645,
+    "browserWrites": "synthetic requests intercepted; no real document mutation",
+    "wechatProofHttpAndHttps": "PASS"
+  },
+  "databaseMigrations": [],
+  "rollbackBasis": "No new business backup or database restoration. Previous compatible application image retained; original source history and tags retained.",
+  "deploymentSourceBoundary": {
+    "baseImage": "sha256:5c0e7b8d842646d514a2c308fb14ca382f1ff50d4ef0ff246dce8b6d71abd5fb",
+    "wholeLocalMainDeployed": false,
+    "ocrEngineChanged": false,
+    "appliedFiles": [
+      "src/app/(workspace)/documents/[id]/page.tsx",
+      "src/app/api/documents/[id]/route.ts",
+      "src/app/globals.css",
+      "src/components/BatchDocumentCard.tsx",
+      "src/components/DocumentItemsEditor.tsx",
+      "src/domain/checks.ts",
+      "src/lib/client/item-checks.ts",
+      "src/lib/client/item-editing.ts",
+      "src/lib/client/types.ts",
+      "src/server/checks.ts",
+      "src/server/document-service.ts",
+      "src/server/documents.ts",
+      "src/server/master-commands.ts",
+      "src/app/api/master-data/material-lookup/route.ts",
+      "src/components/MaterialLookupFields.tsx",
+      "src/lib/material-choice.ts",
+      "src/server/material-catalogue.ts",
+      "src/server/material-linking.ts",
+      "package.json",
+      "package-lock.json"
+    ]
+  },
+  "candidateAndTemporaryEnvironmentRemoved": true,
+  "git": {
+    "releaseTag": "release/2026-11-20-name-unit-lookup",
+    "commitResolution": "git rev-parse release/2026-11-20-name-unit-lookup^{}",
+    "githubRepository": "https://github.com/wyysir/gysycl",
+    "githubBranch": "main",
+    "githubSync": "pending receipt after local commit"
+  }
+}

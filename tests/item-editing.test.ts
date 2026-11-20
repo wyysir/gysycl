@@ -16,10 +16,10 @@ describe("direct review editing preserves accounting and access semantics", () =
     expect(itemEditPatch({...item,amount:null},"quantity",50,false)).toEqual({ quantity:50 });
     expect(itemEditPatch({...item,unitPrice:null},"quantity",50,false)).toEqual({ quantity:50 });
   });
-  it("keeps unit and specification independent and clears stale material matching on name/unit edits", () => {
-    expect(itemEditPatch(item,"unit","桶",false)).toMatchObject({unit:"桶",ingredientId:null,matchStatus:"UNMATCHED"});
+  it("keeps unit and specification independent and clears stale material matching on name edits while unit edits retain the name association", () => {
+    expect(itemEditPatch(item,"unit","桶",false)).toEqual({unit:"桶"});
     expect(itemEditPatch(item,"unit","桶",false)).not.toHaveProperty("spec");
-    expect(itemEditPatch(item,"spec","大包装",false)).toEqual({spec:"大包装"});
+    expect(itemEditPatch(item,"spec","大包装",false)).toEqual({spec:"大包装",materialChoice:null});
     expect(itemEditPatch(item,"name","新名称",false).ingredientId).toBeNull();
     expect(itemEditPatch(item,"quantity",Number.NaN,false)).toEqual({});
   });

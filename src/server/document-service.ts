@@ -1,3 +1,6 @@
+import { createMaterialCatalogue } from "./material-catalogue";
+import { resolveMaterialLink, refreshDraftMaterialLinks } from "./material-linking";
+import type { MaterialChoice } from "@/lib/material-choice";
 import { freezeDocumentMeasurements } from "./measurements";
 import { canSubmitRecord, documentVisibility, hasPermission } from "@/lib/permissions";
 import { canConfirmRounding, validRounding, type RoundingItem } from "@/domain/rounding";
@@ -223,6 +226,7 @@ type ItemInput = {
   ingredientId?: string | null;
   matchStatus?: "MATCHED" | "SIMILAR" | "NEW" | "UNMATCHED";
   matchScore?: number | null;
+  materialChoice?: MaterialChoice | null;
 };
 
 export async function saveDocument(
@@ -273,6 +277,9 @@ export async function saveDocument(
     });
     if (!supplier) throw new ApiError(400, "供应商不存在或已停用");
   }
+  const catalogue = await createMaterialCatalogue(db);
+  const resolvedItems = input.items.map(item => resolveMaterialLink(catalogue, item, existing.items.find(row => row.id === item.id) || null));
+  input.items = resolvedItems;
   const ingredientIds = Array.from(
     new Set(
       input.items
@@ -337,7 +344,7 @@ export async function saveDocument(
       matchScore: item.matchScore ?? null,
       // Retain server-owned OCR provenance through manual corrections. Never
       // accept a client-supplied source page or infer it from a reordered line.
-      rawOcr: (existing.items.find(previous => previous.id === item.id)?.rawOcr || {}) as Prisma.InputJsonValue,
+      rawOcr: (resolvedItems[index].rawOcr || {}) as Prisma.InputJsonValue,
     }))
     .filter(
       (item) =>
@@ -657,6 +664,6 @@ export async function recheckDocument(user: SessionUser, documentId: string) {
   if (!document) throw new ApiError(404, "单据不存在");
   if (!canAccessDocument(user, document)) throw new ApiError(403, "无权操作该单据");
   if (!canEditDocument(user, document)) throw new ApiError(403, "当前账号只读，不能重新比对");
-  await recomputeDocumentChecks(db, documentId);
+  await refreshDraftMaterialLinks(db, documentId, user.id, document.version);
   return getDocumentDetail(user, documentId);
 }

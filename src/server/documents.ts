@@ -1,3 +1,5 @@
+import { createMaterialCatalogue } from "./material-catalogue";
+import { resolveMaterialLink, materialProvenance } from "./material-linking";
 import { readRoundingAdjustment, validRounding } from "@/domain/rounding";
 import crypto from "node:crypto";
 import { generateDocumentNumber } from "./document-number";
@@ -6,7 +8,7 @@ import { ApiError } from "./errors";
 import { logContext, recordError } from "./observability/logger";
 import { getReadyDb } from "@/lib/bootstrap";
 import { dateOnly, normalizeName, normalizeUnit, normalizeSpecification, productSpecification } from "@/lib/text";
-import { createIngredientMatcher, bestSupplierMatch } from "./master-data";
+import { bestSupplierMatch } from "./master-data";
 import { extractDocuments, preprocessImage, type PreprocessedImage } from "./ocr";
 import { recomputeDocumentChecksInTransaction } from "./checks";
 import { claimDocumentVersion } from "./document-lock";
@@ -178,34 +180,28 @@ export async function processDocumentOcr(documentId: string, expectedVersion?: n
       supplierMatch?.exact || (supplierMatch?.score || 0) >= 0.98
         ? supplierMatch
         : null;
-    const ingredientMatcher = await createIngredientMatcher(db);
+    const catalogue = await createMaterialCatalogue(db);
     const items = await Promise.all(
       extracted.items.map(async (item) => {
-        const candidates = ingredientMatcher(item.rawName, 50);
         const unit = normalizeUnit(item.unit || "");
         const spec = productSpecification(item.spec || "", unit);
-        let eligible = candidates.filter(candidate => (candidate.exact || candidate.score >= 0.98) && unit && normalizeUnit(candidate.unit) === unit && normalizeSpecification(candidate.spec) === normalizeSpecification(spec));
-        if (new Set(eligible.map(candidate => normalizeName(candidate.name))).size === 1 && eligible.some(candidate => candidate.configured)) eligible = eligible.filter(candidate => candidate.configured);
-        const truncated = candidates.length === 50 && (candidates.at(-1)?.score || 0) >= 0.98;
-        const exact = !truncated && eligible.length === 1;
-        const match = exact ? eligible[0] : eligible[0] || candidates[0] || null;
-        // Product attributes and purchase quantities are independent; ambiguity stays for review.
+        const linked = resolveMaterialLink(catalogue, { name: item.rawName, spec, unit }, { name: item.rawName, spec, unit, ingredientId: null, rawOcr: item.rawOcr }, true);
         return {
           lineNo: item.lineNo,
           rawName: item.rawName,
-          name: exact ? match!.name : item.rawName,
-          spec,
-          unit,
+          name: linked.name,
+          spec: linked.spec || spec,
+          unit: linked.unit,
           quantity: item.quantity,
           unitPrice: item.unitPrice,
           amount: item.amount,
           confidence: item.confidence,
-          ingredientId: exact ? match!.id : null,
-          matchStatus: exact ? ("MATCHED" as const) : ("SIMILAR" as const),
-          matchScore: match?.score ?? null,
+          ingredientId: linked.ingredientId || null,
+          matchStatus: linked.ingredientId ? ("MATCHED" as const) : ("SIMILAR" as const),
+          matchScore: linked.ingredientId ? 1 : null,
           rawOcr: {
-            ...item.rawOcr,
-            suggestions: match ? [match] : [],
+            ...linked.rawOcr,
+            suggestions: [],
           } as Prisma.InputJsonValue,
         };
       }),
@@ -413,6 +409,8 @@ export function documentDto(
         id: item.id,
         lineNo: item.lineNo,
         rawName: item.rawName,
+        materialChoice: materialProvenance(item.rawOcr).choice,
+        originalUnit: materialProvenance(item.rawOcr).originalUnit,
         name: item.name,
         spec: item.spec,
         unit: item.unit,

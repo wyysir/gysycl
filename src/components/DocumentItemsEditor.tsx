@@ -1,14 +1,13 @@
 "use client";
 import { useEffect, useImperativeHandle, useRef, useState, type Ref, type ReactNode } from "react";
-import { AlertCircle, ArrowLeftRight, CheckCircle2, Plus } from "lucide-react";
+import { AlertCircle, CheckCircle2, Plus } from "lucide-react";
 import { itemEditPatch, reviewIssues, type ReviewField } from "@/lib/client/item-editing";
 import { ReviewInlineItems } from "./ReviewInlineItems";
 import { AmountInput } from "./AmountInput";
 import { canConfirmRounding, roundingDifference } from "@/domain/rounding";
 
-import { api } from "@/lib/client/api";
-import type { CheckResult, DocumentItem, IngredientSuggestion } from "@/lib/client/types";
-import type { IngredientList } from "@/lib/client/ingredients";
+import { MaterialNameField, MaterialUnitField } from "./MaterialLookupFields";
+import type { CheckResult, DocumentItem } from "@/lib/client/types";
 import { useToast } from "./ToastProvider";
 
 export type DocumentItemsHandle = { locate: (id: string) => void };
@@ -55,67 +54,6 @@ export function DocumentItemsEditor({
   onActiveItem?: (id: string) => void;
 }) {
   const { showToast } = useToast();
-  const [pickerId, setPickerId] = useState<string | null>(null),
-    [q, setQ] = useState(""),
-    [unit, setUnit] = useState(""),
-    [page, setPage] = useState(1);
-  const [list, setList] = useState<IngredientList | null>(null),
-    [suggestions, setSuggestions] = useState<IngredientSuggestion[]>([]),
-    [loading, setLoading] = useState(false),
-    [error, setError] = useState("");
-  const target = items.find((item) => item.id === pickerId);
-  useEffect(() => {
-    if (!pickerId || !editable) return;
-    let current = true;
-    setLoading(true);
-    setError("");
-    const timer = window.setTimeout(() => {
-      const params = new URLSearchParams({ q, unit, page: String(page) });
-      Promise.all([
-        api.get<IngredientList>("/api/master-data/ingredients?" + params),
-        q.trim()
-          ? api.get<{ suggestions: IngredientSuggestion[] }>(
-              "/api/master-data/suggest?type=ingredient&q=" +
-                encodeURIComponent(q),
-            )
-          : Promise.resolve({ suggestions: [] }),
-      ])
-        .then(([data, recommended]) => {
-          if (current) {
-            setList(data);
-            setSuggestions(
-              recommended.suggestions.filter(
-                (item) => !unit || item.unit === unit,
-              ),
-            );
-          }
-        })
-        .catch((e) => {
-          if (current) setError(e instanceof Error ? e.message : "搜索失败");
-        })
-        .finally(() => {
-          if (current) setLoading(false);
-        });
-    }, 200);
-    return () => {
-      current = false;
-      window.clearTimeout(timer);
-    };
-  }, [pickerId, q, unit, page, editable]);
-  function choose(candidate: { id: string; name: string; unit: string; spec?: string }) {
-    if (!editable || !target) return;
-    const index = items.findIndex((item) => item.id === target.id);
-    onChange(index, {
-      ingredientId: candidate.id,
-      name: candidate.name,
-      unit: candidate.unit,
-      spec: candidate.spec ?? target.spec,
-      matchStatus: "MATCHED",
-      matchScore: 1,
-    });
-    setPickerId(null);
-    showToast("已更换材料，数量、单价和行金额已保留，请核对");
-  }
   const [filter, setFilter] = useState<"all" | "attention">("all");
   const [activeId, setActiveId] = useState<string | null>(items[0]?.id || null);
   const previousCount = useRef(items.length);
@@ -124,11 +62,11 @@ export function DocumentItemsEditor({
   const root = useRef<HTMLDivElement>(null);
   const activeIndex = Math.max(0, items.findIndex(item => item.id === activeId));
   const activeItem = items[activeIndex];
-  const attention = (item: DocumentItem) => !item.ingredientId || item.confidence < threshold ||
+  const attention = (item: DocumentItem) => !item.ingredientId || item.confidence < threshold || !!(item.materialChoice && ["master", "unknown"].includes(item.materialChoice.source) && item.materialChoice.confirmedUnit !== item.unit) ||
     checks.some(check => check.itemId === item.id && check.status === "OPEN" && check.severity !== "INFO");
   const attentionItems = items.filter(attention);
   const [observed, setObserved] = useState<Record<string, string>>({});
-  const fingerprint = (item: DocumentItem) => JSON.stringify([item.name,item.spec,item.unit,item.quantity,item.unitPrice,item.amount,item.ingredientId]);
+  const fingerprint = (item: DocumentItem) => JSON.stringify([item.name,item.spec,item.unit,item.quantity,item.unitPrice,item.amount,item.ingredientId,item.materialChoice]);
   function openItem(id: string, scroll = false) {
     setActiveId(id); onActiveItem?.(id);
     const item = items.find(row => row.id === id);
@@ -156,14 +94,10 @@ export function DocumentItemsEditor({
     if (activeId && !items.some(item => item.id === activeId)) setActiveId(items[0]?.id || null);
   }, [items, activeId]);
   useImperativeHandle(editorRef, () => ({ locate(id) { setFilter("all"); openItem(id, true); } }));
-  function openPicker(item: DocumentItem) {
-    setQ(item.name || item.rawName); setUnit(""); setPage(1);
-    setList(null); setSuggestions([]); setPickerId(item.id);
-  }
   function badges(item: DocumentItem) {
     const low = item.confidence < threshold;
     return <span className="ledger-line-badges">
-      <span className={"pill pill--" + (item.ingredientId ? "approved" : "warning")}>{item.ingredientId ? <CheckCircle2 size={13} /> : <AlertCircle size={13} />}{item.ingredientId ? "已匹配" : "待匹配"}</span>
+      <span className={"pill pill--" + (item.ingredientId ? "approved" : "warning")}>{item.ingredientId ? <CheckCircle2 size={13} /> : <AlertCircle size={13} />}{item.ingredientId ? "已匹配" : item.materialChoice ? "品名已选" : "待匹配"}</span>
       <span className={"pill pill--" + (low ? "warning" : "draft")} aria-label={"OCR置信度 " + Math.round(item.confidence * 100) + "%"}>{low && <AlertCircle size={13} />}OCR {Math.round(item.confidence * 100)}%</span>
     </span>;
   }
@@ -173,6 +107,7 @@ export function DocumentItemsEditor({
     const value = item[key];
     const priceError = key === "unitPrice" && checks.some(check => check.itemId === item.id && check.status === "OPEN" && check.type === "contract_price" && check.severity === "ERROR");
     const change = (next: string | number) => onChange(index, itemEditPatch(item, key, next, batch));
+    if (key === "name" || key === "unit") return <div className="field" data-edit-field={key} key={key}><span>{labels[key]}</span>{key === "name" ? <MaterialNameField item={item} editable={editable && !externalModalOpen} label={`第${index + 1}项品名`} onChange={patch => onChange(index, patch)} /> : <MaterialUnitField item={{...item, unitPrice: visibility?.unitPrice === false ? null : item.unitPrice, amount: visibility?.amount === false ? null : item.amount}} editable={editable && !externalModalOpen} label={`第${index + 1}项单位`} onChange={patch => onChange(index, patch)} />}</div>;
     return <label className="field" data-edit-field={key} key={key}><span>{labels[key]}</span>{hidden ? <span className="sheet-restricted">未授权</span> :
       key === "quantity" || key === "unitPrice" || key === "amount" ? <AmountInput className={"input" + (priceError ? " input--error" : "")} aria-label={`第${index + 1}项${labels[key]}`} aria-invalid={priceError || undefined} min="0" step={key === "amount" ? "0.01" : "0.0001"} plain={key === "quantity"} value={value as number | null} placeholder="待补" disabled={!editable} onValueChange={change} /> :
       <input className="input" aria-label={`第${index + 1}项${labels[key]}`} value={String(value ?? "")} disabled={!editable} placeholder={key === "spec" ? "无规格" : "待补"} onChange={event => change(event.target.value)} />}</label>;
@@ -188,27 +123,26 @@ export function DocumentItemsEditor({
   }
   function actions(item: DocumentItem, index: number) {
     return editable && <div className="line-inline-actions">
-      <button className="link-button" onClick={() => openPicker(item)}><ArrowLeftRight size={14} />更换材料</button>
       {canCreate && <button className="link-button" onClick={() => onNew(index)}>新建品名</button>}
       <button className="link-button line-delete" aria-label={`删除第${index + 1}项`} onClick={() => { if (window.confirm("确认删除这一行明细？保存单据后生效。")) onRemove(index); }}>删除此行</button>
     </div>;
   }
   function alerts(item: DocumentItem) {
     const problems = checks.filter(check => check.itemId === item.id && check.status === "OPEN" && check.severity !== "INFO" && check.type !== "low_confidence" && check.type !== "line_arithmetic");
-    const titles = [...problems.map(check => check.title), ...(item.confidence < threshold ? ["低置信，请对照原图"] : []), ...(!item.ingredientId ? ["材料待匹配"] : [])];
+    const titles = [...problems.map(check => check.title), ...(item.confidence < threshold ? ["低置信，请对照原图"] : []), ...(!item.ingredientId ? [item.materialChoice ? "采购单位待确认" : "材料待匹配"] : [])];
     if (!titles.length) return null;
     return <details className={"line-alerts review-line-alerts " + (problems.some(check => check.severity === "ERROR") ? "has-error" : "")}>
       <summary>{[...new Set(titles)].join(" · ")} · 查看原因</summary>
       {problems.map(check =>
         <div key={check.id} className={"notice " + (check.severity === "ERROR" ? "notice--red" : "")}><AlertCircle size={18} /><span><strong>{check.title}</strong>：{check.detail}</span></div>)}
       {item.confidence < threshold && <div className="notice"><AlertCircle size={18} /><span>OCR {Math.round(item.confidence * 100)}% 仅提醒，请对照原图。</span></div>}
-      {!item.ingredientId && <div className="notice"><AlertCircle size={18} /><span>未匹配，请选择材料或确认新建后提交。</span></div>}
+      {!item.ingredientId && <div className="notice"><AlertCircle size={18} /><span>{item.materialChoice ? "品名已选择，请单独确认采购单位。" : "请在品名框检索并点选材料，或确认新建后提交。"}</span></div>}
     </details>;
   }
   const shown = filter === "all" ? items : items.filter(item => attention(item) || item.id === activeId);
   function compactBadge(item: DocumentItem) {
     const error = checks.some(check => check.itemId === item.id && check.status === "OPEN" && check.severity === "ERROR");
-    const label = error ? "待处理" : !item.ingredientId ? "待匹配" : item.confidence < threshold ? "核对原单" : attention(item) ? "有提醒" : "";
+    const label = error ? "待处理" : !item.ingredientId ? item.materialChoice ? "单位待确认" : "待匹配" : item.confidence < threshold ? "核对原单" : attention(item) ? "有提醒" : "";
     return label ? <span className={"compact-line-badge " + (error ? "is-error" : "")}>{label}</span> : null;
   }
   return (
@@ -231,161 +165,6 @@ export function DocumentItemsEditor({
         />
         {!shown.length && items.length > 0 && <p className="empty">没有需要提醒的明细</p>}
       </div>
-      {pickerId && target && editable ? (
-        <div className="modal-backdrop" onMouseDown={() => setPickerId(null)}>
-          <section
-            className="modal-card material-picker"
-            role="dialog"
-            aria-modal="true"
-            aria-label="更换材料"
-            onMouseDown={(event) => event.stopPropagation()}
-          >
-            <div className="modal-head">
-              <h2>更换材料</h2>
-              <button
-                className="icon-button"
-                aria-label="关闭材料搜索"
-                type="button"
-                onClick={() => setPickerId(null)}
-              >
-                ×
-              </button>
-            </div>
-            <p className="text-muted">
-              当前：{target.name || "未命名"} · {target.unit || "无单位"}
-              。选择后保留数字，请核对计量口径。
-            </p>
-            <div className="picker-filters">
-              <label className="field">
-                搜索名称或别名
-                <input
-                  autoFocus
-                  className="input"
-                  aria-label="搜索材料名称或别名"
-                  value={q}
-                  onChange={(event) => {
-                    setQ(event.target.value);
-                    setPage(1);
-                  }}
-                />
-              </label>
-              <label className="field">
-                单位
-                <select
-                  className="select"
-                  aria-label="筛选材料单位"
-                  value={unit}
-                  onChange={(event) => {
-                    setUnit(event.target.value);
-                    setPage(1);
-                  }}
-                >
-                  <option value="">全部单位</option>
-                  {list?.units.map((value) => (
-                    <option key={value}>{value}</option>
-                  ))}
-                </select>
-              </label>
-            </div>
-            {error ? (
-              <p role="alert" className="line-warning">
-                {error}
-              </p>
-            ) : null}
-            {loading ? (
-              <p role="status">正在搜索…</p>
-            ) : (
-              <>
-                {suggestions.length ? (
-                  <div className="picker-section">
-                    <h3>推荐候选</h3>
-                    {suggestions.map((item) => (
-                      <button
-                        type="button"
-                        className="picker-result"
-                        key={item.id}
-                        onClick={() => choose(item)}
-                      >
-                        <span>
-                          <strong>{item.name}</strong>
-                          <small>
-                            {item.unit} · {item.category || "未分类"}
-                          </small>
-                        </span>
-                        <span>选择 · {Math.round(item.score * 100)}%</span>
-                      </button>
-                    ))}
-                  </div>
-                ) : null}
-                <div className="picker-section">
-                  <h3>材料库搜索结果</h3>
-                  {list?.items.map((item) => (
-                    <button
-                      type="button"
-                      className="picker-result"
-                      key={item.id}
-                      onClick={() => choose(item)}
-                    >
-                      <span>
-                        <strong>{item.name}</strong>
-                        <small>
-                          {item.unit} · {item.category || "未分类"}
-                          {item.aliases.length
-                            ? " · " + item.aliases.join("、")
-                            : ""}
-                        </small>
-                      </span>
-                      <span>选择此材料</span>
-                    </button>
-                  ))}
-                  {!list?.items.length ? (
-                    <p>没有找到合适材料，可修改关键词或新建品名。</p>
-                  ) : null}
-                </div>
-                <div className="pager">
-                  <button
-                    className="btn btn--outline btn--small"
-                    disabled={page <= 1}
-                    onClick={() => setPage((value) => value - 1)}
-                  >
-                    上一页
-                  </button>
-                  <span>
-                    第 {page} 页 · {list?.total || 0} 条
-                  </span>
-                  <button
-                    className="btn btn--outline btn--small"
-                    disabled={!list || page * 20 >= list.total}
-                    onClick={() => setPage((value) => value + 1)}
-                  >
-                    下一页
-                  </button>
-                </div>
-              </>
-            )}
-            <div className="modal-actions">
-              <button
-                className="btn btn--outline"
-                onClick={() => setPickerId(null)}
-              >
-                取消
-              </button>
-              <button
-                className="btn btn--primary"
-                disabled={!canCreate}
-                onClick={() => {
-                  if (!canCreate) return;
-                  const index = items.findIndex((item) => item.id === pickerId);
-                  setPickerId(null);
-                  onNew(index);
-                }}
-              >
-                新建品名
-              </button>
-            </div>
-          </section>
-        </div>
-      ) : null}
     </>
   );
 }

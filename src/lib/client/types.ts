@@ -1,3 +1,4 @@
+import type { MaterialChoice } from "@/lib/material-choice";
 import type { Permission } from "@/lib/permissions";
 import type { RoundingAdjustment } from "@/domain/rounding";
 export type User = {
@@ -74,6 +75,8 @@ export type CheckResult = {
 };
 
 export type DocumentItem = {
+  originalUnit?: string;
+  materialChoice?: MaterialChoice | null;
   id: string;
   lineNo: number;
   rawName: string;

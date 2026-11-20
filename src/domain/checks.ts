@@ -1,3 +1,4 @@
+import { choiceUnit, type MaterialChoice } from "@/lib/material-choice";
 import { validRounding } from "./rounding";
 import { normalizeName, normalizeSpecification, productSpecification, roundMoney } from "@/lib/text";
 
@@ -16,6 +17,10 @@ export type ItemForCheck = {
   roundingAdjustment?: unknown;
   confidence: number;
   matchStatus?: string;
+  ingredientUnit?: string | null;
+  materialChoice?: MaterialChoice | null;
+  materialGroupAvailable?: boolean;
+  materialUnits?: string[];
 };
 
 export type ContractForCheck = {
@@ -153,7 +158,8 @@ export function evaluateDocumentChecks(context: CheckContext): CheckDraft[] {
         actualValue: confidence,
       });
     }
-    if (!item.ingredientId) {
+    const selectedName = !!item.materialChoice && item.materialGroupAvailable && normalizeName(item.materialChoice.name) === normalizeName(item.name) && normalizeSpecification(item.materialChoice.spec) === normalizeSpecification(item.spec);
+    if (!item.ingredientId && !selectedName) {
       add({
         itemId: item.id,
         dimension: "主数据匹配",
@@ -181,6 +187,19 @@ export function evaluateDocumentChecks(context: CheckContext): CheckDraft[] {
         title: `${label} 缺少计量单位`,
         detail: "单位是合同价和跨项目比价的基础，请补全。",
       });
+    }
+
+    const currentUnit = choiceUnit(item.unit);
+    if (currentUnit && ((item.ingredientId && item.ingredientUnit && choiceUnit(item.ingredientUnit) !== currentUnit) ||
+      (!item.ingredientId && selectedName))) {
+      add({ itemId: item.id, dimension: "单位核对", type: "unit_mismatch", severity: "ERROR",
+        title: `${label} 品名已确定，采购单位待确认`,
+        detail: `单据单位为“${item.unit}”，资料可用单位为“${(item.materialUnits || [item.ingredientUnit || "待整理"]).join("、")}”。请按原单选择对应单位；保留数量、单价和金额，不自动换算。` });
+    }
+    if (item.ingredientId && currentUnit && item.materialChoice && item.materialChoice.confirmedUnit !== currentUnit && ["master", "unknown"].includes(item.materialChoice.source)) {
+      add({ itemId: item.id, dimension: "单位核对", type: "unit_from_master", severity: "WARNING",
+        title: `${label} 单位来自资料，请核对原单`,
+        detail: `${item.materialChoice.provisional ? "该单位属于用户指定的暂用单位。" : ""}原图未明确识别为当前单位“${item.unit}”。请对照原单确认；材料关联不会提高OCR置信度，也不代表数量换算已确认。` });
     }
 
     if (!item.ingredientId) continue;

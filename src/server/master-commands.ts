@@ -1,3 +1,4 @@
+import { materialGroupKey } from "./material-catalogue";
 import { Prisma } from "@/generated/prisma/client";
 import { assertCategoryActive } from "./ingredient-maintenance";
 import { recordError } from "./observability/logger";
@@ -200,6 +201,8 @@ export async function createIngredientFromDocument(
           unit,
           matchStatus: "MATCHED",
           matchScore: 1,
+          rawOcr: { ...(source.items.find(i => i.id === input.sourceItemId)?.rawOcr as Prisma.JsonObject || {}),
+            materialChoice: { v: 1, key: materialGroupKey(created.name, spec), name: created.name, spec, source: "manual", confirmedUnit: unit, recordVersion: created.version, provisional: false } },
         },
       });
       const updatedSource = await tx.document.update({
@@ -232,6 +235,7 @@ export async function createIngredientFromDocument(
     spec: ingredient.spec,
     unit: ingredient.unit,
     documentVersion,
+    materialChoice: { v: 1 as const, key: materialGroupKey(ingredient.name, spec), name: ingredient.name, spec, source: "manual" as const, confirmedUnit: unit, recordVersion: ingredient.version, provisional: false },
   };
 }
 

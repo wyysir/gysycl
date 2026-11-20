@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { chooseMaterial, type MaterialGroup, type MaterialChoice } from "@/lib/material-choice";
 import { api, ApiClientError } from "@/lib/client/api";
 import type { Bootstrap, DocumentDto, DocumentItem, SupplierSuggestion } from "@/lib/client/types";
 import { batchReady } from "@/lib/client/batches";
@@ -52,11 +53,11 @@ export function BatchDocumentCard({document:doc,bootstrap,dirty,conflict,onChang
   });}
   async function createMaterial(){if(!newItem)return;await run(async()=>{
     try {
-      const created=await api.post<{id:string;name:string;unit:string;spec:string;documentVersion:number|null}>("/api/master-data/ingredients",{
+      const created=await api.post<{id:string;name:string;unit:string;spec:string;documentVersion:number|null;materialChoice?:MaterialChoice}>("/api/master-data/ingredients",{
         name:newItem.name,rawName:doc.items[newItem.index].rawName,unit:newItem.unit,spec:doc.items[newItem.index].spec || "",category:newItem.category,
         sourceDocumentId:doc.id,sourceItemId:doc.items[newItem.index].id.startsWith("new-")?undefined:doc.items[newItem.index].id,confirmNew:true,
       });
-      onChange({...doc,version:created.documentVersion??doc.version,checkedVersion:null,items:doc.items.map((i,n)=>n===newItem.index?{...i,ingredientId:created.id,name:created.name,unit:created.unit,spec:created.spec,matchStatus:"MATCHED",matchScore:1}:i)});
+      onChange({...doc,version:created.documentVersion??doc.version,checkedVersion:null,items:doc.items.map((i,n)=>n===newItem.index?{...i,ingredientId:created.id,materialChoice:created.materialChoice||null,name:created.name,unit:created.unit,spec:created.spec,matchStatus:"MATCHED",matchScore:1}:i)});
       setNewItem(null);setCandidate(null);
     }catch(e){if(e instanceof ApiClientError && e.status===409 && e.details && typeof e.details==="object" && "candidate" in e.details)setCandidate((e.details as {candidate:typeof candidate}).candidate);throw e;}
   });}
@@ -76,7 +77,7 @@ export function BatchDocumentCard({document:doc,bootstrap,dirty,conflict,onChang
         onSourcePage={source?()=>setModal("image"):undefined} sourcePreview={source?image:undefined}
         externalModalOpen={!!modal||!!newItem} onSave={save} saveError={error}/>
       {severe.length>0&&<details className="batch-problems"><summary>{severe.length} 项需处理{dirty?"（保存后重新检查）":""}</summary>{severe.map(c=><p key={c.id}>{c.title}：{c.detail}</p>)}</details>}
-      <footer className="batch-document-foot"><span>原单合计 <b>{formatMoney(doc.totalAmount, doc.visibility?.amount ?? hasPermission(bootstrap.user,"document.view_amount",doc.projectId))}</b></span><div>{dirty&&<button className="btn btn--outline btn--small" disabled={busy||conflict} onClick={save}>保存修改</button>}{submittable&&<button className="btn btn--primary btn--small" disabled={busy||ready} onClick={confirm}>{ready?"✓ 已核对":"确认本单"}</button>}</div></footer>
+      <footer className="batch-document-foot"><span>原单合计 <b>{formatMoney(doc.totalAmount, doc.visibility?.amount ?? hasPermission(bootstrap.user,"document.view_amount",doc.projectId))}</b></span><div>{editable&&<button className="btn btn--outline btn--small" disabled={busy||conflict} onClick={()=>run(async()=>{if(dirty)await persist();const result=await api.post<{document:DocumentDto}>(`/api/documents/${doc.id}/recheck`);onSaved(result.document);})}>{dirty?"保存并重新比对":"重新比对"}</button>}{dirty&&<button className="btn btn--outline btn--small" disabled={busy||conflict} onClick={save}>保存修改</button>}{submittable&&<button className="btn btn--primary btn--small" disabled={busy||ready} onClick={confirm}>{ready?"✓ 已核对":"确认本单"}</button>}</div></footer>
     </>}
     {error&&!modal&&!newItem&&<p className="text-danger batch-error" role="alert">{error}</p>}
     {modal==="image"&&source&&<EditorSheet title={`单据 ${doc.batchPosition} · 原图`} className="batch-image-sheet" onClose={()=>setModal(null)}><div className="batch-full-image"><DocumentImage src={source.url} alt="原单图片，可放大查看"/></div><p>手机可双指缩放；关闭后继续本行。</p></EditorSheet>}
@@ -96,7 +97,7 @@ export function BatchDocumentCard({document:doc,bootstrap,dirty,conflict,onChang
     {newItem&&<EditorSheet title="新建并关联材料" onClose={()=>{if(!busy)setNewItem(null);}}>
       {([['name','材料名称'],['unit','单位'],['category','分类']] as const).map(([key,label])=><label className="field" key={key}>{label}<input className="input" disabled={busy} value={newItem[key]} onChange={e=>setNewItem({...newItem,[key]:e.target.value})}/></label>)}
       <button className="btn btn--primary" disabled={busy||!newItem.name.trim()||!newItem.unit.trim()} onClick={createMaterial}>确认新建并关联</button>
-      {error&&<p role="alert" className="text-danger">{error}</p>}{candidate&&<button className="btn btn--outline" onClick={()=>{patchItem(newItem.index,{ingredientId:candidate.id,name:candidate.name,unit:candidate.unit,spec:candidate.spec,matchStatus:"MATCHED",matchScore:1});setNewItem(null);setError("");}}>关联已有材料：{candidate.name}（{candidate.unit}）</button>}
+      {error&&<p role="alert" className="text-danger">{error}</p>}{candidate&&<button className="btn btn--outline" onClick={()=>run(async()=>{const result=await api.get<{groups:MaterialGroup[]}>("/api/master-data/material-lookup?ingredientId="+encodeURIComponent(candidate.id));if(!result.groups[0])throw new Error("材料已停用或变化，请重新检索");patchItem(newItem.index,chooseMaterial(doc.items[newItem.index],result.groups[0]));setNewItem(null);setError("");})}>关联已有材料：{candidate.name}（{candidate.unit}）</button>}
     </EditorSheet>}
   </article>;
 }

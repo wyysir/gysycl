@@ -1,4 +1,5 @@
 "use client";
+import type { MaterialChoice } from "@/lib/material-choice";
 
 import { hasPermission, canEditRecord, canSubmitRecord, canDeleteRecord, canReviewRecord } from "@/lib/permissions";
 
@@ -412,6 +413,7 @@ export default function DocumentPage() {
         spec: string;
         unit: string;
         documentVersion?: number | null;
+        materialChoice?: MaterialChoice;
       }>("/api/master-data/ingredients", {
         name: newItem.name.trim(),
         rawName:
@@ -427,6 +429,7 @@ export default function DocumentPage() {
       });
       updateItem(newItem.index, {
         ingredientId: created.id,
+        materialChoice: created.materialChoice || null,
         name: created.name,
         spec: created.spec,
         unit: created.unit,
@@ -471,6 +474,7 @@ export default function DocumentPage() {
             ingredientId: item.ingredientId,
             matchStatus: item.matchStatus,
             matchScore: item.matchScore,
+            materialChoice: item.materialChoice,
           })),
           taxAmount: currentDocument.taxAmount,
           totalAmount: currentDocument.totalAmount,

@@ -8,7 +8,8 @@ export function currentItemChecks(checks: CheckResult[], items: DocumentItem[]):
     if (!check.itemId || check.status !== "OPEN") return true;
     const item = rows.get(check.itemId);
     if (!item) return true;
-    if (check.type === "ingredient_unmatched") return !item.ingredientId;
+    if (check.type === "ingredient_unmatched") return !item.ingredientId && !item.materialChoice;
+    if (check.type === "unit_from_master") return !!item.materialChoice && !!item.unit && item.materialChoice.confirmedUnit !== item.unit;
     if (check.type === "ingredient_ambiguous") return !!item.ingredientId && item.matchStatus === "SIMILAR";
     if (check.type === "unit_missing") return !item.unit.trim();
     return true;

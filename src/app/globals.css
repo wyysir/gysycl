@@ -2750,3 +2750,10 @@ svg {
 }
 
 }
+
+/* Inline material lookup keeps the candidates outside clipped ledger tables. */
+.material-lookup-menu{z-index:10050;overflow-y:auto;background:#fff;border:1px solid #c9b6a2;border-radius:8px;box-shadow:0 8px 24px #30221424;color:#312b26;overscroll-behavior:contain}
+.material-lookup-menu>p{padding:12px;margin:0;font-size:14px}
+.material-lookup-menu>button{display:flex;flex-direction:column;gap:3px;align-items:flex-start;width:100%;border:0;border-bottom:1px solid #e9e1d7;background:#fff;color:inherit;text-align:left;padding:11px 13px;min-height:48px;cursor:pointer}
+.material-lookup-menu>button:last-child{border-bottom:0}.material-lookup-menu>button:hover,.material-lookup-menu>button.is-active{background:#f5ecde}.material-lookup-menu>button span,.material-lookup-menu>button small{font-size:12px;color:#6c5e50;white-space:normal;overflow-wrap:anywhere}
+.material-unit-field{min-width:0}.material-unit-field>.input,.material-unit-field>.select{width:100%;min-width:0}.material-unit-origin{display:block;color:#845c18;font-size:12px;white-space:normal}.material-unit-confirm{font-size:12px;white-space:normal}.material-unit-question{padding:9px;background:#fff1db;border-left:3px solid #bd8c38;white-space:normal;overflow-wrap:anywhere;font-size:12px}.material-unit-question p{margin:0 0 6px}.material-unit-question button{margin-right:10px;white-space:normal}
