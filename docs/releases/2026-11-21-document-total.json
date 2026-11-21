@@ -1,0 +1,242 @@
+{
+  "status": "PASS",
+  "version": "1.2.2",
+  "releaseTag": "release/2026-11-21-document-total",
+  "userAuthorization": "User confirmed the local HTML effect and explicitly requested upload/deployment in the current chat on 2026-11-21.",
+  "behavior": "Show live sum of current line amounts to the right of original document total. Editing, adding and deleting lines immediately update the display. Sum before rounding to two decimals, keep manual line amounts and original total. Respect amount visibility.",
+  "deployment": {
+    "status": "PASS",
+    "version": "1.2.2",
+    "image": "sha256:806c603563a20bea91a4d70ffdb7bdda7c154da61eac7ee7ada67c912fd52534",
+    "previousImage": "sha256:042aba0f72f5947234c41d146e9fb4d6701b821f239cac7bd25dda4d9f514344",
+    "sourceArchiveSha256": "55b584c17abcc8a4c78af57fcec0429199b58c18d3cdb645d101df05d18714e0",
+    "patchSha256": "b10be04fbbbcbf6064cd0ec67c0bf1fd7ded5e43caf9d41f0fa847524b301cdd",
+    "dockerfileSha256": "fc4f1958465cc1feda83dd97fbba557bd1e8724488f4e586811997f943acf857",
+    "wholeLocalMainDeployed": false,
+    "releaseTag": "release/2026-11-21-document-total",
+    "completedAt": "2026-11-21T21:09:39.968837+08:00",
+    "databaseMigration": null,
+    "allTablesUnchanged": true,
+    "tablesCompared": 33,
+    "health": {
+      "ok": true,
+      "database": "up",
+      "logging": {
+        "enabled": true,
+        "dropped": 0,
+        "writeFailures": 0,
+        "lastErrorCode": ""
+      },
+      "time": "2026-11-21T13:09:36.356Z"
+    },
+    "businessBackupCreated": false,
+    "productionTestRecordsCreated": false
+  },
+  "validation": {
+    "localTypecheck": "PASS: next typegen and tsc --noEmit",
+    "localActualComponentBrowser": {
+      "status": "PASS",
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ],
+      "checks": [
+        "actualBatchDocumentCardRendered",
+        "sumOfLineAmountsNotQuantityTimesPrice",
+        "liveEditAndAddAndDelete",
+        "originalTotalUnchanged",
+        "sumBeforeRoundingFourDecimalAmounts",
+        "amountPermissionRespected",
+        "nullAmountNotZero",
+        "totalsSideBySide",
+        "noHorizontalOverflow"
+      ],
+      "errors": []
+    },
+    "runtimeProductionBuild": "PASS: Next production compile and TypeScript on running v1.2.1 source plus accepted two-file patch and package version",
+    "backendSourceUnchanged": true,
+    "backendSourceSha256": "f7761d20fe3fe6ed0184160925ef3926f27228e3a56e5b4a12d35208c2f27257",
+    "candidateBrowser": {
+      "status": "PASS",
+      "mode": "candidate",
+      "cases": [
+        {
+          "width": 1440,
+          "kind": "edit",
+          "pass": true,
+          "saveRequestsIntercepted": 1
+        },
+        {
+          "width": 768,
+          "kind": "edit",
+          "pass": true,
+          "saveRequestsIntercepted": 1
+        },
+        {
+          "width": 390,
+          "kind": "edit",
+          "pass": true,
+          "saveRequestsIntercepted": 1
+        },
+        {
+          "width": 320,
+          "kind": "edit",
+          "pass": true,
+          "saveRequestsIntercepted": 1
+        },
+        {
+          "width": 390,
+          "kind": "hidden",
+          "pass": true,
+          "saveRequestsIntercepted": 0
+        },
+        {
+          "width": 390,
+          "kind": "decimal",
+          "pass": true,
+          "saveRequestsIntercepted": 0
+        },
+        {
+          "width": 390,
+          "kind": "null",
+          "pass": true,
+          "saveRequestsIntercepted": 0
+        }
+      ],
+      "errors": [],
+      "unexpectedWrites": [],
+      "businessWrites": 0
+    },
+    "publicBrowser": {
+      "status": "PASS",
+      "mode": "public",
+      "cases": [
+        {
+          "width": 1440,
+          "kind": "edit",
+          "pass": true,
+          "saveRequestsIntercepted": 1
+        },
+        {
+          "width": 768,
+          "kind": "edit",
+          "pass": true,
+          "saveRequestsIntercepted": 1
+        },
+        {
+          "width": 390,
+          "kind": "edit",
+          "pass": true,
+          "saveRequestsIntercepted": 1
+        },
+        {
+          "width": 320,
+          "kind": "edit",
+          "pass": true,
+          "saveRequestsIntercepted": 1
+        },
+        {
+          "width": 390,
+          "kind": "hidden",
+          "pass": true,
+          "saveRequestsIntercepted": 0
+        },
+        {
+          "width": 390,
+          "kind": "decimal",
+          "pass": true,
+          "saveRequestsIntercepted": 0
+        },
+        {
+          "width": 390,
+          "kind": "null",
+          "pass": true,
+          "saveRequestsIntercepted": 0
+        }
+      ],
+      "errors": [],
+      "unexpectedWrites": [],
+      "businessWrites": 0
+    },
+    "publicChecks": [
+      {
+        "url": "https://shian.dhcy.top/api/health",
+        "status": 200,
+        "bytes": 137,
+        "contentType": "application/json"
+      },
+      {
+        "url": "https://shian.dhcy.top/login",
+        "status": 200,
+        "bytes": 10668,
+        "contentType": "text/html; charset=utf-8"
+      },
+      {
+        "url": "https://shian.dhcy.top/api/batches/ui-total",
+        "status": 401,
+        "bytes": 39,
+        "contentType": "application/json"
+      },
+      {
+        "url": "http://shian.dhcy.top/788c68f9771c83073299b4f955277af3.txt",
+        "status": 200,
+        "bytes": 40,
+        "contentType": "text/plain",
+        "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995"
+      },
+      {
+        "url": "https://shian.dhcy.top/788c68f9771c83073299b4f955277af3.txt",
+        "status": 200,
+        "bytes": 40,
+        "contentType": "text/plain",
+        "sha256": "d1323cd28a298f89e55957e845e701ed71572baebb29f19ac601fbbf28fa4995"
+      }
+    ],
+    "fullBackendSuiteRerun": false,
+    "backendSuiteScopeReason": "UI-only patch; backend, API, domain, Prisma generated output, schema and scripts fingerprints match prior runtime. No migration or backend logic changes."
+  },
+  "database": {
+    "migration": null,
+    "allTablesUnchanged": true,
+    "tablesCompared": 33,
+    "includesUserAndPriorMigrationRecords": true,
+    "productionTestRecordsCreated": false,
+    "businessBackupCreated": false
+  },
+  "source": {
+    "acceptedUiCommit": "dee86055fda1077c546c6fe86ae89486254d5d53",
+    "fromRunningImage": "sha256:042aba0f72f5947234c41d146e9fb4d6701b821f239cac7bd25dda4d9f514344",
+    "appliedFiles": [
+      "src/components/BatchDocumentCard.tsx",
+      "src/app/batches.css"
+    ],
+    "packageVersionUpdated": "1.2.2",
+    "sourceArchive": "/opt/delivery-audit/releases/document-total-20261121/source-v1.2.2.tar.gz",
+    "sourceArchiveSha256": "55b584c17abcc8a4c78af57fcec0429199b58c18d3cdb645d101df05d18714e0",
+    "patchSha256": "b10be04fbbbcbf6064cd0ec67c0bf1fd7ded5e43caf9d41f0fa847524b301cdd",
+    "wholeLocalMainDeployed": false,
+    "undeployedLocalOcrExperimentsPreserved": true
+  },
+  "rollback": {
+    "previousCompatibleImage": "sha256:042aba0f72f5947234c41d146e9fb4d6701b821f239cac7bd25dda4d9f514344",
+    "databaseRestoreRequired": false,
+    "businessBackupCreated": false,
+    "instructions": "Application-only rollback: retag previous compatible image as delivery-audit:trial and recreate app/worker using the existing compose file. Restore matching source from that image or its verified v1.2.1 source archive. No database restoration."
+  },
+  "cleanup": {
+    "status": "PASS",
+    "candidateRemoved": true,
+    "temporaryEnvironmentRemoved": true,
+    "testDatabaseCreated": false,
+    "localCandidateTunnelRemoved": true,
+    "localVerificationTokenRemoved": true
+  },
+  "gitHub": {
+    "status": "PENDING_RELEASE_COMMIT_AND_SAFE_SOURCE_SYNC",
+    "repository": "https://github.com/wyysir/gysycl",
+    "branch": "main",
+    "originalHistoryAndTagsNotUploaded": true
+  }
+}
