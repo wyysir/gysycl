@@ -29,6 +29,8 @@ export function BatchDocumentCard({document:doc,bootstrap,dirty,conflict,onChang
   const severe=checks.filter(c=>c.status==="OPEN"&&c.severity==="ERROR");
   const source=doc.pages[0];
   const ready=batchReady(doc)&&!dirty;
+  const amountVisible=doc.visibility?.amount ?? hasPermission(bootstrap.user,"document.view_amount",doc.projectId);
+  const itemTotal=doc.items.some(item=>item.amount===null) ? null : Math.round((doc.items.reduce((sum,item)=>sum+(item.amount ?? 0),0)+Number.EPSILON)*100)/100;
   useEffect(()=>{if(modal!=="supplier")return;let current=true;const timer=setTimeout(()=>{
     api.get<{suggestions:SupplierSuggestion[]}>("/api/master-data/suggest?type=supplier&q="+encodeURIComponent(q)).then(r=>{if(current)setSuppliers(r.suggestions);}).catch(e=>{if(current)setError(e.message);});
   },200);return()=>{current=false;clearTimeout(timer);};},[q,modal]);
@@ -77,7 +79,7 @@ export function BatchDocumentCard({document:doc,bootstrap,dirty,conflict,onChang
         onSourcePage={source?()=>setModal("image"):undefined} sourcePreview={source?image:undefined}
         externalModalOpen={!!modal||!!newItem} onSave={save} saveError={error}/>
       {severe.length>0&&<details className="batch-problems"><summary>{severe.length} 项需处理{dirty?"（保存后重新检查）":""}</summary>{severe.map(c=><p key={c.id}>{c.title}：{c.detail}</p>)}</details>}
-      <footer className="batch-document-foot"><span>原单合计 <b>{formatMoney(doc.totalAmount, doc.visibility?.amount ?? hasPermission(bootstrap.user,"document.view_amount",doc.projectId))}</b></span><div>{editable&&<button className="btn btn--outline btn--small" disabled={busy||conflict} onClick={()=>run(async()=>{if(dirty)await persist();const result=await api.post<{document:DocumentDto}>(`/api/documents/${doc.id}/recheck`);onSaved(result.document);})}>{dirty?"保存并重新比对":"重新比对"}</button>}{dirty&&<button className="btn btn--outline btn--small" disabled={busy||conflict} onClick={save}>保存修改</button>}{submittable&&<button className="btn btn--primary btn--small" disabled={busy||ready} onClick={confirm}>{ready?"✓ 已核对":"确认本单"}</button>}</div></footer>
+      <footer className="batch-document-foot"><div className="batch-document-totals" aria-label="本单金额对照"><span>原单合计 <b>{formatMoney(doc.totalAmount,amountVisible)}</b></span><span>本单合计 <b aria-live="polite" aria-atomic="true">{formatMoney(itemTotal,amountVisible)}</b></span></div><div className="batch-document-actions">{editable&&<button className="btn btn--outline btn--small" disabled={busy||conflict} onClick={()=>run(async()=>{if(dirty)await persist();const result=await api.post<{document:DocumentDto}>(`/api/documents/${doc.id}/recheck`);onSaved(result.document);})}>{dirty?"保存并重新比对":"重新比对"}</button>}{dirty&&<button className="btn btn--outline btn--small" disabled={busy||conflict} onClick={save}>保存修改</button>}{submittable&&<button className="btn btn--primary btn--small" disabled={busy||ready} onClick={confirm}>{ready?"✓ 已核对":"确认本单"}</button>}</div></footer>
     </>}
     {error&&!modal&&!newItem&&<p className="text-danger batch-error" role="alert">{error}</p>}
     {modal==="image"&&source&&<EditorSheet title={`单据 ${doc.batchPosition} · 原图`} className="batch-image-sheet" onClose={()=>setModal(null)}><div className="batch-full-image"><DocumentImage src={source.url} alt="原单图片，可放大查看"/></div><p>手机可双指缩放；关闭后继续本行。</p></EditorSheet>}
